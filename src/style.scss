@@ -25,13 +25,23 @@ $offWhite: #FDFFFF;
         color: $offWhite;
     }
 }
-.home{
-    &>header.main-nav,
-    &>.home-hero{
-        background: $darkBlue;
-    }
 
+.home{
     .home-hero{
+        position: relative;
+        background: $darkBlue;
         color: $offWhite;
+        .motherboard-left{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: url('./images/motherboard-left.png');
+        }
+        .motherboard-right{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: url('./images/motherboard-right.png');
+        }
     }
 }
