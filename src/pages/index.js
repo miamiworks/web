@@ -75,6 +75,31 @@ export default function Home() {
             </Row>
           </Container>
         </Section>
+
+        <Section className="explore-jobs">
+
+        </Section>
+        
+        <Section className="key-skills">
+
+        </Section>
+        
+        <Section className="career-coaching">
+
+        </Section>
+
+        <Section className="events">
+
+        </Section>
+
+        <Section className="job-search">
+
+        </Section>
+
+        <Section className="sponsors">
+
+        </Section>
+
       </Layout>
     )
 }
