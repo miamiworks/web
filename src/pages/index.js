@@ -53,6 +53,7 @@ export default function Home() {
         meta={meta}
       >
         <Section className="home-hero h-100 position-relative">
+          <TopNav/>
           <Container>
             <Row className="mb-5 mx-auto">
               <Col xs={12}>
@@ -60,7 +61,7 @@ export default function Home() {
                 <h2>Fast track to a job through curated education pathways</h2>
               </Col>
             </Row>
-            <Row className="pt-5 position-absolute feature-row container mx-auto">
+            <Row className="pt-5 feature-row container mx-auto">
               {heroFeatures.map((item, index) => (
                 <Col xs={6} md={4} lg={3} key={index}>
                   <ResourceIcon

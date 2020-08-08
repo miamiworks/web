@@ -5,14 +5,21 @@
 
 .home{
     .home-hero{
-        position: relative;
-        background: $darkBlue;
+        background: url('./images/hero-bg-mobile.png') no-repeat;
+
+        @media screen and (min-width: 990px){
+            background: url('./images/hero-bg.png') no-repeat;  
+            background-size: 100% 100%;  
+        }
+
+        background-size: 100%; 
         color: $offWhite;
-        min-height: 600px;
+        min-height: 850px;
+        height: 100%;
         width: 100%;
 
         h1,h2 {
-            font-family: Neue Haas Grotesk Display Pro;
+            font-family: neue-haas-grotesk-display, sans-serif;
             font-style: normal;
             font-weight: bold;
         }
@@ -35,12 +42,7 @@
 
         .row:not(.feature-row){
             padding-top: 5vh;
-        }
-
-        .feature-row{
-            bottom: 8vh;
-            left: 0;
-            right: 0;
+            padding-bottom: 8vh;
         }
     }
 }

@@ -30,7 +30,7 @@ const Layout = ({
           coverImage={coverImage}
           coverDescription={coverDescription}
         />
-        <TopNav />
+        {bodyClass!=="home"?<TopNav />:null}
         {children}
       </div>
     )

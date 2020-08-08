@@ -111,6 +111,8 @@ function SEO({
       <meta name="twitter:image" content={siteUrl + ogImage}></meta>
       <meta name="twitter:image:alt" content={ogImageText} /> */}
 
+      <link rel="stylesheet" href="https://use.typekit.net/gpx7yoa.css"></link>
+
       <link
         rel="canonical"
         href={
