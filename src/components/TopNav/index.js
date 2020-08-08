@@ -1,24 +1,49 @@
 import React from "react"
-import logoUrl from "../../images/logo-white.png"
+import { useStaticQuery,graphql } from "gatsby"
+import Img from "gatsby-image"
+import { navigate } from '@reach/router';
 import { Navbar, NavDropdown, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import "./style.scss";
 
 export const TopNav = () => {
-    return <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
-                <Nav.Link href="#home">Resources</Nav.Link>
-                <Nav.Link href="#link">Jobs</Nav.Link>
-                <Nav.Link href="#link">Career Paths</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
-                </Nav>
-            </Navbar.Collapse>
-            </Navbar>;
+    const data = useStaticQuery(graphql`
+        query {
+            file(relativePath: { regex: "/logo-white.png/" }) {
+                childImageSharp {
+                    fixed(width: 125, height: 125) {
+                    ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+        }
+    `)
+
+    const navMenu = [
+        {label: "Resources",url:"#home",id:0},
+        {label: "Jobs",url:"#link",id:1},
+        {label: "Career Paths",url:"#link",id:2},
+    ]
+
+    return (
+        <header className="main-nav">
+            <div className="header-topbar text-center py-3">Give your job search a home with CareerScore</div>
+            <Navbar bg="transparent" variant="dark" expand="lg" className="px-5">
+                <Navbar.Brand href="#home">
+                    <Img fixed={data.file.childImageSharp.fixed} />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
+                        {navMenu.map(item=>
+                            <Nav.Link 
+                                onClick={() => navigate(item.url)}
+                                key={item.id}>
+                                {item.label}
+                            </Nav.Link>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </header>
+    )
 }

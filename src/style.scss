@@ -3,9 +3,35 @@
 /* make the customizations */
 $theme-colors: (
     "warning": #E0BA4F,
-    "success": #6DBAA4
-    "info": #282C61,
+    "success": #6DBAA4,
+    "info": #282C61
 );
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
+
+/* custom colors */
+$darkBlue: #171838;
+$seaGreen: #6ABBA4;
+$offWhite: #FDFFFF;
+
+.navbar-dark .navbar-nav {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    .nav-link{
+        color: $offWhite;
+    }
+}
+.home{
+    &>header.main-nav,
+    &>.home-hero{
+        background: $darkBlue;
+    }
+
+    .home-hero{
+        color: $offWhite;
+    }
+}
