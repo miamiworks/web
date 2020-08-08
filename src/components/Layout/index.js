@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react"
-import { Navbar } from "./navbar"
+import { TopNav } from "../TopNav"
 
 const Layout = ({children}) => {
     return <>
-        <Navbar />
+        <TopNav />
         {children}
     </>
 }
