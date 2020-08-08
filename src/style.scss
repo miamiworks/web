@@ -3,6 +3,7 @@
 $darkBlue: #171838;
 $seaGreen: #6ABBA4;
 $offWhite: #FDFFFF;
+$lightYellow: #F9DE8E;
 
 
 /* navbar */
@@ -26,7 +27,7 @@ $offWhite: #FDFFFF;
         position: relative;
         background: $darkBlue;
         color: $offWhite;
-        min-height: 600px;
+        min-height: 650px;
         width: 100%;
 
         h1,h2 {
@@ -43,6 +44,22 @@ $offWhite: #FDFFFF;
         h2 {
             font-size: 32px;
             line-height: 38px;
+            color: $lightYellow;
+        }
+
+        h3 {
+            font-size: 25px;
+            line-height: 29px;
+        }
+
+        .row:not(.feature-row){
+            padding-top: 5vh;
+        }
+
+        .feature-row{
+            bottom: 5vh;
+            left: 0;
+            right: 0;
         }
     }
 }

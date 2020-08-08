@@ -38,17 +38,17 @@ export default function Home() {
 
     return (
       <Layout bodyClass="home">
-        <Section className="home-hero h-100 d-flex align-items-center">
+        <Section className="home-hero h-100 position-relative">
           <Container>
-            <Row>
+            <Row className="mb-5 mx-auto">
               <Col xs={12}>
-                <h1>Find a new career in Miami Tech</h1>
+                <h1 className="mb-3">Find a new career in Miami Tech</h1>
                 <h2>Fast track to a job through curated education pathways</h2>
               </Col>
             </Row>
-            <Row>
+            <Row className="pt-5 position-absolute feature-row container mx-auto">
               {heroFeatures.map((item, index) => (
-                <Col xs={3} key={index}>
+                <Col xs={6} md={4} lg={3} key={index}>
                   <ResourceIcon
                     title={item.title}
                     bg={item.bg}
