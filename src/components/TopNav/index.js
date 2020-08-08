@@ -36,6 +36,7 @@ export const TopNav = () => {
                     <Nav className="ml-auto">
                         {navMenu.map(item=>
                             <Nav.Link 
+                                className="ml-5"
                                 onClick={() => navigate(item.url)}
                                 key={item.id}>
                                 {item.label}
