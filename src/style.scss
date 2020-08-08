@@ -1,25 +1,6 @@
-/* custom colors */
+@import './colors.scss';
 
-$darkBlue: #171838;
-$seaGreen: #6ABBA4;
-$offWhite: #FDFFFF;
-$lightYellow: #F9DE8E;
-
-
-/* navbar */
-
-.navbar-dark .navbar-nav {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 29px;
-    .nav-link{
-        color: $offWhite;
-    }
-}
-
-
+/* Set all the Page and Global styles here */
 /* Homepage */
 
 .home{

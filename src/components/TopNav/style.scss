@@ -1,13 +1,21 @@
+@import '../../colors.scss';
 /* Please always prepend your stiles with class .main-nav to avoid conflicts */
 
-/* custom colors */
-$darkBlue: #171838;
-$seaGreen: #6ABBA4;
-$offWhite: #FDFFFF;
-
+/* navbar */
 
 .main-nav{
     background: $darkBlue;
+    .navbar-dark .navbar-nav {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        line-height: 29px;
+        .nav-link{
+            color: $offWhite;
+        }
+    }
+
     .header-topbar{
         background: $seaGreen;
         color: white;

@@ -36,8 +36,22 @@ export default function Home() {
       },
     ]
 
+    const meta = [
+      { name: "charset", content: "UTF-8" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, maximum-scale=1",
+      },
+      { httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1" },
+    ]
+
     return (
-      <Layout bodyClass="home">
+      <Layout
+        bodyClass="home"
+        description=""
+        lang="en"
+        meta={meta}
+      >
         <Section className="home-hero h-100 position-relative">
           <Container>
             <Row className="mb-5 mx-auto">

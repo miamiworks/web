@@ -5,21 +5,25 @@
  */
 const path = require("path")
 module.exports = {
-    siteMetadata: {
-        siteUrl: `https://www.example.com`,
+  siteMetadata: {
+    siteUrl: `https://www.example.com`,
+    title: "",
+    description: "",
+    author: "",
+    keywords: "",
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
     },
-    plugins: [
-        {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-            name: `images`,
-            path: path.join(__dirname, `src`, `images`),
-        },
-        },
-        `gatsby-plugin-sass`,
-        `gatsby-plugin-react-helmet`, 
-        `gatsby-transformer-sharp`, 
-        `gatsby-plugin-sharp`,
-        `gatsby-plugin-sitemap`,
-    ],
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
+  ],
 }

@@ -1,0 +1,15 @@
+/* custom colors */
+
+$darkBlue: #171838;
+$seaGreen: #6ABBA4;
+$offWhite: #FDFFFF;
+$lightYellow: #F9DE8E;
+
+/* Overrides for Bootstrap colors */
+$theme-colors: (
+    "info": tomato,
+    "danger": teal
+);
+
+/* import bootstrap to set changes */
+@import "../node_modules/bootstrap/scss/bootstrap";
