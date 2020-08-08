@@ -29,24 +29,20 @@ $offWhite: #FDFFFF;
         min-height: 600px;
         width: 100%;
 
-        .motherboard-left,.motherboard-right{
-            position: absolute;
+        h1,h2 {
+            font-family: Neue Haas Grotesk Display Pro;
+            font-style: normal;
+            font-weight: bold;
         }
 
-        .motherboard-left{   
-            width: 100%;
-            height: 600px;
-            left: -5vw;
-            bottom: 0;
-            background: url('./images/motherboard-left.png') no-repeat;
+        h1 {
+            font-size: 64px;
+            line-height: 77px;
         }
 
-        .motherboard-right{
-            width: 530px;
-            height: 650px;
-            right: 0;
-            top: -18vh;
-            background: url('./images/motherboard-right.png') no-repeat;
+        h2 {
+            font-size: 32px;
+            line-height: 38px;
         }
     }
 }
