@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 // import typography from "../utils/typography"
 
 import logo from "../../images/logo-white.png"
-// import screenshot from "../assets/images/alkemy-website-screenshot.png"
+// import screenshot from "../assets/images/screenshot.png"
 // import msTileImg from "../assets/images/favicons/ms-icon-144x144.png"
 
 // import appleIcon57 from "../assets/images/favicons/apple-icon-57x57.png"
