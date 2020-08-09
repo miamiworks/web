@@ -2,10 +2,17 @@
 
 .course-card{
     border: 0;
+    .purple{
+        color: $purple;
+    }
+    .card-body{
+        padding: 1rem;
+    }
     .card-img-top{
         object-fit: cover;
     }
     .title {
+        color: $darkBlue;
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
@@ -13,5 +20,13 @@
     }
     .logo-row,.button-row{min-height: 30%;}
     .text-row{min-height: 40%;}
-
+    .btn{
+        @extend .purple;
+        border-color: $purple;
+        border-width: 2px;
+        &:hover{
+            background-color: $purple;
+            color: $offWhite;
+        }
+    }
 }

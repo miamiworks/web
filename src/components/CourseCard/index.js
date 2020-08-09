@@ -25,19 +25,22 @@ export default function CourseCard(props){
             <Col xs={12} className="logo-row d-flex align-items-center">
               <img src={logoSrc} alt={topImgAlt + " logo"} className="" />
             </Col>
-            <Col xs={12} className="text-row d-flex flex-column justify-content-center">
+            <Col
+              xs={12}
+              className="text-row d-flex flex-column justify-content-center"
+            >
               <Card.Title className="title">{title}</Card.Title>
-              <Card.Text>
-                <FontAwesomeIcon
-                  color="black"
-                  icon={faClock}
-                  className="mr-2"
-                />
+              <Card.Text className="purple">
+                <FontAwesomeIcon icon={faClock} className="mr-2" />
                 {timeframe}
               </Card.Text>
             </Col>
             <Col xs={12} className="button-row d-flex align-items-center">
-              <Button variant="primary" onClick={() => setter(value)}>
+              <Button
+                variant="outline-primary purple"
+                onClick={() => setter(value)}
+                block
+              >
                 {buttonText}
               </Button>
             </Col>
