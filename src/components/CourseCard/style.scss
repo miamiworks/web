@@ -1,0 +1,17 @@
+@import '../../colors.scss';
+
+.course-card{
+    border: 0;
+    .card-img-top{
+        object-fit: cover;
+    }
+    .title {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .logo-row,.button-row{min-height: 30%;}
+    .text-row{min-height: 40%;}
+
+}

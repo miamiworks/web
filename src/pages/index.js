@@ -1,4 +1,10 @@
 import React,{useState} from "react"
+import { 
+  faSuitcase,
+  faCommentMedical,
+  faCalendarStar,
+  faChartNetwork 
+} from "@fortawesome/pro-regular-svg-icons"
 import Layout from "../components/Layout"
 import Section from "../components/Section"
 import { TopNav } from "../components/TopNav"
@@ -8,9 +14,13 @@ import Col from 'react-bootstrap/Col'
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Tab from "react-bootstrap/Tab"
-import { faSuitcase,faCommentMedical,faCalendarStar,faChartNetwork } from "@fortawesome/pro-regular-svg-icons"
+import CourseCard from "../components/CourseCard"
+import cardTopImg from "../images/cardTopClass.png"
+import gaLogo from "../images/gen-assembly-logo.png"
+import geeksLogo from "../images/4geeks-logo.png"
 
 export default function Home() {
+    const [skill,setSkill] = useState(null);
     const [course,setCourse] = useState(null);
 
     const heroFeatures = [
@@ -80,6 +90,41 @@ export default function Home() {
       },
     ]
 
+    const courseData = [
+      {
+        topImgAlt: "Gen Assembly",
+        topImg: cardTopImg,
+        logoSrc: gaLogo,
+        title: "Fullstack Web Developer",
+        timeframe: "12 weeks",
+        buttonText: "Learn More",
+      },
+      {
+        topImgAlt: "4geeks",
+        topImg: cardTopImg,
+        logoSrc: geeksLogo,
+        title: "Fullstack Web Developer",
+        timeframe: "12 weeks",
+        buttonText: "Learn More",
+      },
+      {
+        topImgAlt: "Gen Assembly",
+        topImg: cardTopImg,
+        logoSrc: gaLogo,
+        title: "Web Immersive",
+        timeframe: "12 weeks",
+        buttonText: "Learn More",
+      },
+      {
+        topImgAlt: "Gen Assembly",
+        topImg: cardTopImg,
+        logoSrc: gaLogo,
+        title: "Data Science Immersion",
+        timeframe: "12 weeks",
+        buttonText: "Learn More",
+      },
+    ]
+
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
         <Section className="home-hero h-100 position-relative">
@@ -128,7 +173,7 @@ export default function Home() {
                         eventKey={item.key}
                         key={item.key}
                         className="text-white"
-                        onClick={()=>setCourse(null)}
+                        onClick={() => setSkill(null)}
                       >
                         {item.label}
                       </Nav.Link>
@@ -138,15 +183,25 @@ export default function Home() {
                 <Col className="right-container">
                   <Tab.Content className="h-100">
                     <Tab.Pane eventKey="software-engineering" className="h-100">
-                      {course === "software-engineering" ? (
+                      {skill === "software-engineering" ? (
                         <Row className="h-100">
-                          <Col className="p-5">
-                            <Row className="mb-4">
-                              <Col>
-                               
-                              </Col>
+                          <Col className="p-0">
+                            <Row className="mb-4 h-100 mx-lg-n2">
+                              {courseData.map((item, index) => (
+                                <Col key={index} md={3} className="px-lg-2">
+                                  <CourseCard
+                                    topImgAlt={item.topImgAlt}
+                                    topImg={item.topImg}
+                                    logoSrc={item.logoSrc}
+                                    title={item.title}
+                                    timeframe={item.timeframe}
+                                    buttonText={item.buttonText}
+                                    setter={setCourse}
+                                    value={course}
+                                  />
+                                </Col>
+                              ))}
                             </Row>
-                           
                           </Col>
                         </Row>
                       ) : (
@@ -164,7 +219,7 @@ export default function Home() {
                               </p>
                             </div>
                           </Col>
-                          <Col className="right-column p-5">
+                          <Col className="right-column p-3 h-100">
                             <Row className="mb-4">
                               <Col>
                                 {" "}
@@ -190,14 +245,19 @@ export default function Home() {
                                 </p>
                               </Col>
                             </Row>
-                            <Row>
+                            <Row className="position-absolute fixed-bottom p-3">
                               <Col>
                                 <p className="mb-4">
                                   <strong>
                                     4 local course providers available
                                   </strong>
                                 </p>
-                                <button className="btn btn-outline-warning" onClick={()=>setCourse("software-engineering")}>
+                                <button
+                                  className="btn btn-outline-warning"
+                                  onClick={() =>
+                                    setSkill("software-engineering")
+                                  }
+                                >
                                   See Courses
                                 </button>
                               </Col>
