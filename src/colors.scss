@@ -8,7 +8,8 @@ $lightYellow: #F9DE8E;
 /* Overrides for Bootstrap colors */
 $theme-colors: (
     "info": tomato,
-    "danger": teal
+    "danger": teal,
+    "warning": $lightYellow
 );
 
 /* import bootstrap to set changes */

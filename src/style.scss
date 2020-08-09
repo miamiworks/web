@@ -7,12 +7,12 @@
     section {
         min-height: 850px;
     }
-    
+
     .home-hero{
-        background: url('./images/hero-bg-mobile.png') no-repeat;
+        background: $darkBlue url('./images/hero-bg-mobile.png') no-repeat;
 
         @media screen and (min-width: 990px){
-            background: url('./images/hero-bg.png') no-repeat;  
+            background: $darkBlue url('./images/hero-bg.png') no-repeat;  
             background-size: 100% 100%;  
         }
 
@@ -47,6 +47,64 @@
         .row:not(.feature-row){
             padding-top: 5vh;
             padding-bottom: 8vh;
+        }
+    }
+
+    .key-skills{
+        background: $darkBlue url('./images/skills-bg.png') top left no-repeat;
+        background-size: cover;
+
+        h2{
+            font-weight: bold;
+            font-size: 64px;
+            line-height: 77px;
+        }
+
+        .skills-nav {
+            background: rgba(#F8FAFA,0.1);
+            border: 1px solid rgba(#CACACA,0.1);
+            box-sizing: border-box;
+            border-radius: 20px 0px 0px 20px;
+
+            a{
+                font-family: Sofia Pro;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 31px;
+            }
+        }
+
+        .feature-block{
+            .software-eng-img {
+                color: white;
+                background: url('./images/software-engineering.png') no-repeat center;
+                border-radius: 20px 0px 0px 20px;
+                &:before{
+                    background: rgba(#4044AA,0.2);
+                    border-radius: 20px 0px 0px 20px;
+                }
+
+                .skills-overlay{
+                    h3{
+                        font-size: 25px;
+                        line-height: 30px;
+                    }
+    
+                    p{
+                        font-family: Sofia Pro;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 25px;
+                        &.skills-overlay-salary{
+                            font-weight: bold;
+                            font-size: 20px;
+                            line-height: 31px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
