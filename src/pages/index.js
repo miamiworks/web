@@ -119,8 +119,8 @@ export default function Home() {
               defaultActiveKey="software-engineering"
             >
               <Row>
-                <Col xs={3}>
-                  <Nav className="flex-column skills-nav">
+                <Col xs={12} sm={4} lg={3} className="align-items-stretch">
+                  <Nav className="flex-column skills-nav h-100">
                     {keySkillsMenu.map(item => (
                       <Nav.Link
                         eventKey={item.key}
@@ -132,18 +132,44 @@ export default function Home() {
                     ))}
                   </Nav>
                 </Col>
-                <Col>
+                <Col className="right-container">
                   <Tab.Content className="h-100">
                     <Tab.Pane eventKey="software-engineering" className="h-100">
                       <Row className="h-100">
-                        <Col className="software-eng-img p-0 d-flex flex-column justify-content-end align-items-end" xs={5}>
+                        <Col
+                          className="software-eng-img p-0 d-flex flex-column justify-content-end align-items-end"
+                          xs={5}
+                          md={4}
+                        >
                           <div className="skills-overlay p-3 w-100 h-50">
-                            <h3>Software Engineering</h3>
-                            <p>Salary range in Miami</p>
-                            <p className="skills-overlay-salary"></p>
+                            <h3 className="">Software Engineering</h3>
+                            <p className="mb-2">Salary range in Miami</p>
+                            <p className="skills-overlay-salary">
+                              $55-110K per year
+                            </p>
                           </div>
                         </Col>
-                        <Col></Col>
+                        <Col className="right-column p-5">
+                          <h4 className="title">What they do?</h4>
+                          <p>
+                            process of analyzing user requirements and then
+                            designing, building, and testing software
+                            application which will satisfy those requirements
+                          </p>
+                          <h4 className="title">What’s the job outlook?</h4>
+                          <p>
+                            process of analyzing user requirements and then
+                            designing, building, and testing software
+                            application which will satisfy those requirements
+                          </p>
+
+                          <p>
+                            <strong>4 local course providers available</strong>
+                          </p>
+                          <button className="btn btn-outline-warning">
+                            See Courses
+                          </button>
+                        </Col>
                       </Row>
                     </Tab.Pane>
                   </Tab.Content>

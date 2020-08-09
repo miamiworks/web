@@ -3,7 +3,10 @@
 $darkBlue: #171838;
 $seaGreen: #6ABBA4;
 $offWhite: #FDFFFF;
+$grayish: #CACACA;
 $lightYellow: #F9DE8E;
+$purple: #4044AA;
+$deepPurple: #282A62;
 
 /* Overrides for Bootstrap colors */
 $theme-colors: (
@@ -11,6 +14,3 @@ $theme-colors: (
     "danger": teal,
     "warning": $lightYellow
 );
-
-/* import bootstrap to set changes */
-@import "../node_modules/bootstrap/scss/bootstrap";
