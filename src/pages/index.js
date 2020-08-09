@@ -120,7 +120,7 @@ export default function Home() {
             >
               <Row>
                 <Col xs={12} sm={4} lg={3} className="align-items-stretch">
-                  <Nav className="flex-column skills-nav h-100 align-content-around justify-content-between py-3">
+                  <Nav className="flex-column skills-nav h-100 align-content-between justify-content-between p-2">
                     {keySkillsMenu.map(item => (
                       <Nav.Link
                         eventKey={item.key}
