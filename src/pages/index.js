@@ -150,25 +150,41 @@ export default function Home() {
                           </div>
                         </Col>
                         <Col className="right-column p-5">
-                          <h4 className="title">What they do?</h4>
-                          <p>
-                            process of analyzing user requirements and then
-                            designing, building, and testing software
-                            application which will satisfy those requirements
-                          </p>
-                          <h4 className="title">What’s the job outlook?</h4>
-                          <p>
-                            process of analyzing user requirements and then
-                            designing, building, and testing software
-                            application which will satisfy those requirements
-                          </p>
-
-                          <p>
-                            <strong>4 local course providers available</strong>
-                          </p>
-                          <button className="btn btn-outline-warning">
-                            See Courses
-                          </button>
+                          <Row className="mb-4">
+                            <Col>
+                              {" "}
+                              <h4 className="title">What they do?</h4>
+                              <p>
+                                process of analyzing user requirements and then
+                                designing, building, and testing software
+                                application which will satisfy those
+                                requirements
+                              </p>
+                            </Col>
+                          </Row>
+                          <Row className="mb-4">
+                            <Col>
+                              <h4 className="title">What’s the job outlook?</h4>
+                              <p>
+                                process of analyzing user requirements and then
+                                designing, building, and testing software
+                                application which will satisfy those
+                                requirements
+                              </p>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <p className="mb-4">
+                                <strong>
+                                  4 local course providers available
+                                </strong>
+                              </p>
+                              <button className="btn btn-outline-warning">
+                                See Courses
+                              </button>
+                            </Col>
+                          </Row>
                         </Col>
                       </Row>
                     </Tab.Pane>
