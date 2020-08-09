@@ -117,7 +117,6 @@ export default function Home() {
             <Tab.Container
               id="skills-main"
               defaultActiveKey="software-engineering"
-              className="feature-block"
             >
               <Row>
                 <Col xs={3}>
@@ -134,11 +133,11 @@ export default function Home() {
                   </Nav>
                 </Col>
                 <Col>
-                  <Tab.Content>
-                    <Tab.Pane eventKey="software-engineering">
-                      <Row>
-                        <Col className="software-eng-img">
-                          <div className="skills-overlay">
+                  <Tab.Content className="h-100">
+                    <Tab.Pane eventKey="software-engineering" className="h-100">
+                      <Row className="h-100">
+                        <Col className="software-eng-img p-0 d-flex flex-column justify-content-end align-items-end" xs={5}>
+                          <div className="skills-overlay p-3 w-100 h-50">
                             <h3>Software Engineering</h3>
                             <p>Salary range in Miami</p>
                             <p className="skills-overlay-salary"></p>

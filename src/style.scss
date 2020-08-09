@@ -67,41 +67,53 @@
             border-radius: 20px 0px 0px 20px;
 
             a{
+                color: #CACACA;
                 font-family: Sofia Pro;
                 font-style: normal;
                 font-weight: bold;
                 font-size: 20px;
                 line-height: 31px;
+
+                &.active{
+                    color: #FDFFFF;
+                    font-size: 20px;
+                    line-height: 31px;
+                    text-decoration: underline;
+                }
             }
         }
 
-        .feature-block{
-            .software-eng-img {
-                color: white;
-                background: url('./images/software-engineering.png') no-repeat center;
+
+        .software-eng-img {
+            color: white;
+            background: url('./images/software-engineering.png') no-repeat center;
+            background-size: cover;
+            border-radius: 20px 0px 0px 20px;
+            
+            &:before{
+                background: rgba(#4044AA,0.2);
                 border-radius: 20px 0px 0px 20px;
-                &:before{
-                    background: rgba(#4044AA,0.2);
-                    border-radius: 20px 0px 0px 20px;
+            }
+
+            .skills-overlay{
+                background: rgba(#282A62,0.5);
+                border-radius: 0px 0px 0px 20px;
+
+                h3{
+                    font-size: 25px;
+                    line-height: 30px;
                 }
 
-                .skills-overlay{
-                    h3{
-                        font-size: 25px;
-                        line-height: 30px;
-                    }
-    
-                    p{
-                        font-family: Sofia Pro;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 16px;
-                        line-height: 25px;
-                        &.skills-overlay-salary{
-                            font-weight: bold;
-                            font-size: 20px;
-                            line-height: 31px;
-                        }
+                p{
+                    font-family: Sofia Pro;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 25px;
+                    &.skills-overlay-salary{
+                        font-weight: bold;
+                        font-size: 20px;
+                        line-height: 31px;
                     }
                 }
             }
