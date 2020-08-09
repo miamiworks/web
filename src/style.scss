@@ -4,6 +4,10 @@
 /* Homepage */
 
 .home{
+    section {
+        min-height: 850px;
+    }
+    
     .home-hero{
         background: url('./images/hero-bg-mobile.png') no-repeat;
 
@@ -14,7 +18,7 @@
 
         background-size: 100%; 
         color: $offWhite;
-        min-height: 850px;
+        
         height: 100%;
         width: 100%;
 

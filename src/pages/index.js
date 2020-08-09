@@ -81,7 +81,7 @@ export default function Home() {
         </Section>
         
         <Section className="key-skills">
-
+          
         </Section>
         
         <Section className="career-coaching">
