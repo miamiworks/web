@@ -4,15 +4,45 @@ import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Tab from "react-bootstrap/Tab"
+import Modal from "react-bootstrap/Modal"
+import Button from "react-bootstrap/Button"
 import CourseCard from "../CourseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faTimes } from "@fortawesome/pro-regular-svg-icons"
 import "./style.scss"
 
+function CourseSyllabusModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Centered Modal</h4>
+        <p>
+          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+          consectetur ac, vestibulum at eros.
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  )
+}
+
 export default function KeySkillsDesktop(props){
     const { keySkillsMenu, courseData, course, setCourse, setSkill,skill } = props
-    const [showModal, setShowModal]=useState(false);
+    const [modalShow, setModalShow] = useState(false)
 
     const getContent = ()=>{
       let content;
@@ -77,16 +107,13 @@ export default function KeySkillsDesktop(props){
 
               <Row className="position-absolute fixed-bottom px-5 pb-3">
                 <Col>
-                  <button
-                    className="btn btn-warning mr-3"
-                    onClick={() => {}}
-                  >
+                  <button className="btn btn-warning mr-3" onClick={() => {}}>
                     Apply Now
                   </button>
 
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => setShowModal(true)}
+                    onClick={() => setModalShow(true)}
                   >
                     Request Syllabus
                   </button>
@@ -151,6 +178,10 @@ export default function KeySkillsDesktop(props){
     }
     return (
       <Container className="key-skills-desktop">
+        <CourseSyllabusModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
         <Tab.Container
           id="skills-desktop"
           defaultActiveKey="software-engineering"
