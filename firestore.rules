@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+   // Jobs:
+        //   - Anonymously authenticated user can read
+        //   - Create, update, delete are not allowed
+      match /jobs/{jobsId}{
+      allow read: if request.auth != null;
+      allow create, update, delete: if false;
+    }
+       // Events:
+        //   - Anonymously authenticated user can read
+        //   - Create, update, delete are not allowed
+      match /events/{eventsId}{
+      allow read: if request.auth != null;
+      allow create, update, delete: if false;
+    }
+  }
+}
