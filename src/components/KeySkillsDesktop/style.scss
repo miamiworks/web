@@ -95,9 +95,12 @@
 
         button {
             min-width: 186px;
-            &.btn-warning{
+            
+            &.btn-warning,
+            &.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle{
                 color: white;
                 background: $purple;
+                border-color: $purple;
             }
             &.btn-outline-warning{
                 color: $purple;
