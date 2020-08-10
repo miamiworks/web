@@ -1,10 +1,12 @@
 import React from "react"
 import Layout from "../components/Layout"
 import Section from "../components/Section"
+import Sponsors from "../components/Sponsors"
 import { TopNav } from "../components/TopNav"
 import ResourceIcon from "../components/ResourceIcon"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import beaconURL from "../images/beacon-logo.png"
 import Container from "react-bootstrap/Container"
 import { faSuitcase,faCommentMedical,faCalendarStar,faChartNetwork } from "@fortawesome/pro-regular-svg-icons"
 
@@ -92,12 +94,24 @@ export default function Home() {
 
         </Section>
 
-        <Section className="job-search">
-
+        <Section className="job-search py-5">
+            <div className="container">
+                <h2 className="text-center">Want to nail your job serach?</h2>
+                <h3 className="text-center">check out our free job search filed guide</h3>
+                <p>30 exclusive tips & tricks form recruiting pros for navigating your search ducing COVID-19</p>
+                <button>Download Guide</button>
+            </div>
         </Section>
 
-        <Section className="sponsors">
-
+        <Section className="section-sponsors container py-5">
+            <h2 className="text-center">Miami Tech Works Coalition</h2>
+            <h3 className="text-center">Made possible by</h3>
+            <div>
+                <img src={beaconURL} />
+            </div>
+            <div class="logos">
+                <Sponsors />
+            </div>
         </Section>
 
       </Layout>

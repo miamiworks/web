@@ -1,0 +1,13 @@
+.sponsors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    img{
+        object-fit: scale-down;
+        // width: 100%;
+        max-height: 60px;
+        flex: 0 0 calc(16.66% - 20px);
+        color: white;
+        margin: 10px;
+    }
+}
