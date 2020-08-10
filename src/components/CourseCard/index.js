@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faClock
-} from "@fortawesome/free-regular-svg-icons"
+import { faClock } from "@fortawesome/free-regular-svg-icons"
+import { isMobile } from "react-device-detect"
+import { useWindowSize } from "../../utils/hooks"
 import Card from "react-bootstrap/Card"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -11,41 +11,96 @@ import "./style.scss"
 
 export default function CourseCard(props){
     const {topImgAlt,topImg,logoSrc,title,timeframe,buttonText,setter,value} = props;
+    const [width, height] = useWindowSize()
 
-    return (
-      <Card className="course-card h-100">
-        <Card.Img
-          className="h-50"
-          variant="top"
-          src={topImg}
-          alt={topImgAlt ? topImgAlt : ""}
-        />
-        <Card.Body>
-          <Row className="h-100">
-            <Col xs={12} className="logo-row d-flex align-items-center">
-              <img src={logoSrc} alt={topImgAlt + " logo"} className="" />
-            </Col>
-            <Col
-              xs={12}
-              className="text-row d-flex flex-column justify-content-center"
-            >
+    const getMobileContent = ()=>{
+      return (
+        <Row>
+          <Col xs={6} className="position-relative">
+            <Card.Img
+              className="h-100"
+              variant="top"
+              src={topImg}
+              alt={topImgAlt ? topImgAlt : ""}
+            />
+            <div className="text-overlay position-absolute">
               <Card.Title className="title">{title}</Card.Title>
               <Card.Text className="purple">
                 <FontAwesomeIcon icon={faClock} className="mr-2" />
                 {timeframe}
               </Card.Text>
-            </Col>
-            <Col xs={12} className="button-row d-flex align-items-center">
-              <Button
-                variant="outline-primary purple"
-                onClick={() => setter(value)}
-                block
+            </div>
+          </Col>
+          <Col xs={6}>
+            <Card.Body>
+              <Row className="h-100">
+                <Col
+                  xs={12}
+                  className="logo-row"
+                >
+                  <img src={logoSrc} alt={topImgAlt + " logo"} className="mb-4" />
+
+                  <Button
+                    variant="outline-primary purple"
+                    onClick={() => setter(value)}
+                    block
+                  >
+                    {buttonText}
+                  </Button>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Col>
+        </Row>
+      )
+    }
+
+    const getDesktopContent = ()=>{
+      return(
+        <>
+          <Card.Img
+            className="h-50"
+            variant="top"
+            src={topImg}
+            alt={topImgAlt ? topImgAlt : ""}
+          />
+          <Card.Body>
+            <Row className="h-100">
+              <Col xs={6} md={12} className="logo-row d-flex align-items-center">
+                <img src={logoSrc} alt={topImgAlt + " logo"} className="" />
+              </Col>
+              <Col
+                s={6}
+                md={12}
+                className="text-row d-flex flex-column justify-content-center"
               >
-                {buttonText}
-              </Button>
-            </Col>
-          </Row>
-        </Card.Body>
+                <Card.Title className="title">{title}</Card.Title>
+                <Card.Text className="purple">
+                  <FontAwesomeIcon icon={faClock} className="mr-2" />
+                  {timeframe}
+                </Card.Text>
+              </Col>
+              <Col xs={12} className="button-row d-flex align-items-center">
+                <Button
+                  variant="outline-primary purple"
+                  onClick={() => setter(value)}
+                  block
+                >
+                  {buttonText}
+                </Button>
+              </Col>
+            </Row>
+          </Card.Body>
+        </>
+      )
+    }
+    return (
+      <Card
+        className={
+          width <= 1080 || isMobile ? "course-card mobile h-100" : "course-card h-100"
+        }
+      >
+        {width <= 1080 || isMobile ? getMobileContent() : getDesktopContent()}
       </Card>
     )
 }

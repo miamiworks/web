@@ -5,12 +5,8 @@ import {
   faCalendarStar,
   faChartNetwork 
 } from "@fortawesome/pro-regular-svg-icons"
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect"
+import { isMobile } from "react-device-detect"
+import {useWindowSize} from "../utils/hooks"
 import Layout from "../components/Layout"
 import Section from "../components/Section"
 import KeySkillsDesktop from "../components/KeySkillsDesktop"
@@ -23,7 +19,6 @@ import Container from "react-bootstrap/Container"
 import cardTopImg from "../images/cardTopClass.png"
 import gaLogo from "../images/gen-assembly-logo.png"
 import geeksLogo from "../images/4geeks-logo.png"
-import {useWindowSize} from "../utils/hooks"
 
 export default function Home() {
     const [skill,setSkill] = useState(null);

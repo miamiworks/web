@@ -9,13 +9,17 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Spinner from "react-bootstrap/Spinner"
 import CourseCard from "../CourseCard"
+import { useWindowSize } from "../../utils/hooks"
+import { isMobile } from "react-device-detect"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { faTimes } from "@fortawesome/pro-regular-svg-icons"
 import "./style.scss"
 
 function CourseSyllabusModal(props) {
   const { onHide, course } = props
+  const [width, height] = useWindowSize()
   const [submitting, setSubmitting] = useState(false)
   const [sent, setSent] = useState(false)
 
@@ -111,9 +115,11 @@ export default function KeySkillsMobile(props){
       course,
       setCourse,
       setSkill,
-      skill,
+      skill
     } = props
     const [modalShow, setModalShow] = useState(false)
+
+    const type = skill!==null?keySkillsMenu.find(item=>item.key===skill).label:"";
 
 
     const getContent = () => {
@@ -123,8 +129,23 @@ export default function KeySkillsMobile(props){
           <Row className="h-100">
             <Col className="p-0">
               <Row className="mb-4 h-100 mx-lg-n2">
+                <div className="mobile-heading">
+                  <Row>
+                    <Col
+                      xs={2}
+                      className="d-flex flex-column align-items-center justify-content-center"
+                    >
+                      <div className="circle">
+                        <FontAwesomeIcon size="lg" icon={faArrowLeft} />
+                      </div>
+                    </Col>
+                    <Col className="d-flex flex-column align-items-center justify-content-center">
+                      <h2 className="my-auto">Local {type} Course Options</h2>
+                    </Col>
+                  </Row>
+                </div>
                 {courseData.map((item, index) => (
-                  <Col key={index} md={3} className="px-lg-2">
+                  <Col key={index} xs={12} md={3} className="course-column">
                     <CourseCard
                       topImgAlt={item.topImgAlt}
                       topImg={item.topImg}
@@ -226,7 +247,7 @@ export default function KeySkillsMobile(props){
                   </p>
                 </Col>
               </Row>
-              <Row className="position-absolute fixed-bottom p-3">
+              <Row className="p-3">
                 <Col>
                   <p className="mb-4">
                     <strong>4 local course providers available</strong>

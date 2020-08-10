@@ -29,4 +29,12 @@
             color: $offWhite;
         }
     }
+
+    &.mobile {
+        .text-overlay{
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
 }
