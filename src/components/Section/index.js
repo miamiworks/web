@@ -1,8 +1,8 @@
 import React from "react"
 
 const Section = ({children, className}) => {
-    return <div className={`${className}`}>
+    return <section className={`${className}`}>
         {children}
-    </div>
+    </section>
 }
 export default Section

@@ -1,0 +1,251 @@
+@import '../../colors.scss';
+
+
+.key-skills-mobile,
+.key-skills-mobile>.row,
+.key-skills-mobile>.row>.col-12{
+    padding: 0;
+    margin: 0;
+}
+
+.key-skills-mobile{
+    .skills-nav {
+        background: rgba($offWhite,0.1);
+        font-family: sofia-pro, sans-serif;
+        font-style: normal;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        border-radius: unset;
+        border: unset;
+        padding: 1rem;
+
+        &::-webkit-scrollbar {
+            width: 0.5em;
+            height: 0.5em;
+            padding: 1rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 2px rgba($darkBlue,0.5); 
+            background-color: rgba($darkBlue,0.5);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: $grayish;
+            border-radius: 3px;
+
+            &:hover {
+                background: rgba($darkBlue,0.75);
+            }
+        }
+
+        a{
+            font-family: sofia-pro,sans-serif;
+            color: $offWhite;
+            background-color: transparent;
+            border: 1px solid $offWhite;
+            line-height: 1.25rem;
+            margin: auto .5rem;
+            white-space: nowrap;
+            border-radius: 20px;
+            text-decoration: none;
+            padding: .25rem 0.65rem;
+            font-size: 14px;
+            vertical-align: center;
+
+            &:hover{
+                background-color: $lightYellow;
+                border-color: $lightYellow;
+                color: $offWhite;
+            }
+
+            &.active{
+                font-weight: bold;
+                color: $purple;
+                text-decoration: none;
+                background-color: $lightYellow;
+                border-color: $lightYellow;
+            }
+        }
+    }
+
+    .circle {
+        border-radius: 50%;
+        background: rgba(253, 255, 255, 0.5);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .course-column{
+        padding: 0 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .mobile-heading{
+        padding: 2rem 2rem 1rem 2rem;
+        color: $grayish;
+        h2{
+            font-family: neue-haas-grotesk-display-pro,sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 20px !important;
+            line-height: 23px;
+
+        }
+    }
+
+    .right-container{
+        background: $darkBlue;
+        min-height: unset;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .software-eng-img {
+        color: $offWhite;
+        background: url('../../images/software-engineering-mobile.png') no-repeat center;
+        background-size: cover;
+        min-height: 200px;
+        border-radius: 10px 10px 0 0;
+
+        &.course-detail{
+            border-radius: unset;
+        }
+        
+        &:before{
+            background: rgba($purple,0.2);
+            border-radius: unset;
+        }
+
+        .skills-overlay{
+            background: rgba($deepPurple,0.5);
+            border-radius: unset;
+            &.course-detail{
+                height: unset;
+                h3{
+                    font-size: 32px;
+                    line-height: 38px;
+                }
+            }
+            h3{
+                font-family: neue-haas-grotesk-display, sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 25px;
+                line-height: 30px;
+                margin-bottom: 1.25rem;
+            }
+
+            p{
+                font-family: sofia-pro, sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                &.skills-overlay-salary{
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 31px;
+                }
+            }
+        }
+    }
+    
+    .right-column{
+        font-family: sofia-pro, sans-serif;
+        border-radius: unset;
+        .title{
+            color: $lightYellow;
+        }
+        p{
+            color: $offWhite;
+        }
+
+        &.course-detail{
+            background: $offWhite;
+            padding: 2rem ;
+            border-radius: 0 0 10px 10px;
+            p,.title{
+                color: black;
+            }
+
+            button {
+                min-width: unset;
+                display: inline-block;
+                
+                &.btn-warning,
+                &.btn-warning:not(:disabled):not(.disabled):active, 
+                &.btn-warning:not(:disabled):not(.disabled).active, 
+                .show > .btn-warning.dropdown-toggle{
+                    color: white;
+                    background: $purple;
+                    border-color: $purple;
+                }
+                &.btn-outline-warning{
+                    color: $purple;
+                    border-color: $purple;
+                    background: white;
+                    &:hover{
+                        color: white;
+                        background: $purple;
+                    }
+                }
+            }
+
+            .close-icon {
+                display: none;
+            }
+        }
+
+    }
+}
+
+
+.modal-dialog{
+    margin: 0;
+    @media screen and (min-width: 768px) {
+        margin: auto;
+    }
+    .modal-content{
+        padding: 2rem 1rem;
+    }
+    &.sent .modal-content{
+        min-height: unset;
+        padding: 4rem 1.5rem 2.5rem 1.5rem;
+        display: flex;
+        text-align: center;
+
+        .modal-title{
+            margin-bottom: 0;
+        }
+
+        .modal-body{
+            padding-bottom: 0;
+            display: flex;
+            height: 100%;
+            font-family: sofia-pro,sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 25px;
+            button{
+                font-family: sofia-pro,sans-serif;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 25px;
+                justify-self: flex-end;
+                align-self: flex-end;
+                bottom: 4rem;
+                min-width: 100%;
+                display: block;
+                background: $purple;
+            }
+        }
+
+        
+    }
+}

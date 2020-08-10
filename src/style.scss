@@ -1,20 +1,38 @@
+/* Before your custom variables file, import Bootstrap functions */
+@import "../node_modules/bootstrap/scss/functions";
+
 @import './colors.scss';
+@import './containers.scss';
+
+/* Import the rest of Boostrap's dependencies */
+@import "../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../node_modules/bootstrap/scss/mixins/grid-framework";
+@import "../node_modules/bootstrap/scss/mixins/grid";
+
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/utilities/display";
+@import "../node_modules/bootstrap/scss/utilities/flex";
+
 
 /* Set all the Page and Global styles here */
 /* Homepage */
 
 .home{
+    section {
+        min-height: 850px;
+    }
+
     .home-hero{
-        background: url('./images/hero-bg-mobile.png') no-repeat;
+        background: $darkBlue url('./images/hero-bg-mobile.png') no-repeat;
 
         @media screen and (min-width: 990px){
-            background: url('./images/hero-bg.png') no-repeat;  
+            background: $darkBlue url('./images/hero-bg.png') no-repeat;  
             background-size: 100% 100%;  
         }
 
         background-size: 100%; 
         color: $offWhite;
-        min-height: 850px;
+        
         height: 100%;
         width: 100%;
 
@@ -46,11 +64,20 @@
         }
     }
 
+
+    .job-search{
+        background: $yellow-200;
+    }
+    /* SPONSORS SECTION */
+    .section-sponsors{
+        text-align: center;
     // Explore Jobs Section Styling
+    }
 
     .explore-jobs {
         background: url("./images/JobsBg.png") no-repeat;
         background-size: 100% 100%;
+<<<<<<< HEAD
         display: flex;
         padding: 60px;
         min-height: 100vh;
@@ -89,6 +116,56 @@
         .buttonBlue {
             background-color: #4044AA;
         }
+=======
+        width: 100%;
+        height: 710px;
+        .exjob {
+            position: absolute;
+            margin-top: 50px;
+            height: 126.34px;
+            left: 160px;
+            top: 898px;
+        }
+        h1.exjoTitle {
+            font-weight: bold;
+            font-size: 59px;
+            line-height: 77px;
+            color: #282A62;
+            letter-spacing: -3px;
+        }
+        h1 span {
+            color: #6abba4;
+        }
+
+        h2.exjoSub {
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 36px;
+            color: #282A62;
+        }
+        .btn-info {
+            color: #FDFFFF;
+            background-color: #6ABBA4;
+            border-color: #6ABBA4;
+        }
+
+        .btn-primary {
+            color: #FDFFFF;
+            background-color: #4044AA;
+            border-color: #4044AA;
+        }
+
+        .btn-warning {
+            color: #FDFFFF;
+            background-color: #E1BB44;
+            border-color: #E1BB44;
+        }
+    }
+
+
+
+
+>>>>>>> 7bae61c8370c65c17c572e18672ecde786491910
 
         .buttonYellow {
             background-color: #F9DE8E;
@@ -169,12 +246,25 @@
      .career-coaching {
         background: url("./images/CoachingBg.png") no-repeat;
         background-size: 100% 100%;
+<<<<<<< HEAD
         display: flex;
         padding: 60px;
         min-height: 100vh;
 
         .coachingSec {
             padding-top: 100px;
+=======
+        width: 100%;
+        height: 797px;
+        left: 0px;
+        top: 798px;
+
+        .coachingSec {
+            padding-top: 100px;
+            height: 126.34px;
+            left: 160px;
+            top: 898px;
+>>>>>>> 7bae61c8370c65c17c572e18672ecde786491910
         }
 
         h1.coachTitle {
@@ -221,18 +311,31 @@
         }
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 7bae61c8370c65c17c572e18672ecde786491910
 
     // Events section styling
 
     .events {
         background: url("./images/EventsBg.png") no-repeat;
         background-size: 100% 100%;
+<<<<<<< HEAD
         display: flex;
         padding: 60px;
         min-height: 100vh;
 
         .eventContainer {
             padding-top: 100px;
+=======
+
+        .eventContainer {
+            padding-top: 100px;
+            height: 126.34px;
+            left: 160px;
+            top: 898px;
+>>>>>>> 7bae61c8370c65c17c572e18672ecde786491910
         }
 
         h1.eventTitle {
@@ -299,6 +402,7 @@
             font-family: Neue Haas Grotesk;
             color: white;
             background-color: #171838;
+<<<<<<< HEAD
             max-width: 204px;
             margin-bottom: 1.75rem;
         }
@@ -306,6 +410,45 @@
         .card.event {
             background: #FDFFFF;
             border-radius: 20px;
+=======
+            width: 204px;
+            margin-bottom: 1.75rem;
+        }
+
+        .card.event {
+            background: #FDFFFF;
+            border-radius: 20px;
+        }
+    }
+
+    .key-skills{
+        background: $darkBlue url('./images/skills-bg.png') top right no-repeat;
+        background-size: cover;
+
+        h2{
+            font-weight: bold;
+            font-size: 64px;
+            line-height: 77px;
+        }
+
+        &.mobile{
+            background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
+            background-size: contain;
+            @media screen and (min-width: 768px){
+                background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
+                background-size: cover;
+            }
+            font-size: 1rem;
+            h2{
+                font-size: 2.25rem;
+            }
+
+            p{
+                font-weight: 300;
+                font-size: 1.125rem;
+                line-height: 20px;
+            }
+>>>>>>> 7bae61c8370c65c17c572e18672ecde786491910
         }
     }
 

@@ -1,0 +1,62 @@
+@import '../../colors.scss';
+
+.course-card{
+    border: none !important;
+    .purple{
+        color: $purple;
+    }
+    .card-body{
+        padding: 1rem;
+    }
+    .card-img-top{
+        object-fit: cover;
+    }
+    .title {
+        color: $darkBlue;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .logo-row,.button-row{min-height: 30%;}
+    .text-row{min-height: 40%;}
+    .btn{
+        @extend .purple;
+        border-color: $purple;
+        border-width: 2px;
+        &:hover{
+            background-color: $purple;
+            color: $offWhite;
+        }
+    }
+
+    &.mobile {
+        border: none  !important;
+        border-radius: 10px;
+        .card-img-top{
+            border-radius: 10px 0 0 10px;
+        }
+        .text-overlay{
+            background: rgba($darkBlue, .5);
+            bottom: 0;
+            max-width: 100%;
+            padding: 1rem;
+            
+            .title {
+                font-family: neue-haas-grotesk-display-pro,sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 1rem;
+                line-height: 19px;
+                white-space: normal;
+            }
+            .card-text{
+                font-family: sofia-pro,sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1rem;
+                line-height: 19px;
+            }
+        }
+    }
+}
