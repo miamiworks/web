@@ -15,7 +15,7 @@ export default function CourseCard(props){
 
     const getMobileContent = ()=>{
       return (
-        <Row>
+        <Row className="h-100">
           <Col xs={6} className="position-relative">
             <Card.Img
               className="h-100"

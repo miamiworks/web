@@ -31,6 +31,11 @@
     }
 
     &.mobile {
+        border: none;
+        border-radius: 10px;
+        .card-img-top{
+            border-radius: 10px 0 0 10px;
+        }
         .text-overlay{
             bottom: 0;
             left: 0;
