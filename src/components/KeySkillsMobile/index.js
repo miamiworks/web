@@ -261,6 +261,7 @@ export default function KeySkillsMobile(props){
                   <button
                     className="btn btn-outline-warning"
                     onClick={() => setSkill("software-engineering")}
+                    // onClick={(e) => console.log(e)}
                   >
                     See Courses
                   </button>
