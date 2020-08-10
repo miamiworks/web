@@ -263,7 +263,6 @@ export default function KeySkillsMobile(props){
                   <Nav.Item as="li" key={item.key}>
                     <Nav.Link
                       eventKey={item.key}
-                      className="text-white"
                       onClick={() => setSkill(null)}
                     >
                       {item.label}
