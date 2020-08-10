@@ -1,75 +1,73 @@
 @import '../../colors.scss';
 
-.key-skills-desktop{
-    .skills-nav {
-        background: rgba($offWhite,0.1);
-        border: 1px solid rgba(#CACACA,0.1);
-        box-sizing: border-box;
-        border-radius: 20px 0px 0px 20px;
-        font-family: 'Sofia Pro',sans-serif;
-        font-style: normal;
 
-        a{
-            color: $grayish;
-            font-size: 1.25rem;
-            line-height: 31px;
+.skills-nav {
+    background: rgba($offWhite,0.1) !important;
+    border: 1px solid rgba(#CACACA,0.1);
+    box-sizing: border-box;
+    font-family: 'Sofia Pro',sans-serif;
+    font-style: normal;
 
-            &.active{
-                font-weight: bold;
-                color: $offWhite;
-                text-decoration: underline;
-            }
-        }
-    }
+    a{
+        color: $grayish;
+        font-size: 1.25rem;
+        line-height: 31px;
 
-    .right-container{
-        background: #171838;
-        border-radius: 20px;
-        min-height: 400px;
-    }
-
-    .software-eng-img {
-        color: $offWhite;
-        background: url('../../images/software-engineering.png') no-repeat center;
-        background-size: cover;
-        border-radius: 20px 0px 0px 20px;
-        
-        &:before{
-            background: rgba($purple,0.2);
-            border-radius: 20px 0px 0px 20px;
-        }
-
-        .skills-overlay{
-            background: rgba($deepPurple,0.5);
-            border-radius: 0px 0px 0px 20px;
-
-            h3{
-                font-size: 25px;
-                line-height: 30px;
-                margin-bottom: 1.25rem;
-            }
-
-            p{
-                font-family: 'Sofia Pro',sans-serif;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 16px;
-                line-height: 25px;
-                &.skills-overlay-salary{
-                    font-weight: bold;
-                    font-size: 20px;
-                    line-height: 31px;
-                }
-            }
-        }
-
-    }
-    .right-column{
-        .title{
-            color: $lightYellow;
-        }
-        p{
+        &.active{
+            font-weight: bold;
             color: $offWhite;
+            text-decoration: underline;
         }
+    }
+}
+
+.skills-container{
+    background: #171838;
+    border-radius: 20px;
+    min-height: 400px;
+}
+
+.software-eng-img {
+    color: $offWhite;
+    background: url('../../images/software-engineering.png') no-repeat center;
+    background-size: cover;
+    border-radius: 20px 0px 0px 20px;
+    
+    &:before{
+        background: rgba($purple,0.2);
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    .skills-overlay{
+        background: rgba($deepPurple,0.5);
+        border-radius: 0px 0px 0px 20px;
+
+        h3{
+            font-size: 25px;
+            line-height: 30px;
+            margin-bottom: 1.25rem;
+        }
+
+        p{
+            font-family: 'Sofia Pro',sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 25px;
+            &.skills-overlay-salary{
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 31px;
+            }
+        }
+    }
+
+}
+.right-column{
+    .title{
+        color: $lightYellow;
+    }
+    p{
+        color: $offWhite;
     }
 }

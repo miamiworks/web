@@ -6,18 +6,17 @@ import Tab from "react-bootstrap/Tab"
 import CourseCard from "../CourseCard"
 import "./style.scss"
 
-export default function KeySkillsDesktop(props){
+export default function KeySkillsMobile(props){
     const { keySkillsMenu, courseData, setCourse, setSkill,skill } = props
 
     return (
       <Tab.Container
-        id="skills-desktop"
+        id="skills-mobile"
         defaultActiveKey="software-engineering"
-        className="key-skills-desktop"
       >
         <Row>
-          <Col xs={12} sm={4} lg={3} className="align-items-stretch">
-            <Nav className="flex-column skills-nav h-100 align-content-between justify-content-between p-2">
+          <Col xs={12} className="align-items-stretch">
+            <Nav className="flex-row skills-nav h-100 align-content-between justify-content-between p-2">
               {keySkillsMenu.map(item => (
                 <Nav.Link
                   eventKey={item.key}
@@ -30,7 +29,7 @@ export default function KeySkillsDesktop(props){
               ))}
             </Nav>
           </Col>
-          <Col className="right-container">
+          <Col className="skills-container">
             <Tab.Content className="h-100">
               <Tab.Pane eventKey="software-engineering" className="h-100">
                 {skill === "software-engineering" ? (

@@ -164,7 +164,7 @@ export default function Home() {
 
         <Section className="explore-jobs"></Section>
 
-        <Section className="key-skills d-flex align-items-center justify-content-center">
+        <Section className="key-skills d-flex flex-column align-items-center justify-content-center">
           <Container>
             <h2 className="text-white mb-3">
               <span className="text-warning">Learn</span> Key Skills
@@ -172,24 +172,24 @@ export default function Home() {
             <p className="display-5 text-warning h2 mb-5 pb-5">
               to land jobs of the future
             </p>
-            {isMobile || width < 990 ? (
-              <KeySkillsMobile
-                keySkillsMenu={keySkillsMenu}
-                courseData={courseData}
-                setCourse={setCourse}
-                setSkill={setSkill}
-                skill={skill}
-              />
-            ) : (
-              <KeySkillsDesktop
-                keySkillsMenu={keySkillsMenu}
-                courseData={courseData}
-                setCourse={setCourse}
-                setSkill={setSkill}
-                skill={skill}
-              />
-            )}
           </Container>
+          {isMobile || width < 990 ? (
+            <KeySkillsMobile
+              keySkillsMenu={keySkillsMenu}
+              courseData={courseData}
+              setCourse={setCourse}
+              setSkill={setSkill}
+              skill={skill}
+            />
+          ) : (
+            <KeySkillsDesktop
+              keySkillsMenu={keySkillsMenu}
+              courseData={courseData}
+              setCourse={setCourse}
+              setSkill={setSkill}
+              skill={skill}
+            />
+          )}
         </Section>
 
         <Section className="career-coaching"></Section>
