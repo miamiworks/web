@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery,graphql } from "gatsby"
 import Img from "gatsby-image"
 import { navigate } from '@reach/router';
-import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import "./style.scss";
 
 export const TopNav = () => {
