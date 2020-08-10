@@ -48,253 +48,265 @@
 
     // Explore Jobs Section Styling
 
-    .mb-3 {
-        margin-bottom: 0rem !important;
-    }
-
     .explore-jobs {
         background: url("./images/JobsBg.png") no-repeat;
         background-size: 100% 100%;
-        width: 100%;
-        height: 710px;
-        left: 0px;
-        top: 798px;
+        display: flex;
+        padding: 60px;
+        min-height: 100vh;
+
+        .mb-3 {
+            margin-bottom: 0rem !important;
+        }
+
+        .exjob {
+            margin-top: 60px;
+        }
+
+        h1.exjoTitle {
+            font-weight: bold;
+            font-size: 59px;
+            line-height: 77px;
+            color: #282A62;
+            letter-spacing: -3px;
+        }
+
+        h1 span {
+            color: #6abba4;
+        }
+
+        h2.exjoSub {
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 36px;
+            color: #282A62;
+        }
+
+        .buttonGreen {
+            background-color: #7CE6C8;
+        }
+
+        .buttonBlue {
+            background-color: #4044AA;
+        }
+
+        .buttonYellow {
+            background-color: #F9DE8E;
+        }
+
+        .btn-info {
+            color: #FDFFFF;
+            background-color: #6ABBA4;
+            border-color: #6ABBA4;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn-primary {
+            color: #FDFFFF;
+            background-color: #282A62;
+            border-color: #282A62;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn-warning {
+            color: #FDFFFF;
+            background-color: #E1BB44;
+            border-color: #E1BB44;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn {
+            border-radius: 18px;
+        }
+
+        button.btn {
+            margin-right: 9.38%;
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active:focus {
+            box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+        }
+
+        .btn-info:focus {
+            box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active {
+            color: #FDFFFF;
+            background-color: #117a8b;
+            border-color: #10707f;
+        }
+
+        .card.exjoCard {
+            max-width: 21rem;
+            background: #FDFFFF;
+            border: 1px solid #CACACA;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+
+        .postStyle {
+            margin-top: 2px;
+        }
+
+        .jobTitle {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 37px;
+            color: #171838;
+            margin-bottom: 1.75rem;
+            margin-top: 1.75rem;
+        }
     }
 
-    .exjob {
-        position: absolute;
-        margin-top: 50px;
-        height: 126.34px;
-        left: 160px;
-        top: 898px;
-    }
-
-    h1.exjoTitle {
-        font-weight: bold;
-        font-size: 59px;
-        line-height: 77px;
-        color: #282A62;
-        letter-spacing: -3px;
-    }
-
-    h1 span {
-        color: #6abba4;
-    }
-
-    h2.exjoSub {
-        font-weight: 300;
-        font-size: 32px;
-        line-height: 36px;
-        color: #282A62;
-    }
-
-    .btn-info {
-        color: #FDFFFF;
-        background-color: #6ABBA4;
-        border-color: #6ABBA4;
-    }
-
-    .btn-primary {
-        color: #FDFFFF;
-        background-color: #4044AA;
-        border-color: #4044AA;
-    }
-
-    .btn-warning {
-        color: #FDFFFF;
-        background-color: #E1BB44;
-        border-color: #E1BB44;
-    }
-
-    .btn {
-        border-radius: 18px;
-    }
-
-    button.btn {
-        margin-right: 9.38%;
-    }
-
-    .btn-info:not(:disabled):not(.disabled):active:focus {
-        box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
-    }
-
-    .btn-info:focus {
-        box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
-    }
-
-    .btn-info:not(:disabled):not(.disabled):active {
-        color: #FDFFFF;
-        background-color: #117a8b;
-        border-color: #10707f;
-    }
-
-    .card.exjoCard {
-        width: 21rem;
-        background: #FDFFFF;
-        border: 1px solid #CACACA;
-        box-sizing: border-box;
-        border-radius: 20px;
-    }
-
-    .jobTitle {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 37px;
-        color: #171838;
-        margin-bottom: 1.75rem;
-        margin-top: 1.75rem;
-    }
 
     // Career Coaching Sectiong
 
      .career-coaching {
         background: url("./images/CoachingBg.png") no-repeat;
         background-size: 100% 100%;
-        width: 100%;
-        height: 797px;
-        left: 0px;
-        top: 798px;
+        display: flex;
+        padding: 60px;
+        min-height: 100vh;
+
+        .coachingSec {
+            padding-top: 100px;
+        }
+
+        h1.coachTitle {
+            font-weight: bold;
+            font-size: 59px;
+            line-height: 77px;
+            color: white;
+            letter-spacing: -3px;
+        }
+
+        h1.coachTitle span {
+            color: #282A62;
+        }
+        
+        h3 span {
+            color: #7CE6C8;
+        }
+
+        h2.coachSub {
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 36px;
+            color: white;
+        }
+
+        .col-md-6.bubbleSec {
+            margin-top: 102px;
+        }
+        
+        .col-md-6.descSec {
+            margin-top: 102px;
+        }
+
+        h3 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 40px;
+            line-height: 48px;
+            color: #FDFFFF;
+        }
+
+        p.text-left {
+            color: #FDFFFF;
+        }
     }
 
-    .coachingSec {
-        padding-top: 100px;
-        height: 126.34px;
-        left: 160px;
-        top: 898px;
-    }
-
-    h1.coachTitle {
-        font-weight: bold;
-        font-size: 59px;
-        line-height: 77px;
-        color: white;
-        letter-spacing: -3px;
-    }
-
-    h1.coachTitle span {
-        color: #282A62;
-    }
-    
-    h3 span {
-        color: #7CE6C8;
-    }
-
-    h2.coachSub {
-        font-weight: 300;
-        font-size: 32px;
-        line-height: 36px;
-        color: white;
-    }
-
-    .col-md-6.bubbleSec {
-        margin-top: 102px;
-    }
-    
-    .col-md-6.descSec {
-        margin-top: 102px;
-    }
-
-    h3 {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 48px;
-        color: #FDFFFF;
-    }
-
-    p.text-left {
-        color: #FDFFFF;
-    }
 
     // Events section styling
 
     .events {
         background: url("./images/EventsBg.png") no-repeat;
         background-size: 100% 100%;
-        width: 100%;
-        height: 797px;
-        left: 0px;
-        top: 798px;
+        display: flex;
+        padding: 60px;
+        min-height: 100vh;
+
+        .eventContainer {
+            padding-top: 100px;
+        }
+
+        h1.eventTitle {
+            font-weight: bold;
+            font-size: 59px;
+            line-height: 77px;
+            color: #282A62;
+            letter-spacing: -3px;
+        }
+
+        h1.eventTitle span {
+            color: #4044AA;
+        }
+
+        h2.eventSub {
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 36px;
+            color: #4044AA;
+        }
+
+        .evenTitle {
+            font-style: normal;
+            font-weight: bold;
+            font-family: sofia-pro, sans-serif;
+            font-size: 24px;
+            line-height: 37px;
+            color: #171838;
+        }
+
+        .eventNam {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 25px;
+            color: #282A62;
+            margin-bottom: 0;
+        }
+
+        .eventSub {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 25px;
+            color: #4044AA;
+            margin-bottom: 9px;
+        }
+
+        .workshopRow {
+            margin-top: 6rem;
+            margin-bottom: 1rem !important;
+        }
+
+        .workshopTitle {
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            text-transform: uppercase;
+            color: #4044AA;
+            opacity: 0.75;
+        }
+
+        .eventBold {
+            font-family: Neue Haas Grotesk;
+            color: white;
+            background-color: #171838;
+            max-width: 204px;
+            margin-bottom: 1.75rem;
+        }
+
+        .card.event {
+            background: #FDFFFF;
+            border-radius: 20px;
+        }
     }
 
-    .eventContainer {
-        padding-top: 100px;
-        height: 126.34px;
-        left: 160px;
-        top: 898px;
-    }
-
-    h1.eventTitle {
-        font-weight: bold;
-        font-size: 59px;
-        line-height: 77px;
-        color: #282A62;
-        letter-spacing: -3px;
-    }
-
-    h1.eventTitle span {
-        color: #4044AA;
-    }
-
-    h2.eventSub {
-        font-weight: 300;
-        font-size: 32px;
-        line-height: 36px;
-        color: #4044AA;
-    }
-
-    .evenTitle {
-        font-style: normal;
-        font-weight: bold;
-        font-family: sofia-pro, sans-serif;
-        font-size: 24px;
-        line-height: 37px;
-        color: #171838;
-    }
-
-    .eventNam {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 25px;
-        color: #282A62;
-        margin-bottom: 0;
-    }
-
-    .eventSub {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 25px;
-        color: #4044AA;
-        margin-bottom: 9px;
-    }
-
-    .workshopRow {
-        margin-top: 6rem;
-        margin-bottom: 1rem !important;
-    }
-
-    .workshopTitle {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 29px;
-        text-transform: uppercase;
-        color: #4044AA;
-        opacity: 0.75;
-    }
-
-    .eventBold {
-        font-family: Neue Haas Grotesk;
-        color: white;
-        background-color: #171838;
-        width: 204px;
-        margin-bottom: 1.75rem;
-    }
-
-    .card.event {
-        background: #FDFFFF;
-        border-radius: 20px;
-    }
 }

@@ -3,8 +3,9 @@ import Layout from "../components/Layout"
 import Section from "../components/Section"
 import { TopNav } from "../components/TopNav"
 import ResourceIcon from "../components/ResourceIcon"
-import ExploreJobsCards from "../components/ExploreJobsCards"
+import JobCard from "../components/JobCard"
 import EventsCard from "../components/eventsCard"
+import {Button, Badge, CardDeck} from "react-bootstrap"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from "react-bootstrap/Container"
@@ -89,12 +90,25 @@ export default function Home() {
                 </Row>
                 <Row className="mb-5 mx-auto">
                     <Col xs={12}>
-                        <button type="button" className="btn btn-info"><span></span>design</button>
-                        <button type="button" className="btn btn-primary">engineering</button>
-                        <button type="button" className="btn btn-warning">product</button>
+                        <Button variant="info">
+                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
+                            Design                            
+                        </Button>
+                        <Button variant="primary">
+                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
+                            engineering                           
+                        </Button>
+                        <Button variant="warning">
+                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
+                            product                            
+                        </Button>
                     </Col>
                 </Row>
-                <ExploreJobsCards/>
+                <CardDeck>
+                    <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
+                    <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                    <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                </CardDeck>
             </Container>
         </Section>
         
@@ -145,7 +159,20 @@ export default function Home() {
                         <h2 className= "workshopTitle">Upcoming Workshops</h2>
                     </Col>
                 </Row>
-                <EventsCard/>
+                <CardDeck>
+                    <EventsCard 
+                    eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                    speakerNam="Doug Skoke"
+                    speakerPosition="President, CEO"
+                    comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard 
+                    eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                    speakerNam="Doug Skoke"
+                    speakerPosition="President, CEO"
+                    comingFrom="BENJAMIN DOUGLAS"
+                    />
+                </CardDeck>
             </Container>
         </Section>
 
