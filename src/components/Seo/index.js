@@ -196,7 +196,8 @@ function SEO({
 
 SEO.defaultProps = {
   meta: [],
-  keywords: ``, // Comma separated string of keywords
+  keywords: ``, // Comma separated string of keywords,
+  title: "Miami Tech Works"
 }
 
 SEO.propTypes = {

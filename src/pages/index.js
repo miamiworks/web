@@ -303,7 +303,7 @@ export default function Home() {
             <div>
                 <img src={beaconURL} />
             </div>
-            <div class="logos">
+            <div className="logos">
                 <Sponsors />
             </div>
         </Section>
