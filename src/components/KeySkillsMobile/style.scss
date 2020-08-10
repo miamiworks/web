@@ -99,15 +99,18 @@
     }
 
     .right-container{
-        background: #171838;
+        background: $darkBlue;
         min-height: unset;
+        height: 100%;
+        border-radius: 10px;
     }
 
     .software-eng-img {
         color: $offWhite;
-        background: url('../../images/software-engineering.png') no-repeat center;
+        background: url('../../images/software-engineering-mobile.png') no-repeat center;
         background-size: cover;
-        border-radius: unset;
+        min-height: 200px;
+        border-radius: 10px 10px 0 0;
 
         &.course-detail{
             border-radius: unset;
@@ -122,6 +125,7 @@
             background: rgba($deepPurple,0.5);
             border-radius: unset;
             &.course-detail{
+                height: unset;
                 h3{
                     font-size: 32px;
                     line-height: 38px;
@@ -150,6 +154,7 @@
             }
         }
     }
+    
     .right-column{
         font-family: sofia-pro, sans-serif;
         border-radius: unset;
@@ -162,14 +167,15 @@
 
         &.course-detail{
             background: $offWhite;
-            padding: 2rem 3rem;
-            border-radius: unset;
+            padding: 2rem ;
+            border-radius: 0 0 10px 10px;
             p,.title{
                 color: black;
             }
 
             button {
-                min-width: 186px;
+                min-width: unset;
+                display: inline-block;
                 
                 &.btn-warning,
                 &.btn-warning:not(:disabled):not(.disabled):active, 
@@ -191,12 +197,7 @@
             }
 
             .close-icon {
-                right: 1.15rem;
-                top: 1.15rem;
-                color: #8F8F8F;
-                &.svg-inline--fa.fa-w-10{
-                    font-size: 1.5rem;
-                }
+                display: none;
             }
         }
 
@@ -204,86 +205,47 @@
 }
 
 
-// .modal-dialog{
-//     margin: auto;
-//     &.sent .modal-content{
-//         min-height: unset;
-//         padding: 4rem 1.5rem 2.5rem 1.5rem;
-//         display: flex;
-//         text-align: center;
+.modal-dialog{
+    margin: 0;
+    @media screen and (min-width: 768px) {
+        margin: auto;
+    }
+    .modal-content{
+        padding: 2rem 1rem;
+    }
+    &.sent .modal-content{
+        min-height: unset;
+        padding: 4rem 1.5rem 2.5rem 1.5rem;
+        display: flex;
+        text-align: center;
 
-//         .modal-title{
-//             margin-bottom: 0;
-//         }
+        .modal-title{
+            margin-bottom: 0;
+        }
 
-//         .modal-body{
-//             padding-bottom: 0;
-//             display: flex;
-//             height: 100%;
-//             font-family: sofia-pro,sans-serif;
-//             font-style: normal;
-//             font-weight: normal;
-//             font-size: 16px;
-//             line-height: 25px;
-//             button{
-//                 font-family: sofia-pro,sans-serif;
-//                 font-weight: bold;
-//                 font-size: 16px;
-//                 line-height: 25px;
-//                 justify-self: flex-end;
-//                 align-self: flex-end;
-//                 bottom: 4rem;
-//                 min-width: 375px;
-//                 background: $purple;
-//             }
-//         }
+        .modal-body{
+            padding-bottom: 0;
+            display: flex;
+            height: 100%;
+            font-family: sofia-pro,sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 25px;
+            button{
+                font-family: sofia-pro,sans-serif;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 25px;
+                justify-self: flex-end;
+                align-self: flex-end;
+                bottom: 4rem;
+                min-width: 100%;
+                display: block;
+                background: $purple;
+            }
+        }
 
         
-//     }
-// }
-
-// .modal-content{
-//     padding: 3rem;
-//     position: relative;
-//     min-height: 600px;
-//     width: 500px;
-//     font-style: normal;
-    
-
-//     .modal-title{
-//         font-family: neue-haas-grotesk-display-pro,sans-serif;
-//         font-size: 24px;
-//         line-height: 29px;
-//         font-weight: bold;
-//         margin-bottom: 1rem;
-//     }
-
-//     .light-purple{
-//         color: rgba($purple,0.5)
-//     }
-//     .modal-body{
-//         font-family: sofia-pro, sans-serif;
-//         font-weight: bold;
-//         font-size: 16px;
-//         line-height: 25px;
-//         color: $darkBlue;
-//         form{
-//             .text-muted{
-//                 color: rgba($darkBlue,.3) !important;
-//             }
-            
-//             .btn.btn-primary{
-//                 background-color: $purple;
-//             }
-//         }
-//     }
-    
-//     &>.close-icon {
-//         right: 1.15rem;
-//         top: 1.15rem;
-//         color: #8F8F8F;
-//         &.svg-inline--fa.fa-w-10{
-//             font-size: 1.5rem;
-//         }
-//     }
-// }
+    }
+}

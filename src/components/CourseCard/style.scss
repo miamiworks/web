@@ -1,7 +1,7 @@
 @import '../../colors.scss';
 
 .course-card{
-    border: 0;
+    border: none !important;
     .purple{
         color: $purple;
     }
@@ -31,15 +31,32 @@
     }
 
     &.mobile {
-        border: none;
+        border: none  !important;
         border-radius: 10px;
         .card-img-top{
             border-radius: 10px 0 0 10px;
         }
         .text-overlay{
+            background: rgba($darkBlue, .5);
             bottom: 0;
-            left: 0;
-            right: 0;
+            max-width: 100%;
+            padding: 1rem;
+            
+            .title {
+                font-family: neue-haas-grotesk-display-pro,sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 1rem;
+                line-height: 19px;
+                white-space: normal;
+            }
+            .card-text{
+                font-family: sofia-pro,sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1rem;
+                line-height: 19px;
+            }
         }
     }
 }

@@ -92,7 +92,7 @@ function CourseSyllabusModal(props) {
             </Button>
           </Form>
         ) : (
-          <div>
+          <div className="w-100">
             <p className="mt-0 mb-5">
               Now that you have completed the last card, get a head start and
               prepare for the item you signed up for.
@@ -118,7 +118,7 @@ export default function KeySkillsMobile(props){
       skill
     } = props
     const [modalShow, setModalShow] = useState(false)
-
+    const [width, height] = useWindowSize()
     const type = skill!==null?keySkillsMenu.find(item=>item.key===skill).label:"";
 
 
@@ -145,7 +145,7 @@ export default function KeySkillsMobile(props){
                   </Row>
                 </div>
                 {courseData.map((item, index) => (
-                  <Col key={index} xs={12} md={3} className="course-column">
+                  <Col key={index} xs={12} md={6} lg={3} className="course-column">
                     <CourseCard
                       topImgAlt={item.topImgAlt}
                       topImg={item.topImg}
@@ -167,10 +167,16 @@ export default function KeySkillsMobile(props){
           <Row className="h-100">
             <Col
               className="software-eng-img course-detail p-0 d-flex flex-column justify-content-end align-items-end"
-              md={5}
+              lg={5}
             >
-              <div className="skills-overlay course-detail p-3 w-100">
-                <h3 className="h2">{course.title}</h3>
+              <div
+                className={
+                  width <= 990 || isMobile
+                    ? "skills-overlay course-detail px-4 py-3 w-100"
+                    : "skills-overlay course-detail p-3 w-100"
+                }
+              >
+                <h3 className="h2 mb-0">{course.title}</h3>
               </div>
             </Col>
             <Col className="right-column course-detail h-100 position-relative">
@@ -198,8 +204,8 @@ export default function KeySkillsMobile(props){
                 </Col>
               </Row>
 
-              <Row className="px-5 pb-3">
-                <Col>
+              <Row className="px-lg-5 pb-lg-3">
+                <Col xs={12}>
                   <button className="btn btn-warning mr-3" onClick={() => {}}>
                     Apply Now
                   </button>
@@ -274,7 +280,7 @@ export default function KeySkillsMobile(props){
           onHide={() => setModalShow(false)}
         />
         <Tab.Container
-          id="skills-desktop"
+          id={width <= 990 || isMobile ? "skills-mobile" : "skills-desktop"}
           defaultActiveKey="software-engineering"
         >
           <Row>
@@ -292,7 +298,13 @@ export default function KeySkillsMobile(props){
                 ))}
               </Nav>
             </Col>
-            <Col className="right-container w-100">
+            <Col
+              className={
+                width <= 990 || isMobile
+                  ? "right-container w-100 p-4"
+                  : "right-container w-100"
+              }
+            >
               <Tab.Content className="h-100">
                 <Tab.Pane eventKey="software-engineering" className="h-100">
                   {getContent()}

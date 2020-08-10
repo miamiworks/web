@@ -15,7 +15,7 @@ export default function CourseCard(props){
 
     const getMobileContent = ()=>{
       return (
-        <Row className="h-100">
+        <Row className="h-100 no-gutters">
           <Col xs={6} className="position-relative">
             <Card.Img
               className="h-100"
@@ -24,21 +24,28 @@ export default function CourseCard(props){
               alt={topImgAlt ? topImgAlt : ""}
             />
             <div className="text-overlay position-absolute">
-              <Card.Title className="title">{title}</Card.Title>
-              <Card.Text className="purple">
+              <Card.Title className="title text-white">{title}</Card.Title>
+              <Card.Text className="text-white">
                 <FontAwesomeIcon icon={faClock} className="mr-2" />
                 {timeframe}
               </Card.Text>
             </div>
           </Col>
-          <Col xs={6}>
+          <Col
+            xs={6}
+            className=" d-flex flex-column align-items-center justify-content-center"
+          >
             <Card.Body>
               <Row className="h-100">
                 <Col
                   xs={12}
-                  className="logo-row"
+                  className="logo-row d-flex flex-column align-items-center justify-content-center"
                 >
-                  <img src={logoSrc} alt={topImgAlt + " logo"} className="mb-4" />
+                  <img
+                    src={logoSrc}
+                    alt={topImgAlt + " logo"}
+                    className="mb-4 w-100"
+                  />
 
                   <Button
                     variant="outline-primary purple"
@@ -97,10 +104,10 @@ export default function CourseCard(props){
     return (
       <Card
         className={
-          width <= 1080 || isMobile ? "course-card mobile h-100" : "course-card h-100"
+          width <= 990 || isMobile ? "course-card mobile h-100" : "course-card h-100"
         }
       >
-        {width <= 1080 || isMobile ? getMobileContent() : getDesktopContent()}
+        {width <= 990 || isMobile ? getMobileContent() : getDesktopContent()}
       </Card>
     )
 }
