@@ -196,7 +196,7 @@ export default function Home() {
         <Section
           className={
             width <= 1080 || isMobile
-              ? "key-skills mobile d-flex flex-column align-items-center justify-content-center pt-5"
+              ? "key-skills mobile d-flex flex-column align-items-center justify-content-center py-5"
               : "key-skills d-flex flex-column align-items-center justify-content-center"
           }
         >
