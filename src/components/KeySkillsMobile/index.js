@@ -197,12 +197,8 @@ export default function KeySkillsMobile(props){
       } else {
         content = (
           <Row className="h-100">
-            <Col
-              className="software-eng-img p-0 d-flex flex-column justify-content-end align-items-end"
-              xs={5}
-              md={4}
-            >
-              <div className="skills-overlay p-3 w-100 h-50">
+            <Col className="software-eng-img p-0 m-0" xs={12}>
+              <div className="skills-overlay p-3 w-100 h-100">
                 <h3 className="">Software Engineering</h3>
                 <p className="mb-2">Salary range in Miami</p>
                 <p className="skills-overlay-salary">$55-110K per year</p>
@@ -251,7 +247,7 @@ export default function KeySkillsMobile(props){
       return content
     }
     return (
-      <Container className="key-skills-desktop">
+      <Container className="key-skills-mobile">
         <CourseSyllabusModal
           show={modalShow}
           onHide={() => setModalShow(false)}
@@ -261,21 +257,22 @@ export default function KeySkillsMobile(props){
           defaultActiveKey="software-engineering"
         >
           <Row>
-            <Col xs={12} sm={4} lg={3} className="align-items-stretch">
-              <Nav className="flex-column skills-nav h-100 align-content-between justify-content-between p-2">
+            <Col xs={12} className="">
+              <Nav className="skills-nav" as="ul">
                 {keySkillsMenu.map(item => (
-                  <Nav.Link
-                    eventKey={item.key}
-                    key={item.key}
-                    className="text-white"
-                    onClick={() => setSkill(null)}
-                  >
-                    {item.label}
-                  </Nav.Link>
+                  <Nav.Item as="li" key={item.key}>
+                    <Nav.Link
+                      eventKey={item.key}
+                      className="text-white"
+                      onClick={() => setSkill(null)}
+                    >
+                      {item.label}
+                    </Nav.Link>
+                  </Nav.Item>
                 ))}
               </Nav>
             </Col>
-            <Col className="right-container">
+            <Col className="right-container w-100">
               <Tab.Content className="h-100">
                 <Tab.Pane eventKey="software-engineering" className="h-100">
                   {getContent()}

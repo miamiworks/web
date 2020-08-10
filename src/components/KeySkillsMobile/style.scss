@@ -1,73 +1,223 @@
 @import '../../colors.scss';
 
 
-.skills-nav {
-    background: rgba($offWhite,0.1) !important;
-    border: 1px solid rgba(#CACACA,0.1);
-    box-sizing: border-box;
-    font-family: sofia-pro, sans-serif;
-    font-style: normal;
-
-    a{
-        color: $grayish;
-        font-size: 1.25rem;
-        line-height: 31px;
-
-        &.active{
-            font-weight: bold;
-            color: $offWhite;
-            text-decoration: underline;
-        }
-    }
+.key-skills-mobile,
+.key-skills-mobile>.row,
+.key-skills-mobile>.row>.col-12{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
-.skills-container{
-    background: #171838;
-    border-radius: 20px;
-    min-height: 400px;
-}
+.key-skills-mobile{
+    .skills-nav {
+        background: rgba($offWhite,0.1);
+        font-family: sofia-pro, sans-serif;
+        font-style: normal;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: unset;
+        border: unset;
 
-.software-eng-img {
-    color: $offWhite;
-    background: url('../../images/software-engineering.png') no-repeat center;
-    background-size: cover;
-    border-radius: 20px 0px 0px 20px;
-    
-    &:before{
-        background: rgba($purple,0.2);
-        border-radius: 20px 0px 0px 20px;
-    }
+        a{
+            color: $grayish;
+            font-size: 1.25rem;
+            line-height: 31px;
 
-    .skills-overlay{
-        background: rgba($deepPurple,0.5);
-        border-radius: 0px 0px 0px 20px;
-
-        h3{
-            font-size: 25px;
-            line-height: 30px;
-            margin-bottom: 1.25rem;
-        }
-
-        p{
-            font-family: sofia-pro, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 25px;
-            &.skills-overlay-salary{
+            &.active{
                 font-weight: bold;
-                font-size: 20px;
-                line-height: 31px;
+                color: $offWhite;
+                text-decoration: underline;
             }
         }
     }
 
-}
-.right-column{
-    .title{
-        color: $lightYellow;
+    .right-container{
+        background: #171838;
+        min-height: unset;
     }
-    p{
+
+    .software-eng-img {
         color: $offWhite;
+        background: url('../../images/software-engineering.png') no-repeat center;
+        background-size: cover;
+        border-radius: unset;
+
+        &.course-detail{
+            border-radius: unset;
+        }
+        
+        &:before{
+            background: rgba($purple,0.2);
+            border-radius: unset;
+        }
+
+        .skills-overlay{
+            background: rgba($deepPurple,0.5);
+            border-radius: unset;
+            &.course-detail{
+                h3{
+                    font-size: 32px;
+                    line-height: 38px;
+                }
+            }
+            h3{
+                font-family: neue-haas-grotesk-display, sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 25px;
+                line-height: 30px;
+                margin-bottom: 1.25rem;
+            }
+
+            p{
+                font-family: sofia-pro, sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                &.skills-overlay-salary{
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 31px;
+                }
+            }
+        }
+    }
+    .right-column{
+        font-family: sofia-pro, sans-serif;
+        border-radius: unset;
+        .title{
+            color: $lightYellow;
+        }
+        p{
+            color: $offWhite;
+        }
+
+        &.course-detail{
+            background: $offWhite;
+            padding: 2rem 3rem;
+            border-radius: unset;
+            p,.title{
+                color: black;
+            }
+
+            button {
+                min-width: 186px;
+                
+                &.btn-warning,
+                &.btn-warning:not(:disabled):not(.disabled):active, 
+                &.btn-warning:not(:disabled):not(.disabled).active, 
+                .show > .btn-warning.dropdown-toggle{
+                    color: white;
+                    background: $purple;
+                    border-color: $purple;
+                }
+                &.btn-outline-warning{
+                    color: $purple;
+                    border-color: $purple;
+                    background: white;
+                    &:hover{
+                        color: white;
+                        background: $purple;
+                    }
+                }
+            }
+
+            .close-icon {
+                right: 1.15rem;
+                top: 1.15rem;
+                color: #8F8F8F;
+                &.svg-inline--fa.fa-w-10{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
     }
 }
+
+
+// .modal-dialog{
+//     margin: auto;
+//     &.sent .modal-content{
+//         min-height: unset;
+//         padding: 4rem 1.5rem 2.5rem 1.5rem;
+//         display: flex;
+//         text-align: center;
+
+//         .modal-title{
+//             margin-bottom: 0;
+//         }
+
+//         .modal-body{
+//             padding-bottom: 0;
+//             display: flex;
+//             height: 100%;
+//             font-family: sofia-pro,sans-serif;
+//             font-style: normal;
+//             font-weight: normal;
+//             font-size: 16px;
+//             line-height: 25px;
+//             button{
+//                 font-family: sofia-pro,sans-serif;
+//                 font-weight: bold;
+//                 font-size: 16px;
+//                 line-height: 25px;
+//                 justify-self: flex-end;
+//                 align-self: flex-end;
+//                 bottom: 4rem;
+//                 min-width: 375px;
+//                 background: $purple;
+//             }
+//         }
+
+        
+//     }
+// }
+
+// .modal-content{
+//     padding: 3rem;
+//     position: relative;
+//     min-height: 600px;
+//     width: 500px;
+//     font-style: normal;
+    
+
+//     .modal-title{
+//         font-family: neue-haas-grotesk-display-pro,sans-serif;
+//         font-size: 24px;
+//         line-height: 29px;
+//         font-weight: bold;
+//         margin-bottom: 1rem;
+//     }
+
+//     .light-purple{
+//         color: rgba($purple,0.5)
+//     }
+//     .modal-body{
+//         font-family: sofia-pro, sans-serif;
+//         font-weight: bold;
+//         font-size: 16px;
+//         line-height: 25px;
+//         color: $darkBlue;
+//         form{
+//             .text-muted{
+//                 color: rgba($darkBlue,.3) !important;
+//             }
+            
+//             .btn.btn-primary{
+//                 background-color: $purple;
+//             }
+//         }
+//     }
+    
+//     &>.close-icon {
+//         right: 1.15rem;
+//         top: 1.15rem;
+//         color: #8F8F8F;
+//         &.svg-inline--fa.fa-w-10{
+//             font-size: 1.5rem;
+//         }
+//     }
+// }

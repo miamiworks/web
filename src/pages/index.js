@@ -172,12 +172,30 @@ export default function Home() {
 
         <Section className="explore-jobs"></Section>
 
-        <Section className="key-skills d-flex flex-column align-items-center justify-content-center">
+        <Section
+          className={
+            width <= 1080 || isMobile
+              ? "key-skills mobile d-flex flex-column align-items-center justify-content-center pt-5"
+              : "key-skills d-flex flex-column align-items-center justify-content-center"
+          }
+        >
           <Container>
-            <h2 className="text-white mb-3">
+            <h2
+              className={
+                width <= 1080 || isMobile
+                  ? "text-white mb-0"
+                  : "text-white mb-3"
+              }
+            >
               <span className="text-warning">Learn</span> Key Skills
             </h2>
-            <p className="display-5 text-warning h2 mb-5 pb-5">
+            <p
+              className={
+                width <= 1080 || isMobile
+                  ? "text-warning mb-5 pb-0"
+                  : "text-warning h2 mb-5 pb-5"
+              }
+            >
               to land jobs of the future
             </p>
           </Container>
