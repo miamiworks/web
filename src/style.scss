@@ -74,22 +74,21 @@
     // Explore Jobs Section Styling
     }
 
-    .mb-3 {
-        margin-bottom: 0rem !important;
-    }
-
     .explore-jobs {
         background: url("./images/JobsBg.png") no-repeat;
         background-size: 100% 100%;
-        width: 100%;
-        height: 710px;
-        .exjob {
-            position: absolute;
-            margin-top: 50px;
-            height: 126.34px;
-            left: 160px;
-            top: 898px;
+        display: flex;
+        padding: 60px;
+        min-height: 100vh;
+
+        .mb-3 {
+            margin-bottom: 0rem !important;
         }
+
+        .exjob {
+            margin-top: 60px;
+        }
+
         h1.exjoTitle {
             font-weight: bold;
             font-size: 59px;
@@ -97,6 +96,7 @@
             color: #282A62;
             letter-spacing: -3px;
         }
+
         h1 span {
             color: #6abba4;
         }
@@ -107,84 +107,100 @@
             line-height: 36px;
             color: #282A62;
         }
+
+        .buttonGreen {
+            background-color: #7CE6C8;
+        }
+
+        .buttonBlue {
+            background-color: #4044AA;
+        }
+
+        .buttonYellow {
+            background-color: #F9DE8E;
+        }
+
         .btn-info {
             color: #FDFFFF;
             background-color: #6ABBA4;
             border-color: #6ABBA4;
+            margin-top: 9px;
+            margin-bottom: 9px;
         }
 
         .btn-primary {
             color: #FDFFFF;
-            background-color: #4044AA;
-            border-color: #4044AA;
+            background-color: #282A62;
+            border-color: #282A62;
+            margin-top: 9px;
+            margin-bottom: 9px;
         }
 
         .btn-warning {
             color: #FDFFFF;
             background-color: #E1BB44;
             border-color: #E1BB44;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn {
+            border-radius: 18px;
+        }
+
+        button.btn {
+            margin-right: 9.38%;
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active:focus {
+            box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+        }
+
+        .btn-info:focus {
+            box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active {
+            color: #FDFFFF;
+            background-color: #117a8b;
+            border-color: #10707f;
+        }
+
+        .card.exjoCard {
+            max-width: 21rem;
+            background: #FDFFFF;
+            border: 1px solid #CACACA;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+
+        .postStyle {
+            margin-top: 2px;
+        }
+
+        .jobTitle {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 37px;
+            color: #171838;
+            margin-bottom: 1.75rem;
+            margin-top: 1.75rem;
         }
     }
 
-
-
-
-
-    .btn {
-        border-radius: 18px;
-    }
-
-    button.btn {
-        margin-right: 9.38%;
-    }
-
-    .btn-info:not(:disabled):not(.disabled):active:focus {
-        box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
-    }
-
-    .btn-info:focus {
-        box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
-    }
-
-    .btn-info:not(:disabled):not(.disabled):active {
-        color: #FDFFFF;
-        background-color: #117a8b;
-        border-color: #10707f;
-    }
-
-    .card.exjoCard {
-        width: 21rem;
-        background: #FDFFFF;
-        border: 1px solid #CACACA;
-        box-sizing: border-box;
-        border-radius: 20px;
-    }
-
-    .jobTitle {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 37px;
-        color: #171838;
-        margin-bottom: 1.75rem;
-        margin-top: 1.75rem;
-    }
 
     // Career Coaching Sectiong
 
      .career-coaching {
         background: url("./images/CoachingBg.png") no-repeat;
         background-size: 100% 100%;
-        width: 100%;
-        height: 797px;
-        left: 0px;
-        top: 798px;
+        display: flex;
+        padding: 60px;
+        min-height: 100vh;
 
         .coachingSec {
             padding-top: 100px;
-            height: 126.34px;
-            left: 160px;
-            top: 898px;
         }
 
         h1.coachTitle {
@@ -231,19 +247,18 @@
         }
     }
 
-    
 
     // Events section styling
 
     .events {
         background: url("./images/EventsBg.png") no-repeat;
         background-size: 100% 100%;
+        display: flex;
+        padding: 60px;
+        min-height: 100vh;
 
         .eventContainer {
             padding-top: 100px;
-            height: 126.34px;
-            left: 160px;
-            top: 898px;
         }
 
         h1.eventTitle {
@@ -310,7 +325,7 @@
             font-family: Neue Haas Grotesk;
             color: white;
             background-color: #171838;
-            width: 204px;
+            max-width: 204px;
             margin-bottom: 1.75rem;
         }
 
@@ -320,33 +335,4 @@
         }
     }
 
-    .key-skills{
-        background: $darkBlue url('./images/skills-bg.png') top right no-repeat;
-        background-size: cover;
-
-        h2{
-            font-weight: bold;
-            font-size: 64px;
-            line-height: 77px;
-        }
-
-        &.mobile{
-            background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
-            background-size: contain;
-            @media screen and (min-width: 768px){
-                background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
-                background-size: cover;
-            }
-            font-size: 1rem;
-            h2{
-                font-size: 2.25rem;
-            }
-
-            p{
-                font-weight: 300;
-                font-size: 1.125rem;
-                line-height: 20px;
-            }
-        }
-    }
 }
