@@ -1,20 +1,38 @@
+/* Before your custom variables file, import Bootstrap functions */
+@import "../node_modules/bootstrap/scss/functions";
+
 @import './colors.scss';
+@import './containers.scss';
+
+/* Import the rest of Boostrap's dependencies */
+@import "../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../node_modules/bootstrap/scss/mixins/grid-framework";
+@import "../node_modules/bootstrap/scss/mixins/grid";
+
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/utilities/display";
+@import "../node_modules/bootstrap/scss/utilities/flex";
+
 
 /* Set all the Page and Global styles here */
 /* Homepage */
 
 .home{
+    section {
+        min-height: 850px;
+    }
+
     .home-hero{
-        background: url('./images/hero-bg-mobile.png') no-repeat;
+        background: $darkBlue url('./images/hero-bg-mobile.png') no-repeat;
 
         @media screen and (min-width: 990px){
-            background: url('./images/hero-bg.png') no-repeat;  
+            background: $darkBlue url('./images/hero-bg.png') no-repeat;  
             background-size: 100% 100%;  
         }
 
         background-size: 100%; 
         color: $offWhite;
-        min-height: 850px;
+        
         height: 100%;
         width: 100%;
 
@@ -302,4 +320,33 @@
         }
     }
 
+    .key-skills{
+        background: $darkBlue url('./images/skills-bg.png') top right no-repeat;
+        background-size: cover;
+
+        h2{
+            font-weight: bold;
+            font-size: 64px;
+            line-height: 77px;
+        }
+
+        &.mobile{
+            background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
+            background-size: contain;
+            @media screen and (min-width: 768px){
+                background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
+                background-size: cover;
+            }
+            font-size: 1rem;
+            h2{
+                font-size: 2.25rem;
+            }
+
+            p{
+                font-weight: 300;
+                font-size: 1.125rem;
+                line-height: 20px;
+            }
+        }
+    }
 }
