@@ -192,78 +192,6 @@ export default function Home() {
                 </Container>
             </Container>
         </Section>
-        
-        <Section className="key-skills">
-
-        </Section>
-        
-        <Section className="career-coaching">
-            <Container className="coachingSec">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 coachTitle">Virtual <span>Career Coaching</span></h1>
-                        <h2 className= "coachSub">guiding your job search process</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6} className="bubbleSec">
-                        <img src={Bubble} className="img-fluid" alt="Responsive img"></img>
-                    </Col>
-                    <Col md={6} className="descSec">
-                        <h3>1 ON 1 <span>COACHING</span></h3>
-                        <hr/>
-                        <p className="text-left lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec 
-                            volutpat ut nunc at ultricies. Cras massa lacus, maximus id ligula 
-                            sed, porttitor ultrices magna. Sed sed consequat magna. Integer 
-                            vulputate augue metus, a viverra odio tristique ut. Proin 
-                            efficitur neque vitae nisi dictum efficitur. In mi leo, finibus 
-                            nec porttitor vitae, cursus eu tortor. Nam vitae odio eu neque 
-                            scelerisque porttitor. 
-                        </p>
-                        <button type="button" className="btn btn-primary">Button 1</button>
-                    </Col>
-                </Row>
-            </Container>
-        </Section>
-
-        <Section className="section-events">
-            <Container className="eventContainer">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 eventTitle">Events <span>& Resources</span></h1>
-                        <h2 className= "eventSub">Network and make connections virtually</h2>
-                    </Col>
-                </Row>
-                <Row className="mb-5 mx-auto workshopRow">
-                    <Col xs={12}>
-                        <h2 className= "workshopTitle">Upcoming Workshops</h2>
-                    </Col>
-                </Row>
-                <EventsCard/>
-            </Container>
-        </Section>
-
-        <Section className="job-search py-5">
-            <div className="container">
-                <h2 className="text-center">Want to nail your job serach?</h2>
-                <h3 className="text-center">check out our free job search filed guide</h3>
-                <p>30 exclusive tips & tricks form recruiting pros for navigating your search ducing COVID-19</p>
-                <button>Download Guide</button>
-            </div>
-        </Section>
-
-        <Section className="section-sponsors container py-5">
-            <h2 className="text-center">Miami Tech Works Coalition</h2>
-            <h3 className="text-center">Made possible by</h3>
-            <div>
-                <img src={beaconURL} />
-            </div>
-            <div class="logos">
-                <Sponsors />
-            </div>
-        </Section>
-        <Section className="explore-jobs"></Section>
 
         <Section
           className={
@@ -313,13 +241,73 @@ export default function Home() {
           )}
         </Section>
 
-        <Section className="career-coaching"></Section>
+        <Section className="career-coaching">
+            <Container className="coachingSec">
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <h1 className="mb-3 coachTitle">Virtual <span>Career Coaching</span></h1>
+                        <h2 className= "coachSub">guiding your job search process</h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={6} className="bubbleSec">
+                        <img src={Bubble} className="img-fluid" alt="Responsive img"></img>
+                    </Col>
+                    <Col md={6} className="descSec">
+                        <h3>1 ON 1 <span>COACHING</span></h3>
+                        <hr/>
+                        <p className="text-left lead">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec 
+                            volutpat ut nunc at ultricies. Cras massa lacus, maximus id ligula 
+                            sed, porttitor ultrices magna. Sed sed consequat magna. Integer 
+                            vulputate augue metus, a viverra odio tristique ut. Proin 
+                            efficitur neque vitae nisi dictum efficitur. In mi leo, finibus 
+                            nec porttitor vitae, cursus eu tortor. Nam vitae odio eu neque 
+                            scelerisque porttitor. 
+                        </p>
+                        <button type="button" className="btn btn-primary">Button 1</button>
+                    </Col>
+                </Row>
+            </Container>
+        </Section>
 
-        <Section className="events"></Section>
+       <Section className="section-events">
+            <Container className="eventContainer">
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <h1 className="mb-3 eventTitle">Events <span>& Resources</span></h1>
+                        <h2 className= "eventSub">Network and make connections virtually</h2>
+                    </Col>
+                </Row>
+                <Row className="mb-5 mx-auto workshopRow">
+                    <Col xs={12}>
+                        <h2 className= "workshopTitle">Upcoming Workshops</h2>
+                    </Col>
+                </Row>
+                <EventsCard/>
+            </Container>
+        </Section>
 
-        <Section className="job-search"></Section>
+        <Section className="job-search py-5">
+            <div className="container">
+                <h2 className="text-center">Want to nail your job serach?</h2>
+                <h3 className="text-center">check out our free job search filed guide</h3>
+                <p>30 exclusive tips & tricks form recruiting pros for navigating your search ducing COVID-19</p>
+                <button>Download Guide</button>
+            </div>
+        </Section>
 
-        <Section className="sponsors"></Section>
+        <Section className="section-sponsors container py-5">
+            <h2 className="text-center">Miami Tech Works Coalition</h2>
+            <h3 className="text-center">Made possible by</h3>
+            <div>
+                <img src={beaconURL} />
+            </div>
+            <div class="logos">
+                <Sponsors />
+            </div>
+        </Section>
+
       </Layout>
     )
 }
