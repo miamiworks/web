@@ -177,7 +177,7 @@ export default function KeySkillsMobile(props){
                 </Col>
               </Row>
 
-              <Row className="position-absolute fixed-bottom px-5 pb-3">
+              <Row className="px-5 pb-3">
                 <Col>
                   <button className="btn btn-warning mr-3" onClick={() => {}}>
                     Apply Now
