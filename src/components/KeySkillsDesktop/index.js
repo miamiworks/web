@@ -43,7 +43,7 @@ export default function KeySkillsDesktop(props){
         content = (
           <Row className="h-100">
             <Col
-              className="software-eng-img p-0 d-flex flex-column justify-content-end align-items-end"
+              className="software-eng-img course-detail p-0 d-flex flex-column justify-content-end align-items-end"
               md={5}
             >
               <div className="skills-overlay course-detail p-3 w-100">
