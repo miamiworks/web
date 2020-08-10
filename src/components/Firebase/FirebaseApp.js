@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/storage";
-import { FirebaseConfig } from './Config/web_config';
+import { FirebaseConfig } from './Config/dev_config';
 
 //firebase app initialization named export
 const FirebaseApp = firebase.initializeApp(FirebaseConfig);
