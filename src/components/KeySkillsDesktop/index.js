@@ -6,6 +6,8 @@ import Nav from "react-bootstrap/Nav"
 import Tab from "react-bootstrap/Tab"
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
+import Form from "react-bootstrap/Form"
+import Spinner from "react-bootstrap/Spinner"
 import CourseCard from "../CourseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
@@ -13,29 +15,93 @@ import { faTimes } from "@fortawesome/pro-regular-svg-icons"
 import "./style.scss"
 
 function CourseSyllabusModal(props) {
+  const {onHide,course} = props;
+  const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    setSubmitting(true);
+    setTimeout(()=>{
+      setSent(true);
+      setSubmitting(false);
+    },500)
+  }
+
+  const handleDownload = ()=>{
+    
+  }
+
   return (
     <Modal
       {...props}
       size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
+      aria-labelledby="syllabus-request"
+      dialogClassName={
+        !sent
+          ? "d-flex h-100 w-100 align-items-center justify-content-center"
+          : "d-flex h-100 w-100 align-items-center justify-content-center sent"
+      }
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+      <FontAwesomeIcon
+        icon={faTimes}
+        className="position-absolute close-icon"
+        onClick={() => onHide(true)}
+      />
+      {!sent ? (
+        <Modal.Title as="h2" id="syllabus-request" className="px-3">
+          Learn More <span className="light-purple">About Our Offering</span>
         </Modal.Title>
-      </Modal.Header>
+      ) : (
+        <Modal.Title as="h2" id="syllabus-request" className="px-3">
+          Success <span className="light-purple">Prompt!</span>
+        </Modal.Title>
+      )}
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        {!sent ? (
+          <Form onSubmit={e => handleSubmit(e)}>
+            <Form.Group controlId="fullName" className="mb-5">
+              <Form.Label className="d-block">Full Name</Form.Label>
+              <Form.Control type="text" placeholder="" size="lg" required />
+            </Form.Group>
+            <Form.Group controlId="emailAddress" className="mb-5">
+              <Form.Label className="d-block">Email address</Form.Label>
+              <Form.Control type="email" placeholder="" size="lg" required />
+            </Form.Group>
+            <Form.Group controlId="telephone" className="mb-5">
+              <Form.Label className="d-block">
+                Phone Number <span className="text-muted">(optional)</span>
+              </Form.Label>
+              <Form.Control type="tel" placeholder="" size="lg" />
+            </Form.Group>
+
+            <Button variant="primary" size="lg" type="submit" block>
+              {submitting ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="md"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                "Submit"
+              )}
+            </Button>
+          </Form>
+        ) : (
+          <div>
+            <p className="mt-0 mb-5">
+              Now that you have completed the last card, get a head start and
+              prepare for the item you signed up for.
+            </p>
+            <Button variant="primary" size="lg" onClick={handleDownload}>
+              Download Syllabus
+            </Button>
+          </div>
+        )}
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   )
 }

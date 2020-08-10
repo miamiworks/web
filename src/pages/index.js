@@ -181,7 +181,7 @@ export default function Home() {
               to land jobs of the future
             </p>
           </Container>
-          {isMobile || width < 990 ? (
+          {width <= 1080 || isMobile ? (
             <KeySkillsMobile
               keySkillsMenu={keySkillsMenu}
               courseData={courseData}
