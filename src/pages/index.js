@@ -195,19 +195,11 @@ export default function Home() {
                         </Button>
                     </Col>
                 </Row>
-<<<<<<< HEAD
                 <CardDeck>
                     <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
                     <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
                     <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
                 </CardDeck>
-=======
-                <Container>
-                    <JobCard jobType="design" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago" />
-                    <JobCard jobType="design" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago" />
-                    <JobCard jobType="design" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago" />
-                </Container>
->>>>>>> 7bae61c8370c65c17c572e18672ecde786491910
             </Container>
         </Section>
 
