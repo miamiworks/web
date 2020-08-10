@@ -1,12 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faClock
+} from "@fortawesome/free-regular-svg-icons"
 import Card from "react-bootstrap/Card"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
-import {
-  faClock
-} from "@fortawesome/free-regular-svg-icons"
 import "./style.scss"
 
 export default function CourseCard(props){

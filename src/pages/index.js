@@ -106,6 +106,8 @@ export default function Home() {
         timeframe: "12 weeks",
         buttonText: "Learn More",
         id: "ga-fullstack",
+        description:
+          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
       },
       {
         topImgAlt: "4geeks",
@@ -115,6 +117,8 @@ export default function Home() {
         timeframe: "12 weeks",
         buttonText: "Learn More",
         id: "geeks-fullstack",
+        description:
+          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
       },
       {
         topImgAlt: "Gen Assembly",
@@ -124,6 +128,8 @@ export default function Home() {
         timeframe: "12 weeks",
         buttonText: "Learn More",
         id: "ga-fullstack",
+        description:
+          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
       },
       {
         topImgAlt: "Gen Assembly",
@@ -133,6 +139,8 @@ export default function Home() {
         timeframe: "12 weeks",
         buttonText: "Learn More",
         id: "ga-fullstack",
+        description:
+          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
       },
     ]
 
@@ -177,6 +185,7 @@ export default function Home() {
             <KeySkillsMobile
               keySkillsMenu={keySkillsMenu}
               courseData={courseData}
+              course={course}
               setCourse={setCourse}
               setSkill={setSkill}
               skill={skill}
@@ -185,6 +194,7 @@ export default function Home() {
             <KeySkillsDesktop
               keySkillsMenu={keySkillsMenu}
               courseData={courseData}
+              course={course}
               setCourse={setCourse}
               setSkill={setSkill}
               skill={skill}

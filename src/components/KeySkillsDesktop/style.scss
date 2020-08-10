@@ -5,7 +5,7 @@
     border: 1px solid rgba(#CACACA,0.1);
     box-sizing: border-box;
     border-radius: 20px 0px 0px 20px;
-    font-family: 'Sofia Pro',sans-serif;
+    font-family: sofia-pro, sans-serif;
     font-style: normal;
 
     a{
@@ -41,15 +41,24 @@
     .skills-overlay{
         background: rgba($deepPurple,0.5);
         border-radius: 0px 0px 0px 20px;
-
+        &.course-detail{
+            height: 35%;
+            h3{
+                font-size: 32px;
+                line-height: 38px;
+            }
+        }
         h3{
+            font-family: neue-haas-grotesk-display, sans-serif;
+            font-style: normal;
+            font-weight: bold;
             font-size: 25px;
             line-height: 30px;
             margin-bottom: 1.25rem;
         }
 
         p{
-            font-family: 'Sofia Pro',sans-serif;
+            font-family: sofia-pro, sans-serif;
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
@@ -64,10 +73,45 @@
 
 }
 .right-column{
+    font-family: sofia-pro, sans-serif;
     .title{
         color: $lightYellow;
     }
     p{
         color: $offWhite;
+    }
+
+    &.course-detail{
+        background: $offWhite;
+        padding: 2rem 3rem;
+        p,.title{
+            color: black;
+        }
+
+        button {
+            min-width: 186px;
+            &.btn-warning{
+                color: white;
+                background: $purple;
+            }
+            &.btn-outline-warning{
+                color: $purple;
+                border-color: $purple;
+                background: white;
+                &:hover{
+                    color: white;
+                    background: $purple;
+                }
+            }
+        }
+
+        .close-icon {
+            right: 1.15rem;
+            top: 1.15rem;
+            color: #8F8F8F;
+            &.svg-inline--fa.fa-w-10{
+                font-size: 1.5rem;
+            }
+        }
     }
 }
