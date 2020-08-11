@@ -1,4 +1,5 @@
-import React,{useState} from "react"
+import React,{useEffect,useState,useContext} from "react"
+import { Context } from "../store/appContext"
 import { 
   faSuitcase,
   faCommentMedical,
@@ -26,10 +27,14 @@ import cardTopImg from "../images/cardTopClass.png"
 import gaLogo from "../images/gen-assembly-logo.png"
 import geeksLogo from "../images/4geeks-logo.png"
 
+
 export default function Home() {
+    const { store, actions } = useContext(Context)
     const [skill,setSkill] = useState(null);
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
+
+
 
     const heroFeatures = [
       {
