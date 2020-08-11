@@ -205,13 +205,16 @@
 }
 
 
-.modal-dialog{
+.modal-dialog.mobile{
     margin: 0;
+    max-width: 100vw;
     @media screen and (min-width: 768px) {
         margin: auto;
     }
     .modal-content{
         padding: 2rem 1rem;
+        max-width: unset;
+        width: 100vw
     }
     &.sent .modal-content{
         min-height: unset;

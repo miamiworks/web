@@ -5,7 +5,7 @@ import { TopNav } from "../TopNav"
 import { Footer } from "../Footer"
 import SEO from "../Seo"
 import "../../style.scss"
-import InjectContext from "../../store/appContext.js"
+import {Context} from "../../store/appContext.js"
 
 const Layout = ({
     children,
@@ -34,10 +34,10 @@ const Layout = ({
           coverImage={coverImage}
           coverDescription={coverDescription}
         />
-        {bodyClass!=="home"?<TopNav />:null}
+        {bodyClass !== "home" ? <TopNav /> : null}
         {children}
         <Footer />
       </div>
     )
 }
-export default InjectContext(Layout)
+export default Layout

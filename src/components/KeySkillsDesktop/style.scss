@@ -129,7 +129,9 @@
 
 .modal-dialog{
     margin: auto;
-
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
     .modal-content{
         padding: 4rem 1rem 2rem 1rem;
         max-width: 500px;
