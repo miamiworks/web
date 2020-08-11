@@ -37,7 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
       },
       getPrograms: () => {
-        FirebaseDB.collection("program")
+        FirebaseDB.collection("programs")
           .get()
           .then(querySnapshot => {
             let programs = []
