@@ -149,14 +149,14 @@ export default function Home() {
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
         <Section className="home-hero h-100 position-relative">
           <TopNav />
-          <Container>
-            <Row className="mb-5 mx-auto">
+          <Container className="py-4">
+            <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
                 <h1 className="mb-3">Find a new career in Miami Tech</h1>
                 <h2>Fast track to a job through curated education pathways</h2>
               </Col>
             </Row>
-            <Row className="pt-5 feature-row container mx-auto">
+            <Row className="pt-lg-5 feature-row container mx-auto">
               {heroFeatures.map((item, index) => (
                 <Col xs={6} md={4} lg={3} key={index}>
                   <ResourceIcon
@@ -215,7 +215,7 @@ export default function Home() {
         <Section
           className={
             width <= 1080 || isMobile
-              ? "key-skills mobile d-flex flex-column align-items-center justify-content-center pt-5"
+              ? "key-skills mobile d-flex flex-column align-items-center justify-content-center py-5"
               : "key-skills d-flex flex-column align-items-center justify-content-center"
           }
         >
@@ -261,85 +261,103 @@ export default function Home() {
         </Section>
 
         <Section className="career-coaching">
-            <Container className="coachingSec">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 coachTitle">Virtual <span>Career Coaching</span></h1>
-                        <h2 className= "coachSub">guiding your job search process</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6} className="bubbleSec">
-                        <img src={Bubble} className="img-fluid" alt="Responsive img"></img>
-                    </Col>
-                    <Col md={6} className="descSec">
-                        <h3>1 ON 1 <span>COACHING</span></h3>
-                        <hr/>
-                        <p className="text-left lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec 
-                            volutpat ut nunc at ultricies. Cras massa lacus, maximus id ligula 
-                            sed, porttitor ultrices magna. Sed sed consequat magna. Integer 
-                            vulputate augue metus, a viverra odio tristique ut. Proin 
-                            efficitur neque vitae nisi dictum efficitur. In mi leo, finibus 
-                            nec porttitor vitae, cursus eu tortor. Nam vitae odio eu neque 
-                            scelerisque porttitor. 
-                        </p>
-                        <button type="button" className="btn btn-primary">Button 1</button>
-                    </Col>
-                </Row>
-            </Container>
+          <Container className="coachingSec">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 coachTitle">
+                  Virtual <span>Career Coaching</span>
+                </h1>
+                <h2 className="coachSub">guiding your job search process</h2>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6} className="bubbleSec">
+                <img
+                  src={Bubble}
+                  className="img-fluid"
+                  alt="Responsive img"
+                ></img>
+              </Col>
+              <Col md={6} className="descSec">
+                <h3>
+                  1 ON 1 <span>COACHING</span>
+                </h3>
+                <hr />
+                <p className="text-left lead">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  volutpat ut nunc at ultricies. Cras massa lacus, maximus id
+                  ligula sed, porttitor ultrices magna. Sed sed consequat magna.
+                  Integer vulputate augue metus, a viverra odio tristique ut.
+                  Proin efficitur neque vitae nisi dictum efficitur. In mi leo,
+                  finibus nec porttitor vitae, cursus eu tortor. Nam vitae odio
+                  eu neque scelerisque porttitor.
+                </p>
+                <button type="button" className="btn btn-primary">
+                  Button 1
+                </button>
+              </Col>
+            </Row>
+          </Container>
         </Section>
 
-       <Section className="section-events">
-            <Container className="eventContainer">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 eventTitle">Events <span>& Resources</span></h1>
-                        <h2 className= "eventSub">Network and make connections virtually</h2>
-                    </Col>
-                </Row>
-                <Row className="mb-5 mx-auto workshopRow">
-                    <Col xs={12}>
-                        <h2 className= "workshopTitle">Upcoming Workshops</h2>
-                    </Col>
-                </Row>
-                <CardDeck>
-                    <EventsCard 
-                    eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                    speakerNam="Doug Skoke"
-                    speakerPosition="President, CEO"
-                    comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard 
-                    eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                    speakerNam="Doug Skoke"
-                    speakerPosition="President, CEO"
-                    comingFrom="BENJAMIN DOUGLAS"
-                    />
-                </CardDeck>
-            </Container>
+        <Section className="section-events">
+          <Container className="eventContainer">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 eventTitle">
+                  Events <span>& Resources</span>
+                </h1>
+                <h2 className="eventSub">
+                  Network and make connections virtually
+                </h2>
+              </Col>
+            </Row>
+            <Row className="mb-5 mx-auto workshopRow">
+              <Col xs={12}>
+                <h2 className="workshopTitle">Upcoming Workshops</h2>
+              </Col>
+            </Row>
+            <CardDeck>
+              <EventsCard
+                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                speakerNam="Doug Skoke"
+                speakerPosition="President, CEO"
+                comingFrom="BENJAMIN DOUGLAS"
+              />
+              <EventsCard
+                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                speakerNam="Doug Skoke"
+                speakerPosition="President, CEO"
+                comingFrom="BENJAMIN DOUGLAS"
+              />
+            </CardDeck>
+          </Container>
         </Section>
 
-        <Section className="job-search py-5">
-            <div className="container">
-                <h2 className="text-center">Want to nail your job serach?</h2>
-                <h3 className="text-center">check out our free job search filed guide</h3>
-                <p>30 exclusive tips & tricks form recruiting pros for navigating your search ducing COVID-19</p>
-                <button>Download Guide</button>
-            </div>
+        <Section className="job-search">
+          <div className="container">
+            <h2 className="text-left">Want to nail your job search?</h2>
+            <h3 className="text-left py-1">
+              check out our free job search filed guide
+            </h3>
+            <p className="pt-5 pb-3">
+              30 exclusive tips & tricks form recruiting pros for navigating
+              your search ducing COVID-19
+            </p>
+            <button className="btn btn-primary btn-lg">Download Guide</button>
+          </div>
         </Section>
 
-        <Section className="section-sponsors container py-5">
-            <h2 className="text-center">Miami Tech Works Coalition</h2>
-            <h3 className="text-center">Made possible by</h3>
-            <div>
-                <img src={beaconURL} />
-            </div>
-            <div class="logos">
-                <Sponsors />
-            </div>
+        <Section className="section-sponsors container">
+          <h2 className="text-center">MiamiTech.Works Coalition</h2>
+          <h3 className="text-center">Made possible by</h3>
+          <div className="mb-2">
+            <img src={beaconURL} />
+          </div>
+          <div className="logos">
+            <Sponsors />
+          </div>
         </Section>
-
       </Layout>
     )
 }

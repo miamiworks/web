@@ -94,7 +94,7 @@
         }
 
         button {
-            min-width: 186px;
+            min-width: 115px;
             
             &.btn-warning,
             &.btn-warning:not(:disabled):not(.disabled):active, 
@@ -129,6 +129,12 @@
 
 .modal-dialog{
     margin: auto;
+
+    .modal-content{
+        padding: 4rem 1rem 2rem 1rem;
+        max-width: 500px;
+    }
+    
     &.sent .modal-content{
         min-height: unset;
         padding: 4rem 1.5rem 2.5rem 1.5rem;
