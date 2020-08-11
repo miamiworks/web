@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { faTimes } from "@fortawesome/pro-regular-svg-icons"
+import cardTopImg from "../../images/cardTopClass.png"
 import "./style.scss"
 
 function CourseSyllabusModal(props) {
@@ -33,17 +34,25 @@ function CourseSyllabusModal(props) {
   }
 
   const handleDownload = () => {}
-
+  const buildDialogClasses = ()=>{
+    let classes;
+    if(width<=990||isMobile){
+      !sent
+        ? (classes = "mobile d-flex h-100 w-100")
+        : (classes = "mobile d-flex h-100 w-100 sent")
+    }else{
+      !sent
+        ? (classes = "d-flex h-100 w-100")
+        : (classes = "d-flex h-100 w-100 sent")
+    }
+    return classes;
+  }
   return (
     <Modal
       {...props}
       size="lg"
       aria-labelledby="syllabus-request"
-      dialogClassName={
-        !sent
-          ? "d-flex h-100 w-100 align-items-center justify-content-center"
-          : "d-flex h-100 w-100 align-items-center justify-content-center sent"
-      }
+      dialogClassName={buildDialogClasses()}
     >
       <FontAwesomeIcon
         icon={faTimes}
@@ -115,12 +124,13 @@ export default function KeySkillsMobile(props){
       course,
       setCourse,
       setSkill,
-      skill
+      skill,
+      setType,
+      type,
+      path,
     } = props
     const [modalShow, setModalShow] = useState(false)
     const [width, height] = useWindowSize()
-    const type = skill!==null?keySkillsMenu.find(item=>item.key===skill).label:"";
-
 
     const getContent = () => {
       let content
@@ -144,20 +154,31 @@ export default function KeySkillsMobile(props){
                     </Col>
                   </Row>
                 </div>
-                {courseData.map((item, index) => (
-                  <Col key={index} xs={12} md={6} lg={3} className="course-column">
-                    <CourseCard
-                      topImgAlt={item.topImgAlt}
-                      topImg={item.topImg}
-                      logoSrc={item.logoSrc}
-                      title={item.title}
-                      timeframe={item.timeframe}
-                      buttonText={item.buttonText}
-                      setter={setCourse}
-                      value={item}
-                    />
-                  </Col>
-                ))}
+                {courseData &&
+                  courseData
+                    .filter(item => item.program_skill_pathway === skill)
+                    .slice(0, 4)
+                    .map((item, index) => (
+                      <Col
+                        key={index}
+                        xs={12}
+                        md={6}
+                        lg={3}
+                        className="course-column"
+                      >
+                        <CourseCard
+                          topImgAlt=""
+                          topImg={cardTopImg}
+                          logoSrc={item.provider_logo_url}
+                          title={item.program_name}
+                          provider={item.provider_name_}
+                          timeframe={`${item.program_duration_amount} ${item.program_duration_units}`}
+                          buttonText="Learn More"
+                          setter={setCourse}
+                          value={item}
+                        />
+                      </Col>
+                    ))}
               </Row>
             </Col>
           </Row>
@@ -176,31 +197,34 @@ export default function KeySkillsMobile(props){
                     : "skills-overlay course-detail p-3 w-100"
                 }
               >
-                <h3 className="h2 mb-0">{course.title}</h3>
+                <h3 className="h2 mb-0">{course.program_name}</h3>
               </div>
             </Col>
             <Col className="right-column course-detail h-100 position-relative">
               <FontAwesomeIcon
                 icon={faTimes}
                 className="position-absolute close-icon"
+                onClick={() => {
+                  setCourse(null)
+                }}
               />
               <Row className="mb-4">
                 <Col>
                   <Row className="mb-4">
                     <Col>
                       <FontAwesomeIcon icon={faClock} className="mr-2" />
-                      {course.timeframe}
+                      {`${course.program_duration_amount} ${course.program_duration_units}`}
                     </Col>
                     <Col>
                       <img
-                        src={course.logoSrc}
-                        alt={course.topImgAlt + " logo"}
+                        src={course.provider_logo_url}
+                        alt={course.provider_name_}
                         className="float-right"
                       />
                     </Col>
                   </Row>
                   <h4 className="title">Course Description</h4>
-                  <p>{course.description}</p>
+                  <p>{course.program_description_}</p>
                 </Col>
               </Row>
 
@@ -226,7 +250,7 @@ export default function KeySkillsMobile(props){
           <Row className="h-100">
             <Col className="software-eng-img p-0 m-0" xs={12}>
               <div className="skills-overlay p-3 w-100 h-100">
-                <h3 className="">Software Engineering</h3>
+                <h3 className="">{path && path.label}</h3>
                 <p className="mb-2">Salary range in Miami</p>
                 <p className="skills-overlay-salary">$55-110K per year</p>
               </div>
@@ -260,8 +284,7 @@ export default function KeySkillsMobile(props){
                   </p>
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => setSkill("software-engineering")}
-                    // onClick={(e) => console.log(e)}
+                    onClick={() => path && setSkill(path.label)}
                   >
                     See Courses
                   </button>
@@ -291,7 +314,10 @@ export default function KeySkillsMobile(props){
                   <Nav.Item as="li" key={item.key}>
                     <Nav.Link
                       eventKey={item.key}
-                      onClick={() => setSkill(null)}
+                      onClick={() => {
+                        setSkill(null);
+                        setType(item.key);
+                      }}
                     >
                       {item.label}
                     </Nav.Link>
@@ -307,7 +333,7 @@ export default function KeySkillsMobile(props){
               }
             >
               <Tab.Content className="h-100">
-                <Tab.Pane eventKey="software-engineering" className="h-100">
+                <Tab.Pane eventKey={type} className="h-100">
                   {getContent()}
                 </Tab.Pane>
               </Tab.Content>

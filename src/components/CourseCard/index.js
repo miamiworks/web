@@ -41,11 +41,7 @@ export default function CourseCard(props){
                   xs={12}
                   className="logo-row d-flex flex-column align-items-center justify-content-center"
                 >
-                  <img
-                    src={logoSrc}
-                    alt={topImgAlt + " logo"}
-                    className="mb-4 w-100"
-                  />
+                  <img src={logoSrc} alt={provider} className="mb-4 w-100" />
 
                   <Button
                     variant="outline-primary purple"
