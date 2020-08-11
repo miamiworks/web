@@ -1,0 +1,29 @@
+.key-skills{
+    background: $darkBlue url('../images/skills-bg.png') top right no-repeat;
+    background-size: cover;
+
+    h2{
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 77px;
+    }
+
+    &.mobile{
+        background: $deepPurple url("../images/skills-bg-mobile.png") top center no-repeat;
+        background-size: contain;
+        @media screen and (min-width: 768px){
+            background: $deepPurple url("../images/skills-bg-mobile.png") top center no-repeat;
+            background-size: cover;
+        }
+        font-size: 1rem;
+        h2{
+            font-size: 2.25rem;
+        }
+
+        p{
+            font-weight: 300;
+            font-size: 1.125rem;
+            line-height: 20px;
+        }
+    }
+}

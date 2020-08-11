@@ -1,0 +1,13 @@
+.home{
+    section {
+        min-height: 850px;
+    }
+    /* PLEASE create a new scss file for each section of the home */
+    @import "section-homehero.scss";
+    @import "section-explorejobs.scss";
+    @import "section-keyskills.scss";
+    @import "section-careercoaching.scss";
+    @import "section-events.scss";
+    @import "section-jobsearch.scss";
+    @import "section-sponsors.scss";
+}

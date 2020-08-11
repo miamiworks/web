@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { TopNav } from "../TopNav"
 import { Footer } from "../Footer"
 import SEO from "../Seo"
-import "../../style.scss"
+import "../../styles/style.scss"
 import {Context} from "../../store/appContext.js"
 
 const Layout = ({

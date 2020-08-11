@@ -1,0 +1,101 @@
+    .explore-jobs {
+        background: url("../images/JobsBg.png") no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        padding: 60px 0px;
+        min-height: 100vh;
+
+        .mb-3 {
+            margin-bottom: 0rem !important;
+        }
+
+        .exjob {
+            margin-top: 60px;
+        }
+
+        h1.exjoTitle {
+            font-weight: bold;
+            font-size: 59px;
+            line-height: 77px;
+            color: #282A62;
+            letter-spacing: -3px;
+        }
+
+        h1 span {
+            color: #6abba4;
+        }
+
+        h2.exjoSub {
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 36px;
+            color: #282A62;
+        }
+
+        .buttonGreen {
+            background-color: #7CE6C8;
+        }
+
+        .buttonBlue {
+            background-color: #4044AA;
+        }
+
+        .buttonYellow {
+            background-color: #F9DE8E;
+        }
+
+        .btn-info {
+            color: #FDFFFF;
+            background-color: #6ABBA4;
+            border-color: #6ABBA4;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn-primary {
+            color: #FDFFFF;
+            background-color: #282A62;
+            border-color: #282A62;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn-warning {
+            color: #FDFFFF;
+            background-color: #E1BB44;
+            border-color: #E1BB44;
+            margin-top: 9px;
+            margin-bottom: 9px;
+        }
+
+        .btn {
+            border-radius: 18px;
+        }
+
+        button.btn {
+            margin-right: 9.38%;
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active:focus {
+            box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+        }
+
+        .btn-info:focus {
+            box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+        }
+
+        .btn-info:not(:disabled):not(.disabled):active {
+            color: #FDFFFF;
+            background-color: #117a8b;
+            border-color: #10707f;
+        }
+
+        .h-scroll {
+            overflow-y: hidden;
+            overflow-x: auto;
+            .h-scroll-inner {
+                width: 3500px;
+                height: 230px;
+            }
+        }
+    }
