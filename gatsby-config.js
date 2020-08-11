@@ -6,8 +6,8 @@
 const path = require("path")
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.example.com`,
-    title: "",
+    siteUrl: `https://www.miamitech.works`,
+    title: "Miami Tech Works",
     description: "",
     author: "",
     keywords: "",
@@ -19,6 +19,16 @@ module.exports = {
         name: `images`,
         path: path.join(__dirname, `src`, `images`),
       },
+    },
+    {
+        resolve: `gatsby-plugin-manifest`,
+        options: {
+            name: `MiamiTech.Works`,
+            icon: `src/images/favicon.png`,
+            short_name: `MiamiTech.Works`,
+            start_url: `/`,
+            display: `standalone`,
+        },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,

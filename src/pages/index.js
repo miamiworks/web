@@ -23,7 +23,7 @@ import Col from 'react-bootstrap/Col'
 import beaconURL from "../images/beacon-logo.png"
 import Container from "react-bootstrap/Container"
 import Bubble from "../images/Chat-Bubbles.png"
-
+import DownloadGuide from "../components/DownloadGuide"
 
 export default function Home() {
     const { store, actions } = useContext(Context)
@@ -304,7 +304,7 @@ export default function Home() {
               30 exclusive tips & tricks form recruiting pros for navigating
               your search ducing COVID-19
             </p>
-            <button className="btn btn-primary btn-lg">Download Guide</button>
+            <DownloadGuide className="btn btn-primary btn-lg">Download Guide</DownloadGuide>
           </div>
         </Section>
 
