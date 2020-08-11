@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react"
 import { Context } from "../../store/appContext"
-import {navigate} from "gatsby";
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
@@ -146,6 +145,7 @@ function CourseSyllabusModal(props) {
               className="btn btn-primary btn-lg"
               href={course.program_syllabus_url}
               target="_blank"
+              rel="noreferrer"
             >
               Download Syllabus
             </a>
