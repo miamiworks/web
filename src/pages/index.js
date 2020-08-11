@@ -1,11 +1,5 @@
 import React,{useState,useContext} from "react"
 import { Context } from "../store/appContext"
-import { 
-  faSuitcase,
-  faCommentMedical,
-  faCalendarStar,
-  faChartNetwork 
-} from "@fortawesome/pro-regular-svg-icons"
 import { isMobile } from "react-device-detect"
 import {useWindowSize} from "../utils/hooks"
 import Layout from "../components/Layout"
@@ -24,6 +18,11 @@ import beaconURL from "../images/beacon-logo.png"
 import Container from "react-bootstrap/Container"
 import Bubble from "../images/Chat-Bubbles.png"
 import DownloadGuide from "../components/DownloadGuide"
+import Briefcase from "../images/briefcase.svg"
+import CalendarStar from "../images/calendar-star.svg"
+import ChartNetwork from "../images/chart-network.svg"
+import CommentPlus from "../images/comment-plus.svg"
+
 
 export default function Home() {
     const { store, actions } = useContext(Context)
@@ -38,26 +37,22 @@ export default function Home() {
       {
         title: "Job Postings",
         bg: "#7CE6C8",
-        color: "#4F8B7A",
-        icon: faSuitcase,
+        icon: <Briefcase fill="#4F8B7A" />,
       },
       {
         title: "Skill Pathways",
         bg: "#4044AA",
-        color: "#F8FAFA",
-        icon: faChartNetwork,
+        icon: <ChartNetwork fill="#F8FAFA" />,
       },
       {
         title: "Career Coaching",
         bg: "#CACACA",
-        color: "#F8FAFA",
-        icon: faCommentMedical,
+        icon: <CommentPlus fill="#F8FAFA" />,
       },
       {
         title: "Events & Resources",
         bg: "#F9DE8E",
-        color: "#E1BB44",
-        icon: faCalendarStar,
+        icon: <CalendarStar fill="#E1BB44" />,
       },
     ]
 
@@ -80,7 +75,6 @@ export default function Home() {
                   <ResourceIcon
                     title={item.title}
                     bg={item.bg}
-                    color={item.color}
                     icon={item.icon}
                   />
                 </Col>
@@ -90,44 +84,97 @@ export default function Home() {
         </Section>
 
         <Section className="explore-jobs">
-            <Container className="exjob">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you`ll love</span></h1>
-                        <h2 className= "exjoSub">from companies hiring locally</h2>
-                    </Col>
-                </Row>
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <Button variant="info">
-                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
-                            Design                            
-                        </Button>
-                        <Button variant="primary">
-                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
-                            engineering                           
-                        </Button>
-                        <Button variant="warning">
-                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                            product                            
-                        </Button>
-                    </Col>
-                </Row>
-                {/* style={{overflowX: "scroll"}} */}
-                <div className="h-scroll">
-                    <div className="h-scroll-inner">
-                        <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                    </div>
-                </div>
-            </Container>
+          <Container className="exjob">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 exjoTitle">
+                  Explore <span>jobs you`ll love</span>
+                </h1>
+                <h2 className="exjoSub">from companies hiring locally</h2>
+              </Col>
+            </Row>
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <Button variant="info">
+                  <Badge pill variant="light" className="mr-1 buttonGreen">
+                    &nbsp;
+                  </Badge>
+                  Design
+                </Button>
+                <Button variant="primary">
+                  <Badge pill variant="light" className="mr-1 buttonBlue">
+                    &nbsp;
+                  </Badge>
+                  engineering
+                </Button>
+                <Button variant="warning">
+                  <Badge pill variant="light" className="mr-1 buttonYellow">
+                    &nbsp;
+                  </Badge>
+                  product
+                </Button>
+              </Col>
+            </Row>
+            {/* style={{overflowX: "scroll"}} */}
+            <div className="h-scroll">
+              <div className="h-scroll-inner">
+                <JobCard
+                  jobType="product"
+                  jobTitle="Product Designer"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Web Developer"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Product Manager"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Web Developer"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Product Manager"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Web Developer"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Product Manager"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Web Developer"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+                <JobCard
+                  jobType="product"
+                  jobTitle="Product Manager"
+                  companyName="Kaseya"
+                  date="Posted 3 days ago"
+                />
+              </div>
+            </div>
+          </Container>
         </Section>
 
         <Section
