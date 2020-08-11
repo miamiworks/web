@@ -1,5 +1,6 @@
 import React from "react";
 import EventImg from "../../images/EventsCard.png"
+import "./style.scss"
 
 export default function EventsCard ({ eventName, speakerNam, speakerPosition, comingFrom }) {
     return (

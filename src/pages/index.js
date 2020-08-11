@@ -126,58 +126,44 @@ export default function Home() {
         </Section>
 
         <Section className="explore-jobs">
-          <Container className="exjob">
-            <Row className="mb-5 mx-auto">
-              <Col xs={12}>
-                <h1 className="mb-3 exjoTitle">
-                  Explore <span>jobs you`ll love</span>
-                </h1>
-                <h2 className="exjoSub">from companies hiring locally</h2>
-              </Col>
-            </Row>
-            <Row className="mb-5 mx-auto">
-              <Col xs={12}>
-                <Button variant="info">
-                  <Badge pill variant="light" className="mr-1 buttonGreen">
-                    &nbsp;
-                  </Badge>
-                  Design
-                </Button>
-                <Button variant="primary">
-                  <Badge pill variant="light" className="mr-1 buttonBlue">
-                    &nbsp;
-                  </Badge>
-                  engineering
-                </Button>
-                <Button variant="warning">
-                  <Badge pill variant="light" className="mr-1 buttonYellow">
-                    &nbsp;
-                  </Badge>
-                  product
-                </Button>
-              </Col>
-            </Row>
-            <CardDeck>
-              <JobCard
-                jobType="product"
-                jobTitle="Product Designer"
-                companyName="Kaseya"
-                date="Posted 3 days ago"
-              />
-              <JobCard
-                jobType="product"
-                jobTitle="Web Developer"
-                companyName="Kaseya"
-                date="Posted 3 days ago"
-              />
-              <JobCard
-                jobType="product"
-                jobTitle="Product Manager"
-                companyName="Kaseya"
-                date="Posted 3 days ago"
-              />
-            </CardDeck>
-          </Container>
+            <Container className="exjob">
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you`ll love</span></h1>
+                        <h2 className= "exjoSub">from companies hiring locally</h2>
+                    </Col>
+                </Row>
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <Button variant="info">
+                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
+                            Design                            
+                        </Button>
+                        <Button variant="primary">
+                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
+                            engineering                           
+                        </Button>
+                        <Button variant="warning">
+                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
+                            product                            
+                        </Button>
+                    </Col>
+                </Row>
+                {/* style={{overflowX: "scroll"}} */}
+                <div className="h-scroll">
+                    <div className="h-scroll-inner">
+                        <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                    </div>
+                </div>
+            </Container>
         </Section>
 
         <Section
