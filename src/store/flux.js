@@ -7,6 +7,46 @@ import "firebase/storage"
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      homepageData: {
+        keySkillsMenu:[
+          {
+            label: "Software Engineering",
+            key: "software-engineering",
+          },
+          {
+            label: "UX Design",
+            key: "ux-design",
+          },
+          {
+            label: "Data Science",
+            key: "data-science",
+          },
+          {
+            label: "Cyber Security",
+            key: "cyber-security",
+          },
+          {
+            label: "Digital Marketing",
+            key: "digital-marketing",
+          },
+          {
+            label: "Machine Learning",
+            key: "machine-learning",
+          },
+          {
+            label: "IT Administration",
+            key: "it-administration",
+          },
+        ],
+        meta: [
+          { name: "charset", content: "UTF-8" },
+          {
+            name: "viewport",
+            content: "width=device-width, initial-scale=1, maximum-scale=1",
+          },
+          { httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1" },
+        ],
+      },
       events: [],
       jobs: [],
       programs: [],
