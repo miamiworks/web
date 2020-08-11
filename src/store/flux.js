@@ -20,7 +20,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.getPrograms()
       },
       getEvents: () => {
-        firebase.firestore().collection("events")
+        firebase
+          .firestore()
+          .collection("events")
           .get()
           .then(querySnapshot => {
             let events = []
@@ -56,7 +58,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ programs: programs })
           })
       },
-      submitSyllabusRequest: () => {},
+      submitSyllabusRequest: async (fullName, email, phone, syllabus) => {
+        return firebase
+          .firestore()
+          .collection("submissions")
+          .add({
+            full_name: fullName,
+            email_address: email,
+            phone_number: phone,
+            requested_syllabus: syllabus,
+          })
+          .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id)
+            return true
+          })
+          .catch(function (error) {
+            console.error("Error adding document: ", error)
+            return error
+          })
+      },
     },
   }
 }

@@ -1,4 +1,6 @@
-import React,{useState} from "react";
+import React, { useState, useContext } from "react"
+import { Context } from "../../store/appContext"
+import {navigate} from "gatsby";
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
@@ -17,26 +19,49 @@ import "./style.scss"
 
 function CourseSyllabusModal(props) {
   const {onHide,course} = props;
+  const { store, actions } = useContext(Context)
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [fullName, setFullName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [error, setError] = useState(null);
 
-
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(()=>{
-      setSent(true);
-      setSubmitting(false);
-    },500)
+
+    try {
+      let res = await actions.submitSyllabusRequest(
+        fullName,
+        email,
+        phone,
+        course.program_syllabus_file_name
+      )
+      if (!(res instanceof Error)) {
+        setSubmitting(false)
+        setSent(true)
+      } else {
+        throw new Error(res.message)
+      }
+    } catch (err) {
+      setError(err)
+    }
   }
 
-  const handleDownload = ()=>{
-    
+  const handleExit = ()=>{
+    setSent(false);
+    setSubmitting(false)
+    setError(null);
+    setFullName(null);
+    setEmail(null);
+    setPhone(null);
   }
 
   return (
     <Modal
       {...props}
+      onExited={handleExit}
       size="lg"
       aria-labelledby="syllabus-request"
       dialogClassName={
@@ -48,7 +73,10 @@ function CourseSyllabusModal(props) {
       <FontAwesomeIcon
         icon={faTimes}
         className="position-absolute close-icon"
-        onClick={() => onHide(true)}
+        onClick={() => {
+          onHide(true)
+          setSent(false)
+        }}
       />
       {!sent ? (
         <Modal.Title as="h2" id="syllabus-request" className="px-3">
@@ -64,17 +92,34 @@ function CourseSyllabusModal(props) {
           <Form onSubmit={e => handleSubmit(e)}>
             <Form.Group controlId="fullName" className="mb-5">
               <Form.Label className="d-block">Full Name</Form.Label>
-              <Form.Control type="text" placeholder="" size="lg" required />
+              <Form.Control
+                type="text"
+                placeholder=""
+                size="lg"
+                required
+                onChange={e => setFullName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="emailAddress" className="mb-5">
               <Form.Label className="d-block">Email address</Form.Label>
-              <Form.Control type="email" placeholder="" size="lg" required />
+              <Form.Control
+                type="email"
+                placeholder=""
+                size="lg"
+                required
+                onChange={e => setEmail(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="telephone" className="mb-5">
               <Form.Label className="d-block">
                 Phone Number <span className="text-muted">(optional)</span>
               </Form.Label>
-              <Form.Control type="tel" placeholder="" size="lg" />
+              <Form.Control
+                type="tel"
+                placeholder=""
+                size="lg"
+                onChange={e => setPhone(e.target.value)}
+              />
             </Form.Group>
 
             <Button variant="primary" size="lg" type="submit" block>
@@ -97,9 +142,13 @@ function CourseSyllabusModal(props) {
               Now that you have completed the last card, get a head start and
               prepare for the item you signed up for.
             </p>
-            <Button variant="primary" size="lg" onClick={handleDownload}>
+            <a
+              className="btn btn-primary btn-lg"
+              href={course.program_syllabus_url}
+              target="_blank"
+            >
               Download Syllabus
-            </Button>
+            </a>
           </div>
         )}
       </Modal.Body>
@@ -265,6 +314,7 @@ export default function KeySkillsDesktop(props){
       <Container className="key-skills-desktop">
         <CourseSyllabusModal
           show={modalShow}
+          course={course && course}
           onHide={() => setModalShow(false)}
         />
         <Tab.Container
@@ -280,8 +330,8 @@ export default function KeySkillsDesktop(props){
                     key={item.key}
                     className="text-white"
                     onClick={() => {
-                      setSkill(null);
-                      setType(item.key);
+                      setSkill(null)
+                      setType(item.key)
                     }}
                   >
                     {item.label}
