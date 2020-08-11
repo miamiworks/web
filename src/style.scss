@@ -91,10 +91,17 @@
 
     .explore-jobs {
         background: url("./images/JobsBg.png") no-repeat;
-        background-size: 100% 100%;
+        background-size: cover;
         display: flex;
         padding: 60px 0px;
         min-height: 100vh;
+
+        @media (max-width: 600px) {
+            .explore-jobs {
+                background: url("./images/JobsBg.png") no-repeat;
+                background-size: contain;
+            }
+        }
 
         .mb-3 {
             margin-bottom: 0rem !important;
@@ -164,7 +171,7 @@
         }
 
         button.btn {
-            margin-right: 9.38%;
+            margin-right: 2.38%;
         }
 
         .btn-info:not(:disabled):not(.disabled):active:focus {
@@ -225,13 +232,13 @@
 
      .career-coaching {
         background: url("./images/CoachingBg.png") no-repeat;
-        background-size: 100% 100%;
+        background-size: cover;
         display: flex;
-        padding: 60px 0px;
+        padding: 20px 0px;
         min-height: 100vh;
 
         .coachingSec {
-            padding-top: 100px;
+            padding-top: 66px;
         }
 
         h1.coachTitle {
@@ -278,14 +285,13 @@
         }
     }
 
-
     // Events section styling
 
     .section-events {
         background: url("./images/EventsBg.png") no-repeat;
-        background-size: 100% 100%;
+        background-size: cover;
         display: flex;
-        padding: 60px 0px;
+        padding: 40px 0px;
         min-height: 100vh;
 
         .eventContainer {
@@ -323,6 +329,15 @@
             text-transform: uppercase;
             color: #4044AA;
             opacity: 0.75;
+        }
+
+        .event-scroll {
+            overflow-y: hidden;
+            overflow-x: auto;
+            .event-scroll-inner {
+                width: 3500px;
+                height: 396px;
+            }
         }
     }
 

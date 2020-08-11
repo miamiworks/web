@@ -195,7 +195,6 @@ export default function Home() {
                         </Button>
                     </Col>
                 </Row>
-                {/* style={{overflowX: "scroll"}} */}
                 <div className="h-scroll">
                     <div className="h-scroll-inner">
                         <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
@@ -293,7 +292,7 @@ export default function Home() {
                   eu neque scelerisque porttitor.
                 </p>
                 <button type="button" className="btn btn-primary">
-                  Button 1
+                  Learn More
                 </button>
               </Col>
             </Row>
@@ -317,20 +316,46 @@ export default function Home() {
                 <h2 className="workshopTitle">Upcoming Workshops</h2>
               </Col>
             </Row>
-            <CardDeck>
-              <EventsCard
-                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                speakerNam="Doug Skoke"
-                speakerPosition="President, CEO"
-                comingFrom="BENJAMIN DOUGLAS"
-              />
-              <EventsCard
-                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                speakerNam="Doug Skoke"
-                speakerPosition="President, CEO"
-                comingFrom="BENJAMIN DOUGLAS"
-              />
-            </CardDeck>
+            <div className="event-scroll">
+                <div className="event-scroll-inner">
+                    <EventsCard
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                </div>
+            </div>
           </Container>
         </Section>
 
