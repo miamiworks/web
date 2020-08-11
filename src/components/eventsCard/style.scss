@@ -1,39 +1,39 @@
 .card.event {
     background: #FDFFFF;
     border-radius: 20px;
-}
+    
+    .evenTitle {
+        font-style: normal;
+        font-weight: bold;
+        font-family: sofia-pro, sans-serif;
+        font-size: 24px;
+        line-height: 37px;
+        color: #171838;
+    }
 
-.evenTitle {
-    font-style: normal;
-    font-weight: bold;
-    font-family: sofia-pro, sans-serif;
-    font-size: 24px;
-    line-height: 37px;
-    color: #171838;
-}
+    .eventNam {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 25px;
+        color: #282A62;
+        margin-bottom: 0;
+    }
 
-.eventNam {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 25px;
-    color: #282A62;
-    margin-bottom: 0;
-}
+    .eventSub {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 25px;
+        color: #4044AA;
+        margin-bottom: 9px;
+    }
 
-.eventSub {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 25px;
-    color: #4044AA;
-    margin-bottom: 9px;
-}
-
-.eventBold {
-    font-family: Neue Haas Grotesk;
-    color: white;
-    background-color: #171838;
-    max-width: 204px;
-    margin-bottom: 1.75rem;
+    .eventBold {
+        font-family: Neue Haas Grotesk;
+        color: white;
+        background-color: #171838;
+        max-width: 204px;
+        margin-bottom: 1.75rem;
+    }
 }
