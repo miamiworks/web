@@ -1,4 +1,9 @@
-import { FirebaseDB } from "../components/Firebase/FirebaseApp"
+import firebase from "firebase/app"
+import "firebase/firestore"
+import "firebase/analytics"
+import "firebase/auth"
+import "firebase/storage"
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -15,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.getPrograms()
       },
       getEvents: () => {
-        FirebaseDB.collection("events")
+        firebase.firestore().collection("events")
           .get()
           .then(querySnapshot => {
             let events = []
@@ -26,7 +31,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
       },
       getJobs: () => {
-        FirebaseDB.collection("jobs")
+        firebase
+          .firestore()
+          .collection("jobs")
           .get()
           .then(querySnapshot => {
             let jobs = []
@@ -37,12 +44,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
       },
       getPrograms: () => {
-        FirebaseDB.collection("programs")
+        firebase
+          .firestore()
+          .collection("programs")
           .get()
           .then(querySnapshot => {
             let programs = []
             querySnapshot.forEach(doc => {
-            console.log("doc", doc.data())
+              console.log("doc", doc.data())
               programs.push(doc.data())
             })
             setStore({ programs: programs })
