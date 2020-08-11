@@ -93,7 +93,7 @@
         background: url("./images/JobsBg.png") no-repeat;
         background-size: 100% 100%;
         display: flex;
-        padding: 60px;
+        padding: 60px 0px;
         min-height: 100vh;
 
         .mb-3 {
@@ -180,6 +180,15 @@
             background-color: #117a8b;
             border-color: #10707f;
         }
+
+        .h-scroll {
+            overflow-y: hidden;
+            overflow-x: auto;
+            .h-scroll-inner {
+                width: 3500px;
+                height: 230px;
+            }
+        }
     }
 
     .key-skills{
@@ -218,7 +227,7 @@
         background: url("./images/CoachingBg.png") no-repeat;
         background-size: 100% 100%;
         display: flex;
-        padding: 60px;
+        padding: 60px 0px;
         min-height: 100vh;
 
         .coachingSec {
@@ -276,7 +285,7 @@
         background: url("./images/EventsBg.png") no-repeat;
         background-size: 100% 100%;
         display: flex;
-        padding: 60px;
+        padding: 60px 0px;
         min-height: 100vh;
 
         .eventContainer {
