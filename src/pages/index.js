@@ -41,7 +41,7 @@ export default function Home() {
       {
         title: "Skill Pathways",
         bg: "#4044AA",
-        icon: <ChartNetwork fill="#4044AA" />,
+        icon: <ChartNetwork fill="#F8FAFA" />,
       },
       {
         title: "Career Coaching",
