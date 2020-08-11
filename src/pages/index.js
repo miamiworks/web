@@ -353,24 +353,24 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section className="job-search py-5">
+        <Section className="job-search">
           <div className="container">
-            <h2 className="text-center">Want to nail your job serach?</h2>
-            <h3 className="text-center">
+            <h2 className="text-left">Want to nail your job search?</h2>
+            <h3 className="text-left py-1">
               check out our free job search filed guide
             </h3>
-            <p>
+            <p className="pt-5 pb-3">
               30 exclusive tips & tricks form recruiting pros for navigating
               your search ducing COVID-19
             </p>
-            <button>Download Guide</button>
+            <button className="btn btn-primary btn-lg">Download Guide</button>
           </div>
         </Section>
 
-        <Section className="section-sponsors container py-5">
-          <h2 className="text-center">Miami Tech Works Coalition</h2>
+        <Section className="section-sponsors container">
+          <h2 className="text-center">MiamiTech.Works Coalition</h2>
           <h3 className="text-center">Made possible by</h3>
-          <div>
+          <div className="mb-2">
             <img src={beaconURL} />
           </div>
           <div className="logos">

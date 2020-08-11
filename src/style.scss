@@ -66,12 +66,40 @@
 
 
     .job-search{
+        height: auto;
+        min-height: auto;
         background: $yellow-200;
+        padding: 80px 0px;
+        h2{
+            font-weight: bold;
+            font-family: Neue Haas Grotesk Display Pro;
+            font-size: 50px;
+            line-height: 77px;
+        }
+        h3{
+            color: $deepPurple;
+            font-family: Neue Haas Grotesk Display Pro;
+            font-weight: bold;
+        }
     }
     /* SPONSORS SECTION */
     .section-sponsors{
         text-align: center;
-    // Explore Jobs Section Styling
+        min-height: auto;
+        padding: 80px 0px;
+        h2{
+            font-weight: bold;
+            font-family: Neue Haas Grotesk Display Pro;
+            color: $lightPurple;
+            font-size: 40px;
+            line-height: 77px;
+            text-transform: uppercase;
+        }
+        h3{
+            color: $grayish;
+            font-family: sofia-pro, sans-serif;
+            font-size: 20px;
+        }
     }
 
     .explore-jobs {
