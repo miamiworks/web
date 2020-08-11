@@ -1,0 +1,26 @@
+.section-sponsors{
+    text-align: center;
+    min-height: auto;
+    padding: 80px 0px;
+    h2{
+        font-weight: bold;
+        font-family: Neue Haas Grotesk Display Pro;
+        color: $lightPurple;
+        font-size: 30px;
+        line-height: 77px;
+        text-transform: uppercase;
+    }
+    h3{
+        color: $grayish;
+        font-family: sofia-pro, sans-serif;
+        font-size: 14px;
+    }
+    .sponsors img{
+        max-height: 35px;
+    }
+    @media screen and (min-width: 990px){
+        .sponsors img{ max-height: 60px; }
+        h2{ font-size: 40px; }
+        h3{ font-size: 20px; }
+    }
+}

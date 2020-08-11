@@ -1,0 +1,41 @@
+.home-hero{
+    background: $darkBlue url("../images/hero-bg-mobile.png") no-repeat;
+
+    @media screen and (min-width: 990px){
+        background: $darkBlue url("../images/hero-bg.png") no-repeat;  
+        background-size: 100% 100%;  
+    }
+
+    background-size: 100%; 
+    color: $offWhite;
+    
+    height: 100%;
+    width: 100%;
+
+    h1,h2 {
+        font-family: neue-haas-grotesk-display, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 64px;
+        line-height: 77px;
+    }
+
+    h2 {
+        font-size: 32px;
+        line-height: 38px;
+        color: $lightYellow;
+    }
+
+    h3 {
+        font-size: 25px;
+        line-height: 29px;
+    }
+
+    .row:not(.feature-row){
+        padding-top: 5vh;
+        padding-bottom: 8vh;
+    }
+}

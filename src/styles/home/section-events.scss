@@ -1,0 +1,44 @@
+.section-events {
+    background: url("../images/EventsBg.png") no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    padding: 60px 0px;
+    min-height: 100vh;
+
+    .eventContainer {
+        padding-top: 100px;
+    }
+
+    h1.eventTitle {
+        font-weight: bold;
+        font-size: 59px;
+        line-height: 77px;
+        color: #282A62;
+        letter-spacing: -3px;
+    }
+
+    h1.eventTitle span {
+        color: #4044AA;
+    }
+
+    h2.eventSub {
+        font-weight: 300;
+        font-size: 32px;
+        line-height: 36px;
+        color: #4044AA;
+    }
+
+    .workshopRow {
+        margin-top: 6rem;
+        margin-bottom: 1rem !important;
+    }
+
+    .workshopTitle {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+        text-transform: uppercase;
+        color: #4044AA;
+        opacity: 0.75;
+    }
+}

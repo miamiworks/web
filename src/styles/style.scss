@@ -1,0 +1,17 @@
+/* Before your custom variables file, import Bootstrap functions */
+@import "~bootstrap/scss/functions";
+
+@import 'colors.scss';
+@import 'containers.scss';
+
+/* Import the rest of Boostrap's dependencies */
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "~bootstrap/scss/mixins/grid-framework";
+@import "~bootstrap/scss/mixins/grid";
+
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities/display";
+@import "~bootstrap/scss/utilities/flex";
+
+/* Now lets import each page style */
+@import "./home/home.scss"

@@ -1,4 +1,5 @@
-import React,{useState} from "react";
+import React, { useState, useContext } from "react"
+import { Context } from "../../store/appContext"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
@@ -12,30 +13,54 @@ import CourseCard from "../CourseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faTimes } from "@fortawesome/pro-regular-svg-icons"
+import cardTopImg from "../../images/cardTopClass.png"
 import "./style.scss"
 
 function CourseSyllabusModal(props) {
   const {onHide,course} = props;
+  const { store, actions } = useContext(Context)
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [fullName, setFullName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [error, setError] = useState(null);
 
-
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(()=>{
-      setSent(true);
-      setSubmitting(false);
-    },500)
+
+    try {
+      let res = await actions.submitSyllabusRequest(
+        fullName,
+        email,
+        phone,
+        course.program_syllabus_file_name
+      )
+      if (!(res instanceof Error)) {
+        setSubmitting(false)
+        setSent(true)
+      } else {
+        throw new Error(res.message)
+      }
+    } catch (err) {
+      setError(err)
+    }
   }
 
-  const handleDownload = ()=>{
-    
+  const handleExit = ()=>{
+    setSent(false);
+    setSubmitting(false)
+    setError(null);
+    setFullName(null);
+    setEmail(null);
+    setPhone(null);
   }
 
   return (
     <Modal
       {...props}
+      onExited={handleExit}
       size="lg"
       aria-labelledby="syllabus-request"
       dialogClassName={
@@ -47,7 +72,10 @@ function CourseSyllabusModal(props) {
       <FontAwesomeIcon
         icon={faTimes}
         className="position-absolute close-icon"
-        onClick={() => onHide(true)}
+        onClick={() => {
+          onHide(true)
+          setSent(false)
+        }}
       />
       {!sent ? (
         <Modal.Title as="h2" id="syllabus-request" className="px-3">
@@ -63,17 +91,34 @@ function CourseSyllabusModal(props) {
           <Form onSubmit={e => handleSubmit(e)}>
             <Form.Group controlId="fullName" className="mb-5">
               <Form.Label className="d-block">Full Name</Form.Label>
-              <Form.Control type="text" placeholder="" size="lg" required />
+              <Form.Control
+                type="text"
+                placeholder=""
+                size="lg"
+                required
+                onChange={e => setFullName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="emailAddress" className="mb-5">
               <Form.Label className="d-block">Email address</Form.Label>
-              <Form.Control type="email" placeholder="" size="lg" required />
+              <Form.Control
+                type="email"
+                placeholder=""
+                size="lg"
+                required
+                onChange={e => setEmail(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="telephone" className="mb-5">
               <Form.Label className="d-block">
                 Phone Number <span className="text-muted">(optional)</span>
               </Form.Label>
-              <Form.Control type="tel" placeholder="" size="lg" />
+              <Form.Control
+                type="tel"
+                placeholder=""
+                size="lg"
+                onChange={e => setPhone(e.target.value)}
+              />
             </Form.Group>
 
             <Button variant="primary" size="lg" type="submit" block>
@@ -96,9 +141,14 @@ function CourseSyllabusModal(props) {
               Now that you have completed the last card, get a head start and
               prepare for the item you signed up for.
             </p>
-            <Button variant="primary" size="lg" onClick={handleDownload}>
+            <a
+              className="btn btn-primary btn-lg"
+              href={course.program_syllabus_url}
+              target="_blank"
+              rel="noreferrer"
+            >
               Download Syllabus
-            </Button>
+            </a>
           </div>
         )}
       </Modal.Body>
@@ -107,7 +157,17 @@ function CourseSyllabusModal(props) {
 }
 
 export default function KeySkillsDesktop(props){
-    const { keySkillsMenu, courseData, course, setCourse, setSkill,skill } = props
+    const {
+      keySkillsMenu,
+      courseData,
+      course,
+      setCourse,
+      setSkill,
+      skill,
+      setType,
+      type,
+      path,
+    } = props
     const [modalShow, setModalShow] = useState(false)
 
     const getContent = ()=>{
@@ -117,20 +177,25 @@ export default function KeySkillsDesktop(props){
           <Row className="h-100">
             <Col className="p-0">
               <Row className="mb-4 h-100 mx-lg-n2">
-                {courseData.map((item, index) => (
-                  <Col key={index} md={3} className="px-lg-2">
-                    <CourseCard
-                      topImgAlt={item.topImgAlt}
-                      topImg={item.topImg}
-                      logoSrc={item.logoSrc}
-                      title={item.title}
-                      timeframe={item.timeframe}
-                      buttonText={item.buttonText}
-                      setter={setCourse}
-                      value={item}
-                    />
-                  </Col>
-                ))}
+                {courseData &&
+                  courseData
+                    .filter(item => item.program_skill_pathway===skill)
+                    .slice(0, 4)
+                    .map((item, index) => (
+                      <Col key={index} md={3} className="px-lg-2">
+                        <CourseCard
+                          topImgAlt=""
+                          topImg={cardTopImg}
+                          logoSrc={item.provider_logo_url}
+                          title={item.program_name}
+                          provider={item.provider_name_}
+                          timeframe={`${item.program_duration_amount} ${item.program_duration_units}`}
+                          buttonText="Learn More"
+                          setter={setCourse}
+                          value={item}
+                        />
+                      </Col>
+                    ))}
               </Row>
             </Col>
           </Row>
@@ -143,31 +208,34 @@ export default function KeySkillsDesktop(props){
               md={5}
             >
               <div className="skills-overlay course-detail p-3 w-100">
-                <h3 className="h2">{course.title}</h3>
+                <h3 className="h2">{course.program_name}</h3>
               </div>
             </Col>
             <Col className="right-column course-detail h-100 position-relative">
               <FontAwesomeIcon
                 icon={faTimes}
                 className="position-absolute close-icon"
+                onClick={() => {
+                  setCourse(null)
+                }}
               />
               <Row className="mb-4">
                 <Col>
                   <Row className="mb-4">
                     <Col>
                       <FontAwesomeIcon icon={faClock} className="mr-2" />
-                      {course.timeframe}
+                      {`${course.program_duration_amount} ${course.program_duration_units}`}
                     </Col>
                     <Col>
                       <img
-                        src={course.logoSrc}
-                        alt={course.topImgAlt + " logo"}
+                        src={course.provider_logo_url}
+                        alt={course.provider_name_}
                         className="float-right"
                       />
                     </Col>
                   </Row>
                   <h4 className="title">Course Description</h4>
-                  <p>{course.description}</p>
+                  <p>{course.program_description_}</p>
                 </Col>
               </Row>
 
@@ -196,7 +264,7 @@ export default function KeySkillsDesktop(props){
             md={4}
           >
             <div className="skills-overlay p-3 w-100 h-50">
-              <h3 className="">Software Engineering</h3>
+              <h3 className="">{path && path.label}</h3>
               <p className="mb-2">Salary range in Miami</p>
               <p className="skills-overlay-salary">$55-110K per year</p>
             </div>
@@ -230,7 +298,7 @@ export default function KeySkillsDesktop(props){
                 </p>
                 <button
                   className="btn btn-outline-warning"
-                  onClick={() => setSkill("software-engineering")}
+                  onClick={() => path && setSkill(path.label)}
                 >
                   See Courses
                 </button>
@@ -246,6 +314,7 @@ export default function KeySkillsDesktop(props){
       <Container className="key-skills-desktop">
         <CourseSyllabusModal
           show={modalShow}
+          course={course && course}
           onHide={() => setModalShow(false)}
         />
         <Tab.Container
@@ -260,7 +329,10 @@ export default function KeySkillsDesktop(props){
                     eventKey={item.key}
                     key={item.key}
                     className="text-white"
-                    onClick={() => setSkill(null)}
+                    onClick={() => {
+                      setSkill(null)
+                      setType(item.key)
+                    }}
                   >
                     {item.label}
                   </Nav.Link>
@@ -269,7 +341,7 @@ export default function KeySkillsDesktop(props){
             </Col>
             <Col className="right-container">
               <Tab.Content className="h-100">
-                <Tab.Pane eventKey="software-engineering" className="h-100">
+                <Tab.Pane eventKey={type} className="h-100">
                   {getContent()}
                 </Tab.Pane>
               </Tab.Content>
