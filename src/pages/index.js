@@ -279,36 +279,48 @@ export default function Home() {
             <div className="event-scroll">
                 <div className="event-scroll-inner">
                     <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
                         speakerPosition="President, CEO"
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
                         speakerPosition="President, CEO"
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
                         speakerPosition="President, CEO"
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
                         speakerPosition="President, CEO"
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
                         speakerPosition="President, CEO"
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
                         speakerPosition="President, CEO"

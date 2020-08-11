@@ -1,6 +1,6 @@
     .explore-jobs {
         background: url("../images/JobsBg.png") no-repeat;
-        background-size: 100% 100%;
+        background-size: cover;
         display: flex;
         padding: 60px 0px;
         min-height: 100vh;
@@ -10,7 +10,7 @@
         }
 
         .exjob {
-            margin-top: 60px;
+            margin-top: 66px;
         }
 
         h1.exjoTitle {
@@ -73,7 +73,7 @@
         }
 
         button.btn {
-            margin-right: 9.38%;
+            margin-right: 2.38%;
         }
 
         .btn-info:not(:disabled):not(.disabled):active:focus {
