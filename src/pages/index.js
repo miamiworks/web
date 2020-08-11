@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useContext} from "react"
+import React,{useState,useContext} from "react"
 import { Context } from "../store/appContext"
 import { 
   faSuitcase,
@@ -23,9 +23,6 @@ import Col from 'react-bootstrap/Col'
 import beaconURL from "../images/beacon-logo.png"
 import Container from "react-bootstrap/Container"
 import Bubble from "../images/Chat-Bubbles.png"
-import cardTopImg from "../images/cardTopClass.png"
-import gaLogo from "../images/gen-assembly-logo.png"
-import geeksLogo from "../images/4geeks-logo.png"
 
 
 export default function Home() {
@@ -33,8 +30,6 @@ export default function Home() {
     const [skill,setSkill] = useState(null);
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
-
-
 
     const heroFeatures = [
       {
@@ -100,53 +95,6 @@ export default function Home() {
       {
         label: "IT Administration",
         key: "it-administration",
-      },
-    ]
-
-    const courseData = [
-      {
-        topImgAlt: "Gen Assembly",
-        topImg: cardTopImg,
-        logoSrc: gaLogo,
-        title: "Fullstack Web Developer",
-        timeframe: "12 weeks",
-        buttonText: "Learn More",
-        id: "ga-fullstack",
-        description:
-          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
-      },
-      {
-        topImgAlt: "4geeks",
-        topImg: cardTopImg,
-        logoSrc: geeksLogo,
-        title: "Fullstack Web Developer",
-        timeframe: "12 weeks",
-        buttonText: "Learn More",
-        id: "geeks-fullstack",
-        description:
-          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
-      },
-      {
-        topImgAlt: "Gen Assembly",
-        topImg: cardTopImg,
-        logoSrc: gaLogo,
-        title: "Web Immersive",
-        timeframe: "12 weeks",
-        buttonText: "Learn More",
-        id: "ga-fullstack",
-        description:
-          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
-      },
-      {
-        topImgAlt: "Gen Assembly",
-        topImg: cardTopImg,
-        logoSrc: gaLogo,
-        title: "Data Science Immersion",
-        timeframe: "12 weeks",
-        buttonText: "Learn More",
-        id: "ga-fullstack",
-        description:
-          "Google IT Automation with Python: 16-week free program that prepares students to advance in their career in IT by providing them with job-ready skills with Python, which is currently the most in-demand programming language by employers. The program will prepare students on IT tasks automation with Python, IT resources management at scale, and execution of technical skills to solve real-world IT problems.",
       },
     ]
 
@@ -261,7 +209,7 @@ export default function Home() {
           {width <= 990 || isMobile ? (
             <KeySkillsMobile
               keySkillsMenu={keySkillsMenu}
-              courseData={courseData}
+              courseData={store && store.programs}
               course={course}
               setCourse={setCourse}
               setSkill={setSkill}
@@ -270,7 +218,7 @@ export default function Home() {
           ) : (
             <KeySkillsDesktop
               keySkillsMenu={keySkillsMenu}
-              courseData={courseData}
+              courseData={store && store.programs}
               course={course}
               setCourse={setCourse}
               setSkill={setSkill}

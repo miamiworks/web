@@ -51,7 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(querySnapshot => {
             let programs = []
             querySnapshot.forEach(doc => {
-              console.log("doc", doc.data())
               programs.push(doc.data())
             })
             setStore({ programs: programs })

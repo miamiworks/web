@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button"
 import "./style.scss"
 
 export default function CourseCard(props){
-    const {topImgAlt,topImg,logoSrc,title,timeframe,buttonText,setter,value} = props;
+    const {topImgAlt,topImg,logoSrc,title,timeframe,buttonText,setter,value,provider} = props;
     const [width, height] = useWindowSize()
 
     const getMobileContent = ()=>{
@@ -74,7 +74,7 @@ export default function CourseCard(props){
           <Card.Body>
             <Row className="h-100">
               <Col xs={6} md={12} className="logo-row d-flex align-items-center">
-                <img src={logoSrc} alt={topImgAlt + " logo"} className="" />
+                <img src={logoSrc} alt={provider} className="" />
               </Col>
               <Col
                 s={6}

@@ -12,6 +12,7 @@ import CourseCard from "../CourseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faTimes } from "@fortawesome/pro-regular-svg-icons"
+import cardTopImg from "../../images/cardTopClass.png"
 import "./style.scss"
 
 function CourseSyllabusModal(props) {
@@ -117,20 +118,22 @@ export default function KeySkillsDesktop(props){
           <Row className="h-100">
             <Col className="p-0">
               <Row className="mb-4 h-100 mx-lg-n2">
-                {courseData.map((item, index) => (
-                  <Col key={index} md={3} className="px-lg-2">
-                    <CourseCard
-                      topImgAlt={item.topImgAlt}
-                      topImg={item.topImg}
-                      logoSrc={item.logoSrc}
-                      title={item.title}
-                      timeframe={item.timeframe}
-                      buttonText={item.buttonText}
-                      setter={setCourse}
-                      value={item}
-                    />
-                  </Col>
-                ))}
+                {courseData &&
+                  courseData.slice(0, 4).map((item, index) => (
+                    <Col key={index} md={3} className="px-lg-2">
+                      <CourseCard
+                        topImgAlt=""
+                        topImg={cardTopImg}
+                        logoSrc={item.provider_logo_url}
+                        title={item.program_name}
+                        provider={item.provider_name_}
+                        timeframe={`${item.program_duration_amount} ${item.program_duration_units}`}
+                        buttonText="Learn More"
+                        setter={setCourse}
+                        value={item}
+                      />
+                    </Col>
+                  ))}
               </Row>
             </Col>
           </Row>
@@ -143,31 +146,34 @@ export default function KeySkillsDesktop(props){
               md={5}
             >
               <div className="skills-overlay course-detail p-3 w-100">
-                <h3 className="h2">{course.title}</h3>
+                <h3 className="h2">{course.program_name}</h3>
               </div>
             </Col>
             <Col className="right-column course-detail h-100 position-relative">
               <FontAwesomeIcon
                 icon={faTimes}
                 className="position-absolute close-icon"
+                onClick={() => {
+                  setCourse(null)
+                }}
               />
               <Row className="mb-4">
                 <Col>
                   <Row className="mb-4">
                     <Col>
                       <FontAwesomeIcon icon={faClock} className="mr-2" />
-                      {course.timeframe}
+                      {`${course.program_duration_amount} ${course.program_duration_units}`}
                     </Col>
                     <Col>
                       <img
-                        src={course.logoSrc}
-                        alt={course.topImgAlt + " logo"}
+                        src={course.provider_logo_url}
+                        alt={course.provider_name_}
                         className="float-right"
                       />
                     </Col>
                   </Row>
                   <h4 className="title">Course Description</h4>
-                  <p>{course.description}</p>
+                  <p>{course.program_description_}</p>
                 </Col>
               </Row>
 
