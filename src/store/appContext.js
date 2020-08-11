@@ -7,7 +7,7 @@ import "firebase/auth"
 import "firebase/storage"
 import {firebaseConfig} from "../components/Firebase/Config/dev_config"
 
-export const Context = React.createContext(null);
+export const Context = React.createContext(false);
 
 const StoreWrapper = ({children})=> {
   const [state, setState] = useState(
