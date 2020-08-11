@@ -108,7 +108,17 @@ function CourseSyllabusModal(props) {
 }
 
 export default function KeySkillsDesktop(props){
-    const { keySkillsMenu, courseData, course, setCourse, setSkill,skill } = props
+    const {
+      keySkillsMenu,
+      courseData,
+      course,
+      setCourse,
+      setSkill,
+      skill,
+      setType,
+      type,
+      path,
+    } = props
     const [modalShow, setModalShow] = useState(false)
 
     const getContent = ()=>{
@@ -119,21 +129,24 @@ export default function KeySkillsDesktop(props){
             <Col className="p-0">
               <Row className="mb-4 h-100 mx-lg-n2">
                 {courseData &&
-                  courseData.slice(0, 4).map((item, index) => (
-                    <Col key={index} md={3} className="px-lg-2">
-                      <CourseCard
-                        topImgAlt=""
-                        topImg={cardTopImg}
-                        logoSrc={item.provider_logo_url}
-                        title={item.program_name}
-                        provider={item.provider_name_}
-                        timeframe={`${item.program_duration_amount} ${item.program_duration_units}`}
-                        buttonText="Learn More"
-                        setter={setCourse}
-                        value={item}
-                      />
-                    </Col>
-                  ))}
+                  courseData
+                    .filter(item => item.program_skill_pathway===skill)
+                    .slice(0, 4)
+                    .map((item, index) => (
+                      <Col key={index} md={3} className="px-lg-2">
+                        <CourseCard
+                          topImgAlt=""
+                          topImg={cardTopImg}
+                          logoSrc={item.provider_logo_url}
+                          title={item.program_name}
+                          provider={item.provider_name_}
+                          timeframe={`${item.program_duration_amount} ${item.program_duration_units}`}
+                          buttonText="Learn More"
+                          setter={setCourse}
+                          value={item}
+                        />
+                      </Col>
+                    ))}
               </Row>
             </Col>
           </Row>
@@ -202,7 +215,7 @@ export default function KeySkillsDesktop(props){
             md={4}
           >
             <div className="skills-overlay p-3 w-100 h-50">
-              <h3 className="">Software Engineering</h3>
+              <h3 className="">{path && path.label}</h3>
               <p className="mb-2">Salary range in Miami</p>
               <p className="skills-overlay-salary">$55-110K per year</p>
             </div>
@@ -236,7 +249,7 @@ export default function KeySkillsDesktop(props){
                 </p>
                 <button
                   className="btn btn-outline-warning"
-                  onClick={() => setSkill("software-engineering")}
+                  onClick={() => path && setSkill(path.label)}
                 >
                   See Courses
                 </button>
@@ -266,7 +279,10 @@ export default function KeySkillsDesktop(props){
                     eventKey={item.key}
                     key={item.key}
                     className="text-white"
-                    onClick={() => setSkill(null)}
+                    onClick={() => {
+                      setSkill(null);
+                      setType(item.key);
+                    }}
                   >
                     {item.label}
                   </Nav.Link>
@@ -275,7 +291,7 @@ export default function KeySkillsDesktop(props){
             </Col>
             <Col className="right-container">
               <Tab.Content className="h-100">
-                <Tab.Pane eventKey="software-engineering" className="h-100">
+                <Tab.Pane eventKey={type} className="h-100">
                   {getContent()}
                 </Tab.Pane>
               </Tab.Content>

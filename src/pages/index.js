@@ -28,6 +28,7 @@ import Bubble from "../images/Chat-Bubbles.png"
 export default function Home() {
     const { store, actions } = useContext(Context)
     const [skill,setSkill] = useState(null);
+    const [type,setType] = useState("software-engineering");
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
 
@@ -214,6 +215,9 @@ export default function Home() {
               setCourse={setCourse}
               setSkill={setSkill}
               skill={skill}
+              type={type}
+              setType={setType}
+              path={keySkillsMenu.find(item => item.key === type)}
             />
           ) : (
             <KeySkillsDesktop
@@ -223,6 +227,9 @@ export default function Home() {
               setCourse={setCourse}
               setSkill={setSkill}
               skill={skill}
+              type={type}
+              setType={setType}
+              path={keySkillsMenu.find(item => item.key === type)}
             />
           )}
         </Section>
