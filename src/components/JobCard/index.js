@@ -1,7 +1,7 @@
 import React from "react";
 import CompanyLogo from "../../images/CompanyLogo.png"
 import {Button, Badge} from "react-bootstrap"
-import "./style.css"
+import "./style.scss"
 
 export default function JobCard ({ jobType, jobTitle, companyName, date }) {
     return (
@@ -17,7 +17,7 @@ export default function JobCard ({ jobType, jobTitle, companyName, date }) {
                         <h6 className="card-subtitle mb-2 text-muted"><img src={CompanyLogo} /> {companyName}</h6>
                     </div>
                     <div className="col">
-                        <h6 className="card-subtitle mb-2 text-muted text-right">{date}</h6>
+                        <h6 className="card-subtitle mb-2 text-muted text-right postStyle">{date}</h6>
                     </div>
                 </div>
             </div>
