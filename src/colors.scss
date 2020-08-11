@@ -6,6 +6,7 @@ $offWhite: #FDFFFF;
 $grayish: #CACACA;
 $lightYellow: #F9DE8E;
 $yellow-200: #F6D169;
+$lightPurple: #535589;
 $purple: #4044AA;
 $deepPurple: #282A62;
 
@@ -13,7 +14,12 @@ $deepPurple: #282A62;
 $theme-colors: (
     "info": tomato,
     "danger": teal,
+    "primary": $purple,
     "warning": $lightYellow
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+.btn.btn-lg{
+    padding: 20px 30px;
+}

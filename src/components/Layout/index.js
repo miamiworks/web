@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React,{useEffect} from "react"
 import { TopNav } from "../TopNav"
+import { Footer } from "../Footer"
 import SEO from "../Seo"
 import "../../style.scss"
 import { FirebaseAuth, FirebaseDB } from "../Firebase/FirebaseApp"
@@ -55,6 +56,7 @@ const Layout = ({
         />
         {bodyClass!=="home"?<TopNav />:null}
         {children}
+        <Footer />
       </div>
     )
 }
