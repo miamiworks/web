@@ -1,20 +1,20 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/storage";
-import { FirebaseConfig } from './Config/dev_config';
-
-//firebase app initialization named export
-const FirebaseApp = firebase.initializeApp(FirebaseConfig);
-export { FirebaseApp };
+import { firebaseConfig } from './Config/dev_config';
+//firebase app initialization
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig)
+}
 
 //firestore named export
-const FirebaseDB = FirebaseApp.firestore();
+const FirebaseDB = firebase.firestore();
 export { FirebaseDB };
 
 //auth named export
-const FirebaseAuth = FirebaseApp.auth();
+const FirebaseAuth = firebase.auth();
 export { FirebaseAuth };
 
 //firebase analytics named export
@@ -22,6 +22,6 @@ const FirebaseAnalytics = firebase.analytics();
 export { FirebaseAnalytics };
 
 //firestore named export
-const FirebaseStore = FirebaseApp.storage();
+const FirebaseStore = firebase.storage();
 export { FirebaseStore };
 

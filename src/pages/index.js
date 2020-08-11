@@ -149,14 +149,14 @@ export default function Home() {
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
         <Section className="home-hero h-100 position-relative">
           <TopNav />
-          <Container>
-            <Row className="mb-5 mx-auto">
+          <Container className="py-4">
+            <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
                 <h1 className="mb-3">Find a new career in Miami Tech</h1>
                 <h2>Fast track to a job through curated education pathways</h2>
               </Col>
             </Row>
-            <Row className="pt-5 feature-row container mx-auto">
+            <Row className="pt-lg-5 feature-row container mx-auto">
               {heroFeatures.map((item, index) => (
                 <Col xs={6} md={4} lg={3} key={index}>
                   <ResourceIcon
@@ -172,35 +172,58 @@ export default function Home() {
         </Section>
 
         <Section className="explore-jobs">
-            <Container className="exjob">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you`ll love</span></h1>
-                        <h2 className= "exjoSub">from companies hiring locally</h2>
-                    </Col>
-                </Row>
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <Button variant="info">
-                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
-                            Design                            
-                        </Button>
-                        <Button variant="primary">
-                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
-                            engineering                           
-                        </Button>
-                        <Button variant="warning">
-                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                            product                            
-                        </Button>
-                    </Col>
-                </Row>
-                <CardDeck>
-                    <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
-                    <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                    <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                </CardDeck>
-            </Container>
+          <Container className="exjob">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 exjoTitle">
+                  Explore <span>jobs you`ll love</span>
+                </h1>
+                <h2 className="exjoSub">from companies hiring locally</h2>
+              </Col>
+            </Row>
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <Button variant="info">
+                  <Badge pill variant="light" className="mr-1 buttonGreen">
+                    &nbsp;
+                  </Badge>
+                  Design
+                </Button>
+                <Button variant="primary">
+                  <Badge pill variant="light" className="mr-1 buttonBlue">
+                    &nbsp;
+                  </Badge>
+                  engineering
+                </Button>
+                <Button variant="warning">
+                  <Badge pill variant="light" className="mr-1 buttonYellow">
+                    &nbsp;
+                  </Badge>
+                  product
+                </Button>
+              </Col>
+            </Row>
+            <CardDeck>
+              <JobCard
+                jobType="product"
+                jobTitle="Product Designer"
+                companyName="Kaseya"
+                date="Posted 3 days ago"
+              />
+              <JobCard
+                jobType="product"
+                jobTitle="Web Developer"
+                companyName="Kaseya"
+                date="Posted 3 days ago"
+              />
+              <JobCard
+                jobType="product"
+                jobTitle="Product Manager"
+                companyName="Kaseya"
+                date="Posted 3 days ago"
+              />
+            </CardDeck>
+          </Container>
         </Section>
 
         <Section
@@ -252,85 +275,103 @@ export default function Home() {
         </Section>
 
         <Section className="career-coaching">
-            <Container className="coachingSec">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 coachTitle">Virtual <span>Career Coaching</span></h1>
-                        <h2 className= "coachSub">guiding your job search process</h2>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6} className="bubbleSec">
-                        <img src={Bubble} className="img-fluid" alt="Responsive img"></img>
-                    </Col>
-                    <Col md={6} className="descSec">
-                        <h3>1 ON 1 <span>COACHING</span></h3>
-                        <hr/>
-                        <p className="text-left lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec 
-                            volutpat ut nunc at ultricies. Cras massa lacus, maximus id ligula 
-                            sed, porttitor ultrices magna. Sed sed consequat magna. Integer 
-                            vulputate augue metus, a viverra odio tristique ut. Proin 
-                            efficitur neque vitae nisi dictum efficitur. In mi leo, finibus 
-                            nec porttitor vitae, cursus eu tortor. Nam vitae odio eu neque 
-                            scelerisque porttitor. 
-                        </p>
-                        <button type="button" className="btn btn-primary">Button 1</button>
-                    </Col>
-                </Row>
-            </Container>
+          <Container className="coachingSec">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 coachTitle">
+                  Virtual <span>Career Coaching</span>
+                </h1>
+                <h2 className="coachSub">guiding your job search process</h2>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6} className="bubbleSec">
+                <img
+                  src={Bubble}
+                  className="img-fluid"
+                  alt="Responsive img"
+                ></img>
+              </Col>
+              <Col md={6} className="descSec">
+                <h3>
+                  1 ON 1 <span>COACHING</span>
+                </h3>
+                <hr />
+                <p className="text-left lead">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  volutpat ut nunc at ultricies. Cras massa lacus, maximus id
+                  ligula sed, porttitor ultrices magna. Sed sed consequat magna.
+                  Integer vulputate augue metus, a viverra odio tristique ut.
+                  Proin efficitur neque vitae nisi dictum efficitur. In mi leo,
+                  finibus nec porttitor vitae, cursus eu tortor. Nam vitae odio
+                  eu neque scelerisque porttitor.
+                </p>
+                <button type="button" className="btn btn-primary">
+                  Button 1
+                </button>
+              </Col>
+            </Row>
+          </Container>
         </Section>
 
-       <Section className="section-events">
-            <Container className="eventContainer">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 eventTitle">Events <span>& Resources</span></h1>
-                        <h2 className= "eventSub">Network and make connections virtually</h2>
-                    </Col>
-                </Row>
-                <Row className="mb-5 mx-auto workshopRow">
-                    <Col xs={12}>
-                        <h2 className= "workshopTitle">Upcoming Workshops</h2>
-                    </Col>
-                </Row>
-                <CardDeck>
-                    <EventsCard 
-                    eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                    speakerNam="Doug Skoke"
-                    speakerPosition="President, CEO"
-                    comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard 
-                    eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                    speakerNam="Doug Skoke"
-                    speakerPosition="President, CEO"
-                    comingFrom="BENJAMIN DOUGLAS"
-                    />
-                </CardDeck>
-            </Container>
+        <Section className="section-events">
+          <Container className="eventContainer">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 eventTitle">
+                  Events <span>& Resources</span>
+                </h1>
+                <h2 className="eventSub">
+                  Network and make connections virtually
+                </h2>
+              </Col>
+            </Row>
+            <Row className="mb-5 mx-auto workshopRow">
+              <Col xs={12}>
+                <h2 className="workshopTitle">Upcoming Workshops</h2>
+              </Col>
+            </Row>
+            <CardDeck>
+              <EventsCard
+                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                speakerNam="Doug Skoke"
+                speakerPosition="President, CEO"
+                comingFrom="BENJAMIN DOUGLAS"
+              />
+              <EventsCard
+                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                speakerNam="Doug Skoke"
+                speakerPosition="President, CEO"
+                comingFrom="BENJAMIN DOUGLAS"
+              />
+            </CardDeck>
+          </Container>
         </Section>
 
         <Section className="job-search py-5">
-            <div className="container">
-                <h2 className="text-center">Want to nail your job serach?</h2>
-                <h3 className="text-center">check out our free job search filed guide</h3>
-                <p>30 exclusive tips & tricks form recruiting pros for navigating your search ducing COVID-19</p>
-                <button>Download Guide</button>
-            </div>
+          <div className="container">
+            <h2 className="text-center">Want to nail your job serach?</h2>
+            <h3 className="text-center">
+              check out our free job search filed guide
+            </h3>
+            <p>
+              30 exclusive tips & tricks form recruiting pros for navigating
+              your search ducing COVID-19
+            </p>
+            <button>Download Guide</button>
+          </div>
         </Section>
 
         <Section className="section-sponsors container py-5">
-            <h2 className="text-center">Miami Tech Works Coalition</h2>
-            <h3 className="text-center">Made possible by</h3>
-            <div>
-                <img src={beaconURL} />
-            </div>
-            <div className="logos">
-                <Sponsors />
-            </div>
+          <h2 className="text-center">Miami Tech Works Coalition</h2>
+          <h3 className="text-center">Made possible by</h3>
+          <div>
+            <img src={beaconURL} />
+          </div>
+          <div className="logos">
+            <Sponsors />
+          </div>
         </Section>
-
       </Layout>
     )
 }
