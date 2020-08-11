@@ -31,7 +31,9 @@ export default function Home() {
     const [type,setType] = useState("software-engineering");
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
-
+    
+    const meta = store.homepageData.meta
+    const keySkillsMenu = store.homepageData.keySkillsMenu
     const heroFeatures = [
       {
         title: "Job Postings",
@@ -59,45 +61,7 @@ export default function Home() {
       },
     ]
 
-    const meta = [
-      { name: "charset", content: "UTF-8" },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1, maximum-scale=1",
-      },
-      { httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1" },
-    ]
-
-    const keySkillsMenu = [
-      {
-        label: "Software Engineering",
-        key: "software-engineering",
-      },
-      {
-        label: "UX Design",
-        key: "ux-design",
-      },
-      {
-        label: "Data Science",
-        key: "data-science",
-      },
-      {
-        label: "Cyber Security",
-        key: "cyber-security",
-      },
-      {
-        label: "Digital Marketing",
-        key: "digital-marketing",
-      },
-      {
-        label: "Machine Learning",
-        key: "machine-learning",
-      },
-      {
-        label: "IT Administration",
-        key: "it-administration",
-      },
-    ]
+    
 
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
