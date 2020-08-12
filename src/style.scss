@@ -1,0 +1,120 @@
+/* Before your custom variables file, import Bootstrap functions */
+@import "../node_modules/bootstrap/scss/functions";
+
+@import './colors.scss';
+@import './containers.scss';
+
+/* Import the rest of Boostrap's dependencies */
+@import "../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../node_modules/bootstrap/scss/mixins/grid-framework";
+@import "../node_modules/bootstrap/scss/mixins/grid";
+
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/utilities/display";
+@import "../node_modules/bootstrap/scss/utilities/flex";
+
+
+/* Set all the Page and Global styles here */
+/* Homepage */
+
+.home{
+    section {
+        min-height: 850px;
+    }
+
+    .home-hero{
+        background: $darkBlue url('./images/hero-bg-mobile.png') no-repeat;
+
+        @media screen and (min-width: 990px){
+            background: $darkBlue url('./images/hero-bg.png') no-repeat;  
+            background-size: 100% 100%;  
+        }
+
+        background-size: 100%; 
+        color: $offWhite;
+        
+        height: 100%;
+        width: 100%;
+
+        h1,h2 {
+            font-family: neue-haas-grotesk-display, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 64px;
+            line-height: 77px;
+        }
+
+        h2 {
+            font-size: 32px;
+            line-height: 38px;
+            color: $lightYellow;
+        }
+
+        h3 {
+            font-size: 25px;
+            line-height: 29px;
+        }
+
+        .row:not(.feature-row){
+            padding-top: 5vh;
+            padding-bottom: 8vh;
+        }
+    }
+
+
+    .job-search{
+        height: auto;
+        min-height: auto;
+        background: $yellow-200;
+        padding: 80px 0px;
+        h2{
+            font-weight: bold;
+            font-family: Neue Haas Grotesk Display Pro;
+            font-size: 50px;
+            line-height: 77px;
+        }
+        h3{
+            color: $deepPurple;
+            font-family: Neue Haas Grotesk Display Pro;
+            font-weight: bold;
+        }
+    }
+
+    /* SPONSORS SECTION */
+    .section-sponsors{
+        text-align: center;
+    }
+
+    .key-skills{
+        background: $darkBlue url('./images/skills-bg.png') top right no-repeat;
+        background-size: cover;
+
+        h2{
+            font-weight: bold;
+            font-size: 64px;
+            line-height: 77px;
+        }
+
+        &.mobile{
+            background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
+            background-size: contain;
+            @media screen and (min-width: 768px){
+                background: $deepPurple url("./images/skills-bg-mobile.png") top center no-repeat;
+                background-size: cover;
+            }
+            font-size: 1rem;
+            h2{
+                font-size: 2.25rem;
+            }
+
+            p{
+                font-weight: 300;
+                font-size: 1.125rem;
+                line-height: 20px;
+            }
+        }
+    }
+}

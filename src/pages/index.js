@@ -84,97 +84,43 @@ export default function Home() {
         </Section>
 
         <Section className="explore-jobs">
-          <Container className="exjob">
-            <Row className="mb-5 mx-auto">
-              <Col xs={12}>
-                <h1 className="mb-3 exjoTitle">
-                  Explore <span>jobs you`ll love</span>
-                </h1>
-                <h2 className="exjoSub">from companies hiring locally</h2>
-              </Col>
-            </Row>
-            <Row className="mb-5 mx-auto">
-              <Col xs={12}>
-                <Button variant="info">
-                  <Badge pill variant="light" className="mr-1 buttonGreen">
-                    &nbsp;
-                  </Badge>
-                  Design
-                </Button>
-                <Button variant="primary">
-                  <Badge pill variant="light" className="mr-1 buttonBlue">
-                    &nbsp;
-                  </Badge>
-                  engineering
-                </Button>
-                <Button variant="warning">
-                  <Badge pill variant="light" className="mr-1 buttonYellow">
-                    &nbsp;
-                  </Badge>
-                  product
-                </Button>
-              </Col>
-            </Row>
-            {/* style={{overflowX: "scroll"}} */}
-            <div className="h-scroll">
-              <div className="h-scroll-inner">
-                <JobCard
-                  jobType="product"
-                  jobTitle="Product Designer"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Web Developer"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Product Manager"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Web Developer"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Product Manager"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Web Developer"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Product Manager"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Web Developer"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-                <JobCard
-                  jobType="product"
-                  jobTitle="Product Manager"
-                  companyName="Kaseya"
-                  date="Posted 3 days ago"
-                />
-              </div>
-            </div>
-          </Container>
+            <Container className="exjob">
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you`ll love</span></h1>
+                        <h2 className= "exjoSub">from companies hiring locally</h2>
+                    </Col>
+                </Row>
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <Button variant="info">
+                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
+                            Design                            
+                        </Button>
+                        <Button variant="primary">
+                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
+                            engineering                           
+                        </Button>
+                        <Button variant="warning">
+                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
+                            product                            
+                        </Button>
+                    </Col>
+                </Row>
+                <div className="h-scroll">
+                    <div className="h-scroll-inner">
+                        <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
+                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                    </div>
+                </div>
+            </Container>
         </Section>
 
         <Section
@@ -264,7 +210,7 @@ export default function Home() {
                   eu neque scelerisque porttitor.
                 </p>
                 <button type="button" className="btn btn-primary">
-                  Button 1
+                  Learn More
                 </button>
               </Col>
             </Row>
@@ -288,20 +234,58 @@ export default function Home() {
                 <h2 className="workshopTitle">Upcoming Workshops</h2>
               </Col>
             </Row>
-            <CardDeck>
-              <EventsCard
-                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                speakerNam="Doug Skoke"
-                speakerPosition="President, CEO"
-                comingFrom="BENJAMIN DOUGLAS"
-              />
-              <EventsCard
-                eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                speakerNam="Doug Skoke"
-                speakerPosition="President, CEO"
-                comingFrom="BENJAMIN DOUGLAS"
-              />
-            </CardDeck>
+            <div className="event-scroll">
+                <div className="event-scroll-inner">
+                    <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                    <EventsCard
+                        date="Agust 13th"
+                        time="5:00 PM"
+                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
+                        speakerNam="Doug Skoke"
+                        speakerPosition="President, CEO"
+                        comingFrom="BENJAMIN DOUGLAS"
+                    />
+                </div>
+            </div>
           </Container>
         </Section>
 

@@ -1,54 +1,54 @@
-.career-coaching {
-    background: url("../images/CoachingBg.png") no-repeat;
-    background-size: 100% 100%;
-    display: flex;
-    padding: 60px 0px;
-    min-height: 100vh;
+     .career-coaching {
+        background: url("../images/CoachingBg.png") no-repeat;
+        background-size: cover;
+        display: flex;
+        padding: 20px 0px;
+        min-height: 100vh;
 
-    .coachingSec {
-        padding-top: 100px;
-    }
+        .coachingSec {
+            padding-top: 66px;
+        }
 
-    h1.coachTitle {
-        font-weight: bold;
-        font-size: 59px;
-        line-height: 77px;
-        color: white;
-        letter-spacing: -3px;
-    }
+        h1.coachTitle {
+            font-weight: bold;
+            font-size: 59px;
+            line-height: 77px;
+            color: white;
+            letter-spacing: -3px;
+        }
 
-    h1.coachTitle span {
-        color: #282A62;
-    }
-    
-    h3 span {
-        color: #7CE6C8;
-    }
+        h1.coachTitle span {
+            color: #282A62;
+        }
+        
+        h3 span {
+            color: #7CE6C8;
+        }
 
-    h2.coachSub {
-        font-weight: 300;
-        font-size: 32px;
-        line-height: 36px;
-        color: white;
-    }
+        h2.coachSub {
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 36px;
+            color: white;
+        }
 
-    .col-md-6.bubbleSec {
-        margin-top: 102px;
-    }
-    
-    .col-md-6.descSec {
-        margin-top: 102px;
-    }
+        .col-md-6.bubbleSec {
+            margin-top: 102px;
+        }
+        
+        .col-md-6.descSec {
+            margin-top: 102px;
+        }
 
-    h3 {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 48px;
-        color: #FDFFFF;
-    }
+        h3 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 40px;
+            line-height: 48px;
+            color: #FDFFFF;
+        }
 
-    p.text-left {
-        color: #FDFFFF;
+        p.text-left {
+            color: #FDFFFF;
+        }
     }
-}

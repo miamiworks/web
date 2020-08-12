@@ -1,6 +1,20 @@
 .card.event {
+    display: inline-block;
+    margin-right: 10px;
     background: #FDFFFF;
     border-radius: 20px;
+
+    .card-img-overlay {
+        text-align: center;
+        font-family: sofia-pro, sans-serif;
+        bottom: 275px;
+        left: 331px;
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    h5.card-title.workshopTime {
+        font-weight: bold;
+    }
     
     .evenTitle {
         font-style: normal;
