@@ -31,8 +31,8 @@ export default function Home() {
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
     
-    const meta = store.homepageData.meta
-    const keySkillsMenu = store.homepageData.keySkillsMenu
+    const meta = store && store.homepageData.meta || []
+    const keySkillsMenu = store && store.homepageData.keySkillsMenu || []
     const heroFeatures = [
       {
         title: "Job Postings",
