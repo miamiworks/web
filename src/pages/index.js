@@ -60,8 +60,14 @@ export default function Home() {
 
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
-        <Section className="home-hero h-100 position-relative">
-          <TopNav />
+        <TopNav links={[
+            {label: "Jobs", to:"#jobs"},
+            {label: "Career Paths", to:"#career"},
+            {label: "Coaching", to:"#coaching"},
+            {label: "Resources", to:"#events"},
+            {label: "Post a Job", component: ({ className }) => <Button className={`${className} px-3`} variant="outline-warning">Post a Job</Button>},
+        ]} />
+        <Section name="hero" className="home-hero h-100 position-relative">
           <Container className="py-4">
             <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
@@ -83,7 +89,7 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section className="explore-jobs">
+        <Section name="jobs" className="explore-jobs">
             <Container className="exjob">
                 <Row className="mb-5 mx-auto">
                     <Col xs={12}>
@@ -123,7 +129,7 @@ export default function Home() {
             </Container>
         </Section>
 
-        <Section
+        <Section name="career"
           className={
             width <= 1080 || isMobile
               ? "key-skills mobile d-flex flex-column align-items-center justify-content-center py-5"
@@ -177,7 +183,7 @@ export default function Home() {
           )}
         </Section>
 
-        <Section className="career-coaching">
+        <Section name="coaching" className="career-coaching">
           <Container className="coachingSec">
             <Row className="mb-5 mx-auto">
               <Col xs={12}>
@@ -217,7 +223,7 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section className="section-events">
+        <Section name="events" className="section-events">
           <Container className="eventContainer">
             <Row className="mb-5 mx-auto">
               <Col xs={12}>
@@ -289,7 +295,7 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section className="job-search">
+        <Section name="job-search" className="job-search">
           <div className="container">
             <h2 className="text-left">Want to nail your job search?</h2>
             <h3 className="text-left py-1">
@@ -303,15 +309,17 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section className="section-sponsors container">
-          <h2 className="text-center">MiamiTech.Works Coalition</h2>
-          <h3 className="text-center">Made possible by</h3>
-          <div className="mb-2">
-            <img src={beaconURL} />
-          </div>
-          <div className="logos">
-            <Sponsors />
-          </div>
+        <Section name="sponsors" className="section-sponsors">
+            <Container>
+            <h2 className="text-center">MiamiTech.Works Coalition</h2>
+            <h3 className="text-center">Made possible by</h3>
+            <div className="mb-2">
+                <img src={beaconURL} />
+            </div>
+            <div className="logos">
+                <Sponsors />
+            </div>
+            </Container>
         </Section>
       </Layout>
     )

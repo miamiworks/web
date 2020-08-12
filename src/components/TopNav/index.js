@@ -3,9 +3,10 @@ import { useStaticQuery,graphql } from "gatsby"
 import Img from "gatsby-image"
 import { navigate } from '@reach/router';
 import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-scroll'
 import "./style.scss";
 
-export const TopNav = () => {
+export const TopNav = ({ links }) => {
     const data = useStaticQuery(graphql`
         query {
             file(relativePath: { regex: "/logo-white.png/" }) {
@@ -18,11 +19,24 @@ export const TopNav = () => {
         }
     `)
 
-    const navMenu = [
-        {label: "Resources",url:"#home",id:0},
-        {label: "Jobs",url:"#link",id:1},
-        {label: "Career Paths",url:"#link",id:2},
-    ]
+    if(!Array.isArray(links)) return "Missing props.links";
+    //[
+        // Example of new window
+        // {label: "Jobs", to:"#link", target="_blank"},
+        
+        // Example of same page scroll
+        // {label: "Jobs", to:"#jobs", target:"_blank"},
+        // {label: "Career Paths", to:"#career"},
+        // {label: "Coaching", to:"#coaching"},
+        // {label: "Resources", to:"#events"},
+        
+        // Example of different page
+        //{label: "Terms and conditions", to:"/terms"},
+        
+        
+        // Example of using a component
+        //{label: "Terms and conditions", component: () => <Link>click me</Link>},
+    //]
 
     return (
         <header className="main-nav">
@@ -34,14 +48,32 @@ export const TopNav = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        {navMenu.map(item=>
-                            <Nav.Link 
-                                className="ml-5"
-                                onClick={() => navigate(item.url)}
-                                key={item.id}>
-                                {item.label}
-                            </Nav.Link>
-                        )}
+                        {links.map((item, i)=> {
+                            const Component = item.component;
+                            return (Component !== undefined) ?
+                                <Component className="ml-5 nav-link" />
+                            :(item.to.charAt(0) === "#") ?
+                                <Link activeClass="active" className="ml-5 nav-link" to={item.to.substring(1)} spy={true} smooth={true} duration={500} >
+                                    {item.label}
+                                </Link>
+                                : item.target !== "_blank" ?
+                                    <Nav.Link 
+                                        className="ml-5"
+                                        onClick={() => navigate(item.url)}
+                                        key={i}>
+                                        {item.label}
+                                    </Nav.Link>
+                                    :
+                                    <a 
+                                        className="ml-5 nav-link"
+                                        href={item.to}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        key={i}
+                                    >
+                                        {item.label}
+                                    </a>
+                        })}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
