@@ -133,7 +133,7 @@ export default function Home() {
                         <h2 className= "exjoSub">from companies hiring locally</h2>
                     </Col>
                 </Row>
-                <Row className="mb-5 mx-auto">
+                <Row className="mb-5 mx-auto exjoButtons">
                     <Col xs={12}>
                         <Button variant="info">
                             <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
@@ -279,7 +279,7 @@ export default function Home() {
             <div className="event-scroll">
                 <div className="event-scroll-inner">
                     <EventsCard
-                        date="Agust 13th"
+                        date="August 13th"
                         time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
@@ -287,7 +287,7 @@ export default function Home() {
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
-                        date="Agust 13th"
+                        date="August 13th"
                         time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
@@ -295,7 +295,7 @@ export default function Home() {
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
-                        date="Agust 13th"
+                        date="August 13th"
                         time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
@@ -303,7 +303,7 @@ export default function Home() {
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
-                        date="Agust 13th"
+                        date="August 13th"
                         time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
@@ -311,7 +311,7 @@ export default function Home() {
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
-                        date="Agust 13th"
+                        date="August 13th"
                         time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"
@@ -319,7 +319,7 @@ export default function Home() {
                         comingFrom="BENJAMIN DOUGLAS"
                     />
                     <EventsCard
-                        date="Agust 13th"
+                        date="August 13th"
                         time="5:00 PM"
                         eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
                         speakerNam="Doug Skoke"

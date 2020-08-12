@@ -51,3 +51,56 @@
             }
         }
     }
+
+@media (max-width: 600px) {
+    .section-events {
+        background-size: contain;
+        background-color: #F9DE8E;
+
+        .exjob {
+            margin-top: 0px;
+        }
+
+        h1.eventTitle {
+            font-size: 2.25rem;
+            margin-bottom: 0px !important;
+        }
+
+        h2.eventSub {
+            font-size: 1.125rem
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .section-events {
+        background-size: contain;
+        background-color: #F9DE8E;
+
+        .exjob {
+            margin-top: 0px;
+        }
+    }
+}
+
+@media (max-width: 920px) {
+    .section-events {
+        background-size: contain;
+        background-color: #F9DE8E;
+
+        .exjob {
+            margin-top: 35px;
+        }
+    }
+}
+
+@media (max-width: 1080px) {
+    .section-events {
+        background-size: contain;
+        background-color: #F9DE8E;
+
+        .exjob {
+            margin-top: 75px;
+        }
+    }
+}
