@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form"
 import Spinner from "react-bootstrap/Spinner"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
-import { faTimes } from "@fortawesome/pro-regular-svg-icons"
+import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
 const DownloadGuide = ({ children, className, onHide, onSubmit , title }) => { 
     const [status, setStatus] = useState("closed");

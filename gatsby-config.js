@@ -8,8 +8,8 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://www.miamitech.works`,
     title: "Miami Tech Works",
-    description: "",
-    author: "",
+    description: "Find a new career in Miami Tech",
+    author: "MiamiTech.Works",
     keywords: "",
   },
   plugins: [
