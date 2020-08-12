@@ -10,8 +10,8 @@ const Sponsors = () => {
                 nodes{
                     name
                     childImageSharp{
-                        fixed(height: 125) {
-                        ...GatsbyImageSharpFixed
+                        fixed(height: 35) {
+                            ...GatsbyImageSharpFixed
                         }
                     }
                 }
@@ -24,7 +24,13 @@ const Sponsors = () => {
             {
                 data.allFile.nodes.map((file,i) => {
                     {/* console.log(file.childImageSharp) */}
-                    return <img className={file.name} key={i} src={file.childImageSharp.fixed.src} />
+                    //return <img className={file.name} key={i} src={file.childImageSharp.fixed.src} />
+                    return     <Img
+                        fixed={file.childImageSharp.fixed}
+                        objectFit="scale-down"
+                        objectPosition="50% 50%"
+                        alt=""
+                    />
                 })
             }
         </div>
