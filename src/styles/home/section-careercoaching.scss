@@ -52,3 +52,60 @@
             color: #FDFFFF;
         }
     }
+
+@media (max-width: 600px) {
+    .career-coaching {
+        background-size: contain;
+        background-color: #6ABBA4;
+
+        .exjob {
+            margin-top: 0px;
+        }
+
+        .col-md-6.bubbleSec {
+            margin-top: 0px;
+        }
+
+        h1.coachTitle {
+            font-size: 2.1rem;
+            margin-bottom: 0px !important;
+        }
+
+        h2.coachSub {
+            font-size: 1.125rem
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .career-coaching {
+        background-size: contain;
+        background-color: #6ABBA4;
+
+        .exjob {
+            margin-top: 0px;
+        }
+    }
+}
+
+@media (max-width: 920px) {
+    .career-coaching {
+        background-size: contain;
+        background-color: #6ABBA4;
+
+        .exjob {
+            margin-top: 35px;
+        }
+    }
+}
+
+@media (max-width: 1080px) {
+    .career-coaching {
+        background-size: contain;
+        background-color: #6ABBA4;
+
+        .exjob {
+            margin-top: 75px;
+        }
+    }
+}
