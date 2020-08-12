@@ -12,8 +12,8 @@ $deepPurple: #282A62;
 
 /* Overrides for Bootstrap colors */
 $theme-colors: (
-    "info": tomato,
-    "danger": teal,
+    "info": $seaGreen,
+    "danger": rgb(184, 52, 0),
     "primary": $purple,
     "warning": $lightYellow
 );

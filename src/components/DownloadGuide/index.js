@@ -1,6 +1,8 @@
-import React,{useState, Children} from "react";
+import React,{useState, useContext, Children} from "react";
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
+import Alert from "react-bootstrap/Alert"
+import { Context } from "../../store/appContext"
 import Form from "react-bootstrap/Form"
 import Spinner from "react-bootstrap/Spinner"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -8,9 +10,10 @@ import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
 const DownloadGuide = ({ children, className, onHide, onSubmit , title }) => { 
+    const { store, actions } = useContext(Context)
     const [status, setStatus] = useState("closed");
-    const [data, setData] = useState({})
-    console.log("status", status)
+    const [error, setError] = useState("");
+    const [data, setData] = useState({ full_name:"", email:"", tel: ""})
     return (<>
         <button onClick={() => setStatus("open")} className={`${className}`}>{children}</button>
         <Modal
@@ -38,22 +41,30 @@ const DownloadGuide = ({ children, className, onHide, onSubmit , title }) => {
                 {status!== "sent" ? (
                 <Form onSubmit={(e) => {
                         e.preventDefault();
-                        if(onSubmit) onSubmit(data);
-                        setStatus("sent");
+                        setStatus("loading");
+                        actions
+                            .submitRequest("download_search_job", data.full_name, data.email, data.tel)
+                            .then(() => setStatus("sent"))
+                            .catch((error) => setStatus("error") || setError(error.message || error))
                     }}>
+                    {status === "error" && 
+                        <Alert variant="danger">
+                            {error}
+                        </Alert>
+                    }
                     <Form.Group controlId="fullName" className="mb-5">
                     <Form.Label className="d-block">Full Name</Form.Label>
-                    <Form.Control type="text" placeholder="" size="lg" required value={data.full_name} onChange={(e) => setData({ ...data, full_name: e.target.value })} />
+                    <Form.Control type="text" placeholder="" size="lg" required value={data.full_name} onChange={(e) => setData({ ...data, full_name: e.target.value }) || setStatus("opened")} />
                     </Form.Group>
                     <Form.Group controlId="emailAddress" className="mb-5">
                     <Form.Label className="d-block">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="" size="lg" required value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+                    <Form.Control type="email" placeholder="" size="lg" required value={data.email} onChange={(e) => setData({ ...data, email: e.target.value }) || setStatus("opened")} />
                     </Form.Group>
                     <Form.Group controlId="telephone" className="mb-5">
                     <Form.Label className="d-block">
                         Phone Number <span className="text-muted">(optional)</span>
                     </Form.Label>
-                    <Form.Control type="tel" placeholder="" size="lg" required value={data.tel} onChange={(e) => setData({ ...data, tel: e.target.value })} />
+                    <Form.Control type="tel" placeholder="" size="lg" value={data.tel} onChange={(e) => setData({ ...data, tel: e.target.value }) || setStatus("opened")} />
                     </Form.Group>
 
                     <Button variant="primary" size="lg" type="submit" block>

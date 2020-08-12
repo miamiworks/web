@@ -19,7 +19,7 @@ export const TopNav = ({ links }) => {
         }
     `)
 
-    if(!Array.isArray(links)) return "Missing props.links";
+    if(!Array.isArray(links)) return <p>Missing props.links</p>;
     //[
         // Example of new window
         // {label: "Jobs", to:"#link", target="_blank"},
@@ -51,9 +51,9 @@ export const TopNav = ({ links }) => {
                         {links.map((item, i)=> {
                             const Component = item.component;
                             return (Component !== undefined) ?
-                                <Component className="ml-5 nav-link" />
+                                <Component key={i} className="ml-5 nav-link" />
                             :(item.to.charAt(0) === "#") ?
-                                <Link activeClass="active" className="ml-5 nav-link" to={item.to.substring(1)} spy={true} smooth={true} duration={500} >
+                                <Link key={i} activeClass="active" className="ml-5 nav-link" to={item.to.substring(1)} spy={true} smooth={true} duration={500} >
                                     {item.label}
                                 </Link>
                                 : item.target !== "_blank" ?
@@ -64,7 +64,7 @@ export const TopNav = ({ links }) => {
                                         {item.label}
                                     </Nav.Link>
                                     :
-                                    <a 
+                                    <a key={i}
                                         className="ml-5 nav-link"
                                         href={item.to}
                                         target="_blank"

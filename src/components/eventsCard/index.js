@@ -1,13 +1,14 @@
 import React from "react";
-import EventImg from "../../images/EventsCard.png"
+import FireImage from "../FireImage"
+import PropTypes from "prop-types"
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.scss"
 
-export default function EventsCard ({ date, time, eventName, speakerNam, speakerPosition, comingFrom }) {
+export default function EventsCard ({ date, time, eventName, speakerNam, speakerPosition, comingFrom, eventImage }) {
     return (
         <div className="card event" style={{maxWidth: "32rem"}}>
-            <img src={EventImg} className="card-img-top" alt="..."/>
+            <FireImage name={eventImage} alt={"Event alt"} className="card-img-top" />
             <div className="card-img-overlay">
                 <p className="card-text"><FontAwesomeIcon icon={faCalendarDay} /> {date}</p>
                 <h5 className="card-title workshopTime">{time}</h5>
@@ -22,4 +23,10 @@ export default function EventsCard ({ date, time, eventName, speakerNam, speaker
         </div>           
     )
 
+}
+EventsCard.propTypes = {
+    eventImage: PropTypes.string,
+}
+EventsCard.defaultProps = {
+    eventImage: "",
 }

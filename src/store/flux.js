@@ -55,50 +55,26 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       initApp: () => {
         let actions = getActions()
-        actions.getEvents()
-        actions.getJobs()
-        actions.getPrograms()
+        actions.get("events")
+        actions.get("jobs")
+        actions.get("programs")
       },
-      getEvents: () => {
+      get: (type) => {
+        if(!["events", "jobs", "programs"].includes(type)) throw Error("Invalid collection type: ", type);
         firebase
           .firestore()
-          .collection("events")
+          .collection(type)
           .get()
           .then(querySnapshot => {
-            let events = []
+            let data = []
             querySnapshot.forEach(doc => {
-              events.push(doc.data())
+              data.push(doc.data())
             })
-            setStore({ events: events })
+            console.log(type, data)
+            setStore({ [type]: data })
           })
       },
-      getJobs: () => {
-        firebase
-          .firestore()
-          .collection("jobs")
-          .get()
-          .then(querySnapshot => {
-            let jobs = []
-            querySnapshot.forEach(doc => {
-              jobs.push(doc.data())
-            })
-            setStore({ jobs: jobs })
-          })
-      },
-      getPrograms: () => {
-        firebase
-          .firestore()
-          .collection("programs")
-          .get()
-          .then(querySnapshot => {
-            let programs = []
-            querySnapshot.forEach(doc => {
-              programs.push(doc.data())
-            })
-            setStore({ programs: programs })
-          })
-      },
-      submitSyllabusRequest: async (fullName, email, phone, syllabus) => {
+      submitRequest: async (type, fullName, email, phone, related_id=null) => {
         return firebase
           .firestore()
           .collection("submissions")
@@ -106,7 +82,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             full_name: fullName,
             email_address: email,
             phone_number: phone,
-            requested_syllabus: syllabus,
+            type,
+            related_id
           })
           .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id)
@@ -114,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch(function (error) {
             console.error("Error adding document: ", error)
-            return error
+            return { message: "There was an error saving your request" };
           })
       },
     },

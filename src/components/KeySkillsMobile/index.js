@@ -33,11 +33,11 @@ function CourseSyllabusModal(props) {
     setSubmitting(true)
 
     try {
-      let res = await actions.submitSyllabusRequest(
+      let res = await actions.submitRequest("syllabus",
         fullName,
         email,
         phone,
-        course.program_syllabus_file_name
+        course.key
       )
       if (!(res instanceof Error)) {
         setSubmitting(false)

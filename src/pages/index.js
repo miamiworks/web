@@ -115,15 +115,9 @@ export default function Home() {
                 </Row>
                 <div className="h-scroll">
                     <div className="h-scroll-inner">
-                        <JobCard jobType="product" jobTitle="Product Designer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Web Developer" companyName="Kaseya" date="Posted 3 days ago"/>
-                        <JobCard jobType="product" jobTitle="Product Manager" companyName="Kaseya" date="Posted 3 days ago"/>
+                        { store.jobs && store.jobs.map(j => 
+                            <JobCard jobType="product" jobTitle={j.job_title} companyName={j.company_posting} date={j.posted_date}/>
+                        )}
                     </div>
                 </div>
             </Container>
@@ -242,54 +236,17 @@ export default function Home() {
             </Row>
             <div className="event-scroll">
                 <div className="event-scroll-inner">
-                    <EventsCard
-                        date="August 13th"
-                        time="5:00 PM"
-                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                        speakerNam="Doug Skoke"
-                        speakerPosition="President, CEO"
-                        comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard
-                        date="August 13th"
-                        time="5:00 PM"
-                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                        speakerNam="Doug Skoke"
-                        speakerPosition="President, CEO"
-                        comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard
-                        date="August 13th"
-                        time="5:00 PM"
-                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                        speakerNam="Doug Skoke"
-                        speakerPosition="President, CEO"
-                        comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard
-                        date="August 13th"
-                        time="5:00 PM"
-                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                        speakerNam="Doug Skoke"
-                        speakerPosition="President, CEO"
-                        comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard
-                        date="August 13th"
-                        time="5:00 PM"
-                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                        speakerNam="Doug Skoke"
-                        speakerPosition="President, CEO"
-                        comingFrom="BENJAMIN DOUGLAS"
-                    />
-                    <EventsCard
-                        date="August 13th"
-                        time="5:00 PM"
-                        eventName="1MPACT: Impactful Initiatives to Support the Local Business Community"
-                        speakerNam="Doug Skoke"
-                        speakerPosition="President, CEO"
-                        comingFrom="BENJAMIN DOUGLAS"
-                    />
+                    { store.events && store.events.map(ev => <EventsCard
+                            date={ev.event_date}
+                            time={ev.event_start_time}
+                            eventName={ev.event_title}
+                            speakerName={ev.speaker_name}
+                            eventImage={ev.event_img_file_path}
+                            companyImage={ev.company_logo_file_path}
+                            speakerPosition={ev.speaker_job_title}
+                            comingFrom={ev.event_organizer}
+                        />)
+                    }
                 </div>
             </div>
           </Container>
