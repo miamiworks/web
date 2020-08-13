@@ -13,7 +13,6 @@ import "./style.scss"
 export default function CourseCard(props){
     const {topImgAlt,topImg,logo,title,timeframe,buttonText,setter,value,provider} = props;
     const [width, height] = useWindowSize()
-    console.log("provider", provider)
     const getMobileContent = ()=>{
       return (
         <Row className="h-100 no-gutters">

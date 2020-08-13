@@ -17,5 +17,6 @@ $container-max-widths: (
     overflow-x: auto;
     & > div {
         width: 2000px;
+        padding-left: 20px;
     }
 }

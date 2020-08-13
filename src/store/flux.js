@@ -50,7 +50,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             querySnapshot.forEach(doc => {
               data.push({ id: doc.id, ...doc.data() })
             })
-            console.log(type, data)
             setStore({ [type]: data })
           })
       },
