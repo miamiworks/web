@@ -25,7 +25,7 @@ export default function JobCard ({ jobTitle, companyName, date, CompanyLogo, url
                 </Button>
                 <h5 className="card-title jobTitle">{slice(jobTitle)}</h5>
                 <div className="bottom">
-                    <div className="date float-right">{now.from(_date)}</div>
+                    <div className="date float-right">{_date.from(now)}</div>
                     <img className="logo" src={CompanyLogo} />
                 </div>
             </div>

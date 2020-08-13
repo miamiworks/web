@@ -38,20 +38,7 @@ const Layout = ({
         {bodyClass !== "home" ? (
           <TopNav
             links={
-              store && [
-                ...store.navMenu,
-                {
-                  label: "Post a Job",
-                  component: ({ className }) => (
-                    <Button
-                      className={`${className} px-3 my-auto`}
-                      variant="outline-warning"
-                    >
-                      Post a Job
-                    </Button>
-                  ),
-                },
-              ]
+              store && store.navMenu
             }
           />
         ) : null}
