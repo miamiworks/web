@@ -19,7 +19,7 @@ const FireImage = ({ name, ...rest }) => {
         }catch(error){
             console.log("Firebase error", error) 
         }
-    },[]);
+    });
     if(!name) return <p>Missing image name</p>;
     return <img src={url} {...rest} />
 }
@@ -28,6 +28,6 @@ FireImage.propTypes = {
     name: PropTypes.string
 }
 FireImage.defaultProps = {
-  name: ""
+    name: ""
 }
 export default FireImage;

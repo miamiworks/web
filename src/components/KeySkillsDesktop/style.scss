@@ -27,6 +27,11 @@
         max-height: 460px;
         height: 460px;
     }
+    
+    .bg-image{
+        object-fit: cover;
+        object-position: left;
+    }
 
     .skills-provider-logo{
         height: 50px;
@@ -36,8 +41,8 @@
 
     .software-eng-img {
         color: $offWhite;
-        background: url('../../images/software-engineering.png') no-repeat center;
-        background-size: cover;
+        // background: url('../../images/software-engineering.png') no-repeat center;
+        // background-size: cover;
         border-radius: 20px 0px 0px 20px;
         &.course-detail{
             border-radius: 10px 0px 0px 10px;
