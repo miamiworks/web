@@ -38,14 +38,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.get("programs")
         actions.get("skill_pathways")
       },
-      getRandomColor() {
-        var letters = "0123456789ABCDEF"
-        var color = "#"
-        for (var i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)]
-        }
-        return color
-      },
       get: type => {
         if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
           throw Error("Invalid collection type: ", type)
@@ -59,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               data.push({ id: doc.id, ...doc.data() })
             })
             console.log(type, data)
-            setStore({ [type]: data.slice(0, 15) })
+            setStore({ [type]: data })
           })
       },
       submitRequest: async (

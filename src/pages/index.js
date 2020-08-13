@@ -5,11 +5,11 @@ import {useWindowSize} from "../utils/hooks"
 import Layout from "../components/Layout"
 import Section from "../components/Section"
 import Sponsors from "../components/Sponsors"
+import JobSearch from "../components/JobSearch"
 import KeySkillsDesktop from "../components/KeySkillsDesktop"
 import KeySkillsMobile from "../components/KeySkillsMobile"
 import { TopNav } from "../components/TopNav"
 import ResourceIcon from "../components/ResourceIcon"
-import JobCard from "../components/JobCard"
 import EventsCard from "../components/eventsCard"
 import {Button, Badge, CardDeck} from "react-bootstrap"
 import Row from 'react-bootstrap/Row'
@@ -23,16 +23,14 @@ import CalendarStar from "../images/calendar-star.svg"
 import ChartNetwork from "../images/chart-network.svg"
 import CommentPlus from "../images/comment-plus.svg"
 
-
 export default function Home() {
     const { store, actions } = useContext(Context)
     const [skill,setSkill] = useState(null);
     const [type, setType] = useState("cloud-computing")
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
-    const keySkillsMenu =
+    const keySkillsMenu = store &&
       (
-        store &&
         store.skill_pathways.map(item =>
           Object.assign(
             {},
@@ -52,21 +50,25 @@ export default function Home() {
       {
         title: "Job Postings",
         bg: "#7CE6C8",
+        to: "jobs",
         icon: <Briefcase fill="#4F8B7A" />,
-      },
-      {
+    },
+    {
         title: "Skill Pathways",
         bg: "#4044AA",
+        to: "career",
         icon: <ChartNetwork fill="#F8FAFA" />,
-      },
-      {
+    },
+    {
         title: "Career Coaching",
         bg: "#CACACA",
+        to: "coaching",
         icon: <CommentPlus fill="#F8FAFA" />,
-      },
-      {
+    },
+    {
         title: "Events & Resources",
         bg: "#F9DE8E",
+        to: "events",
         icon: <CalendarStar fill="#E1BB44" />,
       },
     ]
@@ -78,20 +80,7 @@ export default function Home() {
         <Section name="hero" className="home-hero h-100 position-relative">
           <TopNav
             links={
-              store && [
-                ...store.navMenu,
-                {
-                  label: "Post a Job",
-                  component: ({ className }) => (
-                    <Button
-                      className={`${className} px-3 my-auto`}
-                      variant="outline-warning"
-                    >
-                      Post a Job
-                    </Button>
-                  ),
-                },
-              ]
+              store && store.navMenu
             }
           />
           <Container className="py-4">
@@ -105,6 +94,7 @@ export default function Home() {
               {heroFeatures.map((item, index) => (
                 <Col xs={6} md={4} lg={3} key={index}>
                   <ResourceIcon
+                    to={item.to}
                     title={item.title}
                     bg={item.bg}
                     icon={item.icon}
@@ -123,29 +113,7 @@ export default function Home() {
                         <h2 className= "exjoSub">from companies hiring locally</h2>
                     </Col>
                 </Row>
-                <Row className="mb-5 mx-auto exjoButtons">
-                    <Col xs={12}>
-                        <Button variant="info">
-                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
-                            design                            
-                        </Button>
-                        <Button variant="primary">
-                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
-                            engineering                           
-                        </Button>
-                        <Button variant="warning">
-                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                            product                            
-                        </Button>
-                    </Col>
-                </Row>
-                <div className="h-scroll">
-                    <div className="h-scroll-inner d-flex flex-row flex-nowrap">
-                        { store && Array.isArray(store.jobs) && store.jobs.map(j => 
-                            <JobCard jobType="product" jobTitle={j.job_title} CompanyLogo={j.company_logo} companyName={j.company_posting} date={j.posted_date}/>
-                        )}
-                    </div>
-                </div>
+                <JobSearch jobs={store  && Array.isArray(store.jobs) ? store.jobs : []} skills={store && Array.isArray(store.skill_pathways) ? store.skill_pathways : []} />
             </Container>
         </Section>
 
@@ -187,7 +155,7 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={store.skill_pathways.find(
+              path={store && store.skill_pathways.find(
                 item => item.skill_pathway_slug === type
               )}
             />
@@ -201,7 +169,7 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={store.skill_pathways.find(
+              path={store && store.skill_pathways.find(
                 item => item.skill_pathway_slug === type
               )}
             />
@@ -215,7 +183,7 @@ export default function Home() {
                 <h1 className="mb-3 coachTitle">
                   Virtual <span>Career Coaching</span>
                 </h1>
-                <h2 className="coachSub">guiding your job search process</h2>
+                <h2 className="coachSub">take control of your job search</h2>
               </Col>
             </Row>
             <Row>
@@ -228,15 +196,15 @@ export default function Home() {
               </Col>
               <Col md={6} className="descSec">
                 <h3>
-                  1 ON 1 <span>COACHING</span>
+                  One-on-One <span>Coaching</span>
                 </h3>
                 <hr />
                 <p className="text-left lead">
                   Career changes are tough. Imposter syndrome or fear of the unknown can overwhelm even the most seasoned professional. Sign up to receive free personalized career support by the coaches at Benjamin Douglass. Our experts will provide strategies to help define your search criteria, design your job search collateral and craft your professional story. Our team serves as a partner in accountability, strategy, and motivation.
                 </p>
-                <button type="button" className="btn btn-primary btn-lg">
+                <a href="https://calendly.com/miamitechworkscoach/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
                   Learn More
-                </button>
+                </a>
               </Col>
             </Row>
           </Container>

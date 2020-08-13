@@ -41,15 +41,9 @@
             opacity: 0.75;
         }
 
-        .h-scroll {
-            overflow-y: hidden;
-            overflow-x: auto;
-            .h-scroll-inner {
-                width: 8000px;
-                height: 400px;
-                display: flex;
-                flex-wrap: wrap;
-            }
+        .h-scroll > div {
+            width: 8000px;
+            height: 400px;
         }
     }
 

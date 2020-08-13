@@ -150,6 +150,7 @@ function CourseSyllabusModal(props) {
             <p className="mt-0 mb-5">
               Now that you have completed the last card, get a head start and
               prepare for the item you signed up for.
+              
             </p>
             <a
               className="btn btn-primary btn-lg"
