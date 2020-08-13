@@ -246,7 +246,7 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section name="job-search" className="job-search">
+        {/* <Section name="job-search" className="job-search">
           <div className="container">
             <h2 className="text-left">Want to nail your job search?</h2>
             <h3 className="text-left py-1">
@@ -258,7 +258,7 @@ export default function Home() {
             </p>
             <DownloadGuide className="btn btn-primary btn-lg">Download Guide</DownloadGuide>
           </div>
-        </Section>
+        </Section> */}
 
         <Section name="sponsors" className="section-sponsors">
             <Container>
