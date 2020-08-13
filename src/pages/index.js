@@ -6,11 +6,11 @@ import Layout from "../components/Layout"
 import Section from "../components/Section"
 import Sponsors from "../components/Sponsors"
 import JobSearch from "../components/JobSearch"
+import Workshops from "../components/Workshops"
 import KeySkillsDesktop from "../components/KeySkillsDesktop"
 import KeySkillsMobile from "../components/KeySkillsMobile"
 import { TopNav } from "../components/TopNav"
 import ResourceIcon from "../components/ResourceIcon"
-import EventsCard from "../components/eventsCard"
 import {Button, Badge, CardDeck} from "react-bootstrap"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -23,13 +23,20 @@ import CalendarStar from "../images/calendar-star.svg"
 import ChartNetwork from "../images/chart-network.svg"
 import CommentPlus from "../images/comment-plus.svg"
 
+const breakpoint = (width) => {
+    if(width < 350) return "xs";
+    if(width < 576) return "sm";
+    if(width < 768) return "md";
+    if(width < 992) return "lg";
+    return "xl";
+}
 export default function Home() {
     const { store, actions } = useContext(Context)
     const [skill,setSkill] = useState(null);
     const [type, setType] = useState("cloud-computing")
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
-    console.log("Show width: ", width);
+
     const keySkillsMenu = store &&
       (
         store.skill_pathways.map(item =>
@@ -116,7 +123,7 @@ export default function Home() {
                 </Row>
             </Container>
             <JobSearch 
-                showCount={width < 350 ? 1 : width < 500 ? 1 : width < 1080 ? 2 : 3}
+                width={width}
                 jobs={store  && Array.isArray(store.jobs) ? store.jobs : []} 
                 skills={store && Array.isArray(store.skill_pathways) ? store.skill_pathways : []} 
             />
@@ -232,22 +239,12 @@ export default function Home() {
                 <h2 className="workshopTitle">Upcoming Workshops</h2>
               </Col>
             </Row>
-            <div className="h-scroll">
-                <div className="h-scroll-inner d-flex flex-row flex-nowrap">
-                    { store && Array.isArray(store.events) && store.events.map(ev => <EventsCard
-                            date={ev.event_date}
-                            time={ev.event_start_time}
-                            eventName={ev.event_title}
-                            speakerName={ev.speaker_name}
-                            eventImage={ev.event_img_file_path}
-                            companyImage={ev.company_logo_file_path}
-                            speakerPosition={ev.speaker_job_title}
-                            comingFrom={ev.event_organizer}
-                        />)
-                    }
-                </div>
-            </div>
           </Container>
+
+            <Workshops 
+                width={width}
+                events={store && Array.isArray(store.events) ? store.events : []} 
+            />
         </Section>
 
         {/* <Section name="job-search" className="job-search">

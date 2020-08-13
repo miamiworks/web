@@ -14,11 +14,11 @@ const slice = function(str, length=50, ending='...'){
   if (str.charAt(length) === ' ') return truncated;
   return truncated.substr(0, truncated.lastIndexOf(' '));
 }
-export default function JobCard ({ jobTitle, companyName, date, CompanyLogo, url, skill }) {
+export default function JobCard ({ jobTitle, companyName, date, CompanyLogo, url, skill, style }) {
     var now = dayjs()
     let _date = dayjs(date);
     return (
-        <a className="card exjoCard" href={url} target="_blank" rel="noopener noreferrer">
+        <a className="card exjoCard" href={url} target="_blank" rel="noopener noreferrer" style={style || {}}>
             <div className="card-body">
                 <SkillToggle skill={skill} />
                 <h5 className="card-title jobTitle">{slice(jobTitle)}</h5>
