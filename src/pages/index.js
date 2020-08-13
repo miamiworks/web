@@ -1,4 +1,4 @@
-import React,{useState,useContext} from "react"
+import React,{useState,useContext,useEffect} from "react"
 import { Context } from "../store/appContext"
 import { isMobile } from "react-device-detect"
 import {useWindowSize} from "../utils/hooks"
@@ -27,12 +27,27 @@ import CommentPlus from "../images/comment-plus.svg"
 export default function Home() {
     const { store, actions } = useContext(Context)
     const [skill,setSkill] = useState(null);
-    const [type,setType] = useState("software-engineering");
+    const [type, setType] = useState("cloud-computing")
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
-    
+    const keySkillsMenu =
+      (
+        store &&
+        store.skill_pathways.map(item =>
+          Object.assign(
+            {},
+            {
+              label: item.skill_pathway_name,
+              key: item.skill_pathway_slug,
+            }
+          )
+        )
+      ).sort((a, b) =>
+        a.label.localeCompare(b.label, "en", { sensitivity: "base" })
+      ) || []
     const meta = store && store.homepageData.meta || []
-    const keySkillsMenu = store && store.homepageData.keySkillsMenu || []
+    
+          
     const heroFeatures = [
       {
         title: "Job Postings",
@@ -61,7 +76,24 @@ export default function Home() {
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
         <Section name="hero" className="home-hero h-100 position-relative">
-          <TopNav links={store && [...store.navMenu,{label: "Post a Job", component: ({ className }) => <Button className={`${className} px-3 my-auto`} variant="outline-warning">Post a Job</Button>}]} />
+          <TopNav
+            links={
+              store && [
+                ...store.navMenu,
+                {
+                  label: "Post a Job",
+                  component: ({ className }) => (
+                    <Button
+                      className={`${className} px-3 my-auto`}
+                      variant="outline-warning"
+                    >
+                      Post a Job
+                    </Button>
+                  ),
+                },
+              ]
+            }
+          />
           <Container className="py-4">
             <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
@@ -84,40 +116,55 @@ export default function Home() {
         </Section>
 
         <Section name="jobs" className="explore-jobs">
-            <Container className="exjob">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you`ll love</span></h1>
-                        <h2 className= "exjoSub">from companies hiring locally</h2>
-                    </Col>
-                </Row>
-                <Row className="mb-5 mx-auto exjoButtons">
-                    <Col xs={12}>
-                        <Button variant="info">
-                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
-                            Design                            
-                        </Button>
-                        <Button variant="primary">
-                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
-                            engineering                           
-                        </Button>
-                        <Button variant="warning">
-                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                            product                            
-                        </Button>
-                    </Col>
-                </Row>
-                <div className="h-scroll">
-                    <div className="h-scroll-inner">
-                        { store.jobs && store.jobs.map(j => 
-                            <JobCard jobType="product" jobTitle={j.job_title} companyName={j.company_posting} date={j.posted_date}/>
-                        )}
-                    </div>
-                </div>
-            </Container>
+          <Container className="exjob">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 exjoTitle">
+                  Explore <span>jobs you`ll love</span>
+                </h1>
+                <h2 className="exjoSub">from companies hiring locally</h2>
+              </Col>
+            </Row>
+            <Row className="mb-5 mx-auto exjoButtons">
+              <Col xs={12}>
+                <Button variant="info">
+                  <Badge pill variant="light" className="mr-1 buttonGreen">
+                    &nbsp;
+                  </Badge>
+                  Design
+                </Button>
+                <Button variant="primary">
+                  <Badge pill variant="light" className="mr-1 buttonBlue">
+                    &nbsp;
+                  </Badge>
+                  engineering
+                </Button>
+                <Button variant="warning">
+                  <Badge pill variant="light" className="mr-1 buttonYellow">
+                    &nbsp;
+                  </Badge>
+                  product
+                </Button>
+              </Col>
+            </Row>
+            <div className="h-scroll">
+              <div className="h-scroll-inner">
+                {store.jobs &&
+                  store.jobs.map(j => (
+                    <JobCard
+                      jobType="product"
+                      jobTitle={j.job_title}
+                      companyName={j.company_posting}
+                      date={j.posted_date}
+                    />
+                  ))}
+              </div>
+            </div>
+          </Container>
         </Section>
 
-        <Section name="career"
+        <Section
+          name="career"
           className={
             width <= 1080 || isMobile
               ? "key-skills mobile d-flex flex-column align-items-center justify-content-center py-5"
@@ -154,7 +201,9 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={keySkillsMenu.find(item => item.key === type)}
+              path={store.skill_pathways.find(
+                item => item.skill_pathway_slug === type
+              )}
             />
           ) : (
             <KeySkillsDesktop
@@ -166,7 +215,9 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={keySkillsMenu.find(item => item.key === type)}
+              path={store.skill_pathways.find(
+                item => item.skill_pathway_slug === type
+              )}
             />
           )}
         </Section>
@@ -229,19 +280,21 @@ export default function Home() {
               </Col>
             </Row>
             <div className="event-scroll">
-                <div className="event-scroll-inner">
-                    { store.events && store.events.map(ev => <EventsCard
-                            date={ev.event_date}
-                            time={ev.event_start_time}
-                            eventName={ev.event_title}
-                            speakerName={ev.speaker_name}
-                            eventImage={ev.event_img_file_path}
-                            companyImage={ev.company_logo_file_path}
-                            speakerPosition={ev.speaker_job_title}
-                            comingFrom={ev.event_organizer}
-                        />)
-                    }
-                </div>
+              <div className="event-scroll-inner">
+                {store.events &&
+                  store.events.map(ev => (
+                    <EventsCard
+                      date={ev.event_date}
+                      time={ev.event_start_time}
+                      eventName={ev.event_title}
+                      speakerName={ev.speaker_name}
+                      eventImage={ev.event_img_file_path}
+                      companyImage={ev.company_logo_file_path}
+                      speakerPosition={ev.speaker_job_title}
+                      comingFrom={ev.event_organizer}
+                    />
+                  ))}
+              </div>
             </div>
           </Container>
         </Section>
@@ -261,16 +314,16 @@ export default function Home() {
         </Section> */}
 
         <Section name="sponsors" className="section-sponsors">
-            <Container>
+          <Container>
             <h2 className="text-center">MiamiTech.Works Coalition</h2>
             <h3 className="text-center">Made possible by</h3>
             <div className="mb-2">
-                <img src={beaconURL} />
+              <img src={beaconURL} />
             </div>
             <div className="logos">
-                <Sponsors />
+              <Sponsors />
             </div>
-            </Container>
+          </Container>
         </Section>
       </Layout>
     )

@@ -14,36 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           {label: "Events", to:"#events"},
       ],
       homepageData: {
-        keySkillsMenu:[
-          {
-            label: "Software Engineering",
-            key: "software-engineering",
-          },
-          {
-            label: "UX Design",
-            key: "ux-design",
-          },
-          {
-            label: "Data Science",
-            key: "data-science",
-          },
-          {
-            label: "Cyber Security",
-            key: "cyber-security",
-          },
-          {
-            label: "Digital Marketing",
-            key: "digital-marketing",
-          },
-          {
-            label: "Machine Learning",
-            key: "machine-learning",
-          },
-          {
-            label: "IT Administration",
-            key: "it-administration",
-          },
-        ],
+        keySkillsMenu: [],
         meta: [
           { name: "charset", content: "UTF-8" },
           {
@@ -56,6 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       events: [],
       jobs: [],
       programs: [],
+      skill_pathways: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -64,9 +36,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.get("events")
         actions.get("jobs")
         actions.get("programs")
+        actions.get("skill_pathways")
       },
       get: (type) => {
-        if(!["events", "jobs", "programs"].includes(type)) throw Error("Invalid collection type: ", type);
+        if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
+          throw Error("Invalid collection type: ", type)
         firebase
           .firestore()
           .collection(type)
