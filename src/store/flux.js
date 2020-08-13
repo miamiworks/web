@@ -8,42 +8,13 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       navMenu: [
-          {label: "Jobs", to:"#jobs"},
-          {label: "Career Paths", to:"#career"},
-          {label: "Coaching", to:"#coaching"},
-          {label: "Events", to:"#events"},
+        { label: "Jobs", to: "#jobs" },
+        { label: "Career Paths", to: "#career" },
+        { label: "Coaching", to: "#coaching" },
+        { label: "Events", to: "#events" },
       ],
       homepageData: {
-        keySkillsMenu:[
-          {
-            label: "Software Engineering",
-            key: "software-engineering",
-          },
-          {
-            label: "UX Design",
-            key: "ux-design",
-          },
-          {
-            label: "Data Science",
-            key: "data-science",
-          },
-          {
-            label: "Cyber Security",
-            key: "cyber-security",
-          },
-          {
-            label: "Digital Marketing",
-            key: "digital-marketing",
-          },
-          {
-            label: "Machine Learning",
-            key: "machine-learning",
-          },
-          {
-            label: "IT Administration",
-            key: "it-administration",
-          },
-        ],
+        keySkillsMenu: [],
         meta: [
           { name: "charset", content: "UTF-8" },
           {
@@ -56,6 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       events: [],
       jobs: [],
       programs: [],
+      skill_pathways: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -64,17 +36,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.get("events")
         actions.get("jobs")
         actions.get("programs")
+        actions.get("skill_pathways")
       },
       getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
+        var letters = "0123456789ABCDEF"
+        var color = "#"
         for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+          color += letters[Math.floor(Math.random() * 16)]
         }
-        return color;
-    },
-      get:function (type){
-        if(!["events", "jobs", "programs"].includes(type)) throw Error("Invalid collection type: ", type);
+        return color
+      },
+      get: type => {
+        if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
+          throw Error("Invalid collection type: ", type)
         firebase
           .firestore()
           .collection(type)
@@ -82,13 +56,19 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(querySnapshot => {
             let data = []
             querySnapshot.forEach(doc => {
-              data.push({id: doc.id, ...doc.data()})
+              data.push({ id: doc.id, ...doc.data() })
             })
             console.log(type, data)
             setStore({ [type]: data.slice(0, 15) })
           })
       },
-      submitRequest: async (type, fullName, email, phone, related_id=null) => {
+      submitRequest: async (
+        type,
+        fullName,
+        email,
+        phone,
+        related_id = null
+      ) => {
         return firebase
           .firestore()
           .collection("submissions")
@@ -97,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             email_address: email,
             phone_number: phone,
             type,
-            related_id
+            related_id,
           })
           .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id)
@@ -105,7 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch(function (error) {
             console.error("Error adding document: ", error)
-            return { message: "There was an error saving your request" };
+            return { message: "There was an error saving your request" }
           })
       },
     },

@@ -1,138 +1,144 @@
 @import '../../styles/colors.scss';
 
-.skills-nav {
-    background: rgba($offWhite,0.1);
-    border: 1px solid rgba(#CACACA,0.1);
-    box-sizing: border-box;
-    border-radius: 20px 0px 0px 20px;
-    font-family: sofia-pro, sans-serif;
-    font-style: normal;
-
-    a{
-        color: $grayish;
-        font-size: 1.25rem;
-        line-height: 31px;
-
-        &.active{
-            font-weight: bold;
-            color: $offWhite;
-            text-decoration: underline;
-        }
-    }
-}
-
-.right-container{
-    background: #171838;
-    border-radius: 10px;
-    min-height: 400px;
-}
-
-.skills-provider-logo{
-    height: 50px;
-    width: auto;
-    object-fit: contain;
-}
-
-.software-eng-img {
-    color: $offWhite;
-    background: url('../../images/software-engineering.png') no-repeat center;
-    background-size: cover;
-    border-radius: 20px 0px 0px 20px;
-    &.course-detail{
-        border-radius: 10px 0px 0px 10px;
-    }
-    
-    &:before{
-        background: rgba($purple,0.2);
+.key-skills-desktop{
+    .skills-nav {
+        background: rgba($offWhite,0.1);
+        border: 1px solid rgba(#CACACA,0.1);
+        box-sizing: border-box;
         border-radius: 20px 0px 0px 20px;
-    }
+        font-family: sofia-pro, sans-serif;
+        font-style: normal;
 
-    .skills-overlay{
-        background: rgba($deepPurple,0.5);
-        border-radius: 0px 0px 0px 10px;
-        &.course-detail{
-            height: 35%;
-            h3{
-                font-size: 32px;
-                line-height: 38px;
-            }
-        }
-        h3{
-            font-family: neue-haas-grotesk-display, sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 25px;
-            line-height: 30px;
-            margin-bottom: 1.25rem;
-        }
+        a{
+            color: $grayish;
+            font-size: 1.25rem;
+            line-height: 31px;
 
-        p{
-            font-family: sofia-pro, sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 25px;
-            &.skills-overlay-salary{
+            &.active{
                 font-weight: bold;
-                font-size: 20px;
-                line-height: 31px;
+                color: $offWhite;
+                text-decoration: underline;
             }
         }
     }
-
-}
-.right-column{
-    font-family: sofia-pro, sans-serif;
-    border-radius: 0 20px 20px 0;
-    .title{
-        color: $lightYellow;
+    .right-container{
+        background: #171838;
+        border-radius: 10px;
+        max-height: 460px;
+        height: 460px;
     }
-    p{
+
+    .skills-provider-logo{
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .software-eng-img {
         color: $offWhite;
-    }
-
-    &.course-detail{
-        background: $offWhite;
-        padding: 2rem 3rem;
-        border-radius: 0 10px 10px 0;
-        p,.title{
-            color: black;
+        background: url('../../images/software-engineering.png') no-repeat center;
+        background-size: cover;
+        border-radius: 20px 0px 0px 20px;
+        &.course-detail{
+            border-radius: 10px 0px 0px 10px;
+        }
+        
+        &:before{
+            background: rgba($purple,0.2);
+            border-radius: 20px 0px 0px 20px;
         }
 
-        button {
-            min-width: 115px;
-            
-            &.btn-warning,
-            &.btn-warning:not(:disabled):not(.disabled):active, 
-            &.btn-warning:not(:disabled):not(.disabled).active, 
-            .show > .btn-warning.dropdown-toggle{
-                color: white;
-                background: $purple;
-                border-color: $purple;
+        .skills-overlay{
+            background: rgba($deepPurple,0.5);
+            border-radius: 0px 0px 0px 10px;
+            &.course-detail{
+                height: 35%;
+                h3{
+                    font-size: 32px;
+                    line-height: 38px;
+                }
             }
-            &.btn-outline-warning{
-                color: $purple;
-                border-color: $purple;
-                background: white;
-                &:hover{
-                    color: white;
-                    background: $purple;
+            h3{
+                font-family: neue-haas-grotesk-display, sans-serif;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 25px;
+                line-height: 30px;
+                margin-bottom: 1.25rem;
+            }
+
+            p{
+                font-family: sofia-pro, sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 25px;
+                &.skills-overlay-salary{
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 31px;
                 }
             }
         }
 
-        .close-icon {
-            right: 1.15rem;
-            top: 1.15rem;
-            color: #8F8F8F;
-            cursor: pointer;
-            &.svg-inline--fa.fa-w-10{
-                font-size: 1.5rem;
+    }
+    .right-column{
+        font-family: sofia-pro, sans-serif;
+        border-radius: 0 20px 20px 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+        .title{
+            color: $lightYellow;
+        }
+        p{
+            color: $offWhite;
+        }
+
+        &.course-detail{
+            background: $offWhite;
+            padding: 2rem 3rem;
+            border-radius: 0 10px 10px 0;
+            p,.title{
+                color: black;
+            }
+
+            button {
+                min-width: 115px;
+                
+                &.btn-warning,
+                &.btn-warning:not(:disabled):not(.disabled):active, 
+                &.btn-warning:not(:disabled):not(.disabled).active, 
+                .show > .btn-warning.dropdown-toggle{
+                    color: white;
+                    background: $purple;
+                    border-color: $purple;
+                }
+                &.btn-outline-warning{
+                    color: $purple;
+                    border-color: $purple;
+                    background: white;
+                    &:hover{
+                        color: white;
+                        background: $purple;
+                    }
+                }
+            }
+
+            .close-icon {
+                right: 1.15rem;
+                top: 1.15rem;
+                color: #8F8F8F;
+                cursor: pointer;
+                &.svg-inline--fa.fa-w-10{
+                    font-size: 1.5rem;
+                }
             }
         }
-    }
 
+    }
 }
+
 
 .modal-dialog{
     margin: auto;

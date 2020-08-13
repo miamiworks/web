@@ -166,6 +166,19 @@ export default function KeySkillsMobile(props){
     } = props
     const [modalShow, setModalShow] = useState(false)
     const [width, height] = useWindowSize()
+    const { store, actions } = useContext(Context)
+
+    const getCourseProviderCount = () => {
+      let aux =
+        store &&
+        path &&
+        store.programs.map(item => {
+          if (item.program_skill_pathway === path.skill_pathway_name)
+            return item.provider_name
+        })
+      let unique = [...new Set(aux)]
+      return unique.length
+    }
 
     const getContent = () => {
       let content
@@ -181,7 +194,7 @@ export default function KeySkillsMobile(props){
                       className="d-flex flex-column align-items-center justify-content-center"
                     >
                       <div className="circle">
-                        <FontAwesomeIcon size="lg" icon={faArrowLeft} />
+                        <FontAwesomeIcon size="lg" icon={faArrowLeft} onClick={()=>setSkill(null)}/>
                       </div>
                     </Col>
                     <Col className="d-flex flex-column align-items-center justify-content-center">
@@ -285,9 +298,11 @@ export default function KeySkillsMobile(props){
           <Row className="h-100">
             <Col className="software-eng-img p-0 m-0" xs={12}>
               <div className="skills-overlay p-3 w-100 h-100">
-                <h3 className="">{path && path.label}</h3>
+                <h3 className="">{path && path.skill_pathway_name}</h3>
                 <p className="mb-2">Salary range in Miami</p>
-                <p className="skills-overlay-salary">$55-110K per year</p>
+                <p className="skills-overlay-salary">
+                  {path && path.salary_range} per year
+                </p>
               </div>
             </Col>
             <Col className="right-column p-3 h-100">
@@ -295,31 +310,26 @@ export default function KeySkillsMobile(props){
                 <Col>
                   {" "}
                   <h4 className="title">What they do?</h4>
-                  <p>
-                    process of analyzing user requirements and then designing,
-                    building, and testing software application which will
-                    satisfy those requirements
-                  </p>
+                  <p>{path && path.job_description}</p>
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
                   <h4 className="title">What’s the job outlook?</h4>
-                  <p>
-                    process of analyzing user requirements and then designing,
-                    building, and testing software application which will
-                    satisfy those requirements
-                  </p>
+                  <p>{path && path.job_outlook}</p>
                 </Col>
               </Row>
               <Row className="p-3">
                 <Col>
                   <p className="mb-4">
-                    <strong>4 local course providers available</strong>
+                    <strong>
+                      {getCourseProviderCount()} local course providers
+                      available
+                    </strong>
                   </p>
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => path && setSkill(path.label)}
+                    onClick={() => path && setSkill(path.skill_pathway_name)}
                   >
                     See Courses
                   </button>
@@ -341,7 +351,7 @@ export default function KeySkillsMobile(props){
         />
         <Tab.Container
           id={width <= 990 || isMobile ? "skills-mobile" : "skills-desktop"}
-          defaultActiveKey="software-engineering"
+          defaultActiveKey={type}
         >
           <Row>
             <Col xs={12} className="">
