@@ -38,7 +38,7 @@ function CourseSyllabusModal(props) {
         fullName,
         email,
         phone,
-        course.key
+        course.id
       )
       if (!(res instanceof Error)) {
         setSubmitting(false)
@@ -103,17 +103,40 @@ function CourseSyllabusModal(props) {
           <Form onSubmit={e => handleSubmit(e)}>
             <Form.Group controlId="fullName" className="mb-5">
               <Form.Label className="d-block">Full Name</Form.Label>
-              <Form.Control type="text" placeholder="" size="lg" required />
+              <Form.Control
+                type="text"
+                placeholder=""
+                size="lg"
+                required
+                onChange={e => setFullName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="emailAddress" className="mb-5">
               <Form.Label className="d-block">Email address</Form.Label>
-              <Form.Control type="email" placeholder="" size="lg" required />
+              <Form.Control
+                type="email"
+                placeholder=""
+                size="lg"
+                required
+                onChange={e => setEmail(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="telephone" className="mb-5">
               <Form.Label className="d-block">
                 Phone Number <span className="text-muted">(optional)</span>
               </Form.Label>
-              <Form.Control type="tel" placeholder="" size="lg" />
+              <Form.Control
+                type="tel"
+                placeholder=""
+                size="lg"
+                onChange={e => setPhone(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-5">
+              <Form.Control type="text" hidden value={error} />
+              <Form.Control.Feedback type="invalid">
+                {error}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Button variant="primary" size="lg" type="submit" block>
