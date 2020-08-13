@@ -116,51 +116,37 @@ export default function Home() {
         </Section>
 
         <Section name="jobs" className="explore-jobs">
-          <Container className="exjob">
-            <Row className="mb-5 mx-auto">
-              <Col xs={12}>
-                <h1 className="mb-3 exjoTitle">
-                  Explore <span>jobs you`ll love</span>
-                </h1>
-                <h2 className="exjoSub">from companies hiring locally</h2>
-              </Col>
-            </Row>
-            <Row className="mb-5 mx-auto exjoButtons">
-              <Col xs={12}>
-                <Button variant="info">
-                  <Badge pill variant="light" className="mr-1 buttonGreen">
-                    &nbsp;
-                  </Badge>
-                  Design
-                </Button>
-                <Button variant="primary">
-                  <Badge pill variant="light" className="mr-1 buttonBlue">
-                    &nbsp;
-                  </Badge>
-                  engineering
-                </Button>
-                <Button variant="warning">
-                  <Badge pill variant="light" className="mr-1 buttonYellow">
-                    &nbsp;
-                  </Badge>
-                  product
-                </Button>
-              </Col>
-            </Row>
-            <div className="h-scroll">
-              <div className="h-scroll-inner">
-                {store.jobs &&
-                  store.jobs.map(j => (
-                    <JobCard
-                      jobType="product"
-                      jobTitle={j.job_title}
-                      companyName={j.company_posting}
-                      date={j.posted_date}
-                    />
-                  ))}
-              </div>
-            </div>
-          </Container>
+            <Container className="exjob">
+                <Row className="mb-5 mx-auto">
+                    <Col xs={12}>
+                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you`ll love</span></h1>
+                        <h2 className= "exjoSub">from companies hiring locally</h2>
+                    </Col>
+                </Row>
+                <Row className="mb-5 mx-auto exjoButtons">
+                    <Col xs={12}>
+                        <Button variant="info">
+                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
+                            design                            
+                        </Button>
+                        <Button variant="primary">
+                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
+                            engineering                           
+                        </Button>
+                        <Button variant="warning">
+                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
+                            product                            
+                        </Button>
+                    </Col>
+                </Row>
+                <div className="h-scroll">
+                    <div className="h-scroll-inner d-flex flex-row flex-nowrap">
+                        { store && Array.isArray(store.jobs) && store.jobs.map(j => 
+                            <JobCard jobType="product" jobTitle={j.job_title} CompanyLogo={j.company_logo} companyName={j.company_posting} date={j.posted_date}/>
+                        )}
+                    </div>
+                </div>
+            </Container>
         </Section>
 
         <Section
@@ -246,15 +232,9 @@ export default function Home() {
                 </h3>
                 <hr />
                 <p className="text-left lead">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  volutpat ut nunc at ultricies. Cras massa lacus, maximus id
-                  ligula sed, porttitor ultrices magna. Sed sed consequat magna.
-                  Integer vulputate augue metus, a viverra odio tristique ut.
-                  Proin efficitur neque vitae nisi dictum efficitur. In mi leo,
-                  finibus nec porttitor vitae, cursus eu tortor. Nam vitae odio
-                  eu neque scelerisque porttitor.
+                  Career changes are tough. Imposter syndrome or fear of the unknown can overwhelm even the most seasoned professional. Sign up to receive free personalized career support by the coaches at Benjamin Douglass. Our experts will provide strategies to help define your search criteria, design your job search collateral and craft your professional story. Our team serves as a partner in accountability, strategy, and motivation.
                 </p>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-primary btn-lg">
                   Learn More
                 </button>
               </Col>
@@ -279,22 +259,20 @@ export default function Home() {
                 <h2 className="workshopTitle">Upcoming Workshops</h2>
               </Col>
             </Row>
-            <div className="event-scroll">
-              <div className="event-scroll-inner">
-                {store.events &&
-                  store.events.map(ev => (
-                    <EventsCard
-                      date={ev.event_date}
-                      time={ev.event_start_time}
-                      eventName={ev.event_title}
-                      speakerName={ev.speaker_name}
-                      eventImage={ev.event_img_file_path}
-                      companyImage={ev.company_logo_file_path}
-                      speakerPosition={ev.speaker_job_title}
-                      comingFrom={ev.event_organizer}
-                    />
-                  ))}
-              </div>
+            <div className="h-scroll">
+                <div className="h-scroll-inner d-flex flex-row flex-nowrap">
+                    { store && Array.isArray(store.events) && store.events.map(ev => <EventsCard
+                            date={ev.event_date}
+                            time={ev.event_start_time}
+                            eventName={ev.event_title}
+                            speakerName={ev.speaker_name}
+                            eventImage={ev.event_img_file_path}
+                            companyImage={ev.company_logo_file_path}
+                            speakerPosition={ev.speaker_job_title}
+                            comingFrom={ev.event_organizer}
+                        />)
+                    }
+                </div>
             </div>
           </Container>
         </Section>

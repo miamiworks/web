@@ -3,7 +3,6 @@
         background-size: cover;
         display: flex;
         padding: 40px 0px;
-        min-height: 100vh;
 
         .eventContainer {
             padding-top: 66px;
@@ -42,12 +41,14 @@
             opacity: 0.75;
         }
 
-        .event-scroll {
+        .h-scroll {
             overflow-y: hidden;
             overflow-x: auto;
-            .event-scroll-inner {
-                width: 3500px;
-                height: 396px;
+            .h-scroll-inner {
+                width: 8000px;
+                height: 400px;
+                display: flex;
+                flex-wrap: wrap;
             }
         }
     }

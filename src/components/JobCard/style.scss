@@ -1,22 +1,30 @@
 .card.exjoCard {
-    width: 350px;
+    width: 500px;
+    height: 230px;
     display: inline-block;
     margin-right: 10px;
     background: #FDFFFF;
     border: 1px solid #CACACA;
     box-sizing: border-box;
     border-radius: 20px;
+    position: relative;
     .jobTitle {
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 37px;
         color: #171838;
-        margin-bottom: 1.75rem;
-        margin-top: 1.75rem;
     }
-    .postStyle {
-        margin-top: 2px;
+    .logo{
+        max-height: 50px;
+        max-width: 50px;
+    }
+    .date{ float: right; }
+    .bottom{
+        position: absolute;
+        padding-right: 40px;
+        width: 100%;
+        bottom: 20px;
     }
 }
 

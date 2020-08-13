@@ -8,10 +8,10 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       navMenu: [
-          {label: "Jobs", to:"#jobs"},
-          {label: "Career Paths", to:"#career"},
-          {label: "Coaching", to:"#coaching"},
-          {label: "Events", to:"#events"},
+        { label: "Jobs", to: "#jobs" },
+        { label: "Career Paths", to: "#career" },
+        { label: "Coaching", to: "#coaching" },
+        { label: "Events", to: "#events" },
       ],
       homepageData: {
         keySkillsMenu: [],
@@ -38,7 +38,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.get("programs")
         actions.get("skill_pathways")
       },
-      get: (type) => {
+      getRandomColor() {
+        var letters = "0123456789ABCDEF"
+        var color = "#"
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)]
+        }
+        return color
+      },
+      get: type => {
         if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
           throw Error("Invalid collection type: ", type)
         firebase
@@ -48,13 +56,19 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(querySnapshot => {
             let data = []
             querySnapshot.forEach(doc => {
-              data.push({id: doc.id, ...doc.data()})
+              data.push({ id: doc.id, ...doc.data() })
             })
             console.log(type, data)
-            setStore({ [type]: data })
+            setStore({ [type]: data.slice(0, 15) })
           })
       },
-      submitRequest: async (type, fullName, email, phone, related_id=null) => {
+      submitRequest: async (
+        type,
+        fullName,
+        email,
+        phone,
+        related_id = null
+      ) => {
         return firebase
           .firestore()
           .collection("submissions")
@@ -63,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             email_address: email,
             phone_number: phone,
             type,
-            related_id
+            related_id,
           })
           .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id)
@@ -71,7 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch(function (error) {
             console.error("Error adding document: ", error)
-            return { message: "There was an error saving your request" };
+            return { message: "There was an error saving your request" }
           })
       },
     },
