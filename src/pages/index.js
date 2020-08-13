@@ -1,4 +1,4 @@
-import React,{useState,useContext} from "react"
+import React,{useState,useContext,useEffect} from "react"
 import { Context } from "../store/appContext"
 import { isMobile } from "react-device-detect"
 import {useWindowSize} from "../utils/hooks"
@@ -27,12 +27,27 @@ import CommentPlus from "../images/comment-plus.svg"
 export default function Home() {
     const { store, actions } = useContext(Context)
     const [skill,setSkill] = useState(null);
-    const [type,setType] = useState("software-engineering");
+    const [type, setType] = useState("cloud-computing")
     const [course,setCourse] = useState(null);
     const [width,height] = useWindowSize();
-    
+    const keySkillsMenu =
+      (
+        store &&
+        store.skill_pathways.map(item =>
+          Object.assign(
+            {},
+            {
+              label: item.skill_pathway_name,
+              key: item.skill_pathway_slug,
+            }
+          )
+        )
+      ).sort((a, b) =>
+        a.label.localeCompare(b.label, "en", { sensitivity: "base" })
+      ) || []
     const meta = store && store.homepageData.meta || []
-    const keySkillsMenu = store && store.homepageData.keySkillsMenu || []
+    
+          
     const heroFeatures = [
       {
         title: "Job Postings",
@@ -60,14 +75,25 @@ export default function Home() {
 
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
-        <TopNav links={[
-            {label: "Jobs", to:"#jobs"},
-            {label: "Career Paths", to:"#career"},
-            {label: "Coaching", to:"#coaching"},
-            {label: "Resources", to:"#events"},
-            {label: "Post a Job", component: ({ className }) => <Button className={`${className} px-3`} variant="outline-warning">Post a Job</Button>},
-        ]} />
         <Section name="hero" className="home-hero h-100 position-relative">
+          <TopNav
+            links={
+              store && [
+                ...store.navMenu,
+                {
+                  label: "Post a Job",
+                  component: ({ className }) => (
+                    <Button
+                      className={`${className} px-3 my-auto`}
+                      variant="outline-warning"
+                    >
+                      Post a Job
+                    </Button>
+                  ),
+                },
+              ]
+            }
+          />
           <Container className="py-4">
             <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
@@ -123,7 +149,8 @@ export default function Home() {
             </Container>
         </Section>
 
-        <Section name="career"
+        <Section
+          name="career"
           className={
             width <= 1080 || isMobile
               ? "key-skills mobile d-flex flex-column align-items-center justify-content-center py-5"
@@ -160,7 +187,9 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={keySkillsMenu.find(item => item.key === type)}
+              path={store.skill_pathways.find(
+                item => item.skill_pathway_slug === type
+              )}
             />
           ) : (
             <KeySkillsDesktop
@@ -172,7 +201,9 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={keySkillsMenu.find(item => item.key === type)}
+              path={store.skill_pathways.find(
+                item => item.skill_pathway_slug === type
+              )}
             />
           )}
         </Section>
@@ -246,7 +277,7 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section name="job-search" className="job-search">
+        {/* <Section name="job-search" className="job-search">
           <div className="container">
             <h2 className="text-left">Want to nail your job search?</h2>
             <h3 className="text-left py-1">
@@ -258,19 +289,19 @@ export default function Home() {
             </p>
             <DownloadGuide className="btn btn-primary btn-lg">Download Guide</DownloadGuide>
           </div>
-        </Section>
+        </Section> */}
 
         <Section name="sponsors" className="section-sponsors">
-            <Container>
+          <Container>
             <h2 className="text-center">MiamiTech.Works Coalition</h2>
             <h3 className="text-center">Made possible by</h3>
             <div className="mb-2">
-                <img src={beaconURL} />
+              <img src={beaconURL} />
             </div>
             <div className="logos">
-                <Sponsors />
+              <Sponsors />
             </div>
-            </Container>
+          </Container>
         </Section>
       </Layout>
     )

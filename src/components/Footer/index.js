@@ -10,7 +10,9 @@ export const Footer = () => {
     return (
         <footer className="footer bg-primary text-white py-4">
             <div className="container row mx-auto">
-                <div className="col-4 col-md-3 text-left">Legal</div>
+                <div className="col-4 col-md-3 text-left">
+                    <a href="https://www.beaconcouncil.com/terms-conditions/" target="_blank" rel="noopener noreferrer">Legal</a>
+                </div>
                 <div className="col-4 col-md-6 text-center made-miami">Made in Miami 🌴</div>
                 <div className="col-4 col-md-3 text-right">{new Date().getFullYear()} MiamiTech.Works</div>
             </div>

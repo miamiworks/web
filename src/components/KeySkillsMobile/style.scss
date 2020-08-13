@@ -9,6 +9,11 @@
 }
 
 .key-skills-mobile{
+    .skills-provider-logo{
+        height: 100px;
+        width: auto;
+        object-fit: contain;
+    }
     .skills-nav {
         background: rgba($offWhite,0.1);
         font-family: sofia-pro, sans-serif;
@@ -197,7 +202,8 @@
             }
 
             .close-icon {
-                display: none;
+                top: .75em;
+                right: .75em;
             }
         }
 
