@@ -60,14 +60,8 @@ export default function Home() {
 
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
-        <TopNav links={[
-            {label: "Jobs", to:"#jobs"},
-            {label: "Career Paths", to:"#career"},
-            {label: "Coaching", to:"#coaching"},
-            {label: "Resources", to:"#events"},
-            {label: "Post a Job", component: ({ className }) => <Button className={`${className} px-3`} variant="outline-warning">Post a Job</Button>},
-        ]} />
         <Section name="hero" className="home-hero h-100 position-relative">
+          <TopNav links={store && [...store.navMenu,{label: "Post a Job", component: ({ className }) => <Button className={`${className} px-3 my-auto`} variant="outline-warning">Post a Job</Button>}]} />
           <Container className="py-4">
             <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>

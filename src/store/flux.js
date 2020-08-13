@@ -7,6 +7,12 @@ import "firebase/storage"
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      navMenu: [
+          {label: "Jobs", to:"#jobs"},
+          {label: "Career Paths", to:"#career"},
+          {label: "Coaching", to:"#coaching"},
+          {label: "Resources", to:"#events"},
+      ],
       homepageData: {
         keySkillsMenu:[
           {
