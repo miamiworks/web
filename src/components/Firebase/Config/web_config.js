@@ -1,4 +1,4 @@
-var firebaseConfig = {
+export var firebaseConfig = {
     apiKey: "AIzaSyDvB7byqq6fIgMxMaBz2oZFYK3kjAzQR8k",
     authDomain: "miami-works.firebaseapp.com",
     databaseURL: "https://miami-works.firebaseio.com",

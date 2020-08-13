@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import "./style.scss"
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime'
+import SkillToggle from "../SkillToggle"
 dayjs.extend(relativeTime)
 
 const slice = function(str, length=50, ending='...'){
@@ -19,10 +20,7 @@ export default function JobCard ({ jobTitle, companyName, date, CompanyLogo, url
     return (
         <a className="card exjoCard" href={url} target="_blank" rel="noopener noreferrer">
             <div className="card-body">
-                <Button variant="warning">
-                    <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                    {skill}                           
-                </Button>
+                <SkillToggle skill={skill} />
                 <h5 className="card-title jobTitle">{slice(jobTitle)}</h5>
                 <div className="bottom">
                     <div className="date float-right">{_date.from(now)}</div>

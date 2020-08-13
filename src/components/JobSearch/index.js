@@ -1,24 +1,9 @@
 import React from "react"
 import JobCard from "../JobCard"
+import SkillToggle from "../SkillToggle"
 import {Button, Badge} from "react-bootstrap"
-import "./style.scss"
 
-const SkillToggle = ({ active, skill, onClick }) => {
-    if(!skill) return "Loading...";
-    return <Button variant="info" className={`skill-toggle mr-2 ${active ? "active" : "innactive"}`}
-        style={{ 
-            background: active ? `#${skill.skill_pathway_circle_color}` : `#${skill.skill_pathway_background_color}`
-        }}
-        onClick={() => onClick && onClick(skill)}
-        >
-        <Badge 
-            style={{ 
-                background: active ? `#${skill.skill_pathway_background_color}` : `#${skill.skill_pathway_circle_color}`
-            }} 
-            pill className="buttonGreen">&nbsp;</Badge> 
-        {skill.skill_pathway_name}                            
-    </Button>  
-}
+import "./style.scss"
 
 const JobSearch = ({ jobs, skills }) => {
     const [ tags, setTags ] = React.useState([]);
@@ -49,7 +34,11 @@ const JobSearch = ({ jobs, skills }) => {
                         jobTitle={j.job_title} 
                         CompanyLogo={j.company_logo} 
                         companyName={j.company_posting} 
-                        skill={j.skill_pathway} 
+                        skill={{
+                            skill_pathway_name: j.skill_pathway,
+                            skill_pathway_background_color: j.skill_pathway_background_color,
+                            skill_pathway_circle_color: j.skill_pathway_circle_color
+                        }} 
                         url={j.job_url} 
                         date={j.posted_date}
                     />

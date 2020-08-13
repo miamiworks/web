@@ -113,7 +113,10 @@ export default function Home() {
                         <h2 className= "exjoSub">from companies hiring locally</h2>
                     </Col>
                 </Row>
-                <JobSearch jobs={store  && Array.isArray(store.jobs) ? store.jobs : []} skills={store && Array.isArray(store.skill_pathways) ? store.skill_pathways : []} />
+                <JobSearch 
+                    jobs={store  && Array.isArray(store.jobs) ? store.jobs : []} 
+                    skills={store && Array.isArray(store.skill_pathways) ? store.skill_pathways : []} 
+                />
             </Container>
         </Section>
 

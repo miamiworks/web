@@ -9,7 +9,6 @@
     ]
   },
   "hosting": {
-    "site": "miami-works-dev",
     "public": "public",
     "ignore": [
       "firebase.json",

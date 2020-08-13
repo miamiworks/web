@@ -1,0 +1,16 @@
+.skill-toggle{
+    &.active{
+        .badge{
+            float: right;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+    }
+    &.innactive{
+        .badge{
+            float: left;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+    }
+}

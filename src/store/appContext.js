@@ -5,7 +5,7 @@ import "firebase/firestore"
 import "firebase/analytics"
 import "firebase/auth"
 import "firebase/storage"
-import {firebaseConfig} from "../components/Firebase/Config/dev_config"
+import {firebaseConfig} from "../components/Firebase/Config/web_config"
 
 export const Context = React.createContext(false);
 
