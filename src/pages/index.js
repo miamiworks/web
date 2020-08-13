@@ -114,9 +114,9 @@ export default function Home() {
                     </Col>
                 </Row>
                 <div className="h-scroll">
-                    <div className="h-scroll-inner">
+                    <div className="h-scroll-inner d-flex flex-row flex-nowrap">
                         { store && Array.isArray(store.jobs) && store.jobs.map(j => 
-                            <JobCard jobType="product" jobTitle={j.job_title} companyName={j.company_posting} date={j.posted_date}/>
+                            <JobCard jobType="product" jobTitle={j.job_title} CompanyLogo={j.company_logo} companyName={j.company_posting} date={j.posted_date}/>
                         )}
                     </div>
                 </div>
@@ -228,8 +228,8 @@ export default function Home() {
                 <h2 className="workshopTitle">Upcoming Workshops</h2>
               </Col>
             </Row>
-            <div className="event-scroll">
-                <div className="event-scroll-inner">
+            <div className="h-scroll">
+                <div className="h-scroll-inner d-flex flex-row flex-nowrap">
                     { store && Array.isArray(store.events) && store.events.map(ev => <EventsCard
                             date={ev.event_date}
                             time={ev.event_start_time}

@@ -78,12 +78,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             querySnapshot.forEach(doc => {
               data.push(doc.data())
             })
-            if (type=="jobs"){
-                let tags = [...new Set(data.map(j=>j.skill_pathway))].map(skill=>({
-                    name:skill,color: this.getRandomColor()
-                }))
-                setStore({ skill:tags })
-            }
             console.log(type, data)
             setStore({ [type]: data.slice(0, 15) })
           })
