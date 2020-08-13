@@ -59,7 +59,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions.get("jobs")
         actions.get("programs")
       },
-      get: (type) => {
+      getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    },
+      get:function (type){
         if(!["events", "jobs", "programs"].includes(type)) throw Error("Invalid collection type: ", type);
         firebase
           .firestore()
@@ -70,8 +78,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             querySnapshot.forEach(doc => {
               data.push(doc.data())
             })
+            if (type=="jobs"){
+                let tags = [...new Set(data.map(j=>j.skill_pathway))].map(skill=>({
+                    name:skill,color: this.getRandomColor()
+                }))
+                setStore({ skill:tags })
+            }
             console.log(type, data)
-            setStore({ [type]: data })
+            setStore({ [type]: data.slice(0, 15) })
           })
       },
       submitRequest: async (type, fullName, email, phone, related_id=null) => {

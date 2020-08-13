@@ -46,8 +46,10 @@
             overflow-y: hidden;
             overflow-x: auto;
             .event-scroll-inner {
-                width: 3500px;
-                height: 396px;
+                width: 7598px;
+                height: 443px;
+                display: flex;
+                flex-wrap: wrap;
             }
         }
     }

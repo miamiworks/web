@@ -5,7 +5,7 @@ import { faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.scss"
 
-export default function EventsCard ({ date, time, eventName, speakerNam, speakerPosition, comingFrom, eventImage }) {
+export default function EventsCard ({ date, time, eventName, speakerNam, speakerPosition, comingFrom, eventImage, companyImage }) {
     return (
         <div className="card event" style={{maxWidth: "32rem"}}>
             <FireImage name={eventImage} alt={"Event alt"} className="card-img-top" />
@@ -15,10 +15,12 @@ export default function EventsCard ({ date, time, eventName, speakerNam, speaker
             </div>
             <div className="card-body">
                 <h5 className="card-title evenTitle">{eventName}</h5>
-                <p className="card-text eventNam">{speakerNam}</p>
-                <p className="card-text eventSub">{speakerPosition}</p>
-                <h5 className="card-title eventBold">{comingFrom}</h5>
-                <button type="button" className="btn btn-warning">Learn More</button>
+                <div className="event-call-action">
+                    <p className="card-text eventNam">{speakerNam}</p>
+                    <p className="card-text eventSub">{speakerPosition}</p>
+                    <h5 className="card-title"> <FireImage name={companyImage} alt={"Event alt"} /></h5>
+                    <button type="button" className="btn btn-warning">Learn More</button>
+                </div>
             </div>
         </div>           
     )
