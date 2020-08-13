@@ -2,11 +2,11 @@
         background: url("../images/CoachingBg.png") no-repeat;
         background-size: cover;
         display: flex;
-        padding: 20px 0px;
-        min-height: 100vh;
+        // padding: 20px 0px;
+        min-height: 90vh;
 
         .coachingSec {
-            padding-top: 66px;
+            padding-top: 50px;
         }
 
         h1.coachTitle {
@@ -33,11 +33,11 @@
         }
 
         .col-md-6.bubbleSec {
-            margin-top: 102px;
+            margin-top: 100px;
         }
         
         .col-md-6.descSec {
-            margin-top: 102px;
+            margin-top: 100px;
         }
 
         h3 {
@@ -106,6 +106,15 @@
 
         .exjob {
             margin-top: 75px;
+        }
+
+        .coachingSec {
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        .col-md-6.descSec {
+            margin-top: 50px;
         }
     }
 }
