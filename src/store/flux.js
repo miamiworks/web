@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(querySnapshot => {
             let data = []
             querySnapshot.forEach(doc => {
-              data.push(doc.data())
+              data.push({id: doc.id, ...doc.data()})
             })
             console.log(type, data)
             setStore({ [type]: data })
