@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           {label: "Jobs", to:"#jobs"},
           {label: "Career Paths", to:"#career"},
           {label: "Coaching", to:"#coaching"},
-          {label: "Resources", to:"#events"},
+          {label: "Events", to:"#events"},
       ],
       homepageData: {
         keySkillsMenu:[
