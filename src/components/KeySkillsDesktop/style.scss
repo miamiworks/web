@@ -27,6 +27,12 @@
     min-height: 400px;
 }
 
+.skills-provider-logo{
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
 .software-eng-img {
     color: $offWhite;
     background: url('../../images/software-engineering.png') no-repeat center;

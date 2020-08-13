@@ -25,9 +25,9 @@ const FireImage = ({ name, ...rest }) => {
 }
 
 FireImage.propTypes = {
-    name: PropTypes.string,
+    name: PropTypes.string
 }
 FireImage.defaultProps = {
-    name: "",
+  name: ""
 }
 export default FireImage;

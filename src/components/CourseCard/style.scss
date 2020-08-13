@@ -30,6 +30,12 @@
         }
     }
 
+    .skills-provider-logo{
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+    }
+
     &.mobile {
         border: none  !important;
         border-radius: 10px;

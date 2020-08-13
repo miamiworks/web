@@ -7,6 +7,12 @@ import "firebase/storage"
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      navMenu: [
+          {label: "Jobs", to:"#jobs"},
+          {label: "Career Paths", to:"#career"},
+          {label: "Coaching", to:"#coaching"},
+          {label: "Events", to:"#events"},
+      ],
       homepageData: {
         keySkillsMenu:[
           {
@@ -76,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(querySnapshot => {
             let data = []
             querySnapshot.forEach(doc => {
-              data.push(doc.data())
+              data.push({id: doc.id, ...doc.data()})
             })
             console.log(type, data)
             setStore({ [type]: data.slice(0, 15) })

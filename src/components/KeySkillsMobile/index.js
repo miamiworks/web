@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faArrowLeft, faTimes } from "@fortawesome/free-solid-svg-icons"
 import cardTopImg from "../../images/cardTopClass.png"
+import FireImage from "../FireImage"
 import "./style.scss"
 
 function CourseSyllabusModal(props) {
@@ -203,9 +204,9 @@ export default function KeySkillsMobile(props){
                         <CourseCard
                           topImgAlt=""
                           topImg={cardTopImg}
-                          logoSrc={item.provider_logo_url}
+                          logo={item.provider_logo_file_path}
                           title={item.program_name}
-                          provider={item.provider_name_}
+                          provider={item.provider_name}
                           timeframe={`${item.program_duration_amount} ${item.program_duration_units}`}
                           buttonText="Learn More"
                           setter={setCourse}
@@ -250,15 +251,15 @@ export default function KeySkillsMobile(props){
                       {`${course.program_duration_amount} ${course.program_duration_units}`}
                     </Col>
                     <Col>
-                      <img
-                        src={course.provider_logo_url}
-                        alt={course.provider_name_}
-                        className="float-right"
+                      <FireImage
+                        name={course.provider_logo_file_path}
+                        alt={course.provider_name}
+                        className="float-right skills-provider-logo"
                       />
                     </Col>
                   </Row>
                   <h4 className="title">Course Description</h4>
-                  <p>{course.program_description_}</p>
+                  <p>{course.program_description}</p>
                 </Col>
               </Row>
 

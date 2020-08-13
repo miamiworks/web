@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { isMobile } from "react-device-detect"
 import { useWindowSize } from "../../utils/hooks"
+import FireImage from "../FireImage"
 import Card from "react-bootstrap/Card"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -10,9 +11,9 @@ import Button from "react-bootstrap/Button"
 import "./style.scss"
 
 export default function CourseCard(props){
-    const {topImgAlt,topImg,logoSrc,title,timeframe,buttonText,setter,value,provider} = props;
+    const {topImgAlt,topImg,logo,title,timeframe,buttonText,setter,value,provider} = props;
     const [width, height] = useWindowSize()
-
+    console.log("provider", provider)
     const getMobileContent = ()=>{
       return (
         <Row className="h-100 no-gutters">
@@ -41,7 +42,11 @@ export default function CourseCard(props){
                   xs={12}
                   className="logo-row d-flex flex-column align-items-center justify-content-center"
                 >
-                  <img src={logoSrc} alt={provider} className="mb-4 w-100" />
+                  <FireImage
+                    name={logo}
+                    alt={provider}
+                    className="mb-2 skills-provider-logo"
+                  />
 
                   <Button
                     variant="outline-primary purple"
@@ -59,7 +64,7 @@ export default function CourseCard(props){
     }
 
     const getDesktopContent = ()=>{
-      return(
+      return (
         <>
           <Card.Img
             className="h-50"
@@ -69,8 +74,16 @@ export default function CourseCard(props){
           />
           <Card.Body>
             <Row className="h-100">
-              <Col xs={6} md={12} className="logo-row d-flex align-items-center">
-                <img src={logoSrc} alt={provider} className="" />
+              <Col
+                xs={6}
+                md={12}
+                className="logo-row d-flex align-items-center"
+              > 
+                <FireImage
+                  name={logo}
+                  alt={provider}
+                  className="mb-2 skills-provider-logo"
+                />
               </Col>
               <Col
                 s={6}
