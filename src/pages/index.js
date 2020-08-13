@@ -101,7 +101,7 @@ export default function Home() {
                     <Col xs={12}>
                         <Button variant="info">
                             <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
-                            Design                            
+                            design                            
                         </Button>
                         <Button variant="primary">
                             <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
@@ -115,7 +115,7 @@ export default function Home() {
                 </Row>
                 <div className="h-scroll">
                     <div className="h-scroll-inner">
-                        { store.jobs && store.jobs.map(j => 
+                        { store && Array.isArray(store.jobs) && store.jobs.map(j => 
                             <JobCard jobType="product" jobTitle={j.job_title} companyName={j.company_posting} date={j.posted_date}/>
                         )}
                     </div>
@@ -201,15 +201,9 @@ export default function Home() {
                 </h3>
                 <hr />
                 <p className="text-left lead">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                  volutpat ut nunc at ultricies. Cras massa lacus, maximus id
-                  ligula sed, porttitor ultrices magna. Sed sed consequat magna.
-                  Integer vulputate augue metus, a viverra odio tristique ut.
-                  Proin efficitur neque vitae nisi dictum efficitur. In mi leo,
-                  finibus nec porttitor vitae, cursus eu tortor. Nam vitae odio
-                  eu neque scelerisque porttitor.
+                  Career changes are tough. Imposter syndrome or fear of the unknown can overwhelm even the most seasoned professional. Sign up to receive free personalized career support by the coaches at Benjamin Douglass. Our experts will provide strategies to help define your search criteria, design your job search collateral and craft your professional story. Our team serves as a partner in accountability, strategy, and motivation.
                 </p>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-primary btn-lg">
                   Learn More
                 </button>
               </Col>
@@ -236,7 +230,7 @@ export default function Home() {
             </Row>
             <div className="event-scroll">
                 <div className="event-scroll-inner">
-                    { store.events && store.events.map(ev => <EventsCard
+                    { store && Array.isArray(store.events) && store.events.map(ev => <EventsCard
                             date={ev.event_date}
                             time={ev.event_start_time}
                             eventName={ev.event_title}
