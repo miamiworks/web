@@ -110,7 +110,14 @@ export default function Home() {
                 <div className="h-scroll">
                     <div className="h-scroll-inner d-flex flex-row flex-nowrap">
                         { store && Array.isArray(store.jobs) && store.jobs.map(j => 
-                            <JobCard jobType="product" jobTitle={j.job_title} CompanyLogo={j.company_logo} companyName={j.company_posting} date={j.posted_date}/>
+                            <JobCard 
+                                jobType="product" 
+                                jobTitle={j.job_title} 
+                                CompanyLogo={j.company_logo} 
+                                companyName={j.company_posting} 
+                                url={j.job_url} 
+                                date={j.posted_date}
+                            />
                         )}
                     </div>
                 </div>
