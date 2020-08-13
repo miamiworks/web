@@ -15,7 +15,6 @@ import { isMobile } from "react-device-detect"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { faArrowLeft, faTimes } from "@fortawesome/free-solid-svg-icons"
-import cardTopImg from "../../images/cardTopClass.png"
 import FireImage from "../FireImage"
 import "./style.scss"
 
@@ -217,7 +216,11 @@ export default function KeySkillsMobile(props){
                       className="d-flex flex-column align-items-center justify-content-center"
                     >
                       <div className="circle">
-                        <FontAwesomeIcon size="lg" icon={faArrowLeft} onClick={()=>setSkill(null)}/>
+                        <FontAwesomeIcon
+                          size="lg"
+                          icon={faArrowLeft}
+                          onClick={() => setSkill(null)}
+                        />
                       </div>
                     </Col>
                     <Col className="d-flex flex-column align-items-center justify-content-center">
@@ -238,8 +241,8 @@ export default function KeySkillsMobile(props){
                         className="course-column"
                       >
                         <CourseCard
-                          topImgAlt=""
-                          topImg={cardTopImg}
+                          topImgAlt={item.program_skill_pathway}
+                          topImg={item.program_background_image_path}
                           logo={item.provider_logo_file_path}
                           title={item.program_name}
                           provider={item.provider_name}
@@ -261,11 +264,16 @@ export default function KeySkillsMobile(props){
               className="software-eng-img course-detail p-0 d-flex flex-column justify-content-end align-items-end"
               lg={5}
             >
+              <FireImage
+                name={course && course.program_background_image_path}
+                alt={course && course.program_name}
+                className="bg-image h-100 w-100"
+              />
               <div
                 className={
                   width <= 990 || isMobile
-                    ? "skills-overlay course-detail px-4 py-3 w-100"
-                    : "skills-overlay course-detail p-3 w-100"
+                    ? "position-absolute skills-overlay course-detail px-4 py-3 w-100"
+                    : "position-absolute skills-overlay course-detail p-3 w-100"
                 }
               >
                 <h3 className="h2 mb-0">{course.program_name}</h3>
@@ -316,11 +324,17 @@ export default function KeySkillsMobile(props){
             </Col>
           </Row>
         )
-      } else {
+      } else if(path){
         content = (
           <Row className="h-100">
             <Col className="software-eng-img p-0 m-0" xs={12}>
-              <div className="skills-overlay p-3 w-100 h-100">
+              <FireImage
+                name={path && path.image_file_path}
+                alt={path && path.skill_pathway_name}
+                className="bg-image h-100 w-100"
+              />
+
+              <div className="position-absolute skills-overlay p-3 w-100">
                 <h3 className="">{path && path.skill_pathway_name}</h3>
                 <p className="mb-2">Salary range in Miami</p>
                 <p className="skills-overlay-salary">

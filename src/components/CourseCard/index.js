@@ -18,12 +18,17 @@ export default function CourseCard(props){
       return (
         <Row className="h-100 no-gutters">
           <Col xs={6} className="position-relative">
-            <Card.Img
+            <FireImage
+              name={topImg}
+              alt={topImgAlt ? topImgAlt : ""}
+              className="h-100 card-img-top"
+            />
+            {/* <Card.Img
               className="h-100"
               variant="top"
               src={topImg}
               alt={topImgAlt ? topImgAlt : ""}
-            />
+            /> */}
             <div className="text-overlay position-absolute">
               <Card.Title className="title text-white">{title}</Card.Title>
               <Card.Text className="text-white">
@@ -66,11 +71,10 @@ export default function CourseCard(props){
     const getDesktopContent = ()=>{
       return (
         <>
-          <Card.Img
-            className="h-50"
-            variant="top"
-            src={topImg}
+          <FireImage
+            name={topImg}
             alt={topImgAlt ? topImgAlt : ""}
+            className="h-50 card-img-top"
           />
           <Card.Body>
             <Row className="h-100">
@@ -78,7 +82,7 @@ export default function CourseCard(props){
                 xs={6}
                 md={12}
                 className="logo-row d-flex align-items-center"
-              > 
+              >
                 <FireImage
                   name={logo}
                   alt={provider}

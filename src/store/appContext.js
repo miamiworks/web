@@ -23,7 +23,7 @@ const StoreWrapper = ({children})=> {
     )
 
     useEffect(() => {
-        if (typeof window !== "undefined" && !firebase.apps.length) {
+        if (typeof window !== "undefined") {
             firebase.initializeApp(firebaseConfig)
             state.actions.initApp()
 

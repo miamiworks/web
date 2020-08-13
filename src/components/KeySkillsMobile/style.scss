@@ -126,9 +126,15 @@
             border-radius: unset;
         }
 
+        .bg-image{
+            object-fit: cover;
+            object-position: left;
+        }
+
         .skills-overlay{
             background: rgba($deepPurple,0.5);
             border-radius: unset;
+            bottom: 0;
             &.course-detail{
                 height: unset;
                 h3{
