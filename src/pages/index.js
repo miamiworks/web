@@ -5,11 +5,11 @@ import {useWindowSize} from "../utils/hooks"
 import Layout from "../components/Layout"
 import Section from "../components/Section"
 import Sponsors from "../components/Sponsors"
+import JobSearch from "../components/JobSearch"
 import KeySkillsDesktop from "../components/KeySkillsDesktop"
 import KeySkillsMobile from "../components/KeySkillsMobile"
 import { TopNav } from "../components/TopNav"
 import ResourceIcon from "../components/ResourceIcon"
-import JobCard from "../components/JobCard"
 import EventsCard from "../components/eventsCard"
 import {Button, Badge, CardDeck} from "react-bootstrap"
 import Row from 'react-bootstrap/Row'
@@ -123,36 +123,7 @@ export default function Home() {
                         <h2 className= "exjoSub">from companies hiring locally</h2>
                     </Col>
                 </Row>
-                <Row className="mb-5 mx-auto exjoButtons">
-                    <Col xs={12}>
-                        <Button variant="info">
-                            <Badge pill variant="light" className="mr-1 buttonGreen">&nbsp;</Badge> 
-                            design                            
-                        </Button>
-                        <Button variant="primary">
-                            <Badge pill variant="light" className="mr-1 buttonBlue">&nbsp;</Badge> 
-                            engineering                           
-                        </Button>
-                        <Button variant="warning">
-                            <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                            product                            
-                        </Button>
-                    </Col>
-                </Row>
-                <div className="h-scroll">
-                    <div className="h-scroll-inner d-flex flex-row flex-nowrap">
-                        { store && Array.isArray(store.jobs) && store.jobs.map(j => 
-                            <JobCard 
-                                jobType="product" 
-                                jobTitle={j.job_title} 
-                                CompanyLogo={j.company_logo} 
-                                companyName={j.company_posting} 
-                                url={j.job_url} 
-                                date={j.posted_date}
-                            />
-                        )}
-                    </div>
-                </div>
+                <JobSearch jobs={store  && Array.isArray(store.jobs) ? store.jobs : []} skills={store && Array.isArray(store.skill_pathways) ? store.skill_pathways : []} />
             </Container>
         </Section>
 

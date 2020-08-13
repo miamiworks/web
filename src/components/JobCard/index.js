@@ -13,7 +13,7 @@ const slice = function(str, length=50, ending='...'){
   if (str.charAt(length) === ' ') return truncated;
   return truncated.substr(0, truncated.lastIndexOf(' '));
 }
-export default function JobCard ({ jobType, jobTitle, companyName, date, CompanyLogo, url }) {
+export default function JobCard ({ jobTitle, companyName, date, CompanyLogo, url, skill }) {
     var now = dayjs()
     let _date = dayjs(date);
     return (
@@ -21,7 +21,7 @@ export default function JobCard ({ jobType, jobTitle, companyName, date, Company
             <div className="card-body">
                 <Button variant="warning">
                     <Badge pill variant="light" className="mr-1 buttonYellow">&nbsp;</Badge> 
-                    {jobType}                           
+                    {skill}                           
                 </Button>
                 <h5 className="card-title jobTitle">{slice(jobTitle)}</h5>
                 <div className="bottom">

@@ -10,3 +10,12 @@ $container-max-widths: (
 );
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
+
+
+.h-scroll{
+    overflow-y: hidden;
+    overflow-x: auto;
+    & > div {
+        width: 2000px;
+    }
+}

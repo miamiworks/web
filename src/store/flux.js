@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               data.push({ id: doc.id, ...doc.data() })
             })
             console.log(type, data)
-            setStore({ [type]: data.slice(0, 15) })
+            setStore({ [type]: data })
           })
       },
       submitRequest: async (
