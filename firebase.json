@@ -18,7 +18,7 @@
       "**/node_modules/**"
     ],
     "rewrites": [
-      { "source": "/mdbc/**", "dynamicLinks": true },
+      { "source": "/share/**", "dynamicLinks": true },
       {
         "source": "**",
         "destination": "/index.html"
