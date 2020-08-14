@@ -11,12 +11,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -24,13 +22,28 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm ci --if-present
     - run: npm run build --if-present
     - run: npm test
+        
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
 
-    - name: Firebase Deploy
-      uses: w9jds/firebase-action@v1.5.0
-      env: # Or as an environment variable
-        FIREBASE_KEY: ${{ secrets.FIREBASE_TOKEN }}
-        MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env: # Or as an environment variable
+          FIREBASE_KEY: ${{ secrets.FIREBASE_TOKEN }}
+          MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
 
