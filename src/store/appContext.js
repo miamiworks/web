@@ -25,7 +25,7 @@ const StoreWrapper = ({children})=> {
     useEffect(() => {
         if (typeof window !== "undefined") {
             firebase.initializeApp(firebaseConfig)
-            state.actions.initApp()
+            state.actions.initApp(firebase)
 
             firebase.auth().signInAnonymously()
             .catch(function (error) { 

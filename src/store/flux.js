@@ -31,12 +31,14 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       // Use getActions to call a function within a fuction
-      initApp: () => {
+      initApp: (firebase) => {
         let actions = getActions()
         actions.get("events")
         actions.get("jobs")
         actions.get("programs")
         actions.get("skill_pathways")
+
+        firebase.analytics();
       },
       get: type => {
         if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
