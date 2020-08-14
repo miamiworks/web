@@ -44,4 +44,4 @@ Contains all the FLUX actions and the main shared store among the entire web app
 
 1. Login into firebase `$ firebase login --no-localhost`
 2. Run de deploy script: `$ npm run build`
-3. Upload to firebase: firebase deploy --only hosting
+3. Upload to firebase: `$ firebase deploy --only hosting`
