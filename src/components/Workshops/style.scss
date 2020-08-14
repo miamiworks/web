@@ -1,8 +1,9 @@
-.carousel .slide{
-    background: transparent;
-}
-.carousel-outer{
-    width: 1900px;
+.carousel-outer.workshops{
+    .carousel{
+        .slider.animated{
+            margin-left: 13%;
+        }
+    }
 }
 .exjoButtons{
     max-width: 100%;

@@ -50,13 +50,13 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
             })}
             </div>
         </div>
-        <div className="carousel-outer">
+        <div className="carousel-outer jobsearch">
             <Carousel
                 className="mt-5"
                 centerMode
                 showArrows={true}
                 showStatus={false}
-                swipeScrollTolerance={10}
+                swipeScrollTolerance={0}
                 interval={3000}
                 transitionTime={150}
                 showIndicators={false}
@@ -65,7 +65,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                 infiniteLoop={true}
                 swipeable={true}
                 width={2000}
-                centerSlidePercentage={19}
+                centerSlidePercentage={18}
                 selectedItem={currentIndex}
             >
             {/* // currentIndex + 3 to jump three slides forward */}

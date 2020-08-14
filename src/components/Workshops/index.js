@@ -6,15 +6,15 @@ import { isMobile } from "react-device-detect"
 import "./style.scss"
 
 const Workshops = ({ events, skills, width, breakpoint }) => {
-    const [currentIndex, setSlide] = React.useState(0);
+    const [currentIndex, setSlide] = React.useState(3);
     return <>
-        <div className="carousel-outer">
+        <div className="carousel-outer workshops">
             <Carousel
                 className="mt-5"
                 centerMode
                 showArrows={true}
                 showStatus={false}
-                swipeScrollTolerance={10}
+                swipeScrollTolerance={0}
                 interval={3000}
                 transitionTime={150}
                 showIndicators={false}
@@ -23,7 +23,7 @@ const Workshops = ({ events, skills, width, breakpoint }) => {
                 infiniteLoop={true}
                 swipeable={true}
                 width={2000}
-                centerSlidePercentage={25}
+                centerSlidePercentage={18}
                 selectedItem={currentIndex}
             >
                     { events.map(ev => <EventsCard
