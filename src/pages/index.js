@@ -95,7 +95,7 @@ export default function Home() {
             <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
                 <h1 className="mb-3">Find a new career in Miami Tech</h1>
-                <h2>Fast track to a job through curated education pathways</h2>
+                <h2>Fast-track to a job through curated education pathways</h2>
               </Col>
             </Row>
             <Row className="pt-lg-5 feature-row container mx-auto">
