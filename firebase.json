@@ -10,12 +10,15 @@
   },
   "hosting": {
     "public": "public",
+    "appAssociation": "AUTO",
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
+      { "source": "/mdbc/**", "dynamicLinks": true },
       {
         "source": "**",
         "destination": "/index.html"
