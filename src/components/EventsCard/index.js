@@ -3,6 +3,7 @@ import FireImage from "../FireImage"
 import PropTypes from "prop-types"
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import defaultImgUrl from "../../images/EventsCard.png"
 import "./style.scss"
 import dayjs from "dayjs";
 
@@ -10,7 +11,7 @@ export default function EventsCard ({ date, time, eventName, speakerName, speake
     let _date = dayjs(date);
     return (
         <div className="card event">
-            <FireImage name={eventImage} alt={"Event alt"} className="card-img-top" />
+            <FireImage name={eventImage} defaultImg={defaultImgUrl} alt={"Banner for "+eventName} className="card-img-top" />
             <div className="card-img-overlay">
                 <p className="card-text"><FontAwesomeIcon icon={faCalendarDay} /> {_date.format('MMMM, D')}</p>
                 <h5 className="card-title workshopTime">{time}</h5>

@@ -2,10 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import firebase from "firebase/app"
 import LazyLoad from 'react-lazyload';
-import defaultImgUrl from "../../images/EventsCard.png"
 
 let cache = {};
-const FireImage = ({ name, ...rest }) => {
+const FireImage = ({ name, defaultImg,  ...rest }) => {
     const [url, setUrl] = React.useState("");
     
     React.useEffect(() => {
@@ -20,26 +19,35 @@ const FireImage = ({ name, ...rest }) => {
                     })
                     .catch(function (error) { 
                         cache[name] = false;
-                        setUrl(defaultImgUrl);
+                        setUrl(defaultImg);
                         // console.log(error) 
                     });
             else if(cache[name] !== url) setUrl(cache[name])
         }catch(error){
             cache[name] = false;
-            setUrl(defaultImgUrl);
+            setUrl(defaultImg);
             console.log("Firebase error", error) 
         }
     },[]);
     if(!name) return <p>Missing image name</p>;
     return  <LazyLoad height={200}>
-        <img src={url} {...rest} />
+        {url ? 
+            <img src={url} {...rest} />
+            :
+            defaultImg ? 
+                <img src={url} {...rest} />
+                :
+                null
+        }
     </LazyLoad>
 }
 
 FireImage.propTypes = {
-    name: PropTypes.string
+    name: PropTypes.string,
+    defaultImg: PropTypes.string
 }
 FireImage.defaultProps = {
-    name: ""
+    name: "",
+    defaultImg: null
 }
 export default FireImage;
