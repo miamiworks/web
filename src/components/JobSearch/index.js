@@ -35,7 +35,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
     let _jobs = jobs.filter(j => tags.length === 0 || tags.includes(j.skill_pathway)).slice(0,15);
     console.log("Show count: ", sizes[breakpoint]);
     return <>
-        <div className="h-scroll">
+        {/* <div className="h-scroll">
             <div>
             { skills.map(skill => {
                 const active = tags.find(s => s === skill.skill_pathway_name)
@@ -49,7 +49,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                 />
             })}
             </div>
-        </div>
+        </div> */}
         <div className="carousel-outer jobsearch">
             <Carousel
                 className="mt-5"

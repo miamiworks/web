@@ -18,9 +18,9 @@ export default function EventsCard ({ date, time, eventName, speakerName, speake
             <div className="card-body">
                 <h5 className="card-title evenTitle">{eventName}</h5>
                 <div className="event-call-action">
-                    <p className="card-text eventNam">{speakerName}</p>
-                    <p className="card-text eventSub">{speakerPosition}</p>
-                    <h5 className="card-title"> <FireImage name={companyImage} alt={"Event alt"} /></h5>
+                    {companyImage !== "" && <p className="card-text eventNam">{speakerName}</p>}
+                    {companyImage !== "" && <p className="card-text eventSub">{speakerPosition}</p>}
+                    {companyImage !== "" && <h5 className="card-title"> <FireImage name={companyImage} alt={"Logo for "+comingFrom} /></h5>}
                     <a href={url || "#"} target="_blank" rel="noopener noreferrer" className="btn btn-warning">Learn More</a>
                 </div>
             </div>
@@ -30,9 +30,15 @@ export default function EventsCard ({ date, time, eventName, speakerName, speake
 }
 EventsCard.propTypes = {
     eventImage: PropTypes.string,
+    companyImage: PropTypes.string,
+    speakerPosition: PropTypes.string,
+    speakerName: PropTypes.string,
     date: PropTypes.string,
 }
 EventsCard.defaultProps = {
     eventImage: "",
+    companyImage: "",
+    speakerPosition: "",
+    speakerName: "",
     date: "2019-01-25",
 }

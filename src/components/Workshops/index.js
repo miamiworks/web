@@ -34,6 +34,7 @@ const Workshops = ({ events, skills, width, breakpoint }) => {
                             eventImage={ev.event_img_file_path}
                             companyImage={ev.company_logo_file_path}
                             speakerPosition={ev.speaker_job_title}
+                            url={ev.rsvp_url}
                             comingFrom={ev.event_organizer}
                         />)
                     }

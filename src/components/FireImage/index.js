@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import firebase from "firebase/app"
 import LazyLoad from 'react-lazyload';
+import defaultImgUrl from "../../images/EventsCard.png"
 
 let cache = {};
 const FireImage = ({ name, ...rest }) => {
@@ -19,11 +20,13 @@ const FireImage = ({ name, ...rest }) => {
                     })
                     .catch(function (error) { 
                         cache[name] = false;
+                        setUrl(defaultImgUrl);
                         // console.log(error) 
                     });
             else if(cache[name] !== url) setUrl(cache[name])
         }catch(error){
             cache[name] = false;
+            setUrl(defaultImgUrl);
             console.log("Firebase error", error) 
         }
     },[]);
