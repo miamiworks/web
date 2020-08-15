@@ -27,13 +27,14 @@ const Workshops = ({ events, skills, width, breakpoint }) => {
                 selectedItem={currentIndex}
             >
                     { events.map(ev => <EventsCard
+                            ev={ev.rsvp_url}
                             date={ev.event_date}
                             time={ev.event_start_time}
                             eventName={ev.event_title}
                             speakerName={ev.speaker_name}
                             eventImage={ev.event_img_file_path}
                             companyImage={ev.company_logo_file_path}
-                            speakerPosition={ev.speaker_job_title}
+                            speakerPosition={ev.speaker_job_title.toString()}
                             url={ev.rsvp_url}
                             comingFrom={ev.event_organizer}
                         />)
