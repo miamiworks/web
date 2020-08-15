@@ -31,8 +31,8 @@ jobs:
         name: public
         path: public
       env: # Or as an environment variable
-        API_KEY: ${{ secrets.API_KEY }}
-        MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
+        GATSBY_API_KEY: ${{ secrets.GATSBY_API_KEY }}
+        GATSBY_MEASUREMENT_ID: ${{ secrets.GATSBY_MEASUREMENT_ID }}
         
   deploy:
     name: Deploy
