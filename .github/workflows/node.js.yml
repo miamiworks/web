@@ -30,6 +30,9 @@ jobs:
       with:
         name: public
         path: public
+      env: # Or as an environment variable
+        API_KEY: ${{ secrets.API_KEY }}
+        MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
         
   deploy:
     name: Deploy
@@ -50,5 +53,3 @@ jobs:
           args: deploy --only hosting
         env: # Or as an environment variable
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
-
