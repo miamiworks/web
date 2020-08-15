@@ -23,7 +23,7 @@ const Workshops = ({ events, skills, width, breakpoint }) => {
                 infiniteLoop={true}
                 swipeable={true}
                 width={2000}
-                centerSlidePercentage={18}
+                centerSlidePercentage={18.5}
                 selectedItem={currentIndex}
             >
                     { events.map(ev => <EventsCard

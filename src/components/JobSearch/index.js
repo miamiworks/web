@@ -64,7 +64,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                 infiniteLoop={true}
                 swipeable={true}
                 width={2000}
-                centerSlidePercentage={18}
+                centerSlidePercentage={18.5}
                 selectedItem={currentIndex}
             >
             {/* // currentIndex + 3 to jump three slides forward */}
