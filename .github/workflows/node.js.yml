@@ -49,6 +49,6 @@ jobs:
         with:
           args: deploy --only hosting
         env: # Or as an environment variable
-          FIREBASE_KEY: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
 

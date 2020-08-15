@@ -24,14 +24,14 @@ const StoreWrapper = ({children})=> {
     useEffect(() => {
         if (typeof window !== "undefined") {
             firebase.initializeApp({
-                apiKey: process.env.FIREBASE_KEY,
+                apiKey: process.env.FIREBASE_TOKEN,
                 authDomain: "miami-works.firebaseapp.com",
                 databaseURL: "https://miami-works.firebaseio.com",
                 projectId: "miami-works",
                 storageBucket: "miami-works.appspot.com",
                 messagingSenderId: "222583667104",
                 appId: "1:222583667104:web:961b7f076b71de9547ccc5",
-                measurementId: process.env.FIREBASE_KEY
+                measurementId: process.env.FIREBASE_TOKEN
             })
             state.actions.initApp(firebase)
 

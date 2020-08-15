@@ -7,13 +7,13 @@
 3. Create a `.env.development` file that the same variables that you can find on the `.env.example`, make sure to replace the `values` with their corresponding real life values, for example:
 
 ```txt
-FIREBASE_KEY=<firebase key>
+FIREBASE_TOKEN=<firebase key>
 ```
 
 Needs to be replaced with the real firebase key, ask your project leader for that. This is similar to how it should look:
 
 ```txt
-FIREBASE_KEY=adsA45DS3SD3df32dfgdf32342sjksdf23
+FIREBASE_TOKEN=adsA45DS3SD3df32dfgdf32342sjksdf23
 ```
 
 4. You can start coding by running the development server: `$ npm run start`.
