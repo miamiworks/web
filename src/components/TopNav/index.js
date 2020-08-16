@@ -1,12 +1,30 @@
-import React from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useStaticQuery,graphql } from "gatsby"
 import Img from "gatsby-image"
 import { navigate } from '@reach/router';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-scroll'
+
 import "./style.scss";
 
 export const TopNav = ({ links }) => {
+
+    const [navBackground, setNavBackground] = useState(false)
+        const navRef = useRef()
+        navRef.current = navBackground
+        useEffect(() => {
+            const handleScroll = () => {
+                const show = window.scrollY > 670
+                if (navRef.current !== show) {
+                    setNavBackground(show)
+                }
+            }
+            document.addEventListener('scroll', handleScroll)
+            return () => {
+                document.removeEventListener('scroll', handleScroll)
+            }
+        }, [])
+
     const data = useStaticQuery(graphql`
         query {
             file(relativePath: { regex: "/logo-white.png/" }) {
@@ -39,9 +57,9 @@ export const TopNav = ({ links }) => {
     //]
 
     return (
-        <header className="main-nav">
+        <header className="main-nav fixed-top" style={{ transition: '1s ease', backgroundColor: navBackground ? 'white' : 'transparent'}}>
             <div className="header-topbar text-center py-3">Give your job search a home with CareerScore</div>
-            <Navbar bg="transparent" variant="dark" expand="lg" className="px-5">
+            <Navbar bg="transparent" sticky="top" variant="dark" expand="lg" className="px-5">
                 <Navbar.Brand href="#home">
                     <Img fixed={data.file.childImageSharp.fixed} />
                 </Navbar.Brand>
