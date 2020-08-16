@@ -23,7 +23,6 @@ const Sponsors = () => {
         <div className="sponsors container">
             {
                 data.allFile.nodes.map((file,i) => {
-                    {console.log(file.childImageSharp)}
                     //return <img className={file.name} key={i} src={file.childImageSharp.fixed.src} />
                     return <Img key={i}
                         fixed={file.childImageSharp.fixed}

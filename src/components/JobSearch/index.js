@@ -33,7 +33,6 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
     const [ tags, setTags ] = React.useState([]);
     const [currentIndex, setSlide] = React.useState(2);
     let _jobs = jobs.filter(j => tags.length === 0 || tags.includes(j.skill_pathway)).slice(0,15);
-    console.log("Show count: ", sizes[breakpoint]);
     return <>
         {/* <div className="h-scroll">
             <div>
@@ -65,7 +64,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                 infiniteLoop={true}
                 swipeable={true}
                 width={2000}
-                centerSlidePercentage={18}
+                centerSlidePercentage={18.5}
                 selectedItem={currentIndex}
             >
             {/* // currentIndex + 3 to jump three slides forward */}

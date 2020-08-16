@@ -37,25 +37,6 @@ export const TopNav = ({ links }) => {
         }
     `)
 
-    if(!Array.isArray(links)) return <p>Missing props.links</p>;
-    //[
-        // Example of new window
-        // {label: "Jobs", to:"#link", target="_blank"},
-        
-        // Example of same page scroll
-        // {label: "Jobs", to:"#jobs", target:"_blank"},
-        // {label: "Career Paths", to:"#career"},
-        // {label: "Coaching", to:"#coaching"},
-        // {label: "Resources", to:"#events"},
-        
-        // Example of different page
-        //{label: "Terms and conditions", to:"/terms"},
-        
-        
-        // Example of using a component
-        //{label: "Terms and conditions", component: () => <Link>click me</Link>},
-    //]
-
     return (
         <header className="main-nav fixed-top" style={{ transition: '1s ease', backgroundColor: navBackground ? 'white' : 'transparent'}}>
             <div className="header-topbar text-center py-3">Give your job search a home with CareerScore</div>
@@ -66,7 +47,7 @@ export const TopNav = ({ links }) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        {links.map((item, i)=> {
+                        {Array.isArray(links) && links.map((item, i)=> {
                             const Component = item.component;
                             return (Component !== undefined) ?
                                 <Component key={i} className="ml-5 nav-link" />

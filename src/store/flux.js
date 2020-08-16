@@ -33,20 +33,22 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       initApp: (firebase) => {
         let actions = getActions()
-        actions.get("events")
-        actions.get("jobs")
+        actions.get("events", 15)
+        actions.get("jobs", 15)
         actions.get("programs")
         actions.get("skill_pathways")
 
         firebase.analytics();
       },
-      get: type => {
+      get: (type, limit=null) => {
         if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
           throw Error("Invalid collection type: ", type)
-        firebase
-          .firestore()
-          .collection(type)
-          .get()
+        let query = firebase.firestore().collection(type);
+        
+        // Pagination???
+        if(limit) query.limit(limit);
+        
+        query.get()
           .then(querySnapshot => {
             let data = []
             querySnapshot.forEach(doc => {
