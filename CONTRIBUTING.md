@@ -17,9 +17,9 @@ All contributions are organized in github issues.
 
 Not all contributions are about coding, the project also needs help documenting and maintaining.
 
-A. ** 🐣 First timers**: If this will be your first contribution I strongly recommend choosing one of the issues labled with `good-first-issue`, [here is a filtered list](https://github.com/miamiworks/web/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+A. **🐣 First timers**: If this will be your first contribution I strongly recommend choosing one of the issues labled with `good-first-issue`, [here is a filtered list](https://github.com/miamiworks/web/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
-B. ** 🦅 Experienced** If you have already contributed or you feel confident about your skills and the project tecnologies you can issues with the `help wanted` label, [here is a filtered list](https://github.com/miamiworks/web/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
+B. **🦅 Experienced** If you have already contributed or you feel confident about your skills and the project tecnologies you can issues with the `help wanted` label, [here is a filtered list](https://github.com/miamiworks/web/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
 
 ## Start Coding
 
