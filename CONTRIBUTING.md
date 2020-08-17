@@ -1,5 +1,10 @@
 # CONTRIBUTING
 
+Table of contents.
+
+- [Pick your task (contribution).](#pick-your-contribution)
+- [Start Coding (installation)](#start-coding).
+
 ## How to start?
 
 ### What are we about?
