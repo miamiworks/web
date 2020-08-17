@@ -4,5 +4,6 @@ MiamiTech.Works, is a one-stop-shop portal created by a coalition of Miami’s b
 
 ## Are you here to contribute? 
 
-1. Please read our [code of conduct](./CODE_OF_CONDUCT.md).
-1. Then you can start working by [read this guide](./CONTRIBUTING.md).
+- You can read the contribuiton guide on the [project wiki](https://github.com/miamiworks/web/wiki).
+- Please read our [code of conduct](./CODE_OF_CONDUCT.md).
+- Then you can start working by [read this guide](./CONTRIBUTING.md).
