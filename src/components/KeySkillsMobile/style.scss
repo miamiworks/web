@@ -205,6 +205,24 @@
                         background: $purple;
                     }
                 }
+                &.btn-warning{
+                    font-family: Sofia Pro;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 24px;
+
+                    /* Blue */
+                    color: $deepPurple;
+                    background: $lightYellow;
+                    border: 1.90734px solid $lightYellow;
+                    box-sizing: border-box;
+                    border-radius: 4.76834px;
+                    &:hover{
+                        background: $yellow-hover;
+                        border-radius: 4.76834px;
+                    }
+                }
             }
 
             .close-icon {

@@ -329,7 +329,7 @@ export default function KeySkillsDesktop(props){
                     </strong>
                   </p>
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-warning"
                     onClick={() => path && setSkill(path.skill_pathway_name)}
                   >
                     See Courses

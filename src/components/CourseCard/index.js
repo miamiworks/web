@@ -73,7 +73,7 @@ export default function CourseCard(props){
           <FireImage
             name={topImg}
             alt={topImgAlt ? topImgAlt : ""}
-            className="h-50 card-img-top"
+            className="card-img-top"
           />
           <Card.Body>
             <Row className="h-100">
