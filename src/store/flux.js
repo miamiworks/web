@@ -54,6 +54,20 @@ const getState = ({ getStore, getActions, setStore }) => {
             querySnapshot.forEach(doc => {
               data.push({ id: doc.id, ...doc.data() })
             })
+            if(type==="jobs") {
+              for(let i=0;i<data.length;i++){
+                for(let j=0;j<data.length-i-1;j++){
+                  if(
+                    (data[j].company_posting.toLowerCase() !==data[j+1].company_posting.toLowerCase()) &&
+                    (data[j].skill_pathway.toLowerCase() !== data[j+1].skill_pathway.toLowerCase())
+                  ){
+                    let b=data[j+1];
+                    data[j+1]=data[j];
+                    data[j] = b; 
+                  }
+                }
+              }
+            }
             setStore({ [type]: data })
           })
       },
@@ -88,3 +102,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 }
 
 export default getState
+
