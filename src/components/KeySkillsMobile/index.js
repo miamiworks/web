@@ -356,7 +356,7 @@ export default function KeySkillsMobile(props){
                   <p>{path && path.job_outlook}</p>
                 </Col>
               </Row>
-              <Row className="p-3">
+              <Row className="">
                 <Col>
                   <p className="mb-4">
                     <strong>
@@ -365,7 +365,7 @@ export default function KeySkillsMobile(props){
                     </strong>
                   </p>
                   <button
-                    className="btn btn-outline-warning"
+                    className="btn btn-warning"
                     onClick={() => path && setSkill(path.skill_pathway_name)}
                   >
                     See Courses

@@ -2,6 +2,9 @@
 
 .course-card{
     border: none !important;
+    >.lazyload-wrapper{
+        height: 50%;
+    }
     .purple{
         color: $purple;
     }
@@ -10,6 +13,10 @@
     }
     .card-img-top{
         object-fit: cover;
+        -o-object-fit: cover;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
     }
     .title {
         color: $darkBlue;
@@ -34,11 +41,16 @@
         height: 50px;
         width: auto;
         object-fit: contain;
+        max-width: 100%;
     }
 
     &.mobile {
         border: none  !important;
         border-radius: 10px;
+
+        .lazyload-wrapper{
+            height: 100%;
+        }
         .card-img-top{
             border-radius: 10px 0 0 10px;
         }

@@ -41,9 +41,12 @@
 
     .software-eng-img {
         color: $offWhite;
-        // background: url('../../images/software-engineering.png') no-repeat center;
-        // background-size: cover;
         border-radius: 20px 0px 0px 20px;
+
+        >.lazyload-wrapper{
+            height: 100%;
+        }
+
         &.course-detail{
             border-radius: 10px 0px 0px 10px;
         }
@@ -58,6 +61,7 @@
             border-radius: 0px 0px 0px 10px;
             &.course-detail{
                 height: 35%;
+                position: absolute;
                 h3{
                     font-size: 32px;
                     line-height: 38px;
@@ -126,6 +130,24 @@
                     &:hover{
                         color: white;
                         background: $purple;
+                    }
+                }
+                &.btn-warning{
+                    font-family: Sofia Pro;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 24px;
+
+                    /* Blue */
+                    color: $deepPurple;
+                    background: $lightYellow;
+                    border: 1.90734px solid $lightYellow;
+                    box-sizing: border-box;
+                    border-radius: 4.76834px;
+                    &:hover{
+                        background: $yellow-hover;
+                        border-radius: 4.76834px;
                     }
                 }
             }
