@@ -6,13 +6,52 @@
 .main-nav{
     background: transparent;
     font-family: sofia-pro, sans-serif;
+    &.sticky-active .navbar-dark  .navbar-nav {
+        
+        .nav-link {
+            color: #171838;
+        }
+        .btn-outline-warning {
+            transition: 1s ease;
+            color: #212529;
+            background-color: #F7D260;
+            border-color: #F7D260;
+        }
+    }
+
+    &.sticky-active .navbar-dark .navbar-toggler {
+        color: #212529;
+        border-color: #F7D260;
+        .navbar-toggler-icon {
+            transition: 1s ease;
+            background-color: #F7D260;
+        }
+    }
+
+    &.sticky-active .bg-transparent {
+        transition: 1s ease;
+        height: 100px;
+        background-color: #fff !important;
+    }
+
+    a.navbar-brand {
+        display: flex;
+    }
+
     .navbar-dark .navbar-nav {
         font-style: normal;
         font-weight: normal;
         font-size: 24px;
-        line-height: 24px;
+        line-height: 37px;
         .nav-link{
             color: $offWhite;
+        }
+        .btn-outline-warning {
+            border-color: #F7D260;
+            font-weight: 600;
+            border: 3px solid #F7D260;
+            margin-left: 3rem !important;
+            line-height: 33px;
         }
         .btn{
             font-size: 24px;

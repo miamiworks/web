@@ -29,11 +29,15 @@ $cardHeight: 400px;
         left: auto;
         bottom: auto;
         background: rgba(255, 255, 255, 0.7);
+        p {
+            color: #282A62;
+        }
+        h5.card-title.workshopTime {
+            font-weight: bold;
+            color: #282A62;
+        }
     }
 
-    h5.card-title.workshopTime {
-        font-weight: bold;
-    }
     
     .evenTitle {
         font-style: normal;
@@ -41,7 +45,7 @@ $cardHeight: 400px;
         font-family: sofia-pro, sans-serif;
         font-size: 24px;
         // line-height: 37px;
-        color: #171838;
+        color: #282A62;
     }
 
     .eventNam {
