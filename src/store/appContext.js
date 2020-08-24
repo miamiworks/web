@@ -49,7 +49,6 @@ const StoreWrapper = ({children})=> {
                         let currNow = Date.now(); 
                         let currNew = new Date();
                         let currDate = Date() 
-                        console.log("Logged in change: Anonimus:", isAnonymous, "-", uid) 
                         firebase
                             .firestore()
                             .collection("user")
