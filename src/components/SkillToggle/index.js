@@ -6,7 +6,8 @@ const SkillToggle = ({ active, skill, onClick }) => {
     if(!skill) return "Loading...";
     return <Button variant="info" className={`skill-toggle mr-2 ${active ? "active" : "innactive"}`}
         style={{ 
-            background: active ? `#${skill.skill_pathway_circle_color}` : `#${skill.skill_pathway_background_color}`
+            background: active ? `#${skill.skill_pathway_circle_color}` : `#${skill.skill_pathway_background_color}`,
+            borderColor: active ? `#${skill.skill_pathway_circle_color}` : `#${skill.skill_pathway_background_color}`
         }}
         onClick={() => onClick && onClick(skill)}
         >
