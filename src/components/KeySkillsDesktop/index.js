@@ -366,7 +366,7 @@ export default function KeySkillsDesktop(props){
                   <Nav.Link
                     eventKey={item.key}
                     key={item.key}
-                    className="text-white"
+                    // // className="text-white"
                     onClick={() => {
                       setSkill(null)
                       setType(item.key)
