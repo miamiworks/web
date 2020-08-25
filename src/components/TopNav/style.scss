@@ -20,14 +20,15 @@
         }
     }
 
-    &.sticky-active .navbar-dark .navbar-toggler {
-        color: #212529;
-        border-color: #F7D260;
-        .navbar-toggler-icon {
-            transition: 1s ease;
-            background-color: #F7D260;
-        }
-    }
+    // &.sticky-active .navbar-dark .navbar-toggler {
+    //     color: #212529;
+    //     // border-color: #F7D260;
+    //     .navbar-toggler-icon {
+    //         background-image: url('../../images/hamburger-dark.svg');
+    //         transition: 1s ease;
+    //         // background-color: #F7D260;
+    //     }
+    // }
 
     &.sticky-active .bg-transparent {
         transition: 1s ease;

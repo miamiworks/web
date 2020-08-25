@@ -1,0 +1,14 @@
+<svg width="38" height="26" viewBox="0 0 38 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="hamburger--top">
+        <rect x="2.41272" y="1.80957" width="35.5873" height="2.4127" rx="1.20635" fill="#CACACA"/>
+        <circle cx="3.01587" cy="3.01587" r="3.01587" fill="#4044AA"/>
+    </g>
+    <g class="hamburger--middle">
+        <rect x="35.5873" y="13.873" width="35.5873" height="2.4127" rx="1.20635" transform="rotate(-180 35.5873 13.873)" fill="#CACACA"/>
+        <circle cx="34.9841" cy="12.6667" r="3.01587" transform="rotate(-180 34.9841 12.6667)" fill="#4044AA"/>
+    </g>
+    <g class="hamburger--bottom">
+        <rect x="2.41272" y="21.1112" width="35.5873" height="2.4127" rx="1.20635" fill="#CACACA"/>
+        <circle cx="3.01587" cy="22.3175" r="3.01587" fill="#4044AA"/>
+    </g>
+</svg>

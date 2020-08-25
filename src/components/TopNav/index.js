@@ -4,26 +4,28 @@ import Img from "gatsby-image"
 import { navigate } from '@reach/router';
 import { Navbar, Nav, Button} from 'react-bootstrap';
 import { Link } from 'react-scroll'
+import HamburgerDark from "../../images/hamburger-dark.svg"
+import HamburgerLight from "../../images/hamburger-light.svg"
 
 import "./style.scss";
 
 export const TopNav = ({ links }) => {
 
     const [navBackground, setNavBackground] = useState(false)
-        const navRef = useRef()
-        navRef.current = navBackground
-        useEffect(() => {
-            const handleScroll = () => {
-                const show = window.scrollY > 670
-                if (navRef.current !== show) {
-                    setNavBackground(show)
-                }
+    const navRef = useRef()
+    navRef.current = navBackground
+    useEffect(() => {
+        const handleScroll = () => {
+            const show = window.scrollY > 670
+            if (navRef.current !== show) {
+                setNavBackground(show)
             }
-            document.addEventListener('scroll', handleScroll)
-            return () => {
-                document.removeEventListener('scroll', handleScroll)
-            }
-        }, [])
+        }
+        document.addEventListener('scroll', handleScroll)
+        return () => {
+            document.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     const data = useStaticQuery(graphql`
         query {
@@ -75,7 +77,13 @@ export const TopNav = ({ links }) => {
           <Navbar.Brand href="#home">
             <Img fixed={sources} />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            {
+              navBackground
+              ? <HamburgerDark/>
+              : <HamburgerLight/>
+            }
+          </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               {Array.isArray(links) &&
