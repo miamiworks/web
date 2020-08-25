@@ -52,6 +52,8 @@ export const TopNav = ({ links }) => {
       },
     ]
 
+    const offsetHeight = document.querySelector(".main-nav").offsetHeight
+
     return (
       <header
         className={
@@ -88,6 +90,7 @@ export const TopNav = ({ links }) => {
                       spy={true}
                       smooth={true}
                       duration={500}
+                      offset={-offsetHeight}
                     >
                       {item.label}
                     </Link>
