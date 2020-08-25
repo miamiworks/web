@@ -52,7 +52,9 @@ export const TopNav = ({ links }) => {
       },
     ]
 
-    const offsetHeight = document.querySelector(".main-nav").offsetHeight
+    const offsetHeight =
+      typeof document !== 'undefined' &&
+      document.querySelector(".main-nav").offsetHeight
 
     return (
       <header

@@ -5,7 +5,9 @@ import { Link } from 'react-scroll'
 
 export default function ResourceIcon(props){
     const {icon,title,bg, to} = props
-    var offsetHeight = document.querySelector(".main-nav").offsetHeight
+    var offsetHeight =
+      typeof document !== 'undefined' &&
+      document.querySelector(".main-nav").offsetHeight
     return (
       <div className="my-4 resource-icon hover-pointer">
         <Link
