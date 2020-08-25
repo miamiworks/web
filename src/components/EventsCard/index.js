@@ -9,6 +9,9 @@ import dayjs from "dayjs";
 
 export default function EventsCard ({ date, time, eventName, speakerName, speakerPosition, comingFrom, eventImage, companyImage, url }) {
     let _date = dayjs(date);
+    let _speakerName = Number.isNaN(speakerName) || speakerName=='NaN' ? "" : speakerName
+    let _speakerPosition = Number.isNaN(speakerPosition) || speakerPosition=='NaN' ? "" : speakerPosition
+    let _companyImage = Number.isNaN(companyImage) ? "" : companyImage
     return (
         <div className="card event">
             <FireImage name={eventImage} defaultImg={defaultImgUrl} alt={"Banner for "+eventName} className="card-img-top" />
@@ -19,9 +22,9 @@ export default function EventsCard ({ date, time, eventName, speakerName, speake
             <div className="card-body">
                 <h5 className="card-title evenTitle">{eventName}</h5>
                 <div className="event-call-action">
-                    {companyImage !== "" && <p className="card-text eventNam">{speakerName}</p>}
-                    {companyImage !== "" && <p className="card-text eventSub">{speakerPosition}</p>}
-                    {companyImage !== "" && <h5 className="card-title"> <FireImage name={companyImage} alt={"Logo for "+comingFrom} /></h5>}
+                    {_speakerName !== "" && <p className="card-text eventNam">{_speakerName}</p>}
+                    {_speakerPosition !== "" && <p className="card-text eventSub">{_speakerPosition}</p>}
+                    {_companyImage !== "" && <h5 className="card-title"> <FireImage name={_companyImage} alt={"Logo for "+comingFrom} /></h5>}
                     <a href={url || "#"} target="_blank" rel="noopener noreferrer" className="btn btn-warning">Learn More</a>
                 </div>
             </div>

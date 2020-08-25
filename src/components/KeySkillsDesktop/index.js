@@ -35,7 +35,12 @@ function CourseSyllabusModal(props) {
         fullName,
         email,
         phone,
-        course.id
+        course.id,
+        { 
+            program_name: course.program_name,
+            provider_contact_email: course.provider_contact_email,
+            provider_contact_name: course.provider_contact_name,
+        }
       )
       if (!(res instanceof Error)) {
         setSubmitting(false)
@@ -83,7 +88,7 @@ function CourseSyllabusModal(props) {
         </Modal.Title>
       ) : (
         <Modal.Title as="h2" id="syllabus-request" className="px-3">
-          Success <span className="light-purple">Prompt!</span>
+          Syllabus <span className="light-purple">Unlocked!</span>
         </Modal.Title>
       )}
       <Modal.Body>
@@ -148,9 +153,7 @@ function CourseSyllabusModal(props) {
         ) : (
           <div>
             <p className="mt-0 mb-5">
-              Now that you have completed the last card, get a head start and
-              prepare for the item you signed up for.
-              
+              Are you ready to find something new? There’s more than one path to a new career and you've already started! Good luck!
             </p>
             <a
               className="btn btn-primary btn-lg"
@@ -196,16 +199,15 @@ export default function KeySkillsDesktop(props){
     const getContent = ()=>{
       let content;
       if(skill !== null && course === null){
+        let courses = courseData ? courseData.filter(item => item.program_skill_pathway === skill) : []
+        const colSize = courses.length >=3 ? 4 : 6;
         content = (
           <Row className="h-100">
             <Col className="p-0">
               <Row className="mb-4 h-100 mx-lg-n2">
-                {courseData &&
-                  courseData
-                    .filter(item => item.program_skill_pathway === skill)
-                    .slice(0, 4)
+                {courses.slice(0, 3)
                     .map((item, index) => (
-                      <Col key={index} md={3} className="px-lg-2">
+                      <Col key={index} md={colSize} className="px-lg-2">
                         <CourseCard
                           topImgAlt={item.program_skill_pathway}
                           topImg={item.program_background_image_path}
@@ -269,7 +271,7 @@ export default function KeySkillsDesktop(props){
 
               <Row className="position-absolute fixed-bottom px-5 pb-3">
                 <Col>
-                  <button className="btn btn-warning mr-3" onClick={() => {}}>
+                  <button className="btn btn-warning mr-3" onClick={() => window.location.href = course.program_external_url }>
                     Apply Now
                   </button>
 
@@ -285,6 +287,7 @@ export default function KeySkillsDesktop(props){
           </Row>
         )
       }else if(path){
+        console.log("Skill image" , path.image_file_path)
         content = (
           <Row className="h-100">
             <Col

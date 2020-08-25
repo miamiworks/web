@@ -6,7 +6,7 @@ import LazyLoad from 'react-lazyload';
 let cache = {};
 const FireImage = ({ name, defaultImg,  ...rest }) => {
     const [url, setUrl] = React.useState("");
-    
+
     React.useEffect(() => {
         const storage = firebase.storage().ref();
         try{
@@ -28,7 +28,7 @@ const FireImage = ({ name, defaultImg,  ...rest }) => {
             setUrl(defaultImg);
             console.log("Firebase error", error) 
         }
-    },[]);
+    },[name]);
     if(!name) return <p>Missing image name</p>;
     return  <LazyLoad height={200}>
         {url ? 

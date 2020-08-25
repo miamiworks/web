@@ -72,7 +72,7 @@ export const TopNav = ({ links }) => {
                                     {item.label}
                                 </a>
                         })}
-                        <Button href="#" variant="outline-warning">Post a job</Button>
+                        <Button onClick={() => window.open('https://submit.miamitech.works/jobs','noopener') } variant="outline-warning">Post a job</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

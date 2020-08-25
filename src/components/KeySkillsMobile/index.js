@@ -37,7 +37,12 @@ function CourseSyllabusModal(props) {
         fullName,
         email,
         phone,
-        course.id
+        course.id,
+        { 
+            program_name: course.program_name,
+            provider_contact_email: course.provider_contact_email,
+            provider_contact_name: course.provider_contact_name,
+        }
       )
       if (!(res instanceof Error)) {
         setSubmitting(false)
@@ -309,7 +314,7 @@ export default function KeySkillsMobile(props){
 
               <Row className="px-lg-5 pb-lg-3">
                 <Col xs={12}>
-                  <button className="btn btn-warning mr-3" onClick={() => {}}>
+                  <button className="btn btn-warning mr-3" onClick={() => window.location.href= course.program_external_url }>
                     Apply Now
                   </button>
 

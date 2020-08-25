@@ -3,13 +3,13 @@
 .course-card{
     border: none !important;
     >.lazyload-wrapper{
-        height: 50%;
+        height: 45%;
     }
     .purple{
         color: $purple;
     }
     .card-body{
-        padding: 1rem;
+        padding: 1rem 1rem 0.5rem 1rem;
     }
     .card-img-top{
         object-fit: cover;
@@ -21,7 +21,6 @@
     .title {
         color: $darkBlue;
         width: 100%;
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }

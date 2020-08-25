@@ -34,34 +34,6 @@ const StoreWrapper = ({children})=> {
                 measurementId: process.env.GATSBY_MEASUREMENT_ID
             })
             state.actions.initApp(firebase)
-
-            firebase.auth().signInAnonymously()
-            .catch(function (error) { 
-                console.log(`Firebase signin error: ${error.code} ${error.message}`)
-            })
-            .then(() => {
-                
-                firebase.auth().onAuthStateChanged(function (user) { 
-                    if (user) { 
-                        var isAnonymous = user.isAnonymous; 
-                        var uid = user.uid; 
-                        let currURl = window.location.href; 
-                        let currNow = Date.now(); 
-                        let currNew = new Date();
-                        let currDate = Date() 
-                        firebase
-                            .firestore()
-                            .collection("user")
-                            .doc(uid)
-                            .collection("login")
-                            .doc(currNew.toString())
-                            .set({ datenow: currNow, datenew: currNew, date: currDate, urllogin: currURl }) 
-                            .then(function () { 
-                                console.log("added to db login by user:",uid)
-                            })
-                    }
-                });
-            });
         }
     }, [])
 

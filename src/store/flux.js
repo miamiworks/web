@@ -28,25 +28,75 @@ const getState = ({ getStore, getActions, setStore }) => {
       jobs: [],
       programs: [],
       skill_pathways: [],
+
+      authenticatedUser: null
     },
     actions: {
+        analytics: null,
       // Use getActions to call a function within a fuction
-      initApp: (firebase) => {
+      initApp: function(firebase){
         let actions = getActions()
-        actions.get("events", 15)
-        actions.get("jobs", 15)
+        actions.get("events", { limit: 15 })
         actions.get("programs")
         actions.get("skill_pathways")
+        actions.get("jobs", { limit: 15, reducer: (data) => {
+            for(let i=0;i<data.length;i++){
+                for(let j=0;j<data.length-i-1;j++){
+                    if(
+                        (data[j].company_posting.toLowerCase() !==data[j+1].company_posting.toLowerCase()) &&
+                        (data[j].skill_pathway.toLowerCase() !== data[j+1].skill_pathway.toLowerCase())
+                    ){
+                        let b=data[j+1];
+                        data[j+1]=data[j];
+                        data[j] = b; 
+                    }
+                }
+            }
+            return data
+        }})
 
-        firebase.analytics();
+        firebase.auth().signInAnonymously()
+            .catch(function (error) { 
+                console.log(`Firebase signin error: ${error.code} ${error.message}`)
+            })
+            .then(() => {
+                
+                firebase.auth().onAuthStateChanged(function (user) { 
+                    if (user) { 
+                        var isAnonymous = user.isAnonymous; 
+                        var uid = user.uid; 
+                        let currURl = window.location.href; 
+                        let currNow = Date.now(); 
+                        let currNew = new Date();
+                        let currDate = Date() 
+                        firebase
+                            .firestore()
+                            .collection("user")
+                            .doc(uid)
+                            .collection("login")
+                            .doc(currNew.toString())
+                            .set({ datenow: currNow, datenew: currNew, date: currDate, urllogin: currURl }) 
+                            .then(function () { 
+                                console.log("added to db login by user:",uid)
+                                setStore({ authenticatedUser: uid })
+                            })
+                    }
+                });
+            });
+
+        this.analytics = firebase.analytics();
       },
-      get: (type, limit=null) => {
+      get: (type, options={}) => {
         if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
           throw Error("Invalid collection type: ", type)
+
+        // add defaults
+        options = { limit: null, reducer: null, ...options }
+
         let query = firebase.firestore().collection(type);
         
         // Pagination???
-        if(limit) query.limit(limit);
+        if(options.limit) query.limit(options.limit);
         
         query.get()
           .then(querySnapshot => {
@@ -54,40 +104,47 @@ const getState = ({ getStore, getActions, setStore }) => {
             querySnapshot.forEach(doc => {
               data.push({ id: doc.id, ...doc.data() })
             })
-            if(type==="jobs") {
-              for(let i=0;i<data.length;i++){
-                for(let j=0;j<data.length-i-1;j++){
-                  if(
-                    (data[j].company_posting.toLowerCase() !==data[j+1].company_posting.toLowerCase()) &&
-                    (data[j].skill_pathway.toLowerCase() !== data[j+1].skill_pathway.toLowerCase())
-                  ){
-                    let b=data[j+1];
-                    data[j+1]=data[j];
-                    data[j] = b; 
-                  }
-                }
-              }
-            }
-            setStore({ [type]: data })
+            if(options.reducer) data = options.reducer(data)
+            console.log(type, data)
+            setStore({ [type]: data.sort((a,b) => a.provider_name > b.provider_name ? 1 : -1) })
           })
       },
-      submitRequest: async (
+      logEvent: function(name, data={}){
+        this.analytics.logEvent(name);
+      },
+      submitRequest: async function(
         type,
         fullName,
         email,
         phone,
-        related_id = null
-      ) => {
-        return firebase
-          .firestore()
-          .collection("submissions")
-          .add({
+        related_id = null,
+        data={}
+      ){
+        const store = getStore();
+        const _payload = {
             full_name: fullName,
             email_address: email,
             phone_number: phone,
             type,
             related_id,
-          })
+            program_name: data.program_name,
+            provider_contact_email: data.provider_contact_email,
+            provider_contact_name: data.provider_contact_name,
+            user: store.authenticatedUser,
+            date: new Date()
+          };
+
+        this.analytics.logEvent('request_'+type, {
+            type,
+            related_id,
+            program_name: data.program_name
+        });
+
+        
+        return firebase
+          .firestore()
+          .collection("submissions")
+          .add(_payload)
           .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id)
             return true
