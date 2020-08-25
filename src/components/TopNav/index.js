@@ -85,17 +85,17 @@ export const TopNav = ({ links }) => {
             }
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="ml-lg-auto">
               {Array.isArray(links) &&
                 links.map((item, i) => {
                   const Component = item.component
                   return Component !== undefined ? (
-                    <Component key={i} className="ml-5 nav-link" />
+                    <Component key={i} className="ml-lg-5 nav-link" />
                   ) : item.to.charAt(0) === "#" ? (
                     <Link
                       key={i}
                       activeClass="active"
-                      className="ml-5 nav-link"
+                      className="ml-lg-5 nav-link"
                       to={item.to.substring(1)}
                       spy={true}
                       smooth={true}
@@ -115,7 +115,7 @@ export const TopNav = ({ links }) => {
                   ) : (
                     <a
                       key={i}
-                      className="ml-5 nav-link"
+                      className="ml-lg-5 nav-link"
                       href={item.to}
                       target="_blank"
                       rel="noopener noreferrer"

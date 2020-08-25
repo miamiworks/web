@@ -21,6 +21,21 @@
     }
     .navbar-toggler{ border: none;}
 
+    .navbar-dark .navbar-collapse{
+        @media only screen and (max-width: 768px){
+            z-index: 1000;
+            background: white;
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+            .navbar-nav .nav-link {
+                color: black;
+            }
+        }
+    }
+
     &.sticky-active .bg-transparent {
         transition: 1s ease;
         height: 100px;
@@ -43,7 +58,9 @@
             border-color: #F7D260;
             font-weight: 600;
             border: 3px solid #F7D260;
-            margin-left: 3rem !important;
+            @media only screen and (min-width: 768px){
+                margin-left: 3rem !important;
+            }
             line-height: 33px;
         }
         .btn{
