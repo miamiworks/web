@@ -30,6 +30,7 @@
     }
 
     &.sticky-active .navbar-dark .navbar-collapse {
+        transition: 1s ease;
         background-color: white;
         padding-bottom: inherit;
         padding-right: inherit;
@@ -39,7 +40,7 @@
 
     &.sticky-active .bg-transparent {
         transition: 1s ease;
-        height: 100px;
+        // height: 100px;
         background-color: #fff !important;
     }
     
