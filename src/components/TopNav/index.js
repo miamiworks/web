@@ -4,26 +4,37 @@ import Img from "gatsby-image"
 import { navigate } from '@reach/router';
 import { Navbar, Nav, Button} from 'react-bootstrap';
 import { Link } from 'react-scroll'
+import HamburgerDark from "../../images/hamburger-dark.svg"
+import HamburgerLight from "../../images/hamburger-light.svg"
 
 import "./style.scss";
 
 export const TopNav = ({ links }) => {
 
+    const [expanded, setExpanded] = useState(false)
     const [navBackground, setNavBackground] = useState(false)
-        const navRef = useRef()
-        navRef.current = navBackground
-        useEffect(() => {
-            const handleScroll = () => {
-                const show = window.scrollY > 670
-                if (navRef.current !== show) {
-                    setNavBackground(show)
-                }
+    const navRef = useRef()
+    navRef.current = navBackground
+    useEffect(() => {
+        const handleScroll = () => {
+            const show = window.scrollY > 670
+            if (navRef.current !== show) {
+                setNavBackground(show)
             }
-            document.addEventListener('scroll', handleScroll)
-            return () => {
-                document.removeEventListener('scroll', handleScroll)
-            }
-        }, [])
+        }
+        document.addEventListener('scroll', handleScroll)
+        return () => {
+            document.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    useEffect(() => {
+      if(typeof document!=='undefined'){
+        let body = document
+          .querySelector("body")
+        expanded? body.style.overflow="hidden":body.style.overflow="auto"
+      }
+    }, [expanded])
 
     const data = useStaticQuery(graphql`
         query {
@@ -56,6 +67,15 @@ export const TopNav = ({ links }) => {
       typeof document !== "undefined" && document.querySelector(".main-nav")!==null
         ? document.querySelector(".main-nav").offsetHeight : 0;
 
+    const navbarHeight =
+      typeof document !== "undefined" &&
+      document.querySelector(".navbar.navbar-expand-lg.navbar-dark") !== null
+        ? document.querySelector(".navbar.navbar-expand-lg.navbar-dark")
+            .offsetHeight
+        : 0
+
+    
+
     return (
       <header
         className={
@@ -70,35 +90,51 @@ export const TopNav = ({ links }) => {
           sticky="top"
           variant="dark"
           expand="lg"
+          expanded={expanded}
           className="px-5"
         >
           <Navbar.Brand href="#home">
             <Img fixed={sources} />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            className={expanded ? "active" : ""}
+            onClick={e => setExpanded(!expanded)}
+          >
+            {navBackground ? <HamburgerDark /> : <HamburgerLight />}
+          </Navbar.Toggle>
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            style={{
+              top: navbarHeight,
+            }}
+          >
+            <Nav className="h-lg-auto text-center text-lg-left my-5 my-lg-0 px-5 px-lg-0 ml-lg-auto">
               {Array.isArray(links) &&
                 links.map((item, i) => {
                   const Component = item.component
                   return Component !== undefined ? (
-                    <Component key={i} className="ml-5 nav-link" />
+                    <Component
+                      key={i}
+                      className="my-4 my-lg-0 ml-lg-5 nav-link"
+                    />
                   ) : item.to.charAt(0) === "#" ? (
                     <Link
                       key={i}
                       activeClass="active"
-                      className="ml-5 nav-link"
+                      className="my-3 my-lg-0 ml-lg-5 nav-link"
                       to={item.to.substring(1)}
                       spy={true}
                       smooth={true}
                       duration={500}
                       offset={-offsetHeight}
+                      onClick={e=>setExpanded(false)}
                     >
                       {item.label}
                     </Link>
                   ) : item.target !== "_blank" ? (
                     <Nav.Link
-                      className="ml-5"
+                      className="my-lg-auto ml-5"
                       onClick={() => navigate(item.url)}
                       key={i}
                     >
@@ -107,7 +143,7 @@ export const TopNav = ({ links }) => {
                   ) : (
                     <a
                       key={i}
-                      className="ml-5 nav-link"
+                      className="ml-lg-5 nav-link"
                       href={item.to}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -118,6 +154,7 @@ export const TopNav = ({ links }) => {
                   )
                 })}
               <Button
+                className={expanded ? "my-3" : "my-lg-auto"}
                 onClick={() =>
                   window.open("https://submit.miamitech.works/jobs", "noopener")
                 }
