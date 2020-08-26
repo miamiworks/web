@@ -15,8 +15,10 @@ $container-max-widths: (
 .h-scroll{
     overflow-y: hidden;
     overflow-x: auto;
+    width: 100%;
     & > div {
         width: 1480px;
+        display: flex;
         padding-left: 20px;
     }
 }

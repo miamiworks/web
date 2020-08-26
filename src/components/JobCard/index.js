@@ -18,7 +18,7 @@ export default function JobCard ({ jobTitle, companyName, date, CompanyLogo, url
     var now = dayjs()
     let _date = dayjs(date);
     return (
-        <a className="card exjoCard" href={url} target="_blank" rel="noopener noreferrer" style={style || {}}>
+        <a className="card exjoCard mr-4" href={url} target="_blank" rel="noopener noreferrer" style={style || {}}>
             <div className="card-body">
                 <SkillToggle skill={skill} />
                 <h5 className="card-title jobTitle">{slice(jobTitle)}</h5>

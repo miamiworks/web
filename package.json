@@ -37,11 +37,9 @@
     "react": "^16.12.0",
     "react-device-detect": "^1.13.1",
     "react-dom": "^16.12.0",
-    "react-dragscroll": "^2.0.1",
     "react-helmet": "^6.1.0",
-    "react-lazyload": "^3.0.0",
-    "react-responsive-carousel": "^3.2.9",
-    "react-scroll": "^1.8.1"
+    "react-indiana-drag-scroll": "^1.6.1",
+    "react-lazyload": "^3.0.0"
   },
   "devDependencies": {
     "bootstrap": "^4.5.2",
