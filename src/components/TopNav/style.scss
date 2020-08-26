@@ -22,9 +22,6 @@
     .navbar-toggler{ border: none;}
 
     @media only screen and (max-width: 768px){
-        transform: "translate3d(0, 0, 0)";
-        transition: "transform .3s cubic-bezier(0, .52, 0, 1)";
-        
         .navbar-dark .navbar-collapse{
             cursor: pointer;
             &.show{
@@ -33,6 +30,7 @@
             transform: translate3d(0, 100vh, 0);
             transition: transform .3s cubic-bezier(0, .52, 0, 1);
             left: 0;
+            right: 0;
             height: 100vh;
             z-index: 1000;
             background: white;
@@ -46,10 +44,8 @@
 
     &.sticky-active .navbar-dark .navbar-collapse {
         background-color: white;
-        padding-bottom: inherit;
-        padding-right: inherit;
-        margin-left: -48px;
-        margin-right: -48px;
+        padding: 0;
+        margin: 0;
     }
 
     &.sticky-active .bg-transparent {
