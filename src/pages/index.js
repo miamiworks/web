@@ -189,37 +189,49 @@ export default function Home() {
         </Section>
 
         <Section name="coaching" className="career-coaching">
-          <Container className="coachingSec">
-            <Row className="mb-5 mx-auto">
-              <Col xs={12}>
+            <Container className="coachingSec mb-5">
                 <h1 className="mb-3 coachTitle">
                   Virtual <span>Career Coaching</span>
                 </h1>
-                <h2 className="coachSub">take control of your job search</h2>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6} className="bubbleSec">
-                <img
-                  src={Bubble}
-                  className="img-fluid"
-                  alt="Responsive img"
-                ></img>
-              </Col>
-              <Col md={6} className="descSec">
-                <h3>
-                  One-on-One <span>Coaching</span>
-                </h3>
-                <hr />
-                <p className="text-left lead">
-                  Career changes are tough. Imposter syndrome or fear of the unknown can overwhelm even the most seasoned professional. Sign up to receive free personalized career support by the coaches at Benjamin Douglass. Our experts will provide strategies to help define your search criteria, design your job search collateral and craft your professional story. Our team serves as a partner in accountability, strategy, and motivation.
-                </p>
-                <a href="https://calendly.com/miamitechworkscoach/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-                  Learn More
-                </a>
-              </Col>
-            </Row>
-          </Container>
+                <h2 className="coachSub">discover your path that lies ahead</h2>
+            </Container>
+            <div className="two-types-of-coaching pb-5">
+                <Container>
+                    <Row>
+                        <Col md={6} className="left-coaching pt-3 pb-3">
+                            <h3>
+                            Need job search advice?
+                            </h3>
+                            <h4 className="text-left py-4 text-white">
+                            our mentors have practical experience and are eager to help.
+                            </h4>
+                            <p className="text-left">
+                            take control of your job search and gain clarity and confidence as you forge ahead
+                            </p>
+                            <a href="https://calendly.com/miamitechworkscoach/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                            Book a time
+                            </a>
+                        </Col>
+                        <Col md={6} className="right-coaching pt-3 pb-3 px-">
+                            <h3>
+                            Not sure where to start?
+                            </h3>
+                            <h4 className="text-left py-4  text-white">
+                            our mentors have practical experience and are eager to help
+                            </h4>
+                            <p className="text-left mb-5">
+                            take control of your job search and gain clarity and confidence as you forge ahead
+                            </p>
+                            <div className="bottom">
+                                <a href="https://calendly.com/miamitechworkscoach/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                                    Book a time
+                                </a>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+          
         </Section>
 
         <Section name="events" className="section-events">

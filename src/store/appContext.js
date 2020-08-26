@@ -33,6 +33,7 @@ const StoreWrapper = ({children})=> {
                 appId: "1:222583667104:web:961b7f076b71de9547ccc5",
                 measurementId: process.env.GATSBY_MEASUREMENT_ID
             })
+            console.log("measurementId",process.env.GATSBY_MEASUREMENT_ID)
             state.actions.initApp(firebase)
         }
     }, [])
