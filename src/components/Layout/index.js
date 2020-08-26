@@ -1,5 +1,5 @@
 
-import React,{useContext} from "react"
+import React,{useContext,useEffect} from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { TopNav } from "../TopNav"
 import { Footer } from "../Footer"
@@ -22,6 +22,7 @@ const Layout = ({
     coverDescription,
 }) => {
     const { store, actions } = useContext(Context)
+
     return (
       <div className={bodyClass}>
         <SEO

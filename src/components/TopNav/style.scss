@@ -21,15 +21,23 @@
     }
     .navbar-toggler{ border: none;}
 
-    .navbar-dark .navbar-collapse{
-        @media only screen and (max-width: 768px){
+    @media only screen and (max-width: 768px){
+        transform: "translate3d(0, 0, 0)";
+        transition: "transform .3s cubic-bezier(0, .52, 0, 1)";
+        
+        .navbar-dark .navbar-collapse{
+            cursor: pointer;
+            &.show{
+                transform: translate3d(0, 0, 0);
+            }
+            transform: translate3d(0, 100vh, 0);
+            transition: transform .3s cubic-bezier(0, .52, 0, 1);
+            left: 0;
+            height: 100vh;
             z-index: 1000;
             background: white;
-            height: 100vh;
             width: 100vw;
             position: absolute;
-            top: 0;
-            left: 0;
             .navbar-nav .nav-link {
                 color: black;
             }
