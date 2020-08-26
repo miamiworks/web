@@ -29,6 +29,14 @@
         }
     }
 
+    &.sticky-active .navbar-dark .navbar-collapse {
+        background-color: white;
+        padding-bottom: inherit;
+        padding-right: inherit;
+        margin-left: -48px;
+        margin-right: -48px;
+    }
+
     &.sticky-active .bg-transparent {
         transition: 1s ease;
         height: 100px;
