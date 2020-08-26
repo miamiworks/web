@@ -42,6 +42,14 @@
         height: 100px;
         background-color: #fff !important;
     }
+    
+    .navbar-collapse {
+        background: #101135;
+        padding-bottom: inherit;
+        padding-right: inherit;
+        margin-left: -48px;
+        margin-right: -48px;
+    }
 
     a.navbar-brand {
         display: flex;
