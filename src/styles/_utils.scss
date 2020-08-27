@@ -4,30 +4,7 @@
     cursor: pointer;
 }
 
-.carousel-outer{
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    .carousel{
-        position: initial;
-        &.carousel-slider{
-            position: initial;
-        }
-        .slide{
-            background: transparent;
-        }
-        .slider.animated{
-            margin-left: 31%;
-        }
-        .control-prev.control-arrow:before{
-            border-right: 16px solid #1b1e21;
-        }
-        .control-next.control-arrow:before{
-            border-left: 16px solid #1b1e21;
-        }
-        .control-arrow:before, .carousel.carousel-slider .control-arrow:before{
-            border-top: 16px solid transparent;
-            border-bottom: 16px solid transparent;
-        }
-    } 
+.loading{
+    max-height: 300px;
+    max-width: 300px;
 }

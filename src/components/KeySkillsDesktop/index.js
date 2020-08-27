@@ -287,7 +287,6 @@ export default function KeySkillsDesktop(props){
           </Row>
         )
       }else if(path){
-        console.log("Skill image" , path.image_file_path)
         content = (
           <Row className="h-100">
             <Col

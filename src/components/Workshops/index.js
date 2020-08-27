@@ -2,12 +2,14 @@ import React from "react"
 import EventsCard from "../EventsCard"
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { isMobile } from "react-device-detect"
+import Loading from "../../images/loading.svg"
 import "./style.scss"
 
 const Workshops = ({ events, skills, width, breakpoint }) => {
     // const [currentIndex, setSlide] = React.useState(3);
     return <ScrollContainer className="scroll-container h-scroll">
-        <div>
+        { events.length === 0 && <Loading className="loading" />}
+        <div style={{ width: events.length * 370 }}>
             { events.map(ev => <EventsCard
                     ev={ev.rsvp_url}
                     date={ev.event_date}

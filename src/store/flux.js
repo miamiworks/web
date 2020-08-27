@@ -36,10 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       initApp: function(firebase){
         let actions = getActions()
-        actions.get("events", { limit: 15 })
-        actions.get("programs")
-        actions.get("skill_pathways")
-        actions.get("jobs", { limit: 15, reducer: (data) => {
+        actions.get("jobs", { limit: 6, reducer: (data) => {
             for(let i=0;i<data.length;i++){
                 for(let j=0;j<data.length-i-1;j++){
                     if(
@@ -53,7 +50,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             }
             return data
-        }})
+        }}).then(() => {
+            actions.get("events", { limit: 6 })
+            actions.get("programs")
+        })
+        actions.get("skill_pathways")
 
         firebase.auth().signInAnonymously()
             .catch(function (error) { 
@@ -86,7 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         this.analytics = firebase.analytics();
       },
-      get: (type, options={}) => {
+      get: (type, options={}) => new Promise((resolve, reject) => {
         if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
           throw Error("Invalid collection type: ", type)
 
@@ -96,19 +97,22 @@ const getState = ({ getStore, getActions, setStore }) => {
         let query = firebase.firestore().collection(type);
         
         // Pagination???
-        if(options.limit) query.limit(options.limit);
+        if(options.limit) query = query.limit(options.limit);
         
+        console.log(`Requested ${type}`, options)
         query.get()
           .then(querySnapshot => {
-            let data = []
-            querySnapshot.forEach(doc => {
-              data.push({ id: doc.id, ...doc.data() })
-            })
-            if(options.reducer) data = options.reducer(data)
-            console.log(type, data)
-            setStore({ [type]: data.sort((a,b) => a.provider_name > b.provider_name ? 1 : -1) })
+                let data = []
+                querySnapshot.forEach(doc => {
+                data.push({ id: doc.id, ...doc.data() })
+                })
+                if(options.reducer) data = options.reducer(data)
+                data = data.sort((a,b) => a.provider_name > b.provider_name ? 1 : -1);
+                setStore({ [type]: data })
+                resolve(data)
+                console.log(`Loaded ${type}`, data)
           })
-      },
+      }),
       logEvent: function(name, data={}){
         this.analytics.logEvent(name);
       },

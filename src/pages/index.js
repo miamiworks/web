@@ -82,7 +82,6 @@ export default function Home() {
     ]
 
     
-
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
         <Section name="hero" className="home-hero h-100 position-relative">
