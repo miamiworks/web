@@ -59,7 +59,7 @@ export const TopNav = ({ links }) => {
       data.mobile.childImageSharp.fixed,
       {
         ...data.desktop.childImageSharp.fixed,
-        media: `(min-width: 768px)`,
+        media: `(min-width: 1024px)`,
       },
     ]
 
