@@ -198,22 +198,20 @@ export default function Home() {
         <Section name="coaching" className="career-coaching">
           <Container className="coachingSec mb-5">
             <h1 className="mb-3 coachTitle">
-              Virtual <span>Career Coaching</span>
+              Free <span>Career Coaching</span>
             </h1>
             <h2 className="coachSub">discover your path that lies ahead</h2>
           </Container>
           <div className="two-types-of-coaching pb-5">
-            <Container>
-              <Row>
-                <Col md={6} className="left-coaching pt-3 pb-3">
-                  <h3>Want to break into tech?</h3>
-                  <h4 className="text-left py-4 text-white">
-                    Talk to our career coaches for free.
-                  </h4>
-                  <p className="text-left">
-                    Our mentors have practical experience helping people for all
-                    walks of life switch to jobs in tech.
-                  </p>
+            <Row>
+              <Col md={6} className="left-coaching">
+                <div className="left-line-flare"></div>
+                <h3>Want to break into tech?</h3>
+                <h4 className="text-left py-4 text-white font-weight-normal mb-5">
+                  We have practical experience helping people for all walks of
+                  life switch to jobs in tech.
+                </h4>
+                <div className="bottom">
                   <a
                     href="https://calendly.com/miamitechworkscoach/30min"
                     target="_blank"
@@ -222,30 +220,30 @@ export default function Home() {
                   >
                     Book a time
                   </a>
-                </Col>
-                <Col md={6} className="right-coaching pt-3 pb-3 px-">
-                  <h3>Looking for a new tech job?</h3>
-                  <h4 className="text-left py-4  text-white">
-                    Already in tech and need a new job?
-                  </h4>
-                  <p className="text-left mb-5">
-                    Talk to specialized career coaches to hear opportunities
-                    that fit your profile. Our mentors will go through the job
-                    searching process with you 1-1.
-                  </p>
-                  <div className="bottom">
-                    <a
-                      href="https://calendly.com/miamitechworkscoach/30min"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary btn-lg"
-                    >
-                      Book a time
-                    </a>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
+                </div>
+              </Col>
+              <Col md={6} className="right-coaching">
+                <div className="right-line-flare">
+                  <div className="right-dot-flare"></div>
+                </div>
+                <h3>Looking for a new tech job?</h3>
+                <h4 className="text-left py-4  text-white font-weight-normal mb-5">
+                  We can help you identify opportunities that fit your profile
+                  and review your job search process.
+                </h4>
+                <div className="bottom">
+                  <a
+                    href="https://calendly.com/miamitechworkscoach/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-lg"
+                  >
+                    Book a time
+                  </a>
+                </div>
+              </Col>
+            </Row>
+            {/* </Container> */}
           </div>
         </Section>
 
