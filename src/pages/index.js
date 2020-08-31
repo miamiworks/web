@@ -85,11 +85,7 @@ export default function Home() {
     return (
       <Layout bodyClass="home" description="" lang="en" meta={meta}>
         <Section name="hero" className="home-hero h-100 position-relative">
-          <TopNav
-            links={
-              store && store.navMenu
-            }
-          />
+          <TopNav links={store && store.navMenu} />
           <Container className="py-4">
             <Row className="mb-lg-5 mx-auto">
               <Col xs={12}>
@@ -113,19 +109,25 @@ export default function Home() {
         </Section>
 
         <Section name="jobs" className="explore-jobs">
-            <Container className="exjob">
-                <Row className="mb-5 mx-auto">
-                    <Col xs={12}>
-                        <h1 className="mb-3 exjoTitle">Explore <span>jobs you'll love</span></h1>
-                        <h2 className= "exjoSub">from companies hiring locally</h2>
-                    </Col>
-                </Row>
-            </Container>
-            <JobSearch 
-                width={width}
-                jobs={store  && Array.isArray(store.jobs) ? store.jobs : []} 
-                skills={store && Array.isArray(store.skill_pathways) ? store.skill_pathways : []} 
-            />
+          <Container className="exjob">
+            <Row className="mb-5 mx-auto">
+              <Col xs={12}>
+                <h1 className="mb-3 exjoTitle">
+                  Explore <span>jobs you'll love</span>
+                </h1>
+                <h2 className="exjoSub">from companies hiring locally</h2>
+              </Col>
+            </Row>
+          </Container>
+          <JobSearch
+            width={width}
+            jobs={store && Array.isArray(store.jobs) ? store.jobs : []}
+            skills={
+              store && Array.isArray(store.skill_pathways)
+                ? store.skill_pathways
+                : []
+            }
+          />
         </Section>
 
         <Section
@@ -166,9 +168,12 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={store && store.skill_pathways.find(
-                item => item.skill_pathway_slug === type
-              )}
+              path={
+                store &&
+                store.skill_pathways.find(
+                  item => item.skill_pathway_slug === type
+                )
+              }
             />
           ) : (
             <KeySkillsDesktop
@@ -180,57 +185,66 @@ export default function Home() {
               skill={skill}
               type={type}
               setType={setType}
-              path={store && store.skill_pathways.find(
-                item => item.skill_pathway_slug === type
-              )}
+              path={
+                store &&
+                store.skill_pathways.find(
+                  item => item.skill_pathway_slug === type
+                )
+              }
             />
           )}
         </Section>
 
         <Section name="coaching" className="career-coaching">
-            <Container className="coachingSec mb-5">
-                <h1 className="mb-3 coachTitle">
-                  Virtual <span>Career Coaching</span>
-                </h1>
-                <h2 className="coachSub">discover your path that lies ahead</h2>
-            </Container>
-            <div className="two-types-of-coaching pb-5">
-                <Container>
-                    <Row>
-                        <Col md={6} className="left-coaching pt-3 pb-3">
-                            <h3>
-                            Need job search advice?
-                            </h3>
-                            <h4 className="text-left py-4 text-white">
-                            our mentors have practical experience and are eager to help.
-                            </h4>
-                            <p className="text-left">
-                            take control of your job search and gain clarity and confidence as you forge ahead
-                            </p>
-                            <a href="https://calendly.com/miamitechworkscoach/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-                            Book a time
-                            </a>
-                        </Col>
-                        <Col md={6} className="right-coaching pt-3 pb-3 px-">
-                            <h3>
-                            Not sure where to start?
-                            </h3>
-                            <h4 className="text-left py-4  text-white">
-                            our mentors have practical experience and are eager to help
-                            </h4>
-                            <p className="text-left mb-5">
-                            take control of your job search and gain clarity and confidence as you forge ahead
-                            </p>
-                            <div className="bottom">
-                                <a href="https://calendly.com/miamitechworkscoach/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-                                    Book a time
-                                </a>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-          
+          <Container className="coachingSec mb-5">
+            <h1 className="mb-3 coachTitle">
+              Free <span>Career Coaching</span>
+            </h1>
+            <h2 className="coachSub">discover your path that lies ahead</h2>
+          </Container>
+          <div className="two-types-of-coaching pb-5">
+            <Row>
+              <Col md={6} className="left-coaching">
+                <div className="left-line-flare"></div>
+                <h3>Want to break into tech?</h3>
+                <h4 className="text-left py-4 text-white font-weight-normal mb-5">
+                  We have practical experience helping people for all walks of
+                  life switch to jobs in tech.
+                </h4>
+                <div className="bottom">
+                  <a
+                    href="https://calendly.com/miamitechworkscoach/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-lg"
+                  >
+                    Book a time
+                  </a>
+                </div>
+              </Col>
+              <Col md={6} className="right-coaching">
+                <div className="right-line-flare">
+                  <div className="right-dot-flare"></div>
+                </div>
+                <h3>Looking for a new tech job?</h3>
+                <h4 className="text-left py-4  text-white font-weight-normal mb-5">
+                  We can help you identify opportunities that fit your profile
+                  and review your job search process.
+                </h4>
+                <div className="bottom">
+                  <a
+                    href="https://calendly.com/miamitechworkscoach/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-lg"
+                  >
+                    Book a time
+                  </a>
+                </div>
+              </Col>
+            </Row>
+            {/* </Container> */}
+          </div>
         </Section>
 
         <Section name="events" className="section-events">
@@ -252,10 +266,10 @@ export default function Home() {
             </Row>
           </Container>
 
-            <Workshops 
-                width={width}
-                events={store && Array.isArray(store.events) ? store.events : []} 
-            />
+          <Workshops
+            width={width}
+            events={store && Array.isArray(store.events) ? store.events : []}
+          />
         </Section>
 
         {/* <Section name="job-search" className="job-search">
