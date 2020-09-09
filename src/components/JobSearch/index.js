@@ -55,8 +55,8 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
         </ScrollContainer>
     } return <>
         {_jobs.length === 0 && <Loading className="loading" />}
-        <div style={{ width: jobs.length * 144, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20, margin: "auto" }}>
-            {_jobs.map(j =>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
+            {_jobs.slice(0, 8).map(j =>
                 <JobCard
                     jobType="product"
                     jobTitle={j.job_title}
@@ -72,7 +72,11 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                 />
             )}
         </div>
+        {/* <div>
+            <h1>300</h1>
+        </div> */}
     </>
+    
 }
 
 export default JobSearch;

@@ -36,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       initApp: function(firebase){
         let actions = getActions()
-        actions.get("jobs", { limit: 6, reducer: (data) => {
+        actions.get("jobs", { limit: 8, reducer: (data) => {
             for(let i=0;i<data.length;i++){
                 for(let j=0;j<data.length-i-1;j++){
                     if(
