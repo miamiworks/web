@@ -1,13 +1,28 @@
 import React from "react"
+import ReactDOM from "react-dom"
 import EventsCard from "../EventsCard"
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { isMobile } from "react-device-detect"
 import Loading from "../../images/loading.svg"
 import "./style.scss"
 
-const Workshops = ({ events, skills, width, breakpoint }) => {
+const Workshops = ({ events, skills, width, breakpoint, scrollEnd }) => {
+    const container = React.useRef(null);
+
+    React.useEffect(() => {
+        const onScroll = (e) => {
+            const element = e.target;
+            if (element.scrollWidth - element.scrollLeft === element.clientWidth) {
+                if(scrollEnd) scrollEnd();
+            }
+        }
+        const horizontalContainer = ReactDOM.findDOMNode(container.current);
+        horizontalContainer.addEventListener("scroll", onScroll);
+        
+        return () => horizontalContainer.removeEventListener("scroll", onScroll);
+    }, []);
     // const [currentIndex, setSlide] = React.useState(3);
-    return <ScrollContainer className="scroll-container h-scroll">
+    return <ScrollContainer className="scroll-container h-scroll" ref={container}>
         { events.length === 0 && <Loading className="loading" />}
         <div style={{ width: events.length * 370 }}>
             { events.map(ev => <EventsCard

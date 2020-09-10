@@ -270,6 +270,7 @@ export default function Home() {
           <Workshops
             width={width}
             events={store && Array.isArray(store.events) ? store.events : []}
+            scrollEnd={() => actions.get("events", { limit: 6, orderby: 'event_date' })}
           />
         </Section>
 
