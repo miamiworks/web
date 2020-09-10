@@ -74,9 +74,11 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                 )}
             </div>
         </div>
-        {/* <div>
-            <h1>300</h1>
-        </div> */}
+        <div className="exJo">
+            <p style={{fontSize: 66, margin: 0}}>{'300' + String.fromCharCode(43) }</p>
+            <p style={{fontSize: 26, margin: 0}}>jobs on MiamiTech.Works</p>
+            <button type="button" class="btn btn-primary">Explore jobs</button>
+        </div>
     </>
 
 }
