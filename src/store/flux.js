@@ -1,9 +1,6 @@
-import firebase from "firebase/app"
-import "firebase/firestore"
-import "firebase/analytics"
-import "firebase/auth"
-import "firebase/storage"
+import firebase from "gatsby-plugin-firebase"
 
+const COLLECTION_TYPES = ["events", "jobs", "programs", "skill_pathways"];
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -34,9 +31,11 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
         analytics: null,
       // Use getActions to call a function within a fuction
-      initApp: function(firebase){
+      initApp: function(){
+        console.log('Firebase initialized')
+
         let actions = getActions()
-        actions.get("jobs", { limit: 6, reducer: (data) => {
+        actions.get("jobs", { limit: 6, orderby: 'posted_date', reducer: (data) => {
             for(let i=0;i<data.length;i++){
                 for(let j=0;j<data.length-i-1;j++){
                     if(
@@ -51,6 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
             return data
         }}).then(() => {
+            // actions.get("events", { limit: 6, orderBy: 'event_date' })
             actions.get("events", { limit: 6 })
             actions.get("programs")
         })
@@ -88,14 +88,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         this.analytics = firebase.analytics();
       },
       get: (type, options={}) => new Promise((resolve, reject) => {
-        if (!["events", "jobs", "programs", "skill_pathways"].includes(type))
-          throw Error("Invalid collection type: ", type)
+        if (!COLLECTION_TYPES.includes(type)) throw Error("Invalid collection type: ", type)
+        const store = getStore();
 
         // add defaults
         options = { limit: null, reducer: null, ...options }
 
         let query = firebase.firestore().collection(type);
         
+        if(options.orderby) query = query.orderBy(options.orderby, 'desc');
+
+        if(store[type].length > 0) query = query.startAt(store[type][store[type].length-1]);
         // Pagination???
         if(options.limit) query = query.limit(options.limit);
         
@@ -104,11 +107,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(querySnapshot => {
                 let data = []
                 querySnapshot.forEach(doc => {
-                data.push({ id: doc.id, ...doc.data() })
+                    data.push({ id: doc.id, ...doc.data() })
                 })
                 if(options.reducer) data = options.reducer(data)
                 data = data.sort((a,b) => a.provider_name > b.provider_name ? 1 : -1);
-                setStore({ [type]: data })
+                setStore({ [type]: store[type].concat(data) })
                 resolve(data)
                 console.log(`Loaded ${type}`, data)
           })
