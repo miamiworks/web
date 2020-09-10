@@ -72,12 +72,12 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
                         date={j.posted_date}
                     />
                 )}
+                <div className="exJo">
+                    <p style={{fontSize: 66, margin: 0}}>{'300' + String.fromCharCode(43) }</p>
+                    <p style={{fontSize: 26, margin: 0}}>jobs on MiamiTech.Works</p>
+                    <button type="button" class="btn btn-primary">Explore jobs</button>
+                </div>
             </div>
-        </div>
-        <div className="exJo">
-            <p style={{fontSize: 66, margin: 0}}>{'300' + String.fromCharCode(43) }</p>
-            <p style={{fontSize: 26, margin: 0}}>jobs on MiamiTech.Works</p>
-            <button type="button" class="btn btn-primary">Explore jobs</button>
         </div>
     </>
 
