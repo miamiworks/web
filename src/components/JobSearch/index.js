@@ -54,29 +54,31 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
             </div>
         </ScrollContainer>
     } return <>
-        {_jobs.length === 0 && <Loading className="loading" />}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
-            {_jobs.slice(0, 8).map(j =>
-                <JobCard
-                    jobType="product"
-                    jobTitle={j.job_title}
-                    CompanyLogo={j.company_logo}
-                    companyName={j.company_posting}
-                    skill={{
-                        skill_pathway_name: j.skill_pathway,
-                        skill_pathway_background_color: j.skill_pathway_background_color,
-                        skill_pathway_circle_color: j.skill_pathway_circle_color
-                    }}
-                    url={j.job_url}
-                    date={j.posted_date}
-                />
-            )}
+        <div style={{paddingLeft: 215}}>
+            {_jobs.length === 0 && <Loading className="loading" />}
+            <div style={{ width: 10, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
+                {_jobs.slice(0, 8).map(j =>
+                    <JobCard
+                        jobType="product"
+                        jobTitle={j.job_title}
+                        CompanyLogo={j.company_logo}
+                        companyName={j.company_posting}
+                        skill={{
+                            skill_pathway_name: j.skill_pathway,
+                            skill_pathway_background_color: j.skill_pathway_background_color,
+                            skill_pathway_circle_color: j.skill_pathway_circle_color
+                        }}
+                        url={j.job_url}
+                        date={j.posted_date}
+                    />
+                )}
+            </div>
         </div>
         {/* <div>
             <h1>300</h1>
         </div> */}
     </>
-    
+
 }
 
 export default JobSearch;
