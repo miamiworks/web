@@ -56,7 +56,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint }) => {
     } return <>
         <div style={{paddingLeft: 215}}>
             {_jobs.length === 0 && <Loading className="loading" />}
-            <div style={{ width: 10, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
+            <div className="grid">
                 {_jobs.slice(0, 8).map(j =>
                     <JobCard
                         jobType="product"
