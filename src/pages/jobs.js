@@ -5,7 +5,7 @@ import "../styles/jobs/jobs.scss"
 export default function Jobs() {
     const { store, actions } = useContext(Context)
 
-    return (<div>
+    return (<div className="jobs">
         <div className="intro">
             <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" className="navbar w-nav">
                 <div className="nav-left"><a href="#" className="brand w-nav-brand"><img src="images/MiamiTechWorks_Logo_Final_White-02.png" alt="" className="image-5" /></a></div>
