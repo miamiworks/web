@@ -5,3 +5,17 @@
         }
     }
 }
+// style={{ width: 10, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}
+.grid {
+    width: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+
+}
+
+.exJo {
+    text-align: center;
+    color: #282A62;
+    font-weight: bold;
+}
