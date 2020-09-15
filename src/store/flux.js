@@ -34,7 +34,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log('Firebase initialized')
 
         let actions = getActions()
-        actions.get("jobs", { limit: 6, orderby: 'posted_date', reducer: (data) => {
+        actions.get("jobs", { limit: 8, orderby: 'posted_date', reducer: (data) => {
+
             for(let i=0;i<data.length;i++){
                 for(let j=0;j<data.length-i-1;j++){
                     if(
