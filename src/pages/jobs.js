@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Context } from "../store/appContext"
 import dayjs from "dayjs";
+import FireImage from "../components/FireImage"
 import "../styles/jobs/jobs.scss"
 
 export default function Jobs() {
@@ -89,7 +90,7 @@ export default function Jobs() {
                             <div className="event-row">
                                 <div className="event-timing">
                                     <h2 className="heading-7">{dayjs(event.event_date).format('D')}</h2>
-                                    <div className="event-month">{dayjs(event.event_date).format('MMMM')}</div>
+                                    <div className="event-month">{dayjs(event.event_date).format('MMM')}</div>
                                     <div className="event-time">{event.event_end_time}</div>
                                 </div>
                                 <div className="event-details">
@@ -116,25 +117,21 @@ export default function Jobs() {
                         <div className="secondary-column-header">
                             <h1 className="heading-5">courses</h1>
                         </div>
+                        { store && store.programs.map(p => 
                         <div className="side-panel-card">
-                            <div className="event-row">
-                                <div className="event-timing">
-                                    <h2 className="heading-7">13</h2>
-                                    <div className="event-month">JUL</div>
-                                    <div className="event-time">5:00PM</div>
-                                </div>
-                                <div className="event-details">
-                                    <div className="event-title">
-                                        <h6 className="heading-6">1MPACT: Impactful Initiatives to Support the Local Business Community</h6>
-                                    </div>
-                                    <div className="speaker-registration">
-                                        <div className="speaker-details">
-                                            <div className="body-5"><strong>Doug Skoke</strong><br /></div>
-                                            <div className="body-6">President, CEO<br /></div>
-                                        </div><a href="#" className="button-4 w-button">Register</a></div>
+                            <div className="course-details">
+                                <FireImage name={p.provider_logo_file_path} alt={"Banner for "+p.provider_name} className="card-img-top" />
+                                <div className="event-title">
+                                    <h6 className="heading-5">{p.program_name}</h6>
                                 </div>
                             </div>
+                            <div>
+                                <div className="body-5"><strong>{p.program_skill_pathway}</strong><br /></div>
+                                <div className="body-6">By {p.provider_name}</div>
+                            </div>
+                            <a href={p.program_external_url} target="_blank"  rel="noopener noreferrer" className="button-4 w-button register-btn">Register</a>
                         </div>
+                        )}
                     </div>
                 </div>
             </div>
