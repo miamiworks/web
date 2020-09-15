@@ -1,4 +1,5 @@
 import React from "react"
+import ReactDOM from "react-dom"
 import JobCard from "../JobCard"
 import SkillToggle from "../SkillToggle"
 import { Button, Badge } from "react-bootstrap"
@@ -31,9 +32,23 @@ let sizes = {
 }
 const JobSearch = ({ jobs, skills, width, breakpoint }) => {
     const [tags, setTags] = React.useState([]);
+    const container = React.useRef(null);
+    React.useEffect(() => {
+        const onScroll = (e) => {
+            const element = e.target;
+            if (element.scrollWidth - element.scrollLeft === element.clientWidth) {
+                if(scrollEnd) scrollEnd();
+            }
+        }
+        const horizontalContainer = ReactDOM.findDOMNode(container.current);
+        horizontalContainer.addEventListener("scroll", onScroll);
+        
+        return () => horizontalContainer.removeEventListener("scroll", onScroll);
+    }, []);
+  
     let _jobs = jobs.filter(j => tags.length === 0 || tags.includes(j.skill_pathway)).slice(0, 15);
     if (isMobile) {
-        return <ScrollContainer className="scroll-container h-scroll">
+        return <ScrollContainer className="scroll-container h-scroll" ref={container}>
             {_jobs.length === 0 && <Loading className="loading" />}
             <div style={{ width: jobs.length * 344 }}>
                 {_jobs.map(j =>

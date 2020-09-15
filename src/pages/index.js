@@ -122,6 +122,7 @@ export default function Home() {
           <JobSearch
             width={width}
             jobs={store && Array.isArray(store.jobs) ? store.jobs : []}
+            scrollEnd={() => actions.get("jobs", { limit: 6, orderby: 'posted_date'})}
             skills={
               store && Array.isArray(store.skill_pathways)
                 ? store.skill_pathways
@@ -269,6 +270,7 @@ export default function Home() {
           <Workshops
             width={width}
             events={store && Array.isArray(store.events) ? store.events : []}
+            scrollEnd={() => actions.get("events", { limit: 6, orderby: 'event_date' })}
           />
         </Section>
 
