@@ -1,9 +1,16 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Context } from "../store/appContext"
+import dayjs from "dayjs";
 import "../styles/jobs/jobs.scss"
 
 export default function Jobs() {
     const { store, actions } = useContext(Context)
+    const [tags, setTags] = React.useState([]);
+    var now = dayjs()
+
+    useEffect(() => {
+        actions.get("jobs", { limit: 30, orderby: 'posted_date'})
+    },[])
 
     return (<div className="jobs">
         <div className="intro">
@@ -19,445 +26,91 @@ export default function Jobs() {
         <div className="jobs-section">
             <div className="columns w-row">
                 <div className="column-3 w-col w-col-8">
-                    <div className="search-filters">
-                        <div className="form-block w-form">
-                            <form id="wf-form-Search-form" name="wf-form-Search-form" data-name="Search form" method="post" className="form">
-                                <input type="text" className="text-field w-input" maxlength="256" name="Job-title" data-name="Job Title" placeholder="Job title or keyword" id="Job-title" />
-                                <input type="submit" value="🔍 " data-wait="" className="submit-button w-button" />
-                            </form>
-                            <div className="success-message w-form-done">
-                                <div>Thank you! Your submission has been received!</div>
-                            </div>
-                            <div className="error-message w-form-fail">
-                                <div>Oops! Something went wrong while submitting the form.</div>
-                            </div>
-                        </div>
-                        <div data-hover="" data-delay="0" className="dropdown w-dropdown">
-                            <div className="dropdown-toggle w-dropdown-toggle">
-                                <div className="icon-2 w-icon-dropdown-toggle"></div>
-                                <div className="text-field">skill pathway</div>
-                            </div>
-                            <nav className="w-dropdown-list"><a href="#" className="w-dropdown-link">Link 1</a><a href="#" className="w-dropdown-link">Link 2</a><a href="#" className="w-dropdown-link">Link 3</a></nav>
-                        </div>
-                        <div data-hover="" data-delay="0" className="dropdown-2 w-dropdown">
-                            <div className="dropdown-toggle w-dropdown-toggle">
-                                <div className="icon-2 w-icon-dropdown-toggle"></div>
-                                <div className="text-field">location</div>
-                            </div>
-                            <nav className="dropdown-list w-dropdown-list"><a href="#" className="w-dropdown-link">Miami, FL</a><a href="#" className="w-dropdown-link">Link 2</a><a href="#" className="w-dropdown-link">Link 3</a></nav>
-                        </div>
-                    </div>
                     <div className="job-tag-container">
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
-                        <div className="pill w-clearfix">
-                            <div className="div-block-3"></div>
-                            <div className="text-block">design</div>
-                        </div>
+                        {store && store.skill_pathways.map(skill => 
+                            <div className="pill w-clearfix" 
+                                style={{ background: `#${skill.skill_pathway_background_color}` }}
+                            >
+                                <div className="div-block-3" style={{ background: `#${skill.skill_pathway_circle_color}` }}></div>
+                                <div className="text-block">{skill.skill_pathway_name}</div>
+                            </div>
+                        )}
                     </div>
                     <div className="job-column-header">
                         <h1 className="heading-4">jobs</h1>
-                        <div className="text-block-4">search results: 30 </div>
+                        <div className="text-block-4">search results: {store.jobs.length} </div>
                     </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
+                    {
+                        store && store.jobs.map(job => 
+                            <div className="job-card">
+                                <div className="job-description">
+                                    <div className="job-title">
+                                        <h6 className="job-title-header">{job.job_title}</h6>
+                                    </div>
+                                    <div className="job-description">
+                                        <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
+                                    </div>
+                                    <div className="job-tags">
+                                        <div className="pill w-clearfix" style={{ background: `#${job.skill_pathway_background_color}` }}>
+                                            <div className="div-block-3" style={{ background: `#${job.skill_pathway_circle_color}` }}></div>
+                                            <div className="text-block">{job.skill_pathway}</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
+                                <div className="job-details">
+                                    <div className="location-details">
+                                        <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
+                                            <div className="details-headers">Location</div>
+                                        </div>
+                                        <div className="details">{job.job_location}</div>
+                                    </div>
+                                    <div className="company-details">
+                                        <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
+                                            <div className="details-headers">Company</div>
+                                        </div>
+                                        <div className="details">{job.company_posting}</div>
+                                    </div>
                                 </div>
-                                <div className="details">Midtown/Remote</div>
+                                <div className="logo-application">
+                                    <div className="date-posted">
+                                        <div className="date-posted this-week">{dayjs(job.posted_date).from(now)}</div>
+                                    </div><a href={job.job_url} target="_blank"  rel="noopener noreferrer" className="button-3 w-button">Apply</a></div>
                             </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
-                    <div className="job-card">
-                        <div className="job-description">
-                            <div className="job-title">
-                                <h6 className="job-title-header">Front End Developer</h6>
-                            </div>
-                            <div className="job-description">
-                                <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
-                            </div>
-                            <div className="job-tags">
-                                <div className="pill w-clearfix">
-                                    <div className="div-block-3"></div>
-                                    <div className="text-block">design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job-details">
-                            <div className="location-details">
-                                <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Location</div>
-                                </div>
-                                <div className="details">Midtown/Remote</div>
-                            </div>
-                            <div className="company-details">
-                                <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
-                                    <div className="details-headers">Company</div>
-                                </div>
-                                <div className="details">Kaseya</div>
-                            </div>
-                        </div>
-                        <div className="logo-application">
-                            <div className="date-posted">
-                                <div className="date-posted this-week">3 days ago</div>
-                            </div><a href="#" className="button-3 w-button">Apply</a></div>
-                    </div>
+                        )
+                    }
                 </div>
                 <div className="w-col w-col-4">
                     <div className="events">
                         <div className="secondary-column-header">
                             <h1 className="heading-5">events</h1>
                         </div>
+                        { store && store.events.map(event => 
                         <div className="side-panel-card">
                             <div className="event-row">
                                 <div className="event-timing">
-                                    <h2 className="heading-7">13</h2>
-                                    <div className="event-month">JUL</div>
-                                    <div className="event-time">5:00PM</div>
+                                    <h2 className="heading-7">{dayjs(event.event_date).format('D')}</h2>
+                                    <div className="event-month">{dayjs(event.event_date).format('MMMM')}</div>
+                                    <div className="event-time">{event.event_end_time}</div>
                                 </div>
                                 <div className="event-details">
                                     <div className="event-title">
-                                        <h6 className="heading-6">1MPACT: Impactful Initiatives to Support the Local Business Community</h6>
+                                        <h6 className="heading-6">{event.event_title}</h6>
                                     </div>
                                     <div className="speaker-registration">
+                                        { !Number.isNaN(event.speaker_name) && event.speaker_name!=='NaN' &&
                                         <div className="speaker-details">
-                                            <div className="body-5"><strong>Doug Skoke</strong><br /></div>
-                                            <div className="body-6">President, CEO<br /></div>
-                                        </div><a href="#" className="button-4 w-button">Register</a></div>
+                                            <div className="body-5"><strong>{event.speaker_name}</strong><br /></div>
+                                            <div className="body-6">{event.speaker_job_title}<br /></div>
+                                        </div>
+                                        }
+                                        { !Number.isNaN(event.rsvp_url) && event.rsvp_url!=='NaN' &&
+                                            <a href={event.rsvp_url} target="_blank"  rel="noopener noreferrer" className="button-4 w-button register-btn">Register</a>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="side-panel-card">
-                            <div className="event-row">
-                                <div className="event-timing">
-                                    <h2 className="heading-7">13</h2>
-                                    <div className="event-month">JUL</div>
-                                    <div className="event-time">5:00PM</div>
-                                </div>
-                                <div className="event-details">
-                                    <div className="event-title">
-                                        <h6 className="heading-6">1MPACT: Impactful Initiatives to Support the Local Business Community</h6>
-                                    </div>
-                                    <div className="speaker-registration">
-                                        <div className="speaker-details">
-                                            <div className="body-5"><strong>Doug Skoke</strong><br /></div>
-                                            <div className="body-6">President, CEO<br /></div>
-                                        </div><a href="#" className="button-4 w-button">Register</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="side-panel-card">
-                            <div className="event-row">
-                                <div className="event-timing">
-                                    <h2 className="heading-7">13</h2>
-                                    <div className="event-month">JUL</div>
-                                    <div className="event-time">5:00PM</div>
-                                </div>
-                                <div className="event-details">
-                                    <div className="event-title">
-                                        <h6 className="heading-6">1MPACT: Impactful Initiatives to Support the Local Business Community</h6>
-                                    </div>
-                                    <div className="speaker-registration">
-                                        <div className="speaker-details">
-                                            <div className="body-5"><strong>Doug Skoke</strong><br /></div>
-                                            <div className="body-6">President, CEO<br /></div>
-                                        </div><a href="#" className="button-4 w-button">Register</a></div>
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div>
                     <div className="events">
                         <div className="secondary-column-header">

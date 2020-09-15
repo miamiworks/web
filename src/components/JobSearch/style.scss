@@ -4,18 +4,27 @@
             width: 5080px;
         }
     }
-}
-// style={{ width: 10, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}
-.grid {
-    width: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+        .more-jobs{width: 200%;}
+    }
+    @media (min-width: 768px) {
+        .grid { 
+            grid-template-columns: repeat(2, 1fr); 
+        }
+    }
+    @media (min-width: 992px) {
+        .grid { 
+            grid-template-columns: repeat(3, 1fr); 
+            .more-jobs{width: 100%;}
+        }
+    }
 
-}
-
-.exJo {
-    text-align: center;
-    color: #282A62;
-    font-weight: bold;
+    .exJo {
+        text-align: center;
+        color: #282A62;
+        font-weight: bold;
+    }
 }
