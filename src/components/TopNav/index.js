@@ -135,7 +135,7 @@ export const TopNav = ({ links }) => {
                   ) : item.target !== "_blank" ? (
                     <Nav.Link
                       className="my-lg-auto ml-5"
-                      onClick={() => navigate(item.url)}
+                      onClick={() => navigate(item.to)}
                       key={i}
                     >
                       {item.label}

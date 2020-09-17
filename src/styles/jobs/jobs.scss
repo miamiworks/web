@@ -1,6 +1,10 @@
 @import "./normalize.css";
 @import "./webflow.css";
 
+.pointer{
+    cursor: pointer;
+}
+
 .jobs {
 
     .w-layout-grid {
@@ -34,13 +38,16 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin-right: 100px;
+    
     margin-bottom: 0px;
-    margin-left: 100px;
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
     justify-content: space-around;
     background-color: transparent;
+        @media (min-width: 992px){
+            margin-right: 100px;
+            margin-left: 100px;
+        }
     }
 
     .nav-link {
@@ -48,6 +55,7 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    position: relative;
     padding-top: 0px;
     padding-bottom: 0px;
     font-family: sofia-pro, sans-serif;
@@ -93,6 +101,29 @@
     -webkit-flex: 0 auto;
     -ms-flex: 0 auto;
     flex: 0 auto;
+    }
+
+    .nav-collapse{
+        display: none;
+        @media (min-width: 992px) {
+            display: flex;
+        } 
+    }
+    .nav-right.mobile{
+        display: block;
+        width: 100%;
+        .nav-collapse{
+            display: block;
+        }
+        .nav-link{
+            margin: 20px 0px;
+            font-size: 20px;
+        }
+    }
+    .w-nav-button{
+        position: absolute;
+        right: 15px;
+        top: 15px;
     }
 
     .container {
@@ -488,6 +519,10 @@
     align-items: flex-start;
     font-family: sofia-pro, sans-serif;
     font-size: 12px;
+    width: 50%;
+        @media (min-width: 992px) {
+            width: initial;
+        }
     }
 
     .meta {
@@ -896,8 +931,7 @@
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex;
-    width: 50%;
+
     padding: 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -907,6 +941,10 @@
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+        @media (min-width: 992px) {
+            display: flex;
+            width: 50%;
+        }
     }
 
     .text-block-3 {
@@ -936,7 +974,6 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 50%;
     margin-right: 20px;
     margin-left: 20px;
     -webkit-box-orient: vertical;
@@ -947,6 +984,9 @@
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+        @media (min-width: 480px) {
+            width: 50%;
+        }
     }
 
     .job-tags {
@@ -982,9 +1022,9 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     position: absolute;
-    right: 10px;
-    top: 10px;
-    height: 120px;
+    right: 15px;
+    top: 15px;
+    height: 165px;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -995,6 +1035,9 @@
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
+        @media (min-width: 480px) {
+            height: 115px;
+        }
     }
 
     .date-posted {
@@ -1587,6 +1630,8 @@
         -ms-flex-pack: justify;
         justify-content: space-between;
     }
+
+
     .text-block-3 {
         display: none;
     }

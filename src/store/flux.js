@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       navMenu: [
-        { label: "Jobs", to: "#jobs" },
+        { label: "Jobs", to: "/jobs" },
         { label: "Career Paths", to: "#career" },
         { label: "Coaching", to: "#coaching" },
         { label: "Events", to: "#events" },

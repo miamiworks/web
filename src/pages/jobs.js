@@ -11,6 +11,7 @@ const url = "https://miamitech.works"
 export default function Jobs() {
     const { store, actions } = useContext(Context)
     const [tags, setTags] = React.useState([]);
+    const [navCollapse, setNavCollapse] = React.useState(false);
     var now = dayjs()
 
     useEffect(() => {
@@ -50,14 +51,16 @@ export default function Jobs() {
                 <div className="nav-left">
                     <Img fixed={sources} />    
                 </div>
-                <div className="nav-right">
-                    <Link to="/jobs" className="nav-link w-nav-link">Jobs</Link>
-                    <Link to="/#career" className="nav-link w-nav-link">Career Paths</Link>
-                    <Link to="/#events" className="nav-link w-nav-link">Resources</Link>
-                    <Link to="/#coaching" className="nav-link w-nav-link">Coaching</Link>
-                    <Link to="https://submit.miamitech.works/jobs" className="button-5 w-button">Post a Job</Link>
-                    <div className="w-nav-button">
+                <div className={`nav-right ${navCollapse ? "mobile":""}`}>
+                    <div className="w-nav-button pointer" onClick={() => setNavCollapse(!navCollapse)}>
                         <div className="icon w-icon-nav-menu"></div>
+                    </div>
+                    <div className="nav-collapse">
+                        <Link to="/jobs" className="nav-link w-nav-link">Jobs</Link>
+                        <Link to="/#career" className="nav-link w-nav-link">Career Paths</Link>
+                        <Link to="/#events" className="nav-link w-nav-link">Resources</Link>
+                        <Link to="/#coaching" className="nav-link w-nav-link">Coaching</Link>
+                        <Link to="https://submit.miamitech.works/jobs" className="nav-link button-5 w-button">Post a Job</Link>
                     </div>
                 </div>
             </div>
