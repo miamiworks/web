@@ -108,7 +108,7 @@ export default function Home() {
           </Container>
         </Section>
 
-        <Section name="jobs" className="explore-jobs">
+        <Section id="jobs" name="jobs" className="explore-jobs">
           <Container className="exjob">
             <Row className="mb-5 mx-auto">
               <Col xs={12}>
@@ -132,6 +132,7 @@ export default function Home() {
         </Section>
 
         <Section
+          id="career"
           name="career"
           className={
             width <= 1080 || isMobile
@@ -196,7 +197,7 @@ export default function Home() {
           )}
         </Section>
 
-        <Section name="coaching" className="career-coaching">
+        <Section id="coaching" name="coaching" className="career-coaching">
           <Container className="coachingSec mb-5">
             <h1 className="mb-3 coachTitle">
               Free <span>Career Coaching</span>
@@ -248,7 +249,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section name="events" className="section-events">
+        <Section id="events" name="events" className="section-events">
           <Container className="eventContainer">
             <Row className="mb-5 mx-auto">
               <Col xs={12}>
@@ -288,7 +289,7 @@ export default function Home() {
           </div>
         </Section> */}
 
-        <Section name="sponsors" className="section-sponsors">
+        <Section id="sponsors" name="sponsors" className="section-sponsors">
           <Container>
             <h2 className="text-center">MiamiTech.Works Coalition</h2>
             <h3 className="text-center">Made possible by</h3>

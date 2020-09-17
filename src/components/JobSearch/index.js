@@ -74,7 +74,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint, scrollEnd }) => {
         </ScrollContainer>
     } 
     
-    return <div className="container">
+    else return <div className="container">
         {_jobs.length === 0 && <Loading className="loading" />}
         <div className="grid">
             {_jobs.slice(0, 8).map(j =>

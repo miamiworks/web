@@ -1,9 +1,13 @@
 import React, { useState, useContext, useEffect } from "react"
+import {Link, useStaticQuery} from "gatsby"
 import { Context } from "../store/appContext"
 import dayjs from "dayjs";
+import Img from "gatsby-image"
+import Loading from "../images/loading.svg"
 import FireImage from "../components/FireImage"
 import "../styles/jobs/jobs.scss"
 
+const url = "https://miamitech.works"
 export default function Jobs() {
     const { store, actions } = useContext(Context)
     const [tags, setTags] = React.useState([]);
@@ -13,11 +17,45 @@ export default function Jobs() {
         actions.get("jobs", { limit: 30, orderby: 'posted_date'})
     },[])
 
+    const data = useStaticQuery(graphql`
+        query {
+            desktop: file(relativePath: { regex: "/Logo_BlueCircle.png/" }) {
+                childImageSharp {
+                    fixed(width: 96, height: 96) {
+                    ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            mobile: file(relativePath: { regex: "/Logo_BlueCircle.png/" }) {
+                childImageSharp {
+                    fixed(width: 75, height: 75) {
+                    ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+        }
+    `)
+
+    const sources = [
+      data.mobile.childImageSharp.fixed,
+      {
+        ...data.desktop.childImageSharp.fixed,
+        media: `(min-width: 1024px)`,
+      },
+    ]
+
     return (<div className="jobs">
         <div className="intro">
             <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" className="navbar w-nav">
-                <div className="nav-left"><a href="#" className="brand w-nav-brand"><img src="images/MiamiTechWorks_Logo_Final_White-02.png" alt="" className="image-5" /></a></div>
-                <div className="nav-right"><a href="#" className="nav-link w-nav-link">Jobs</a><a href="#" className="nav-link w-nav-link">Career Paths</a><a href="#" className="nav-link w-nav-link">Resources</a><a href="#" className="nav-link w-nav-link">Coaching</a><a href="#" className="button-5 w-button">Post a Job</a>
+                <div className="nav-left">
+                    <Img fixed={sources} />    
+                </div>
+                <div className="nav-right">
+                    <Link to="/jobs" className="nav-link w-nav-link">Jobs</Link>
+                    <Link to="/#career" className="nav-link w-nav-link">Career Paths</Link>
+                    <Link to="/#events" className="nav-link w-nav-link">Resources</Link>
+                    <Link to="/#coaching" className="nav-link w-nav-link">Coaching</Link>
+                    <Link to="https://submit.miamitech.works/jobs" className="button-5 w-button">Post a Job</Link>
                     <div className="w-nav-button">
                         <div className="icon w-icon-nav-menu"></div>
                     </div>
@@ -27,8 +65,8 @@ export default function Jobs() {
         <div className="jobs-section">
             <div className="columns w-row">
                 <div className="column-3 w-col w-col-8">
-                    <div className="job-tag-container">
-                        {store && store.skill_pathways.map(skill => 
+                    {/* <div className="job-tag-container">
+                        {store && Array.isArray(store.skill_pathways) && store.skill_pathways.map(skill => 
                             <div className="pill w-clearfix" 
                                 style={{ background: `#${skill.skill_pathway_background_color}` }}
                             >
@@ -36,13 +74,14 @@ export default function Jobs() {
                                 <div className="text-block">{skill.skill_pathway_name}</div>
                             </div>
                         )}
-                    </div>
+                    </div> */}
                     <div className="job-column-header">
                         <h1 className="heading-4">jobs</h1>
-                        <div className="text-block-4">search results: {store.jobs.length} </div>
+                        <div className="text-block-4">search results: {store && Array.isArray(store.jobs) ? store.jobs.length : 0} </div>
                     </div>
+                    {(!store || !Array.isArray(store.jobs) || (Array.isArray(store.jobs) && store.jobs.length === 0)) && <Loading className="loading" />}
                     {
-                        store && store.jobs.map(job => 
+                        store && Array.isArray(store.jobs) && store.jobs.map(job => 
                             <div className="job-card">
                                 <div className="job-description">
                                     <div className="job-title">
@@ -85,7 +124,7 @@ export default function Jobs() {
                         <div className="secondary-column-header">
                             <h1 className="heading-5">events</h1>
                         </div>
-                        { store && store.events.map(event => 
+                        { store && Array.isArray(store.events) && store.events.map(event => 
                         <div className="side-panel-card">
                             <div className="event-row">
                                 <div className="event-timing">
@@ -117,7 +156,7 @@ export default function Jobs() {
                         <div className="secondary-column-header">
                             <h1 className="heading-5">courses</h1>
                         </div>
-                        { store && store.programs.map(p => 
+                        { store && Array.isArray(store.programs) && store.programs.map(p => 
                         <div className="side-panel-card">
                             <div className="course-details">
                                 <FireImage name={p.provider_logo_file_path} alt={"Banner for "+p.provider_name} className="card-img-top" />
