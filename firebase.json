@@ -17,8 +17,14 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      { "source": "/share/**", "dynamicLinks": true },
+    "rewrites": [{
+        "source": "/share/**",
+        "dynamicLinks": true
+      },
+      {
+        "source": "/media/**",
+        "dynamicLinks": true
+      },
       {
         "source": "**",
         "destination": "/index.html"
