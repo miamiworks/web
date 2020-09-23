@@ -215,7 +215,7 @@ export default function Home() {
                 </h4>
                 <div className="bottom">
                   <a
-                    href="https://calendly.com/miamitechworkscoach/30min"
+                    href="https://calendly.com/s/3mJkR81K"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary btn-lg"
@@ -235,7 +235,7 @@ export default function Home() {
                 </h4>
                 <div className="bottom">
                   <a
-                    href="https://calendly.com/miamitechworkscoach/30min"
+                    href="https://calendly.com/miamitechworkscoach/30minutes"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary btn-lg"
