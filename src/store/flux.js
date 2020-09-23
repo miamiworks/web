@@ -100,13 +100,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         if(options.orderby) query = query.orderBy(options.orderby, 'desc');
 
         if(store[type].length > 0){
-            console.log("Last visible", store[type][store[type].length-1].id)
             query = query.startAfter(store[type][store[type].length-1].cursor);
         } 
         // Pagination???
         if(options.limit) query = query.limit(options.limit);
         
-        console.log(`Requested ${type}`, options)
+        // console.log(`Requested ${type}`, options)
         query.get()
           .then(querySnapshot => {
                 let data = []
@@ -117,7 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 data = data.sort((a,b) => a.provider_name > b.provider_name ? 1 : -1);
                 setStore({ [type]: store[type].concat(data) })
                 resolve(data)
-                console.log(`Loaded ${type}`, data)
+                // console.log(`Loaded ${type}`, data)
           })
       }),
       logEvent: function(name, data={}){

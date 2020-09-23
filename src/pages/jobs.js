@@ -84,8 +84,9 @@ export default function Jobs() {
                     </div>
                     {(!store || !Array.isArray(store.jobs) || (Array.isArray(store.jobs) && store.jobs.length === 0)) && <Loading className="loading" />}
                     {
-                        store && Array.isArray(store.jobs) && store.jobs.map(job => 
-                            <div className="job-card">
+                        store && Array.isArray(store.jobs) && store.jobs.map(job => {
+                            const jobDate = dayjs(job.posted_date);
+                            return <div className="job-card">
                                 <div className="job-description">
                                     <div className="job-title">
                                         <h6 className="job-title-header">{job.job_title}</h6>
@@ -102,13 +103,15 @@ export default function Jobs() {
                                 </div>
                                 <div className="job-details">
                                     <div className="location-details">
-                                        <div className="detail-header-div"><img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" />
+                                        <div className="detail-header-div">
+                                            {/* <img src="images/Vector.png" loading="lazy" alt="" className="detail-icon" /> */}
                                             <div className="details-headers">Location</div>
                                         </div>
                                         <div className="details">{job.job_location}</div>
                                     </div>
                                     <div className="company-details">
-                                        <div className="detail-header-div"><img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" />
+                                        <div className="detail-header-div">
+                                            {/* <img src="images/building-1.png" loading="lazy" alt="" className="detail-icon" /> */}
                                             <div className="details-headers">Company</div>
                                         </div>
                                         <div className="details">{job.company_posting}</div>
@@ -116,10 +119,10 @@ export default function Jobs() {
                                 </div>
                                 <div className="logo-application">
                                     <div className="date-posted">
-                                        <div className="date-posted this-week">{dayjs(job.posted_date).from(now)}</div>
+                                        <div className="date-posted this-week">{jobDate && jobDate.from(now)}</div>
                                     </div><a href={job.job_url} target="_blank"  rel="noopener noreferrer" className="button-3 w-button">Apply</a></div>
-                            </div>
-                        )
+                            </div>;
+                        })
                     }
                 </div>
                 <div className="w-col w-col-4">

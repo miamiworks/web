@@ -50,9 +50,9 @@ const JobSearch = ({ jobs, skills, width, breakpoint, scrollEnd }) => {
     }, []);
   
     let _jobs = jobs.filter(j => tags.length === 0 || tags.includes(j.skill_pathway)).slice(0, 15);
-    if (isMobile) {
-        return <ScrollContainer className="scroll-container h-scroll" ref={container}>
-            {_jobs.length === 0 && <Loading className="loading" />}
+    return <>
+        {_jobs.length === 0 && <Loading className="loading" />}
+        <ScrollContainer className="d-block d-md-none scroll-container h-scroll" ref={container}>
             <div style={{ width: jobs.length * 344 }}>
                 {_jobs.map(j =>
                     <JobCard
@@ -72,35 +72,32 @@ const JobSearch = ({ jobs, skills, width, breakpoint, scrollEnd }) => {
                 )}
             </div>
         </ScrollContainer>
-    } 
-    
-    else return <div className="container">
-        {_jobs.length === 0 && <Loading className="loading" />}
-        <div className="grid">
-            {_jobs.slice(0, 8).map(j =>
-                <JobCard
-                    jobType="product"
-                    className="w-100"
-                    jobTitle={j.job_title}
-                    CompanyLogo={j.company_logo}
-                    companyName={j.company_posting}
-                    skill={{
-                        skill_pathway_name: j.skill_pathway,
-                        skill_pathway_background_color: j.skill_pathway_background_color,
-                        skill_pathway_circle_color: j.skill_pathway_circle_color
-                    }}
-                    url={j.job_url}
-                    date={j.posted_date}
-                />
-            )}
-            <div className="exJo more-jobs p-4">
-                <p className="h1 mb-0">{'300' + String.fromCharCode(43) }</p>
-                <p className="mt-0">jobs on MiamiTech.Works</p>
-                <Link to="/jobs" class="btn btn-primary btn-lg">Explore more jobs</Link>
+        <div className="d-none d-md-block container">
+            <div className="grid">
+                {_jobs.slice(0, 8).map(j =>
+                    <JobCard
+                        jobType="product"
+                        className="w-100"
+                        jobTitle={j.job_title}
+                        CompanyLogo={j.company_logo}
+                        companyName={j.company_posting}
+                        skill={{
+                            skill_pathway_name: j.skill_pathway,
+                            skill_pathway_background_color: j.skill_pathway_background_color,
+                            skill_pathway_circle_color: j.skill_pathway_circle_color
+                        }}
+                        url={j.job_url}
+                        date={j.posted_date}
+                    />
+                )}
+                <div className="exJo more-jobs p-4">
+                    <p className="h1 mb-0">{'300' + String.fromCharCode(43) }</p>
+                    <p className="mt-0">jobs on MiamiTech.Works</p>
+                    <Link to="/jobs" class="btn btn-primary btn-lg">Explore more jobs</Link>
+                </div>
             </div>
         </div>
-    </div>
-
+    </>
 }
 
 export default JobSearch;

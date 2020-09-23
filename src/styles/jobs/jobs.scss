@@ -1,6 +1,9 @@
 @import "./normalize.css";
 @import "./webflow.css";
 
+body{
+    overflow: auto !important;
+}
 .pointer{
     cursor: pointer;
 }
