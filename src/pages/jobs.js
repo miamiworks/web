@@ -86,6 +86,7 @@ export default function Jobs() {
                     {
                         store && Array.isArray(store.jobs) && store.jobs.map(job => {
                             const jobDate = dayjs(job.posted_date);
+                            console.log("jobDate", job.posted_date, jobDate);
                             return <div className="job-card">
                                 <div className="job-description">
                                     <div className="job-title">
@@ -97,7 +98,7 @@ export default function Jobs() {
                                     <div className="job-tags">
                                         <div className="pill w-clearfix" style={{ background: `#${job.skill_pathway_background_color}` }}>
                                             <div className="div-block-3" style={{ background: `#${job.skill_pathway_circle_color}` }}></div>
-                                            <div className="text-block">{job.skill_pathway}</div>
+                                            <div className="text-block cut-text">{job.skill_pathway}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +120,7 @@ export default function Jobs() {
                                 </div>
                                 <div className="logo-application">
                                     <div className="date-posted">
-                                        <div className="date-posted this-week">{jobDate && jobDate.from(now)}</div>
+                                        <div className="date-posted this-week">{jobDate && jobDate.from !== undefined && jobDate.from(now)}</div>
                                     </div><a href={job.job_url} target="_blank"  rel="noopener noreferrer" className="button-3 w-button">Apply</a></div>
                             </div>;
                         })
