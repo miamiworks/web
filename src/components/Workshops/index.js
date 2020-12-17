@@ -6,7 +6,7 @@ import { isMobile } from "react-device-detect"
 import Loading from "../../images/loading.svg"
 import "./style.scss"
 
-const Workshops = ({ events, skills, width, breakpoint, scrollEnd }) => {
+const Workshops = ({ events, skills, width, breakpoint, scrollEnd, loading }) => {
     const container = React.useRef(null);
 
     React.useEffect(() => {
@@ -23,7 +23,7 @@ const Workshops = ({ events, skills, width, breakpoint, scrollEnd }) => {
     }, []);
     // const [currentIndex, setSlide] = React.useState(3);
     return <ScrollContainer className="scroll-container h-scroll" ref={container}>
-        { events.length === 0 && <Loading className="loading" />}
+        { loading && <Loading className="loading" />}
         <div style={{ width: events.length * 370 }}>
             { events.map(ev => <EventsCard
                     ev={ev.rsvp_url}

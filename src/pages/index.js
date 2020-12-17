@@ -39,7 +39,7 @@ export default function Home() {
 
     const keySkillsMenu = store &&
       (
-        store.skill_pathways.map(item =>
+        store.skill_pathways.data.map(item =>
           Object.assign(
             {},
             {
@@ -121,11 +121,11 @@ export default function Home() {
           </Container>
           <JobSearch
             width={width}
-            jobs={store && Array.isArray(store.jobs) ? store.jobs : []}
+            jobs={store && Array.isArray(store.jobs.data) ? store.jobs.data: []}
             scrollEnd={() => actions.get("jobs", { limit: 6, orderby: 'posted_date'})}
             skills={
-              store && Array.isArray(store.skill_pathways)
-                ? store.skill_pathways
+              store && Array.isArray(store.skill_pathways.data)
+                ? store.skill_pathways.data
                 : []
             }
           />
@@ -163,7 +163,7 @@ export default function Home() {
           {width <= 990 || isMobile ? (
             <KeySkillsMobile
               keySkillsMenu={keySkillsMenu}
-              courseData={store && store.programs}
+              courseData={store && store.programs.data}
               course={course}
               setCourse={setCourse}
               setSkill={setSkill}
@@ -172,7 +172,7 @@ export default function Home() {
               setType={setType}
               path={
                 store &&
-                store.skill_pathways.find(
+                store.skill_pathways.data.find(
                   item => item.skill_pathway_slug === type
                 )
               }
@@ -180,7 +180,7 @@ export default function Home() {
           ) : (
             <KeySkillsDesktop
               keySkillsMenu={keySkillsMenu}
-              courseData={store && store.programs}
+              courseData={store && store.programs.data}
               course={course}
               setCourse={setCourse}
               setSkill={setSkill}
@@ -189,7 +189,7 @@ export default function Home() {
               setType={setType}
               path={
                 store &&
-                store.skill_pathways.find(
+                store.skill_pathways.data.find(
                   item => item.skill_pathway_slug === type
                 )
               }
@@ -248,7 +248,7 @@ export default function Home() {
             {/* </Container> */}
           </div>
         </Section>
-
+{/* 
         <Section id="events" name="events" className="section-events">
           <Container className="eventContainer">
             <Row className="mb-5 mx-auto">
@@ -264,16 +264,18 @@ export default function Home() {
             <Row className="mb-5 mx-auto workshopRow">
               <Col xs={12}>
                 <h2 className="workshopTitle">Upcoming Workshops</h2>
+                {store && !store.events.loading && store.events.data.length === 0 && <p>No upcoming events</p>}
               </Col>
             </Row>
           </Container>
 
           <Workshops
             width={width}
-            events={store && Array.isArray(store.events) ? store.events : []}
+            loading={store && store.events.loading}
+            events={store && Array.isArray(store.events.data) ? store.events.data : []}
             scrollEnd={() => actions.get("events", { limit: 6, orderby: 'event_date' })}
           />
-        </Section>
+        </Section> */}
 
         {/* <Section name="job-search" className="job-search">
           <div className="container">

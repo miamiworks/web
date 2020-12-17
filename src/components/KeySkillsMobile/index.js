@@ -199,7 +199,7 @@ export default function KeySkillsMobile(props){
       let aux =
         store &&
         path &&
-        store.programs.map(item => {
+        store.programs.data.map(item => {
           if (item.program_skill_pathway === path.skill_pathway_name)
             return item.provider_name
         })

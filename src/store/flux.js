@@ -1,5 +1,6 @@
 import firebase from "gatsby-plugin-firebase"
-
+import dayjs from "dayjs";
+import algoliasearch from "algoliasearch";
 const COLLECTION_TYPES = ["events", "jobs", "programs", "skill_pathways"];
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -21,13 +22,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           { httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1" },
         ],
       },
-      events: [],
-      jobs: [],
-      programs: [],
-      skill_pathways: [],
-      authenticatedUser: null
+      events: { data: [], loading: false },
+      jobs: { data: [], loading: false },
+      programs: { data: [], loading: false },
+      skill_pathways: { data: [], loading: false },
+      authenticatedUser: null,
+      algoliaLoaded: false,
     },
     actions: {
+        algolia: algoliasearch(process.env.GATSBY_AGOLIA_ID, process.env.GATSBY_AGOLIA_KEY), 
         analytics: null,
       // Use getActions to call a function within a fuction
       initApp: function(){
@@ -51,8 +54,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             return data
         }}).then(() => {
             // actions.get("events", { limit: 6, orderBy: 'event_date' })
-            actions.get("events", { limit: 6, orderby: 'event_date' })
             actions.get("programs")
+            actions.get("events", { limit: 6, orderby: 'event_date', filter:(e)=>{
+                console.log("Event date", e.event_date, dayjs(e.event_date));
+
+                return dayjs(e.event_date).isAfter(dayjs())
+            } });
         })
         actions.get("skill_pathways")
 
@@ -87,9 +94,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         this.analytics = firebase.analytics();
       },
+      uploadToAlgolia: async function(type='jobs'){
+
+        // initialize algolia
+        const algolia = algoliasearch(process.env.GATSBY_AGOLIA_ID, process.env.GATSBY_AGOLIA_KEY);
+        // get jobs from firebase
+        const querySnapshot = await firebase.firestore().collection(type).get();
+        let jobs = []
+        querySnapshot.forEach(doc => {
+            // fetch data inside each collection object
+            jobs.push({ id: doc.id, cursor: doc, ...doc.data() })
+        })
+        
+        // add objectID to avoid duplicates (algolia will take care of replacing instead of inserting)
+        // remove "cursor" property because JSON serialization gives error with it
+        jobs = jobs.map(j => {
+            delete j.cursor;
+            j.objectID = j.id;
+            return j;
+        });
+        
+        // initialize algolia index (similar to firebase collection)
+        const index = algolia.initIndex("prod_jobs");
+        try{
+            // save new jobs into the algolia index
+            const { objectIDs } = index.saveObjects(jobs)
+            console.log("Algolia initialized", objectIDs);
+        }
+        catch(err){
+            console.log("Error initializeing algolia",err);
+        }
+      },
       get: (type, options={}) => new Promise((resolve, reject) => {
         if (!COLLECTION_TYPES.includes(type)) throw Error("Invalid collection type: ", type)
         const store = getStore();
+        setStore({ [type]: { ...store[type], loading:true }})
         window.store = store;
 
         // add defaults
@@ -99,8 +138,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         
         if(options.orderby) query = query.orderBy(options.orderby, 'desc');
 
-        if(store[type].length > 0){
-            query = query.startAfter(store[type][store[type].length-1].cursor);
+        if(store[type].data.length > 0){
+            query = query.startAfter(store[type].data[store[type].length-1].cursor);
         } 
         // Pagination???
         if(options.limit) query = query.limit(options.limit);
@@ -112,15 +151,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                 querySnapshot.forEach(doc => {
                     data.push({ id: doc.id, cursor: doc, ...doc.data() })
                 })
+                if(options.filter) data = data.filter(options.filter)
                 if(options.reducer) data = options.reducer(data)
                 data = data.sort((a,b) => a.provider_name > b.provider_name ? 1 : -1);
-                setStore({ [type]: store[type].concat(data) })
+                setStore({ [type]: { loading: false, data: store[type].data.concat(data) }})
                 resolve(data)
                 // console.log(`Loaded ${type}`, data)
           })
       }),
       logEvent: function(name, data={}){
         this.analytics.logEvent(name);
+      },
+      search: async function(query){
+        let actions = getActions()
+        const index = actions.algolia.initIndex("prod_jobs");
+        try{
+            const results = await index.search(query)
+            console.log("Results", results);
+            setStore({ jobs: { data: results.hits, loading: false } })
+        }
+        catch(err){
+            console.log("Error searching algolia",err);
+        }
       },
       submitRequest: async function(
         type,

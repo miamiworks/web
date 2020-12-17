@@ -11,6 +11,7 @@ const url = "https://miamitech.works"
 export default function Jobs() {
     const { store, actions } = useContext(Context)
     const [tags, setTags] = React.useState([]);
+    const [query, setQuery] = React.useState("");
     const [navCollapse, setNavCollapse] = React.useState(false);
     var now = dayjs()
 
@@ -80,20 +81,25 @@ export default function Jobs() {
                     </div> */}
                     <div className="job-column-header">
                         <h1 className="heading-4">jobs</h1>
-                        <div className="text-block-4">search results: {store && Array.isArray(store.jobs) ? store.jobs.length : 0} </div>
                     </div>
-                    {(!store || !Array.isArray(store.jobs) || (Array.isArray(store.jobs) && store.jobs.length === 0)) && <Loading className="loading" />}
+                    <div>
+                        <div className="d-flex">
+                            <input type="text" placeholder="Job title, Company name, Skill, Description" className="form-control" onChange={(e) => setQuery(e.target.value)} value={query} />
+                            <button type="button" onClick={() => actions.search(query)}>Search</button>
+                        </div>
+                        <div className="text-block-4 text-right mt-1">search results: {store && Array.isArray(store.jobs.data) ? store.jobs.data.length : 0} </div>
+                    </div>
+                    {(!store || !Array.isArray(store.jobs.data) || (Array.isArray(store.jobs.data) && store.jobs.data.length === 0)) && <Loading className="loading" />}
                     {
-                        store && Array.isArray(store.jobs) && store.jobs.map(job => {
+                        store && Array.isArray(store.jobs.data) && store.jobs.data.map(job => {
                             const jobDate = dayjs(job.posted_date);
-                            console.log("jobDate", job.posted_date, jobDate);
                             return <div className="job-card">
                                 <div className="job-description">
                                     <div className="job-title">
                                         <h6 className="job-title-header">{job.job_title}</h6>
                                     </div>
                                     <div className="job-description">
-                                        <div className="text-block-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut tellus lorem. Donec quam odio, volutpat vel ipsum tristique, porttitor placerat nisi. Praesent ut justo sit amet quam accumsan posuere vitae finibus augue. In fringilla mollis gravida.</div>
+                                        <div className="text-block-3">{job.job_description}</div>
                                     </div>
                                     <div className="job-tags">
                                         <div className="pill w-clearfix" style={{ background: `#${job.skill_pathway_background_color}` }}>
@@ -127,11 +133,12 @@ export default function Jobs() {
                     }
                 </div>
                 <div className="w-col w-col-4">
-                    <div className="events">
+                    {/* <div className="events">
                         <div className="secondary-column-header">
                             <h1 className="heading-5">events</h1>
                         </div>
-                        { store && Array.isArray(store.events) && store.events.map(event => 
+                        { store && Array.isArray(store.events.data) && store.events.data.length == 0 && <div className="side-panel-card"><p>No upcoming events listed.</p></div>}
+                        { store && Array.isArray(store.events.data) && store.events.data.map(event => 
                         <div className="side-panel-card">
                             <div className="event-row">
                                 <div className="event-timing">
@@ -158,12 +165,12 @@ export default function Jobs() {
                             </div>
                         </div>
                         )}
-                    </div>
+                    </div> */}
                     <div className="events">
                         <div className="secondary-column-header">
                             <h1 className="heading-5">courses</h1>
                         </div>
-                        { store && Array.isArray(store.programs) && store.programs.map(p => 
+                        { store && Array.isArray(store.programs.data) && store.programs.data.map(p => 
                         <div className="side-panel-card">
                             <div className="course-details">
                                 <FireImage name={p.provider_logo_file_path} alt={"Banner for "+p.provider_name} className="card-img-top" />
