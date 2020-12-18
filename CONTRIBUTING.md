@@ -69,4 +69,4 @@ Only meant for the lead developers.
 
 1. Login into firebase `$ firebase login --no-localhost`
 3. Run de deploy script: `$ npm run build`
-4. Upload to firebase: `$ firebase deploy --only hosting`
+4. Upload to firebase: `$ firebase deploy --only hosting:miami-works-dev`

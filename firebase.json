@@ -1,37 +1,66 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
-  "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint"
-    ]
-  },
-  "hosting": {
-    "public": "public",
-    "appAssociation": "AUTO",
-    "cleanUrls": true,
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "firestore": {
+        "rules": "firestore.rules",
+        "indexes": "firestore.indexes.json"
+    },
+    "functions": {
+        "predeploy": [
+            "npm --prefix \"$RESOURCE_DIR\" run lint"
+        ]
+    },
+    "hosting": [
+        {
+            "target": "production",
+            "public": "public",
+            "appAssociation": "AUTO",
+            "cleanUrls": true,
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "rewrites": [
+                {
+                    "source": "/share/**",
+                    "dynamicLinks": true
+                },
+                {
+                    "source": "/media/**",
+                    "dynamicLinks": true
+                },
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
+        },
+        {
+            "target": "development",
+            "public": "public",
+            "appAssociation": "AUTO",
+            "cleanUrls": true,
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "rewrites": [
+                {
+                    "source": "/share/**",
+                    "dynamicLinks": true
+                },
+                {
+                    "source": "/media/**",
+                    "dynamicLinks": true
+                },
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
+        }
     ],
-    "rewrites": [{
-        "source": "/share/**",
-        "dynamicLinks": true
-      },
-      {
-        "source": "/media/**",
-        "dynamicLinks": true
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  },
-  "storage": {
-    "rules": "storage.rules"
-  }
+    "storage": {
+        "rules": "storage.rules"
+    }
 }

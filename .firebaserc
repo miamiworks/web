@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "miami-works"
+  },
+  "targets": {
+    "miami-works": {
+      "hosting": {
+        "production": [
+          "miami-works"
+        ],
+        "development": [
+          "miami-works-dev"
+        ]
+      }
+    }
   }
 }
