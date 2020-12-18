@@ -27,19 +27,7 @@ B. **🦅 Experienced** If you have already contributed or you feel confident ab
 
 1. The project ias developed using the Gabtsby.js.
 2. After cloning you can install packages by doing `npm install`.
-3. Create a `.env.development` file that the same variables that you can find on the `.env.example`, make sure to replace the `values` with their corresponding real life values, for example:
-
-```txt
-GATSBY_API_KEY=<firebase key>
-```
-
-Needs to be replaced with the real firebase key, ask your project leader for that. This is similar to how it should look:
-
-```txt
-GATSBY_API_KEY=adsA45DS3SD3df32dfgdf32342sjksdf23
-```
-
-4. You can start coding by running the development server: `$ npm run start`.
+3. You can start coding by running the development server: `$ npm run start`.
 
 ### File organization:
 
@@ -67,6 +55,9 @@ Contains all the FLUX actions and the main shared store among the entire web app
 
 Only meant for the lead developers.
 
+0. Install firebase version 8.21: `$ npm i -g firebase-tools@8.12`
 1. Login into firebase `$ firebase login --no-localhost`
 3. Run de deploy script: `$ npm run build`
-4. Upload to firebase: `$ firebase deploy --only hosting:miami-works-dev`
+4. Upload to firebase development server: `$ firebase deploy --only hosting:development`
+
+Note: you can also deploy to production with: `$ firebase deploy --only hosting:production`
