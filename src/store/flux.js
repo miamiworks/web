@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             // actions.get("events", { limit: 6, orderBy: 'event_date' })
             actions.get("programs")
             actions.get("events", { limit: 6, orderby: 'event_date', filter:(e)=>{
-                console.log("Event date", e.event_date, dayjs(e.event_date));
+                // console.log("Event date", e.event_date, dayjs(e.event_date));
 
                 return dayjs(e.event_date).isAfter(dayjs())
             } });
@@ -166,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       search: async function(query){
         let actions = getActions()
         const index = actions.algolia.initIndex("prod_jobs");
-        console.log("results - index",index,query)
+
         try{
             const results = await index.search(query)
             console.log("Results", results);
