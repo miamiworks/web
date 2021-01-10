@@ -9,7 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         { label: "Jobs", to: "/jobs" },
         { label: "Career Paths", to: "#career" },
         { label: "Coaching", to: "#coaching" },
-        { label: "Events", to: "#events" },
       ],
       homepageData: {
         keySkillsMenu: [],
@@ -35,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       initApp: function(){
         console.log('Firebase initialized')
-
+        console.log("process.env.GATSBY_API_KEY", process.env.GATSBY_API_KEY)
         let actions = getActions()
         actions.get("jobs", { limit: 8, orderby: 'posted_date', reducer: (data) => {
 
@@ -94,37 +93,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         this.analytics = firebase.analytics();
       },
-      uploadToAlgolia: async function(type='jobs'){
+      // uploadToAlgolia: async function(type='jobs'){
 
-        // initialize algolia
-        const algolia = algoliasearch(process.env.GATSBY_AGOLIA_ID, process.env.GATSBY_AGOLIA_KEY);
-        // get jobs from firebase
-        const querySnapshot = await firebase.firestore().collection(type).get();
-        let jobs = []
-        querySnapshot.forEach(doc => {
-            // fetch data inside each collection object
-            jobs.push({ id: doc.id, cursor: doc, ...doc.data() })
-        })
+      //   // initialize algolia
+      //   const algolia = algoliasearch(process.env.GATSBY_AGOLIA_ID, process.env.GATSBY_AGOLIA_KEY);
+      //   // get jobs from firebase
+      //   const querySnapshot = await firebase.firestore().collection(type).get();
+      //   let jobs = []
+      //   querySnapshot.forEach(doc => {
+      //       // fetch data inside each collection object
+      //       jobs.push({ id: doc.id, cursor: doc, ...doc.data() })
+      //   })
         
-        // add objectID to avoid duplicates (algolia will take care of replacing instead of inserting)
-        // remove "cursor" property because JSON serialization gives error with it
-        jobs = jobs.map(j => {
-            delete j.cursor;
-            j.objectID = j.id;
-            return j;
-        });
+      //   // add objectID to avoid duplicates (algolia will take care of replacing instead of inserting)
+      //   // remove "cursor" property because JSON serialization gives error with it
+      //   jobs = jobs.map(j => {
+      //       delete j.cursor;
+      //       j.objectID = j.id;
+      //       return j;
+      //   });
         
-        // initialize algolia index (similar to firebase collection)
-        const index = algolia.initIndex("prod_jobs");
-        try{
-            // save new jobs into the algolia index
-            const { objectIDs } = index.saveObjects(jobs)
-            console.log("Algolia initialized", objectIDs);
-        }
-        catch(err){
-            console.log("Error initializeing algolia",err);
-        }
-      },
+      //   // initialize algolia index (similar to firebase collection)
+      //   const index = algolia.initIndex("prod_jobs");
+      //   try{
+      //       // save new jobs into the algolia index
+      //       const { objectIDs } = index.saveObjects(jobs)
+      //       console.log("Algolia initialized", objectIDs);
+      //   }
+      //   catch(err){
+      //       console.log("Error initializeing algolia",err);
+      //   }
+      // },
       get: (type, options={}) => new Promise((resolve, reject) => {
         if (!COLLECTION_TYPES.includes(type)) throw Error("Invalid collection type: ", type)
         const store = getStore();
@@ -165,6 +164,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       search: async function(query){
         let actions = getActions()
         const index = actions.algolia.initIndex("prod_jobs");
+        console.log("results - index",index,query)
         try{
             const results = await index.search(query)
             console.log("Results", results);

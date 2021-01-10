@@ -19,6 +19,10 @@ export default function Jobs() {
         actions.get("jobs", { limit: 30, orderby: 'posted_date'})
     },[])
 
+    const handleKeyPress = (e)=>{
+        if(e.key==="Enter") actions.search(query)
+    }
+
     const data = useStaticQuery(graphql`
         query {
             desktop: file(relativePath: { regex: "/Logo_BlueCircle.png/" }) {
@@ -84,7 +88,7 @@ export default function Jobs() {
                     </div>
                     <div>
                         <div className="d-flex">
-                            <input type="text" placeholder="Job title, Company name, Skill, Description" className="form-control search-btn" onChange={(e) => setQuery(e.target.value)} value={query} />
+                            <input type="text" placeholder="Job title, Company name, Skill, Description" className="form-control search-btn" onChange={(e) => setQuery(e.target.value)} value={query} onKeyPressCapture={handleKeyPress}/>
                             <button type="button" className="button-4 w-button ml-2" onClick={() => actions.search(query)}>Search</button>
                         </div>
                         <div className="text-block-4 text-right mt-1">search results: {store && Array.isArray(store.jobs.data) ? store.jobs.data.length : 0} </div>

@@ -4,6 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 const path = require("path")
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV || "development"}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://www.miamitech.works`,
@@ -21,14 +25,14 @@ module.exports = {
       },
     },
     {
-        resolve: `gatsby-plugin-manifest`,
-        options: {
-            name: `MiamiTech.Works`,
-            icon: `src/images/favicon.png`,
-            short_name: `MiamiTech.Works`,
-            start_url: `/`,
-            display: `standalone`,
-        },
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `MiamiTech.Works`,
+        icon: `src/images/favicon.png`,
+        short_name: `MiamiTech.Works`,
+        start_url: `/`,
+        display: `standalone`,
+      },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
@@ -47,16 +51,16 @@ module.exports = {
       resolve: "gatsby-plugin-firebase",
       options: {
         credentials: {
-            apiKey: process.env.GATSBY_API_KEY,
-            authDomain: "miami-works.firebaseapp.com",
-            databaseURL: "https://miami-works.firebaseio.com",
-            projectId: "miami-works",
-            storageBucket: "miami-works.appspot.com",
-            messagingSenderId: "222583667104",
-            appId: "1:222583667104:web:961b7f076b71de9547ccc5",
-            measurementId: process.env.GATSBY_MEASUREMENT_ID
-        }
-      }
+          apiKey: process.env.GATSBY_API_KEY,
+          authDomain: "miami-works.firebaseapp.com",
+          databaseURL: "https://miami-works.firebaseio.com",
+          projectId: "miami-works",
+          storageBucket: "miami-works.appspot.com",
+          messagingSenderId: "222583667104",
+          appId: "1:222583667104:web:c7982a91c153d33a47ccc5",
+          measurementId: process.env.GATSBY_MEASUREMENT_ID,
+        },
+      },
     },
   ],
 }
