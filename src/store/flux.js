@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       initApp: function(){
         console.log('Firebase initialized')
-        console.log("process.env.GATSBY_API_KEY", process.env.GATSBY_API_KEY)
+
         let actions = getActions()
         actions.get("jobs", { limit: 8, orderby: 'posted_date', reducer: (data) => {
 
@@ -137,8 +137,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         
         if(options.orderby) query = query.orderBy(options.orderby, 'desc');
 
-        if(store[type].data.length > 0){
-            query = query.startAfter(store[type].data[store[type].length-1].cursor);
+        if ( store[type].data.length > 0 ) {
+          query = query.startAfter(
+            store[type].data[store[type].data.length - 1].cursor
+          )
         } 
         // Pagination???
         if(options.limit) query = query.limit(options.limit);
