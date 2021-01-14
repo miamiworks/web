@@ -9,7 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         { label: "Jobs", to: "/jobs" },
         { label: "Career Paths", to: "#career" },
         { label: "Coaching", to: "#coaching" },
-        { label: "Events", to: "#events" },
       ],
       homepageData: {
         keySkillsMenu: [],
@@ -51,12 +50,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 }
             }
+            
             return data
         }}).then(() => {
             // actions.get("events", { limit: 6, orderBy: 'event_date' })
             actions.get("programs")
             actions.get("events", { limit: 6, orderby: 'event_date', filter:(e)=>{
-                console.log("Event date", e.event_date, dayjs(e.event_date));
+                // console.log("Event date", e.event_date, dayjs(e.event_date));
 
                 return dayjs(e.event_date).isAfter(dayjs())
             } });
@@ -92,12 +92,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                 });
             });
 
+            // actions.uploadToAlgolia();
+
         this.analytics = firebase.analytics();
       },
       uploadToAlgolia: async function(type='jobs'){
 
         // initialize algolia
-        const algolia = algoliasearch(process.env.GATSBY_AGOLIA_ID, process.env.GATSBY_AGOLIA_KEY);
+        const algolia = algoliasearch(process.env.GATSBY_AGOLIA_ID, process.env.GATSBY_AGOLIA_CREATE_KEY);
         // get jobs from firebase
         const querySnapshot = await firebase.firestore().collection(type).get();
         let jobs = []
@@ -110,6 +112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         // remove "cursor" property because JSON serialization gives error with it
         jobs = jobs.map(j => {
             delete j.cursor;
+            delete j.job_description;
             j.objectID = j.id;
             return j;
         });
@@ -138,8 +141,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         
         if(options.orderby) query = query.orderBy(options.orderby, 'desc');
 
-        if(store[type].data.length > 0){
-            query = query.startAfter(store[type].data[store[type].length-1].cursor);
+        if ( store[type].data.length > 0 ) {
+          query = query.startAfter(
+            store[type].data[store[type].data.length - 1].cursor
+          )
         } 
         // Pagination???
         if(options.limit) query = query.limit(options.limit);
@@ -165,6 +170,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       search: async function(query){
         let actions = getActions()
         const index = actions.algolia.initIndex("prod_jobs");
+
         try{
             const results = await index.search(query)
             console.log("Results", results);

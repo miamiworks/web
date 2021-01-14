@@ -9,8 +9,8 @@ import dayjs from "dayjs";
 
 export default function EventsCard ({ date, time, eventName, speakerName, speakerPosition, comingFrom, eventImage, companyImage, url }) {
     let _date = dayjs(date);
-    let _speakerName = Number.isNaN(speakerName) || speakerName=='NaN' ? "" : speakerName
-    let _speakerPosition = Number.isNaN(speakerPosition) || speakerPosition=='NaN' ? "" : speakerPosition
+    let _speakerName = Number.isNaN(speakerName) || speakerName==='NaN' ? "" : speakerName
+    let _speakerPosition = Number.isNaN(speakerPosition) || speakerPosition==='NaN' ? "" : speakerPosition
     let _companyImage = Number.isNaN(companyImage) ? "" : companyImage
     return (
         <div className="card event">

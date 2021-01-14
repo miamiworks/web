@@ -1,13 +1,13 @@
-import React from "react"
+import React,{useState,useEffect} from "react"
 import PropTypes from "prop-types"
 import firebase from "firebase/app"
 import LazyLoad from 'react-lazyload';
 
 let cache = {};
 const FireImage = ({ name, defaultImg,  ...rest }) => {
-    const [url, setUrl] = React.useState("");
+    const [url, setUrl] = useState("");
 
-    React.useEffect(() => {
+    useEffect(() => {
         const storage = firebase.storage().ref();
         try{
             if(cache[name] === undefined) 

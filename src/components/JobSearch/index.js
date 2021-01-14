@@ -93,7 +93,7 @@ const JobSearch = ({ jobs, skills, width, breakpoint, scrollEnd }) => {
                 <div className="exJo more-jobs p-4">
                     <p className="h1 mb-0">{'300' + String.fromCharCode(43) }</p>
                     <p className="mt-0">jobs on MiamiTech.Works</p>
-                    <Link to="/jobs" class="btn btn-primary btn-lg">Explore more jobs</Link>
+                    <Link to="/jobs" className="btn btn-primary btn-lg">Explore more jobs</Link>
                 </div>
             </div>
         </div>

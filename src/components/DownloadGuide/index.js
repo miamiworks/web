@@ -1,4 +1,4 @@
-import React,{useState, useContext, Children} from "react";
+import React,{useState, useContext} from "react";
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
@@ -68,7 +68,7 @@ const DownloadGuide = ({ children, className, onHide, onSubmit , title }) => {
                     </Form.Group>
 
                     <Button variant="primary" size="lg" type="submit" block>
-                    {status == "loading" ? (
+                    {status === "loading" ? (
                         <Spinner
                         as="span"
                         animation="border"
