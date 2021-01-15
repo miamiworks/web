@@ -113,7 +113,7 @@ export default function Jobs() {
                 <div className="d-flex">
                   <input
                     type="text"
-                    placeholder="Job title, Company name, Skill, Description"
+                    placeholder="Job title, Company name, Skill, etc."
                     className="form-control search-btn"
                     onChange={e => setQuery(e.target.value)}
                     value={query}
